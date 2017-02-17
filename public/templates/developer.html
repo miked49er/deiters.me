@@ -1,0 +1,18 @@
+<h3>A software, game, &amp; web developer</h3>
+<div class="prompt">
+  <p>Scroll Down</p>
+  <i class="fa fa-arrow-down" aria-hidden="true"></i>
+</div>
+
+<div class="project-group">
+  <div class="project" ng-repeat="project in projects">
+    <h4>{{project.title}}</h4>
+    <div class="section-line"></div>
+    <a href="{{project.link}}">
+      <div class="project-image">
+        <h6 class="more-info">More</h6>
+        <img alt="{{project.alt}}" ng-src="{{project.image}}">
+      </div> <!-- project-image -->
+    </a>
+  </div> <!-- project -->
+</div> <!-- project-group -->
