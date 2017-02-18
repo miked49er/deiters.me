@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Nova+Mono|Open+Sans');
 
+
 body {
   @include clearfix;
   font-family: $font-secondary;
@@ -10,15 +11,28 @@ body {
   overflow: scroll;
 } // body
 
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+} // html
+
 #{headings()} {
   font-family: $font-primary;
   color: #fff;
 } // headings
 
+h1 {
+  color: #000;
+  text-align: center;
+  font-size: 1.5rem;
+} // h1
+
 a {
   text-decoration: none;
+  color: #fff;
 
   &:hover {
-
+    color: #000;
   } // hover
 } // a
