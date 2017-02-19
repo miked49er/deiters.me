@@ -7,8 +7,8 @@ body {
   font-size: 1.2rem;
   font-weight: normal;
   line-height: 110%;
-  background: #fff;
-  overflow: scroll;
+  background: rgb(230,230,230);
+  overflow: hidden;
 } // body
 
 html, body {
@@ -27,6 +27,18 @@ h1 {
   text-align: center;
   font-size: 1.5rem;
 } // h1
+
+h2 {
+  color: #000;
+  font-size: 1.1rem;
+  line-height: 30px;
+  text-align: center;
+} // h2
+
+h3 {
+  padding: 25px;
+  padding-bottom: 0;
+} // h3
 
 a {
   text-decoration: none;
