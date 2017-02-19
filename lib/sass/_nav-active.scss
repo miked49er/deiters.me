@@ -1,0 +1,47 @@
+.photographer-active {
+  @include transition;
+  @include tImage($t-black, $photographer);
+  height: 100vh;
+  padding-bottom: $tab-stack;
+
+  h1 {
+    display: none;
+  } // h1
+
+  h2 {
+    display: none;
+  } // h2
+} // photographer-active
+
+.about-active {
+  @include transition;
+  @include tImage(rgba(#000, .4), $about-bg);
+  height: 100vh;
+  padding: $tab 0;
+  overflow: scroll;
+
+  h1 {
+    display: none;
+  } // h1
+
+  h2 {
+    display: none;
+  } // h2
+
+  img {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  } // img
+
+  .bio {
+    padding: 25px;
+
+    h3 {
+      padding: 0;
+      margin-bottom: .8rem;
+    } // h3
+  } // bio
+} // about-active
