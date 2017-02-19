@@ -4,7 +4,18 @@ $font-secondary : Open Sans, sans-serif;
 $layout: gutter(4);
 
 $t-white: rgba(#fff,.4);
-$t-black: rgba(#000,.4);
+$t-black: rgba(#000,.1);
+
+// Images
+$photographer: "/images/bakuro-art/skyline-long-red.jpg";
+$about: "/images/profile.jpg";
+$about-bg: "/images/about-bg.jpg";
+$dev: "/images/dev.jpg";
+
+// Heights
+$hover: 50px;
+$tab: 30px;
+$tab-stack: $tab * 2;
 
 $default-transition-property: all;
 $default-transition-duration: 1s;
