@@ -1,14 +1,14 @@
-#photographer {
-  @include tImage($t-white, "/images/bakuro-art/skyline-long-red.jpg");
+.photographer {
+  @include tImage($t-white, $photographer);
 } // photographer
 
 .about {
-  @include tImage($t-white, "/images/profile.jpg");
+  @include tImage($t-white, $about);
   background-position: top;
 } // about
 
 .developer {
-  @include tImage($t-white, "/images/dev.jpg");
+  @include tImage($t-white, $dev);
   height: 34vh;
 } // developer
 
@@ -20,6 +20,15 @@
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+
+  h1 {
+    display: block;
+  } // h1
+
+  h2 {
+    display: none;
+  } // h2
 
   @include susy-breakpoint($medium) {
     @include span(4 of 12);
@@ -27,3 +36,42 @@
     background-position: center;
   } // medium
 } // nav
+
+.navtab {
+  @include transition;
+  display: inline-block;
+  width: 100%;
+  height: auto !important;
+  background-image: none !important;
+  background-color: #fff !important;
+  position: fixed;
+  z-index: 99;
+
+  h1 {
+    display: none;
+  } // h1
+
+  h2 {
+    display: block;
+    margin: auto;
+  } // h2
+} // navtab
+
+.about-top {
+  margin-top: $tab;
+  border-top: #000 solid thin;
+} // about-top
+
+.about-bottom {
+  bottom: 0;
+  margin-bottom: $tab;
+  border-bottom: #000 solid thin;
+} // about-bottom
+
+.nav-top {
+  top: 0;
+} // nav-top
+
+.nav-bottom {
+  bottom: 0;
+} // nav-bottom
