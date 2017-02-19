@@ -73,8 +73,8 @@ body {
   font-size: 1.2rem;
   font-weight: normal;
   line-height: 110%;
-  background: #fff;
-  overflow: scroll;
+  background: #e6e6e6;
+  overflow: hidden;
 }
 
 /* line 14, ../../lib/sass/_base.scss */
@@ -98,11 +98,25 @@ h1 {
 }
 
 /* line 31, ../../lib/sass/_base.scss */
+h2 {
+  color: #000;
+  font-size: 1.1rem;
+  line-height: 30px;
+  text-align: center;
+}
+
+/* line 38, ../../lib/sass/_base.scss */
+h3 {
+  padding: 25px;
+  padding-bottom: 0;
+}
+
+/* line 43, ../../lib/sass/_base.scss */
 a {
   text-decoration: none;
   color: #fff;
 }
-/* line 35, ../../lib/sass/_base.scss */
+/* line 47, ../../lib/sass/_base.scss */
 a:hover {
   color: #000;
 }
@@ -133,7 +147,7 @@ body:after {
 }
 
 /* line 1, ../../lib/sass/_nav.scss */
-#photographer {
+.photographer {
   background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("/images/bakuro-art/skyline-long-red.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -173,6 +187,15 @@ body:after {
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
+/* line 25, ../../lib/sass/_nav.scss */
+.nav h1 {
+  display: block;
+}
+/* line 29, ../../lib/sass/_nav.scss */
+.nav h2 {
+  display: none;
 }
 @media (min-width: 39em) {
   /* line 15, ../../lib/sass/_nav.scss */
@@ -184,6 +207,207 @@ body:after {
     height: 100vh;
     background-position: center;
   }
+}
+
+/* line 40, ../../lib/sass/_nav.scss */
+.navtab {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  display: inline-block;
+  width: 100%;
+  height: auto !important;
+  background-image: none !important;
+  background-color: #fff !important;
+  position: fixed;
+  z-index: 99;
+}
+/* line 50, ../../lib/sass/_nav.scss */
+.navtab h1 {
+  display: none;
+}
+/* line 54, ../../lib/sass/_nav.scss */
+.navtab h2 {
+  display: block;
+  margin: auto;
+}
+
+/* line 60, ../../lib/sass/_nav.scss */
+.about-top {
+  margin-top: 30px;
+  border-top: #000 solid thin;
+}
+
+/* line 65, ../../lib/sass/_nav.scss */
+.about-bottom {
+  bottom: 0;
+  margin-bottom: 30px;
+  border-bottom: #000 solid thin;
+}
+
+/* line 71, ../../lib/sass/_nav.scss */
+.nav-top {
+  top: 0;
+}
+
+/* line 75, ../../lib/sass/_nav.scss */
+.nav-bottom {
+  bottom: 0;
+}
+
+/* line 1, ../../lib/sass/_nav-hover.scss */
+.photographer-hover {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/bakuro-art/skyline-long-red.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+}
+/* line 8, ../../lib/sass/_nav-hover.scss */
+.photographer-hover h1 {
+  display: none;
+}
+/* line 12, ../../lib/sass/_nav-hover.scss */
+.photographer-hover h2 {
+  display: block;
+  line-height: 50px;
+  color: #fff;
+}
+
+/* line 19, ../../lib/sass/_nav-hover.scss */
+.p-hover-about {
+  margin-top: 50px;
+}
+
+/* line 23, ../../lib/sass/_nav-hover.scss */
+.d-hover-about {
+  margin-bottom: 50px;
+}
+
+/* line 27, ../../lib/sass/_nav-hover.scss */
+.about-hover {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/about-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+}
+/* line 34, ../../lib/sass/_nav-hover.scss */
+.about-hover h1 {
+  display: none;
+}
+/* line 38, ../../lib/sass/_nav-hover.scss */
+.about-hover h2 {
+  display: block;
+  line-height: 50px;
+  color: #fff;
+}
+
+/* line 45, ../../lib/sass/_nav-hover.scss */
+.developer-hover {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/dev.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+}
+/* line 52, ../../lib/sass/_nav-hover.scss */
+.developer-hover h1 {
+  display: none;
+}
+/* line 56, ../../lib/sass/_nav-hover.scss */
+.developer-hover h2 {
+  display: block;
+  line-height: 50px;
+  color: #fff;
+}
+
+/* line 1, ../../lib/sass/_nav-active.scss */
+.photographer-active {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/bakuro-art/skyline-long-red.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  background-attachment: fixed;
+  height: 100vh;
+  padding-bottom: 60px;
+}
+/* line 8, ../../lib/sass/_nav-active.scss */
+.photographer-active h1 {
+  display: none;
+}
+/* line 12, ../../lib/sass/_nav-active.scss */
+.photographer-active h2 {
+  display: none;
+}
+
+/* line 17, ../../lib/sass/_nav-active.scss */
+.about-active {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/about-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  background-attachment: fixed;
+  height: 100vh;
+  padding: 30px 0;
+  overflow: scroll;
+}
+/* line 25, ../../lib/sass/_nav-active.scss */
+.about-active h1 {
+  display: none;
+}
+/* line 29, ../../lib/sass/_nav-active.scss */
+.about-active h2 {
+  display: none;
+}
+/* line 33, ../../lib/sass/_nav-active.scss */
+.about-active img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+/* line 41, ../../lib/sass/_nav-active.scss */
+.about-active .bio {
+  padding: 25px;
+}
+/* line 44, ../../lib/sass/_nav-active.scss */
+.about-active .bio h3 {
+  padding: 0;
+  margin-bottom: .8rem;
 }
 
 /* Slider */
