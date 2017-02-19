@@ -13,46 +13,34 @@
   </head>
   <body ng-controller="mainCtrl">
 
-    <div class="content">
+    <a href="/photographer">
+      <div id="photographer" class="photographer nav">
+        <h1>Exposure<br>Photographer</h1>
+        <h2>Exposure Photographer</h2>
 
-      <a href="/photographer">
-        <div id="photographer" class="nav cover">
-          <h1>Exposure<br>Photographer</h1>
+        <div ui-view="photographer"></div>
+      </div> <!-- photography -->
+    </a>
 
-          <div class="navtab hide">
-            <h2>Exposure Photographer</h2>
-          </div> <!-- navtab -->
+    <a href="/about">
+      <div id="about" class="about nav">
+        <h1>About Me</h1>
+        <h2>About Me</h2>
 
-        </div> <!-- photography -->
-      </a>
+        <div ui-view="about"></div>
+      </div> <!-- about -->
+    </a>
 
-      <a href="/about">
-        <div class="about nav">
-          <h1>About Me</h1>
+    <a href="/developer">
+      <div id="developer" class="developer nav">
+        <h1>Software<br>Developer</h1>
+        <h2>Software Developer</h2>
 
-          <div class="navtab hide">
-            <h2>About Me</h2>
-          </div> <!-- navtab -->
+        <div ui-view="developer"></div>
+      </div> <!-- developer -->
+    </a>
 
-        </div> <!-- about -->
-      </a>
-
-      <a href="/developer">
-        <div class="developer nav">
-          <h1>Software<br>Developer</h1>
-
-          <div class="navtab hide">
-            <h2>Software Developer</h2>
-          </div> <!-- navtab -->
-
-        </div> <!-- developer -->
-      </a>
-
-      <ui-view></ui-view>
-
-      <h5><a href="#" class="contact hide">Contact Me</a></h5>
-
-    </div>
+    <h5><a href="#" class="contact hide">Contact Me</a></h5>
 
 		<script src="http://localhost:35729/livereload.js"></script>
   </body>
