@@ -112,11 +112,29 @@ h3 {
 }
 
 /* line 43, ../../lib/sass/_base.scss */
+h4 {
+  font-size: 1.6rem;
+  line-height: 120%;
+  text-align: center;
+}
+
+/* line 49, ../../lib/sass/_base.scss */
+h6 {
+  display: none;
+  width: 100px;
+  font-size: 1.5rem;
+  border: #fff solid thin;
+  padding: 10px 8px;
+  text-align: center;
+  margin: auto;
+}
+
+/* line 59, ../../lib/sass/_base.scss */
 a {
   text-decoration: none;
   color: #fff;
 }
-/* line 47, ../../lib/sass/_base.scss */
+/* line 63, ../../lib/sass/_base.scss */
 a:hover {
   color: #000;
 }
@@ -221,7 +239,7 @@ body:after {
   background-image: none !important;
   background-color: #fff !important;
   position: fixed;
-  z-index: 99;
+  z-index: 98;
 }
 /* line 50, ../../lib/sass/_nav.scss */
 .navtab h1 {
@@ -408,6 +426,81 @@ body:after {
 .about-active .bio h3 {
   padding: 0;
   margin-bottom: .8rem;
+}
+
+/* line 51, ../../lib/sass/_nav-active.scss */
+.developer-active {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/dev.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  background-attachment: fixed;
+  height: 100vh;
+  overflow: scroll;
+}
+/* line 60, ../../lib/sass/_nav-active.scss */
+.developer-active h1 {
+  display: none;
+}
+/* line 64, ../../lib/sass/_nav-active.scss */
+.developer-active h2 {
+  display: none;
+}
+
+/* line 69, ../../lib/sass/_nav-active.scss */
+.prompt {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #fff;
+}
+/* line 75, ../../lib/sass/_nav-active.scss */
+.prompt p {
+  font-family: "Nova Mono", monospace;
+  font-size: 1rem;
+  padding-bottom: .3rem;
+}
+
+/* line 1, ../../lib/sass/_dev.scss */
+.full-height {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  padding-top: 60px;
+}
+/* line 9, ../../lib/sass/_dev.scss */
+.full-height .prompt {
+  position: absolute;
+  bottom: 2em;
+}
+
+/* line 17, ../../lib/sass/_dev.scss */
+.project-group .project {
+  margin: 30vh 0;
+}
+/* line 20, ../../lib/sass/_dev.scss */
+.project-group .project .section-line {
+  width: 90%;
+  height: 2px;
+  background-color: #fff;
+  margin: .6rem auto 1.1rem;
+}
+/* line 27, ../../lib/sass/_dev.scss */
+.project-group .project .project-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+/* line 32, ../../lib/sass/_dev.scss */
+.project-group .project .project-image img {
+  width: 100%;
 }
 
 /* Slider */
