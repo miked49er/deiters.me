@@ -1,0 +1,11 @@
+.photographer {
+  @extend %tabs;
+  top: 0;
+
+  &:hover {
+    cursor: pointer;
+    @include tImage($t-black, $photographer);
+    height: $hover;
+    z-index: 99;
+  } // photographer:hover
+} // photographer
