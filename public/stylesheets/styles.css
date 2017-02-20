@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Nova+Mono|Open+Sans");
-/* line 5, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,45 +22,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -139,7 +139,7 @@ a:hover {
   color: #000;
 }
 
-/* line 21, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/susy-2.2.12/sass/susy/language/susy/_box-sizing.scss */
+/* line 21, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/susy-2.2.12/sass/susy/language/susy/_box-sizing.scss */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -152,7 +152,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 12, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+/* line 12, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
 body:after {
   content: " ";
   display: block;
@@ -164,37 +164,8 @@ body:after {
   display: none !important;
 }
 
-/* line 1, ../../lib/sass/_nav.scss */
-.photographer {
-  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("/images/bakuro-art/skyline-long-red.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-}
-
-/* line 5, ../../lib/sass/_nav.scss */
-.about {
-  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("/images/profile.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  background-position: top;
-}
-
-/* line 10, ../../lib/sass/_nav.scss */
-.developer {
-  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("/images/dev.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  height: 34vh;
-}
-
-/* line 15, ../../lib/sass/_nav.scss */
-.nav {
+/* line 1, ../../lib/sass/_partials.scss */
+.cover--photographer, .cover--about, .cover--developer {
   -moz-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
   -webkit-transition: all 1s ease-out;
@@ -207,17 +178,17 @@ body:after {
   align-items: center;
   overflow: hidden;
 }
-/* line 25, ../../lib/sass/_nav.scss */
-.nav h1 {
+/* line 11, ../../lib/sass/_partials.scss */
+.cover--photographer h1, .cover--about h1, .cover--developer h1 {
   display: block;
 }
-/* line 29, ../../lib/sass/_nav.scss */
-.nav h2 {
+/* line 15, ../../lib/sass/_partials.scss */
+.cover--photographer h2, .cover--about h2, .cover--developer h2 {
   display: none;
 }
 @media (min-width: 39em) {
-  /* line 15, ../../lib/sass/_nav.scss */
-  .nav {
+  /* line 1, ../../lib/sass/_partials.scss */
+  .cover--photographer, .cover--about, .cover--developer {
     width: 33.33333%;
     float: left;
     padding-left: 0.83333%;
@@ -227,246 +198,97 @@ body:after {
   }
 }
 
-/* line 40, ../../lib/sass/_nav.scss */
-.navtab {
+/* line 26, ../../lib/sass/_partials.scss */
+.photographer, .about, .developer {
   -moz-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
   -webkit-transition: all 1s ease-out;
   transition: all 1s ease-out;
   display: inline-block;
   width: 100%;
-  height: auto !important;
-  background-image: none !important;
-  background-color: #fff !important;
+  height: auto;
+  background-image: none;
+  background-color: #fff;
   position: fixed;
   z-index: 98;
 }
-/* line 50, ../../lib/sass/_nav.scss */
-.navtab h1 {
+/* line 36, ../../lib/sass/_partials.scss */
+.photographer h1, .about h1, .developer h1 {
   display: none;
 }
-/* line 54, ../../lib/sass/_nav.scss */
-.navtab h2 {
+/* line 40, ../../lib/sass/_partials.scss */
+.photographer h2, .about h2, .developer h2 {
   display: block;
   margin: auto;
 }
 
-/* line 60, ../../lib/sass/_nav.scss */
+/* line 46, ../../lib/sass/_partials.scss */
+.active--photographer, .active--about, .active--developer {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  background-attachment: fixed;
+  height: 100vh;
+}
+/* line 51, ../../lib/sass/_partials.scss */
+.active--photographer h1, .active--about h1, .active--developer h1 {
+  display: none;
+}
+/* line 55, ../../lib/sass/_partials.scss */
+.active--photographer h2, .active--about h2, .active--developer h2 {
+  display: none;
+}
+
+/* line 1, ../../lib/sass/_photo.scss */
+.photographer {
+  top: 0;
+}
+/* line 5, ../../lib/sass/_photo.scss */
+.photographer:hover {
+  cursor: pointer;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/bakuro-art/skyline-long-red.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  height: 50px;
+  z-index: 99;
+}
+
+/* line 5, ../../lib/sass/_about.scss */
 .about-top {
   margin-top: 30px;
   border-top: #000 solid thin;
 }
 
-/* line 65, ../../lib/sass/_nav.scss */
+/* line 10, ../../lib/sass/_about.scss */
 .about-bottom {
   bottom: 0;
   margin-bottom: 30px;
   border-bottom: #000 solid thin;
 }
 
-/* line 71, ../../lib/sass/_nav.scss */
-.nav-top {
-  top: 0;
-}
-
-/* line 75, ../../lib/sass/_nav.scss */
-.nav-bottom {
-  bottom: 0;
-}
-
-/* line 1, ../../lib/sass/_nav-hover.scss */
-.photographer-hover {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/bakuro-art/skyline-long-red.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  width: 100%;
-  height: 50px;
-  position: fixed;
-}
-/* line 8, ../../lib/sass/_nav-hover.scss */
-.photographer-hover h1 {
-  display: none;
-}
-/* line 12, ../../lib/sass/_nav-hover.scss */
-.photographer-hover h2 {
-  display: block;
-  line-height: 50px;
-  color: #fff;
-}
-
-/* line 19, ../../lib/sass/_nav-hover.scss */
-.p-hover-about {
-  margin-top: 50px;
-}
-
-/* line 23, ../../lib/sass/_nav-hover.scss */
-.d-hover-about {
-  margin-bottom: 50px;
-}
-
-/* line 27, ../../lib/sass/_nav-hover.scss */
-.about-hover {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/about-bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  width: 100%;
-  height: 50px;
-  position: fixed;
-}
-/* line 34, ../../lib/sass/_nav-hover.scss */
-.about-hover h1 {
-  display: none;
-}
-/* line 38, ../../lib/sass/_nav-hover.scss */
-.about-hover h2 {
-  display: block;
-  line-height: 50px;
-  color: #fff;
-}
-
-/* line 45, ../../lib/sass/_nav-hover.scss */
-.developer-hover {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/dev.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  width: 100%;
-  height: 50px;
-  position: fixed;
-}
-/* line 52, ../../lib/sass/_nav-hover.scss */
-.developer-hover h1 {
-  display: none;
-}
-/* line 56, ../../lib/sass/_nav-hover.scss */
-.developer-hover h2 {
-  display: block;
-  line-height: 50px;
-  color: #fff;
-}
-
-/* line 1, ../../lib/sass/_nav-active.scss */
-.photographer-active {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/bakuro-art/skyline-long-red.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  background-attachment: fixed;
-  height: 100vh;
-  padding-bottom: 60px;
-}
-/* line 8, ../../lib/sass/_nav-active.scss */
-.photographer-active h1 {
-  display: none;
-}
-/* line 12, ../../lib/sass/_nav-active.scss */
-.photographer-active h2 {
-  display: none;
-}
-
-/* line 17, ../../lib/sass/_nav-active.scss */
-.about-active {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/about-bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  background-attachment: fixed;
-  height: 100vh;
-  padding: 30px 0;
-  overflow: scroll;
-}
-/* line 25, ../../lib/sass/_nav-active.scss */
-.about-active h1 {
-  display: none;
-}
-/* line 29, ../../lib/sass/_nav-active.scss */
-.about-active h2 {
-  display: none;
-}
-/* line 33, ../../lib/sass/_nav-active.scss */
-.about-active img {
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 20px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-}
-/* line 41, ../../lib/sass/_nav-active.scss */
-.about-active .bio {
+/* line 16, ../../lib/sass/_about.scss */
+.bio {
   padding: 25px;
 }
-/* line 44, ../../lib/sass/_nav-active.scss */
-.about-active .bio h3 {
+/* line 19, ../../lib/sass/_about.scss */
+.bio h3 {
   padding: 0;
   margin-bottom: .8rem;
 }
-
-/* line 51, ../../lib/sass/_nav-active.scss */
-.developer-active {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/dev.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  background-attachment: fixed;
-  height: 100vh;
-  overflow: scroll;
-}
-/* line 60, ../../lib/sass/_nav-active.scss */
-.developer-active h1 {
-  display: none;
-}
-/* line 64, ../../lib/sass/_nav-active.scss */
-.developer-active h2 {
-  display: none;
-}
-
-/* line 69, ../../lib/sass/_nav-active.scss */
-.prompt {
-  width: 100%;
-  height: auto;
-  text-align: center;
+/* line 24, ../../lib/sass/_about.scss */
+.bio p {
   color: #fff;
-}
-/* line 75, ../../lib/sass/_nav-active.scss */
-.prompt p {
-  font-family: "Nova Mono", monospace;
-  font-size: 1rem;
-  padding-bottom: .3rem;
 }
 
 /* line 1, ../../lib/sass/_dev.scss */
+.developer {
+  bottom: 0;
+}
+
+/* line 6, ../../lib/sass/_dev.scss */
 .full-height {
   height: 100vh;
   position: relative;
@@ -475,32 +297,116 @@ body:after {
   bottom: 0;
   padding-top: 60px;
 }
-/* line 9, ../../lib/sass/_dev.scss */
+/* line 14, ../../lib/sass/_dev.scss */
 .full-height .prompt {
   position: absolute;
   bottom: 2em;
 }
 
-/* line 17, ../../lib/sass/_dev.scss */
+/* line 22, ../../lib/sass/_dev.scss */
 .project-group .project {
   margin: 30vh 0;
 }
-/* line 20, ../../lib/sass/_dev.scss */
+/* line 25, ../../lib/sass/_dev.scss */
 .project-group .project .section-line {
   width: 90%;
   height: 2px;
   background-color: #fff;
   margin: .6rem auto 1.1rem;
 }
-/* line 27, ../../lib/sass/_dev.scss */
-.project-group .project .project-image {
+/* line 32, ../../lib/sass/_dev.scss */
+.project-group .project-image {
   width: 100%;
   height: 300px;
   overflow: hidden;
 }
-/* line 32, ../../lib/sass/_dev.scss */
-.project-group .project .project-image img {
+/* line 37, ../../lib/sass/_dev.scss */
+.project-group .project-image img {
   width: 100%;
+}
+
+/* line 3, ../../lib/sass/_cover.scss */
+.cover--photographer {
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("/images/bakuro-art/skyline-long-red.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+}
+/* line 8, ../../lib/sass/_cover.scss */
+.cover--about {
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("/images/profile.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  background-position: top;
+}
+/* line 14, ../../lib/sass/_cover.scss */
+.cover--developer {
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("/images/dev.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  height: 34vh;
+}
+@media (min-width: 39em) {
+  /* line 14, ../../lib/sass/_cover.scss */
+  .cover--developer {
+    height: 100vh;
+  }
+}
+
+/* line 3, ../../lib/sass/_active.scss */
+.active--photographer {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/bakuro-art/skyline-long-red.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  padding-bottom: 60px;
+}
+/* line 9, ../../lib/sass/_active.scss */
+.active--about {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/about-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  padding: 30px 0;
+  overflow: scroll;
+}
+/* line 15, ../../lib/sass/_active.scss */
+.active--about img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+/* line 24, ../../lib/sass/_active.scss */
+.active--developer {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/dev.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  overflow: scroll;
+}
+
+/* line 31, ../../lib/sass/_active.scss */
+.prompt {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #fff;
+}
+/* line 37, ../../lib/sass/_active.scss */
+.prompt p {
+  font-family: "Nova Mono", monospace;
+  font-size: 1rem;
+  padding-bottom: .3rem;
 }
 
 /* Slider */
