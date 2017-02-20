@@ -1,0 +1,23 @@
+.cover {
+
+  &--photographer {
+    @extend %cover;
+    @include tImage($t-white, $photographer);
+  } // cover--photographer
+
+  &--about {
+    @extend %cover;
+    @include tImage($t-white, $about);
+    background-position: top;
+  } // cover--about
+
+  &--developer {
+    @extend %cover;
+    @include tImage($t-white, $dev);
+    height: 34vh;
+
+    @include susy-breakpoint($medium) {
+      height: 100vh;
+    } // medium
+  } // cover-developer
+} // cover
