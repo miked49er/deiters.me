@@ -1,3 +1,8 @@
+.developer {
+  @extend %tabs;
+  bottom: 0;
+} // developer
+
 .full-height {
   height: 100vh;
   position: relative;
@@ -24,7 +29,7 @@
       margin: .6rem auto 1.1rem;
     } // section-line
 
-    .project-image {
+    &-image {
       width: 100%;
       height: 300px;
       overflow: hidden;
