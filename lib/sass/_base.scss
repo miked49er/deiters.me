@@ -40,6 +40,22 @@ h3 {
   padding-bottom: 0;
 } // h3
 
+h4 {
+  font-size: 1.6rem;
+  line-height: 120%;
+  text-align: center;
+} // h4
+
+h6 {
+  display: none;
+  width: 100px;
+  font-size: 1.5rem;
+  border: #fff solid thin;
+  padding: 10px 8px;
+  text-align: center;
+  margin: auto;
+} // h6
+
 a {
   text-decoration: none;
   color: #fff;
