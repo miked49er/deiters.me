@@ -1,0 +1,27 @@
+.about {
+  @extend %tabs;
+} // about
+
+.about-top {
+  margin-top: $tab;
+  border-top: #000 solid thin;
+} // about-top
+
+.about-bottom {
+  bottom: 0;
+  margin-bottom: $tab;
+  border-bottom: #000 solid thin;
+} // about-bottom
+
+.bio {
+  padding: 25px;
+
+  h3 {
+    padding: 0;
+    margin-bottom: .8rem;
+  } // h3
+
+  p {
+    color: #fff;
+  } // p
+} // bio
