@@ -47,3 +47,32 @@
     } // h3
   } // bio
 } // about-active
+
+.developer-active {
+  @include transition;
+  @include tImage($t-black, $dev);
+  background-attachment: fixed;
+  height: 100vh;
+  overflow: scroll;
+
+  h1 {
+    display: none;
+  } // h1
+
+  h2 {
+    display: none;
+  } // h2
+} // developer-active
+
+.prompt {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #fff;
+
+  p {
+    font-family: $font-primary;
+    font-size: 1rem;
+    padding-bottom: .3rem;
+  } // p
+} // prompt
