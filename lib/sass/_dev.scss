@@ -1,0 +1,37 @@
+.full-height {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  padding-top: $tab-stack;
+
+  .prompt {
+    position: absolute;
+    bottom: 2em;
+  } // prompt
+} // full-height
+
+.project-group {
+
+  .project {
+    margin: 30vh 0;
+
+    .section-line {
+      width: 90%;
+      height: 2px;
+      background-color: #fff;
+      margin: .6rem auto 1.1rem;
+    } // section-line
+
+    .project-image {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      } // img
+    } // project-image
+  } // project
+} // project-group
