@@ -2,12 +2,14 @@
 
   &--photographer {
     @extend %active;
+    @include transition-property(height);
     @include tImage($t-black, $photographer);
     padding-bottom: $tab-stack;
   } // active--photography
 
   &--about {
     @extend %active;
+    @include transition-property(height);
     @include tImage($t4-black, $about-bg);
     padding: $tab 0;
     overflow: scroll;
@@ -23,6 +25,7 @@
 
   &--developer {
     @extend %active;
+    @include transition-property(height);
     @include tImage($t-black, $dev);
     overflow: scroll;
   } // active--developer
