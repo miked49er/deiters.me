@@ -14,7 +14,7 @@
   <body ng-controller="mainCtrl">
 
     <a href="/photographer">
-      <div id="photographer" class="cover--photographer">
+      <div id="photographer" ng-mouseover="photoHoverIn()" ng-mouseleave="photoHoverOut()" class="cover--photographer">
         <h1>Exposure<br>Photographer</h1>
         <h2>Exposure Photographer</h2>
 
@@ -32,7 +32,7 @@
     </a>
 
     <a href="/developer">
-      <div id="developer" class="cover--developer">
+      <div id="developer" ng-mouseover="devHoverIn()" ng-mouseleave="devHoverOut()" class="cover--developer">
         <h1>Software<br>Developer</h1>
         <h2>Software Developer</h2>
 
