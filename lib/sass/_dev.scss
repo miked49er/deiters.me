@@ -1,3 +1,20 @@
+.developer {
+  @extend %tabs;
+  bottom: 0;
+
+  &:hover {
+    cursor: pointer;
+    @include tImage($t-black, $dev);
+    height: $hover;
+    z-index: 99;
+
+    h2 {
+      color: #fff;
+      line-height: $hover;
+    } // h2
+  } // developer:hover
+} // developer
+
 .full-height {
   height: 100vh;
   position: relative;
@@ -24,7 +41,7 @@
       margin: .6rem auto 1.1rem;
     } // section-line
 
-    .project-image {
+    &-image {
       width: 100%;
       height: 300px;
       overflow: hidden;

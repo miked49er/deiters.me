@@ -1,0 +1,47 @@
+.about {
+  @extend %tabs;
+
+  &:hover {
+    cursor: pointer;
+    @include tImage($t-black, $about-bg);
+    height: $hover;
+    z-index: 99;
+
+    h2 {
+      color: #fff;
+      line-height: $hover;
+    } // h2
+  } // about:hover
+} // about
+
+.about-top {
+  margin-top: $tab;
+  border-top: #000 solid thin;
+} // about-top
+
+.about-bottom {
+  bottom: 0;
+  margin-bottom: $tab;
+  border-bottom: #000 solid thin;
+} // about-bottom
+
+.p-hover-about {
+  margin-top: $hover;
+} // p-hover-about
+
+.d-hover-about {
+  margin-bottom: $hover;
+} // d-hover-about
+
+.bio {
+  padding: 25px;
+
+  h3 {
+    padding: 0;
+    margin-bottom: .8rem;
+  } // h3
+
+  p {
+    color: #fff;
+  } // p
+} // bio
