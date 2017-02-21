@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Nova+Mono|Open+Sans");
-/* line 5, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,45 +22,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -139,7 +139,7 @@ a:hover {
   color: #000;
 }
 
-/* line 21, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/susy-2.2.12/sass/susy/language/susy/_box-sizing.scss */
+/* line 21, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/susy-2.2.12/sass/susy/language/susy/_box-sizing.scss */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -152,7 +152,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 12, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
+/* line 12, C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/susy-2.2.12/sass/susy/output/support/_clearfix.scss */
 body:after {
   content: " ";
   display: block;
@@ -166,10 +166,10 @@ body:after {
 
 /* line 1, ../../lib/sass/_partials.scss */
 .cover--photographer, .cover--about, .cover--developer {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
   display: flex;
   width: 100%;
   height: 33vh;
@@ -200,10 +200,10 @@ body:after {
 
 /* line 26, ../../lib/sass/_partials.scss */
 .photographer, .about, .developer {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
   display: inline-block;
   width: 100%;
   height: auto;
@@ -224,10 +224,10 @@ body:after {
 
 /* line 46, ../../lib/sass/_partials.scss */
 .active--photographer, .active--about, .active--developer {
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
   background-attachment: fixed;
   height: 100vh;
 }
@@ -252,33 +252,67 @@ body:after {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
+  background-position: bottom;
+  background-position: 0 85%;
   height: 50px;
   z-index: 99;
 }
+/* line 13, ../../lib/sass/_photo.scss */
+.photographer:hover h2 {
+  color: #fff;
+  line-height: 50px;
+}
 
-/* line 5, ../../lib/sass/_about.scss */
+/* line 4, ../../lib/sass/_about.scss */
+.about:hover {
+  cursor: pointer;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/about-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  height: 50px;
+  z-index: 99;
+}
+/* line 10, ../../lib/sass/_about.scss */
+.about:hover h2 {
+  color: #fff;
+  line-height: 50px;
+}
+
+/* line 17, ../../lib/sass/_about.scss */
 .about-top {
   margin-top: 30px;
   border-top: #000 solid thin;
 }
 
-/* line 10, ../../lib/sass/_about.scss */
+/* line 22, ../../lib/sass/_about.scss */
 .about-bottom {
   bottom: 0;
   margin-bottom: 30px;
   border-bottom: #000 solid thin;
 }
 
-/* line 16, ../../lib/sass/_about.scss */
+/* line 28, ../../lib/sass/_about.scss */
+.p-hover-about {
+  margin-top: 50px;
+}
+
+/* line 32, ../../lib/sass/_about.scss */
+.d-hover-about {
+  margin-bottom: 50px;
+}
+
+/* line 36, ../../lib/sass/_about.scss */
 .bio {
   padding: 25px;
 }
-/* line 19, ../../lib/sass/_about.scss */
+/* line 39, ../../lib/sass/_about.scss */
 .bio h3 {
   padding: 0;
   margin-bottom: .8rem;
 }
-/* line 24, ../../lib/sass/_about.scss */
+/* line 44, ../../lib/sass/_about.scss */
 .bio p {
   color: #fff;
 }
@@ -287,8 +321,24 @@ body:after {
 .developer {
   bottom: 0;
 }
+/* line 5, ../../lib/sass/_dev.scss */
+.developer:hover {
+  cursor: pointer;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/dev.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  height: 50px;
+  z-index: 99;
+}
+/* line 11, ../../lib/sass/_dev.scss */
+.developer:hover h2 {
+  color: #fff;
+  line-height: 50px;
+}
 
-/* line 6, ../../lib/sass/_dev.scss */
+/* line 18, ../../lib/sass/_dev.scss */
 .full-height {
   height: 100vh;
   position: relative;
@@ -297,30 +347,30 @@ body:after {
   bottom: 0;
   padding-top: 60px;
 }
-/* line 14, ../../lib/sass/_dev.scss */
+/* line 26, ../../lib/sass/_dev.scss */
 .full-height .prompt {
   position: absolute;
   bottom: 2em;
 }
 
-/* line 22, ../../lib/sass/_dev.scss */
+/* line 34, ../../lib/sass/_dev.scss */
 .project-group .project {
   margin: 30vh 0;
 }
-/* line 25, ../../lib/sass/_dev.scss */
+/* line 37, ../../lib/sass/_dev.scss */
 .project-group .project .section-line {
   width: 90%;
   height: 2px;
   background-color: #fff;
   margin: .6rem auto 1.1rem;
 }
-/* line 32, ../../lib/sass/_dev.scss */
+/* line 44, ../../lib/sass/_dev.scss */
 .project-group .project-image {
   width: 100%;
   height: 300px;
   overflow: hidden;
 }
-/* line 37, ../../lib/sass/_dev.scss */
+/* line 49, ../../lib/sass/_dev.scss */
 .project-group .project-image img {
   width: 100%;
 }
@@ -360,6 +410,10 @@ body:after {
 
 /* line 3, ../../lib/sass/_active.scss */
 .active--photographer {
+  -moz-transition-property: height;
+  -o-transition-property: height;
+  -webkit-transition-property: height;
+  transition-property: height;
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/bakuro-art/skyline-long-red.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -367,8 +421,12 @@ body:after {
   background-position: 50%;
   padding-bottom: 60px;
 }
-/* line 9, ../../lib/sass/_active.scss */
+/* line 10, ../../lib/sass/_active.scss */
 .active--about {
+  -moz-transition-property: height;
+  -o-transition-property: height;
+  -webkit-transition-property: height;
+  transition-property: height;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/about-bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -377,7 +435,7 @@ body:after {
   padding: 30px 0;
   overflow: scroll;
 }
-/* line 15, ../../lib/sass/_active.scss */
+/* line 17, ../../lib/sass/_active.scss */
 .active--about img {
   display: block;
   width: 50%;
@@ -385,8 +443,12 @@ body:after {
   margin-top: 20px;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
-/* line 24, ../../lib/sass/_active.scss */
+/* line 26, ../../lib/sass/_active.scss */
 .active--developer {
+  -moz-transition-property: height;
+  -o-transition-property: height;
+  -webkit-transition-property: height;
+  transition-property: height;
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/images/dev.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -395,14 +457,14 @@ body:after {
   overflow: scroll;
 }
 
-/* line 31, ../../lib/sass/_active.scss */
+/* line 34, ../../lib/sass/_active.scss */
 .prompt {
   width: 100%;
   height: auto;
   text-align: center;
   color: #fff;
 }
-/* line 37, ../../lib/sass/_active.scss */
+/* line 40, ../../lib/sass/_active.scss */
 .prompt p {
   font-family: "Nova Mono", monospace;
   font-size: 1rem;
