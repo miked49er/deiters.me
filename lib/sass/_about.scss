@@ -1,5 +1,17 @@
 .about {
   @extend %tabs;
+
+  &:hover {
+    cursor: pointer;
+    @include tImage($t-black, $about-bg);
+    height: $hover;
+    z-index: 99;
+
+    h2 {
+      color: #fff;
+      line-height: $hover;
+    } // h2
+  } // about:hover
 } // about
 
 .about-top {
@@ -12,6 +24,14 @@
   margin-bottom: $tab;
   border-bottom: #000 solid thin;
 } // about-bottom
+
+.p-hover-about {
+  margin-top: $hover;
+} // p-hover-about
+
+.d-hover-about {
+  margin-bottom: $hover;
+} // d-hover-about
 
 .bio {
   padding: 25px;
