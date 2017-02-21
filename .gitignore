@@ -49,3 +49,5 @@ __pycache__/
 .cache
 out
 target
+javascripts
+stylesheets
