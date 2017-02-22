@@ -20,6 +20,10 @@
       margin: 0 auto;
       margin-top: 20px;
       clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+      @include susy-breakpoint($small) {
+        width: 30%;
+      } // small
     } // img
   } // active--about
 
