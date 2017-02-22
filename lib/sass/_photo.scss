@@ -14,5 +14,10 @@
       color: #fff;
       line-height: $hover;
     } // h2
+
+    @include susy-breakpoint($medium) {
+      width: $hover;
+      height: 100vh;
+    } // medium
   } // photographer:hover
 } // photographer

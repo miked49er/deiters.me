@@ -13,6 +13,15 @@
       line-height: $hover;
     } // h2
   } // developer:hover
+
+  @include susy-breakpoint($medium) {
+    right: 0;
+
+    &:hover {
+      width: $hover;
+      height: 100vh;
+    } // developer:hover
+  } // medium
 } // developer
 
 .full-height {
