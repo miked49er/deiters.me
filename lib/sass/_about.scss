@@ -11,26 +11,56 @@
       color: #fff;
       line-height: $hover;
     } // h2
+
+    @include susy-breakpoint($medium) {
+      width: $hover;
+      height: 100vh;
+    } // medium
   } // about:hover
 } // about
 
-.about-top {
+.about-photo {
   margin-top: $tab;
   border-top: #000 solid thin;
-} // about-top
 
-.about-bottom {
+  @include susy-breakpoint($medium) {
+    margin: 0;
+    margin-left: $tab;
+    border-top-width: 0;
+    border-left: #000 solid thin;
+  } // medium
+} // about-photo
+
+.about-dev {
   bottom: 0;
   margin-bottom: $tab;
   border-bottom: #000 solid thin;
-} // about-bottom
+
+  @include susy-breakpoint($medium) {
+    right: 0;
+    margin: 0;
+    margin-right: $tab;
+    border-bottom-width: 0;
+    border-right: #000 solid thin;
+  } // medium
+} // about-dev
 
 .p-hover-about {
   margin-top: $hover;
+
+  @include susy-breakpoint($medium) {
+    margin-top: 0;
+    margin-left: $hover;
+  } // medium
 } // p-hover-about
 
 .d-hover-about {
   margin-bottom: $hover;
+
+  @include susy-breakpoint($medium) {
+    margin-bottom: 0;
+    margin-right: $hover;
+  } // medium
 } // d-hover-about
 
 .bio {
