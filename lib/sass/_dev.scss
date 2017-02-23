@@ -20,22 +20,27 @@
     &:hover {
       width: $hover;
       height: 100vh;
+      background-position: 17% 0;
     } // developer:hover
   } // medium
 } // developer
 
 .full-height {
-  height: 100vh;
+  width: 100%;
+  height: calc(100vh - #{$tab-stack});
   position: relative;
   overflow: hidden;
   top: 0;
   bottom: 0;
-  padding-top: $tab-stack;
 
   .prompt {
     position: absolute;
     bottom: 2em;
   } // prompt
+
+  @include susy-breakpoint($medium) {
+    height: 100vh;
+  } // medium
 } // full-height
 
 .project-group {
@@ -59,5 +64,17 @@
         width: 100%;
       } // img
     } // project-image
+
+    @include susy-breakpoint($medium) {
+      .section-line {
+        width: 55%;
+      } // section-line
+    } // medium
+
+    @include susy-breakpoint($large) {
+      .section-line {
+        width: 35%;
+      } // section-line
+    } // large
   } // project
 } // project-group
