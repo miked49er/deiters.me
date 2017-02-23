@@ -18,6 +18,7 @@
     @include susy-breakpoint($medium) {
       width: $hover;
       height: 100vh;
+      background-position: 50% 0;
     } // medium
   } // photographer:hover
 } // photographer
