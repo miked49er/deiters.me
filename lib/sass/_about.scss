@@ -15,6 +15,7 @@
     @include susy-breakpoint($medium) {
       width: $hover;
       height: 100vh;
+      background-position: 20% 0;
     } // medium
   } // about:hover
 } // about
@@ -63,15 +64,56 @@
   } // medium
 } // d-hover-about
 
-.bio {
-  padding: 25px;
+.ascii-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  h3 {
-    padding: 0;
-    margin-bottom: .8rem;
-  } // h3
-
-  p {
+  .ascii {
+    display: block;
+    white-space: pre;
+    font-size: 8px;
+    line-height: normal;
+    font-family: monospace;
+    font-weight: bold;
     color: #fff;
-  } // p
-} // bio
+
+    @include susy-breakpoint($small) {
+      font-size: 12px;
+    } // small
+
+    @include susy-breakpoint($medium) {
+      font-size: 18px;
+    } // medium
+  } // ascii
+} // ascii-wrapper
+
+.bio-wrapper {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+
+  .bio {
+    display: block;
+    margin: 0 calc((100vw - #{$tab-stack} - 50px) / 2);
+    padding: 25px;
+
+    h3 {
+      padding: 0;
+      margin-bottom: .6rem;
+    } // h3
+
+    p {
+      color: #fff;
+    } // p
+
+    @include susy-breakpoint($medium) {
+      margin: 30vh 0;
+
+      h3 {
+        margin-bottom: 1.5rem;
+      } // h3
+    } // medium
+  } // bio
+} // bio-wrapper
