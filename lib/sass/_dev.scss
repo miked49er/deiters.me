@@ -55,15 +55,59 @@
       margin: .6rem auto 1.1rem;
     } // section-line
 
+    &-hover {
+      @include transition;
+      width: 100%;
+      height: 100%;
+
+      span {
+        transform: scale(0);
+      }
+
+    } // project-hover
+    .ascii-wrapper {
+      @include transition;
+      width: 100%;
+      height: 100%;
+      transform: scale(0);
+
+      .ascii {
+        font-size: .8rem;
+      } // ascii
+    }
+
     &-image {
       width: 100%;
       height: 300px;
-      overflow: hidden;
+      cursor: pointer;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
 
       img {
         width: 100%;
       } // img
+
+      // &:hover ~ .project-hover {
+      &:hover {
+        .project-hover {
+          background-color: $t4-black;
+        }
+
+        .ascii-wrapper {
+
+          transform: scale(1);
+          span {
+            transform: scale(1);
+          }
+      } // project-image:hover ~ project-hover
+    }
     } // project-image
+
+    .more-info {
+      display: block;
+      position: absolute;
+    } // more-info
 
     @include susy-breakpoint($medium) {
       .section-line {
