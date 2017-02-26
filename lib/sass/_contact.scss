@@ -1,19 +1,84 @@
 .contact {
+  @include transition;
   display: none;
   position: fixed;
   text-align: center;
   width: 100%;
-  margin-bottom: 1.4em;
   bottom: 0;
   cursor: pointer;
+  z-index: $contact-index;
+
+  &-info {
+    @include transition;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    height: $contact-small-height;
+    bottom: -$contact-small-height;
+    background-color: $contact-bg;
+    padding: 0 10px;
+
+    p {
+      color: #fff;
+      line-height: 130%;
+    } // p
+
+    @include susy-breakpoint($small) {
+      padding: 0 15%;
+    } // small
+
+    @include susy-breakpoint($medium) {
+      height: $contact-medium-height;
+      padding: 0 25%;
+    } // medium
+  } // contact-info
 } // contact
+
+.contact-photo {
+  margin-bottom: $tab-stack;
+
+  .contact-info {
+    bottom: calc(-#{$tab-stack} - #{$contact-small-height});
+  } // contact-info
+
+  @include susy-breakpoint($medium) {
+    margin-bottom: 0;
+
+    .contact-info {
+      bottom: -$contact-small-height;
+    } // contact-info
+  } // medium
+} // contact-photo
+
+.contact-about {
+  margin-bottom: $tab;
+
+  .contact-info {
+    bottom: calc(-#{$tab} - #{$contact-small-height});
+  } // contact-info
+
+  @include susy-breakpoint($medium) {
+    margin-bottom: 0;
+
+    .contact-info {
+      bottom: -$contact-small-height;
+    } // contact-info
+  } // medium
+} // contact-about
+
+.contact-active {
+  margin-bottom: 0;
+
+  .contact-info {
+    bottom: 0;
+  } // contact-info
+} // contact-active
 
 .prompt {
   @include transition;
   position: absolute;
   bottom: 4em;
 } // prompt
-
-.prompt-down {
-  bottom: -4em;
-} // prompt-down
