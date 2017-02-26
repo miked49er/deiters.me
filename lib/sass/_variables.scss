@@ -7,6 +7,16 @@ $t-white: rgba(#fff,.4);
 $t-black: rgba(#000,.1);
 $t3-black: rgba(#000,.3);
 $t4-black: rgba(#000,.4);
+$contact-bg: #464040;
+$anchor: #23aa59;
+
+$tab-index-hover: 15;
+$tab-index: 10;
+$full-height-index: 5;
+$contact-index: 99;
+
+$contact-small-height: 8.5em;
+$contact-medium-height: 8em;
 
 // Images
 $photographer: "/images/bakuro-art/skyline-long-red.jpg";
@@ -22,11 +32,6 @@ $tab-stack: $tab * 2;
 $default-transition-property: all;
 $default-transition-duration: 1s;
 $default-transition-function: ease;
-
-$default-box-shadow-color: #333333;
-$default-box-shadow-h-offset: 2px;
-$default-box-shadow-v-offset: 3px;
-$default-box-shadow-blur: 5px;
 
 $slick-font-path: "/public/bower_components/slick-carousel/slick/fonts/" !important;
 $slick-font-family: $font-primary;
