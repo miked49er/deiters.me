@@ -5,7 +5,7 @@
     cursor: pointer;
     @include tImage($t-black, $about-bg);
     height: $hover;
-    z-index: 99;
+    z-index: $tab-index-hover;
 
     h2 {
       color: #fff;

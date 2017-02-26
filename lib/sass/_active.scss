@@ -9,7 +9,7 @@
     .full-height {
       background-color: $t3-black;
       position: absolute;
-      z-index: 98;
+      z-index: $full-height-index;
     }
 
     @include susy-breakpoint($medium) {

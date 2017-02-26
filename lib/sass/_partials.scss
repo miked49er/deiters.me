@@ -32,7 +32,7 @@
   background-image: none;
   background-color: #fff;
   position: fixed;
-  z-index: 97;
+  z-index: $tab-index;
 
   h1 {
     display: none;

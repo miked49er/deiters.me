@@ -8,7 +8,7 @@
     background-position: bottom;
     background-position: 0 85%;
     height: $hover;
-    z-index: 99;
+    z-index: $tab-index-hover;
 
     h2 {
       color: #fff;
