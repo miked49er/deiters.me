@@ -4,7 +4,7 @@
 
   &:hover {
     cursor: pointer;
-    @include tImage($t-black, $dev);
+    @include tImage($t4-black, $dev);
     height: $hover;
     z-index: 99;
 
@@ -33,11 +33,6 @@
   top: 0;
   bottom: 0;
 
-  .prompt {
-    position: absolute;
-    bottom: 2em;
-  } // prompt
-
   @include susy-breakpoint($medium) {
     height: 100vh;
   } // medium
@@ -45,8 +40,15 @@
 
 .project-group {
 
+  .full-height {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+  } // full-height
+
   .project {
-    margin: 30vh 0;
+    // margin: 30vh 0;
+    width: 100%;
 
     .section-line {
       width: 90%;
@@ -59,12 +61,8 @@
       @include transition;
       width: 100%;
       height: 100%;
-
-      span {
-        transform: scale(0);
-      }
-
     } // project-hover
+
     .ascii-wrapper {
       @include transition;
       width: 100%;
@@ -72,9 +70,9 @@
       transform: scale(0);
 
       .ascii {
-        font-size: .8rem;
+        font-size: .6rem;
       } // ascii
-    }
+    } // ascii-wrapper
 
     &-image {
       width: 100%;
@@ -88,20 +86,15 @@
         width: 100%;
       } // img
 
-      // &:hover ~ .project-hover {
       &:hover {
         .project-hover {
           background-color: $t4-black;
-        }
+        } // project-hover
 
         .ascii-wrapper {
-
           transform: scale(1);
-          span {
-            transform: scale(1);
-          }
-      } // project-image:hover ~ project-hover
-    }
+        } // ascii-wrapper
+      } // project-image:hover
     } // project-image
 
     .more-info {
