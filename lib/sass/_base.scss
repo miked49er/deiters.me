@@ -50,15 +50,16 @@ h4 {
 
 h5 {
   color: #fff;
-  font-size: .8rem;
+  font-size: .9rem;
+  margin-bottom: 1.6rem;
 } // h5
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: $anchor;
 
   &:hover {
-    color: #000;
+    color: #fff;
     cursor:default;
   } // hover
 } // a
