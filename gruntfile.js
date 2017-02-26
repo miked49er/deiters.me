@@ -15,7 +15,9 @@ module.exports = function(grunt) {
         mangle: {
           except: [
             '$timeout',
-            '$eval'
+            '$eval',
+            '$window',
+            '$document'
           ]
         } // mangle
       }, // options
