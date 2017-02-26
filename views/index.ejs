@@ -16,7 +16,7 @@
 
     <script src="https://use.fontawesome.com/c559106939.js"></script>
   </head>
-  <body ng-controller="mainCtrl">
+  <body ng-click="contactClose($event, 'contact')" ng-controller="mainCtrl">
 
     <a href="/photographer">
       <div id="photographer" ng-mouseover="photoHoverIn()" ng-mouseleave="photoHoverOut()" class="cover--photographer">
@@ -46,8 +46,12 @@
     </a>
 
     <div class="prompt" ui-view="prompt"></div>
-    <div class="contact active">
+    <div id="contact" ng-click="contactOpen()" class="contact active">
       <h5>Contact Me</h5>
+      <div class="contact-info">
+        <p>You can reach me for an inquiry or just to say hi at <a href="mailto:mike@deiters.me">mike@deiters.me</a>.<br>
+          For more about me, I'm also on <a href="https://www.instagram.com/bakuroart">instagram</a> &amp; <a href="https://www.linkedin.com/in/mikedeiters">linkedIn</a> &amp; <a href="https://www.github.com/miked49er">github</a>.</p>
+      </div> <!-- contact-info -->
     </div> <!-- contact -->
 
 		<script src="http://localhost:35729/livereload.js"></script>
