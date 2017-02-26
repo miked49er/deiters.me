@@ -1,0 +1,19 @@
+.contact {
+  display: none;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1.4em;
+  bottom: 0;
+  cursor: pointer;
+} // contact
+
+.prompt {
+  @include transition;
+  position: absolute;
+  bottom: 4em;
+} // prompt
+
+.prompt-down {
+  bottom: -4em;
+} // prompt-down
