@@ -1,31 +1,28 @@
 <div class="full-height">
   <h3>A software, game, &amp; web developer</h3>
-  <div class="prompt">
-    <p>Scroll Down</p>
-    <i class="fa fa-arrow-down" aria-hidden="true"></i>
-  </div> <!-- prompt -->
 </div> <!-- full-height -->
 
 <div class="project-group">
-  <div class="project" ng-repeat="project in projects">
-    <h4>{{project.title}}</h4>
-    <div class="section-line"></div>
-    <a href="{{project.link}}">
-      <div class="project-image" style="background-image: url({{project.image}})">
-        <div class="project-hover">
-          <div class="ascii-wrapper">
-            <div class="ascii">
- __  __
-|  \/  | ___  _ __ ___
-| |\/| |/ _ \| '__/ _ \
-| |  | | (_) | | |  __/
-|_|  |_|\___/|_|  \___|
-            </div> <!-- ascii -->
-          </div> <!-- ascii-wrapper -->
-        </div> <!-- project-hover -->
-        <!-- <img alt="{{project.alt}}" ng-src="{{project.image}}">
-        <h6 class="more-info">More</h6> -->
-      </div> <!-- project-image -->
-    </a>
-  </div> <!-- project -->
+  <div class="full-height" ng-repeat="project in projects">
+    <div class="project">
+      <h4>{{project.title}}</h4>
+      <div class="section-line"></div>
+      <a href="{{project.link}}">
+        <div class="project-image" style="background-image: url({{project.image}})">
+          <div class="project-hover">
+            <div class="ascii-wrapper">
+              <div class="ascii">
+███╗   ███╗ ██████╗ ██████╗ ███████╗
+████╗ ████║██╔═══██╗██╔══██╗██╔════╝
+██╔████╔██║██║   ██║██████╔╝█████╗
+██║╚██╔╝██║██║   ██║██╔══██╗██╔══╝
+██║ ╚═╝ ██║╚██████╔╝██║  ██║███████╗
+╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+              </div> <!-- ascii -->
+            </div> <!-- ascii-wrapper -->
+          </div> <!-- project-hover -->
+        </div> <!-- project-image -->
+      </a>
+    </div> <!-- project -->
+  </div> <!-- full-height -->
 </div> <!-- project-group -->
