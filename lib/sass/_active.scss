@@ -6,6 +6,12 @@
     @include tImage($t-black, $photographer);
     padding-bottom: $tab-stack;
 
+    .full-height {
+      background-color: $t3-black;
+      position: absolute;
+      z-index: 98;
+    }
+
     @include susy-breakpoint($medium) {
       padding-bottom: 0;
       padding-right: $tab-stack;
