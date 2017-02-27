@@ -18,32 +18,26 @@
   </head>
   <body ng-click="contactClose($event, 'contact')" ng-controller="mainCtrl">
 
-    <a href="/photographer">
-      <div id="photographer" ng-mouseover="photoHoverIn()" ng-mouseleave="photoHoverOut()" class="cover--photographer">
-        <h1>Exposure<br>Photographer</h1>
-        <h2>Exposure Photographer</h2>
+    <div id="photographer" ng-click="launchPhoto()" ng-mouseover="photoHoverIn()" ng-mouseleave="photoHoverOut()" class="cover--photographer">
+      <h1>Exposure<br>Photographer</h1>
+      <h2>Exposure Photographer</h2>
 
-        <div ui-view="photographer"></div>
-      </div> <!-- photography -->
-    </a>
+      <div ui-view="photographer"></div>
+    </div> <!-- photography -->
 
-    <a href="/about">
-      <div id="about" class="cover--about">
-        <h1>About Me</h1>
-        <h2>About Me</h2>
+    <div id="about" ng-click="launchAbout()" class="cover--about">
+      <h1>About Me</h1>
+      <h2>About Me</h2>
 
-        <div ui-view="about"></div>
-      </div> <!-- about -->
-    </a>
+      <div ui-view="about"></div>
+    </div> <!-- about -->
 
-    <a href="/developer">
-      <div my-scroll id="developer" ng-mouseover="devHoverIn()" ng-mouseleave="devHoverOut()" class="cover--developer">
-        <h1>Software<br>Developer</h1>
-        <h2>Software Developer</h2>
+    <div id="developer" ng-click="launchDev()" ng-mouseover="devHoverIn()" ng-mouseleave="devHoverOut()" class="cover--developer">
+      <h1>Software<br>Developer</h1>
+      <h2>Software Developer</h2>
 
-        <div ui-view="developer"></div>
-      </div> <!-- developer -->
-    </a>
+      <div ui-view="developer"></div>
+    </div> <!-- developer -->
 
     <div class="prompt" ui-view="prompt"></div>
     <div id="contact" ng-click="contactOpen()" class="contact active">
