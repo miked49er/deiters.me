@@ -18,6 +18,7 @@
 
     @include susy-breakpoint($medium) {
       height: 100vh;
+      background-position: 20%;
     } // medium
   } // cover-developer
 } // cover
