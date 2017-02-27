@@ -89,14 +89,10 @@
 } // ascii-wrapper
 
 .bio-wrapper {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-
 
   .bio {
     display: block;
-    margin: 0 calc((100vw - #{$tab-stack} - 50px) / 2);
+    margin-bottom: 50px;
     padding: 25px;
 
     h3 {
