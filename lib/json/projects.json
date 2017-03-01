@@ -1,0 +1,24 @@
+{
+  "projects": [
+   {
+     "title":"Gwinnett Grizzly Maps",
+     "image": "images/projects/ggm.png",
+     "link":"https://ggcmaps.github.io"
+   },
+   {
+     "title":"Blackwing Sy_ths",
+     "image":"images/projects/syths.jpg",
+     "link":"https://www.syths.io"
+   },
+   {
+     "title":"Motorris",
+     "image":"images/projects/motorris.jpg",
+     "link":"https://www.motorris.com"
+   },
+   {
+     "title":"Mission Feed",
+     "image":"images/projects/mission-feed.jpg",
+     "link":"https://www.missionfeed.com"
+   }
+ ]
+}
