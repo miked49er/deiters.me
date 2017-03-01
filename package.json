@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "grunt js & grunt css & node ./bin/www",
-    "dev": "node-dev ./bin/www & grunt watch"
+    "start": "node ./bin/www",
+    "dev": "node-dev ./bin/www & grunt watch",
+    "compile": "grunt js & grunt css"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
