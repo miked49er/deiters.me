@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Mike Deiters' });
+  res.render('index', { title: 'Mike Deiters | Developer and Photographer' });
 });
 
 router.get('/bakuro', function(req, res, next) {
@@ -24,15 +24,15 @@ router.get('/projects', function(req, res, next) {
 });
 
 router.get('/photographer', function(req, res, next) {
-  res.render('index', { title: 'Mike Deiters' });
+  res.render('index', { title: 'Mike Deiters | Exposure Photographer' });
 });
 
 router.get('/about', function(req, res, next) {
-  res.render('index', { title: 'Mike Deiters' });
+  res.render('index', { title: 'Mike Deiters | Developer and Photographer' });
 });
 
 router.get('/developer', function(req, res, next) {
-  res.render('index', { title: 'Mike Deiters' });
+  res.render('index', { title: 'Mike Deiters | Software Developer' });
 });
 
 module.exports = router;
