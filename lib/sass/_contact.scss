@@ -81,4 +81,18 @@
   @include transition;
   position: absolute;
   bottom: 4em;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #fff;
+
+  p {
+    font-family: $font-primary;
+    font-size: 1rem;
+    padding-bottom: .3rem;
+  } // p
+
+  &-hide {
+    bottom: -5em;
+  } // prompt-hide
 } // prompt
