@@ -102,10 +102,18 @@
 
     p {
       color: #fff;
+      margin-bottom: 1rem;
     } // p
 
+    @include susy-breakpoint($small) {
+      width: 90%;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+
     @include susy-breakpoint($medium) {
-      margin: 30vh 0;
+      width: 50%;
+      margin: 30vh auto;
 
       h3 {
         margin-bottom: 1.5rem;
