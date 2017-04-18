@@ -1,24 +1,27 @@
 {
   "projects": [
    {
-     "title":"Gwinnett Grizzly Maps",
-     "image": "images/projects/ggm.png",
-     "link":"https://ggcmaps.github.io"
+     "title":"Georgia Gwinnett College Maps",
+     "image":"images/projects/ggm.png",
+     "link":"https://ggcmaps.github.io",
+     "info":"For students and faculty trying to find a room in some buildings on campus it is a major pain, in particular looking for a room in the A building. Though our application, anyone is able to search for the room he or she is trying to find and immediately see the location of the room highlighted on one of our maps. Before this application, the school had provided pdf's of each of the buildings to the community. Some of these pdf's were poorly designed and difficult to find rooms on. In addition to that a number of them had multiple rooms that were labeled with the same room number. As we created out maps we fixed these issues to help improve the overall quality and experience of searching for rooms."
    },
    {
      "title":"Blackwing Sy_ths",
      "image":"images/projects/syths.jpg",
-     "link":"https://www.syths.io"
+     "info":"Music production is a creative art that many people have a knack for, but getting started is difficult. We decided to build an application that would allow budding musicians interested in creating music with a MIDI board to create music with their own keyboard. For those musicians working off laptops or any keyboard with ghosting, we built in an option for the user to have the functionality of an anti-ghosting keyboard by just tapping the key instead of holding. While what we built would not be used in its current form factor for live shows, it will allow musicians to experiment where ever they are without needed to either bring their MIDI board with them or even needing to own one."
    },
    {
      "title":"Motorris",
      "image":"images/projects/motorris.jpg",
-     "link":"https://www.motorris.com"
+     "link":"https://www.motorris.com",
+     "info":"Motorris is like a craigslist for motorcross bikes. Previously Motorris was built using the website builder wix, but this inheriently created limitations for the site. Users had to basically fillout a contact form to request a bike be posted to the site, and these requests would be sent to the owner's email for him to add to the site manually. I rebuilt the site from the ground up with the MEAN Stack. Redesigned Motorris to give it a better overall layout, and now users have the ability to post bikes to the site themselves, without needing to create an account. The users of Motorris were adimate on the fact that they did not want to have to create an account, but at the same time be able to update and delete their bikes on the site. With this in mind I used a salted hash of the bike to create the bike's editing url. So yes anyone with the link to the bike would be able to edit it, but someone is not going to just stumble apon a bike's personal editing url unless the owner of the url didn't keep it safe."
    },
    {
      "title":"Mission Feed",
      "image":"images/projects/mission-feed.jpg",
-     "link":"https://www.missionfeed.com"
+     "link":"https://www.missionfeed.com",
+     "info":"In the world of missionaries, many people donate money to the missionaries to support them in what they are doing. These supporters wish to help the missionary, but at the same time they don't have a way to see what the missionary is doing and the missionary can feel secluded. Mission Feed is the solution to this problem. I built a platform for missionaries to connect with their supporters. Though Mission Feed the missionary is able to update their supporters with what they have been up to. For the supporters they are able to see the updates for each of their missionaries and they can respond to the updates to provide the missionary encouraging messages."
    }
  ]
 }
