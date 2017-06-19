@@ -7,9 +7,18 @@
     <div class="project">
       <h4>{{project.title}}</h4>
       <div class="section-line"></div>
-      <a href="{{project.link}}">
+      <div class="project-info" id="{{project.id}}">
         <div class="project-image" style="background-image: url({{project.image}})">
-          <div class="project-hover">
+        <div class="info">
+          <p>{{project.info}}</p>
+          <div class="button-group">
+            <a href="https://{{project.link}}" ng-show="{{project.link}}">
+              <div class="button">Project</div>
+            </a>
+            <div class="button" ng-click="close(project.id)">Close</div>
+          </div>
+        </div> <!-- info -->
+          <div ng-click="moreInfo(project.id)" class="project-hover">
             <div class="ascii-wrapper">
               <div class="ascii">
 ███╗   ███╗ ██████╗ ██████╗ ███████╗
@@ -22,7 +31,7 @@
             </div> <!-- ascii-wrapper -->
           </div> <!-- project-hover -->
         </div> <!-- project-image -->
-      </a>
+      </div> <!-- project-info -->
     </div> <!-- project -->
   </div> <!-- full-height -->
 </div> <!-- project-group -->
