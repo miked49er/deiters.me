@@ -47,7 +47,7 @@
   } // full-height
 
   .project {
-    // margin: 30vh 0;
+    margin: 150px 0;
     width: 100%;
 
     .section-line {
@@ -74,9 +74,72 @@
       } // ascii
     } // ascii-wrapper
 
-    &-image {
+    &-info {
+      display: block;
       width: 100%;
-      height: 300px;
+      height: $project-small-full;
+    } // project-info
+
+    .expand {
+
+      .info {
+        display: block;
+        overflow-y: scroll;
+        height: 100%;
+
+        @include susy-breakpoint($medium) {
+          overflow-y: hidden;
+          height: 70%;
+        } // medium
+      } // info
+
+      .project-hover {
+        display: none;
+      } // project-hover
+
+      .project-image {
+        cursor: default;
+      } // project-image
+    } // expand
+
+    .info {
+      display: none;
+      height: 0;
+      background-color: $contact-bg;
+      padding: 30px 40px;
+
+      p {
+        color: #fff;
+        font-size: .8rem;
+        padding-bottom: 1.2rem;
+      } // p
+
+      .button-group {
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+      } // button-group
+
+      .button {
+        display: block;
+        width: $button;
+        margin: 0 5px;
+        padding: 8px 15px;
+        background-color: $anchor;
+        color: #fff;
+        border-radius: 20px;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #fff;
+          color: $anchor;
+        } // button:hover
+      } // button
+    } // info
+
+    &-image {
+      height: 100%;
       cursor: pointer;
       background-position: center;
       background-repeat: no-repeat;
@@ -91,15 +154,17 @@
           background-color: $t4-black;
         } // project-hover
 
-        .ascii-wrapper {
-          transform: scale(1);
-        } // ascii-wrapper
+        @include susy-breakpoint($small) {
+
+          .ascii-wrapper {
+            transform: scale(1);
+          } // ascii-wrapper
+        } // small
       } // project-image:hover
     } // project-image
 
     .more-info {
       display: block;
-      position: absolute;
     } // more-info
 
     @include susy-breakpoint($medium) {
