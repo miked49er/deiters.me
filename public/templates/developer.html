@@ -5,7 +5,7 @@
 <div class="project-group">
   <div class="full-height" ng-repeat="project in projects">
     <div class="project">
-      <h4 ng-click="moreInfo(project.id)">{{project.title}}</h4>
+      <h4 ng-click="toggleInfo(project.id)">{{project.title}}</h4>
       <div class="section-line"></div>
       <div class="project-info" id="{{project.id}}">
         <div class="project-image" style="background-image: url({{project.image}})">
