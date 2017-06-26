@@ -12,7 +12,7 @@
         <div class="info">
           <p>{{project.info}}</p>
           <div class="button-group">
-            <a href="https://{{project.link}}" ng-show="{{project.link}}">
+            <a href="{{project.link}}" ng-show="project.link">
               <div class="button">Project</div>
             </a>
             <div class="button" ng-click="close(project.id)">Close</div>
