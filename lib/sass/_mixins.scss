@@ -1,7 +1,0 @@
-@mixin tImage($color, $image) {
-  background:linear-gradient($color,$color),url($image);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-}
