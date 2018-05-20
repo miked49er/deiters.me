@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectFeatureComponent } from './components/project-feature/project-feature.component';
 import { ProjectFeatureListComponent } from './components/project-feature-list/project-feature-list.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './components/nav/nav.component';
 
 const routes: Routes = [
   { path: '', component: ProjectFeatureListComponent }
