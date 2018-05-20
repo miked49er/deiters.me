@@ -1,0 +1,33 @@
+@import "src/sass/variables";
+@import "src/sass/mixins";
+@import "src/sass/projects";
+
+.logo {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $z-header;
+  @include rotate(-90);
+  @include transition;
+}
+
+.project1 {
+  color: $proj-1-color;
+}
+
+.project2 {
+  color: $proj-2-color;
+}
+
+.project3 {
+  color: $proj-3-color;
+}
+
+.project4 {
+  color: $proj-4-color;
+}
+
+.project5 {
+  color: $proj-5-color;
+}
