@@ -7,19 +7,23 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectFeatureComponent } from './components/project-feature/project-feature.component';
+import { ProjectFeatureListComponent } from './components/project-feature-list/project-feature-list.component';
+import { NavComponent } from './nav/nav.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' }
+  { path: '', component: ProjectFeatureListComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectFeatureComponent
+    ProjectFeatureComponent,
+    ProjectFeatureListComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
-    // RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes),
     BrowserAnimationsModule
   ],
   providers: [],
