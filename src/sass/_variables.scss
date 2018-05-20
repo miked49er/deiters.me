@@ -1,0 +1,45 @@
+$font-primary : 'Nova Mono', monospace;
+$font-secondary : Open Sans, sans-serif;
+
+$small             : 25em;
+$medium            : 39em;
+$large             : 56em;
+
+$primary-color-dark:   #303F9F;
+$primary-color:        #3F51B5;
+$primary-color-light:  #C5CAE9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #00BCD4;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+// Z Indexes ==========================
+/*
+00 - 09: Normal
+10 - 19: Project Feature Layers
+20 - 29: Overlays
+30 - 39: Headers/Titles
+40 - 49:
+50 - 59:
+60 - 69:
+70 - 71:
+80 - 89:
+90 - 99: Animations
+*/
+
+// Normal
+$z-base: 1;
+
+// Project Feature Layers
+$z-project1: 10;
+$z-project2: 11;
+$z-project3: 12;
+$z-project4: 13;
+$z-project5: 14;
+
+// Overlays
+$z-overlay: 20;
+
+// Headers
+$z-header: 30;
