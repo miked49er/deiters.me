@@ -1,0 +1,17 @@
+@import "./variables";
+@import "./mixins";
+
+$proj-1-background: #c7c7c7;
+$proj-1-color: contrasting-color($proj-1-background, $accent-color, $primary-color);
+
+$proj-2-background: #edcca5;
+$proj-2-color: contrasting-color($proj-2-background, $accent-color, $primary-color);
+
+$proj-3-background: #fff;
+$proj-3-color: contrasting-color($proj-3-background, $accent-color, $primary-color);
+
+$proj-4-background: #000;
+$proj-4-color: contrasting-color($proj-4-background, $accent-color, $primary-color);
+
+$proj-5-background: #000;
+$proj-5-color: contrasting-color($proj-5-background, $accent-color, $primary-color);
