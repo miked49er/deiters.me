@@ -3,3 +3,19 @@
   height: 100vh;
   position: absolute;
 }
+
+.ascii-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ascii {
+    display: block;
+    white-space: pre;
+    font-size: .4rem;
+    line-height: normal;
+    font-family: monospace;
+    font-weight: bold;
+    color: #fff;
+  } // ascii
+} // ascii-wrapper
