@@ -1,0 +1,8 @@
+<deiters-nav [project]="index + 1" [ascii]="false"></deiters-nav>
+<div class="wrapper">
+  <div id="wrapper" class="fullscreen carousel">
+    <deiters-project-feature
+      *ngFor="let projectFeature of projectFeatures"
+      [projectFeature]="projectFeature"></deiters-project-feature>
+  </div>
+</div>
