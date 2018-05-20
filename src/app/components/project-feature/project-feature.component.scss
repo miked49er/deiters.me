@@ -1,10 +1,76 @@
+@import "src/sass/variables";
+@import 'src/sass/global';
+@import "src/sass/projects";
+
+.project1 {
+  .projectFeatureOverlay {
+    background-color: $proj-1-color;
+  }
+}
+
+.project2 {
+  .projectFeatureOverlay {
+    background-color: $proj-2-color;
+  }
+}
+
+.project3 {
+  .projectFeatureOverlay {
+    background-color: $proj-3-color;
+  }
+}
+
+.project4 {
+  .projectFeatureOverlay {
+    background-color: $proj-4-color;
+  }
+}
+
+.project5 {
+  .projectFeatureOverlay {
+    background-color: $proj-5-color;
+  }
+}
+
+.projectFeatureWrapper {
+  z-index: $z-project1;
+
+  &:nth-of-type(2) {
+    z-index: $z-project2;
+  }
+
+  &:nth-of-type(3) {
+    z-index: $z-project3;
+  }
+
+  &:nth-of-type(4) {
+    z-index: $z-project4;
+  }
+
+  &:nth-of-type(5) {
+    z-index: $z-project5;
+  }
+}
+
 .projectFeatureSlide {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
   top: 0;
   left: 0;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.projectFeatureOverlay {
+  clip-path: polygon(70% 36%, 100% 52%, 100% 100%, 0 100%, 0 76%);
+  background-color: $primary-color;
+  opacity: .9;
+}
+
+.projectFeatureTitle {
+  color: #fff;
+  .ascii-wrapper {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+  }
 }
