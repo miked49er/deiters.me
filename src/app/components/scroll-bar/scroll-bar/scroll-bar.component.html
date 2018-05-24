@@ -1,0 +1,6 @@
+<div class="scrollBar">
+  <deiters-scroll-button
+    *ngFor="let projectFeature of projectFeatures"
+    [projectFeature]="projectFeature"
+    (projectChange)="hideProjects($event)"></deiters-scroll-button>
+</div>
