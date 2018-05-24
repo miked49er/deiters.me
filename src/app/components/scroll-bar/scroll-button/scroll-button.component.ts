@@ -40,7 +40,6 @@ export class ScrollButtonComponent implements OnInit {
   }
 
   scrollBarButton() {
-    this.projectFeature.state = 'show';
     this.projectChange.next(this.projectFeature.id);
   }
 
