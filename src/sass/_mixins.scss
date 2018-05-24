@@ -1,4 +1,5 @@
 @import "~compass-mixins/lib/compass";
+@import "./variables";
 
 @mixin rotate($deg) {
   @include transform-origin(bottom);
@@ -48,5 +49,80 @@ $brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-numbe
     @return $light;
   } @else {
     @return $dark;
+  }
+}
+
+@mixin center($horizontal: true, $vertical: true) {
+  position: absolute;
+
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+$proj-1-color: contrasting-color($proj-1-background, $accent-color, $primary-color);
+$proj-2-color: contrasting-color($proj-2-background, $accent-color, $primary-color);
+$proj-3-color: contrasting-color($proj-3-background, $accent-color, $primary-color);
+$proj-4-color: contrasting-color($proj-4-background, $accent-color, $primary-color);
+$proj-5-color: contrasting-color($proj-5-background, $accent-color, $primary-color);
+$proj-6-color: contrasting-color($proj-6-background, $accent-color, $primary-color);
+%proj-1-background {
+  background-color: $proj-1-color;
+}
+%proj-2-background {
+  background-color: $proj-2-color;
+}
+%proj-3-background {
+  background-color: $proj-3-color;
+}
+%proj-4-background {
+  background-color: $proj-4-color;
+}
+%proj-5-background {
+  background-color: $proj-5-color;
+}
+%proj-6-background {
+  background-color: $proj-6-color;
+}
+
+%proj-1-color {
+  color: $proj-1-color;
+}
+%proj-2-color {
+  color: $proj-2-color;
+}
+%proj-3-color {
+  color: $proj-3-color;
+}
+%proj-4-color {
+  color: $proj-4-color;
+}
+%proj-5-color {
+  color: $proj-5-color;
+}
+%proj-6-color {
+  color: $proj-6-color;
+}
+
+@mixin project($background: false, $from: 1, $to: 6) {
+  @for $i from $from through $to {
+    .project#{$i} {
+      @if ($background) {
+        @extend %proj-#{$i}-background;
+      }
+      @else {
+        @extend %proj-#{$i}-color;
+      }
+    }
   }
 }
