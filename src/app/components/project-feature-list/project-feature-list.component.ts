@@ -1,144 +1,37 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Project } from 'src/app/interfaces/project';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'deiters-project-feature-list',
   templateUrl: './project-feature-list.component.html',
   styleUrls: ['./project-feature-list.component.scss']
 })
-export class ProjectFeatureListComponent {
+export class ProjectFeatureListComponent implements OnInit {
 
   index = 0;
-  img = "assets/img/";
+  projectFeatures: Project[];
 
-  projectFeatures = [
-    {
-      id: '1',
-      name: "GGC Maps",
-      state: 'show',
-      link: "",
-      featureImage: this.img + "ggcmaps/ggcmaps.png",
-      asciiName: `
- ██████╗  ██████╗  ██████╗    ███╗   ███╗ █████╗ ██████╗ ███████╗
-██╔════╝ ██╔════╝ ██╔════╝    ████╗ ████║██╔══██╗██╔══██╗██╔════╝
-██║  ███╗██║  ███╗██║         ██╔████╔██║███████║██████╔╝███████╗
-██║   ██║██║   ██║██║         ██║╚██╔╝██║██╔══██║██╔═══╝ ╚════██║
-╚██████╔╝╚██████╔╝╚██████╗    ██║ ╚═╝ ██║██║  ██║██║     ███████║
- ╚═════╝  ╚═════╝  ╚═════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝
-      `
-    },
-    {
-      id: '2',
-      name: "Chem Reality",
-      state: 'hide',
-      link: "",
-      featureImage: this.img + "chem_reality/chemreality.png",
-      asciiName: `
- ██████╗██╗  ██╗███████╗███╗   ███╗
-██╔════╝██║  ██║██╔════╝████╗ ████║
-██║     ███████║█████╗  ██╔████╔██║
-██║     ██╔══██║██╔══╝  ██║╚██╔╝██║
-╚██████╗██║  ██║███████╗██║ ╚═╝ ██║
- ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝
-██████╗ ███████╗ █████╗ ██╗     ██╗████████╗██╗   ██╗
-██╔══██╗██╔════╝██╔══██╗██║     ██║╚══██╔══╝╚██╗ ██╔╝
-██████╔╝█████╗  ███████║██║     ██║   ██║    ╚████╔╝
-██╔══██╗██╔══╝  ██╔══██║██║     ██║   ██║     ╚██╔╝
-██║  ██║███████╗██║  ██║███████╗██║   ██║      ██║
-╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝   ╚═╝      ╚═╝
-      `
-    },
-    {
-      id: '3',
-      name: "Motorris",
-      state: 'hide',
-      link: "",
-      featureImage: this.img + "motorris/motorris.jpg",
-      asciiName: `
-███╗   ███╗ ██████╗ ████████╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
-████╗ ████║██╔═══██╗╚══██╔══╝██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
-██╔████╔██║██║   ██║   ██║   ██║   ██║██████╔╝██████╔╝██║███████╗
-██║╚██╔╝██║██║   ██║   ██║   ██║   ██║██╔══██╗██╔══██╗██║╚════██║
-██║ ╚═╝ ██║╚██████╔╝   ██║   ╚██████╔╝██║  ██║██║  ██║██║███████║
-╚═╝     ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
-      `
-    },
-    {
-      id: '4',
-      name: "Is It Expired",
-      state: 'hide',
-      link: "",
-      featureImage: this.img + "isitexpired/isitexpired.png",
-      asciiName: `
-██╗███████╗    ██╗████████╗
-██║██╔════╝    ██║╚══██╔══╝
-██║███████╗    ██║   ██║
-██║╚════██║    ██║   ██║
-██║███████║    ██║   ██║
-╚═╝╚══════╝    ╚═╝   ╚═╝
-███████╗██╗  ██╗██████╗ ██╗██████╗ ███████╗██████╗
-██╔════╝╚██╗██╔╝██╔══██╗██║██╔══██╗██╔════╝██╔══██╗
-█████╗   ╚███╔╝ ██████╔╝██║██████╔╝█████╗  ██║  ██║
-██╔══╝   ██╔██╗ ██╔═══╝ ██║██╔══██╗██╔══╝  ██║  ██║
-███████╗██╔╝ ██╗██║     ██║██║  ██║███████╗██████╔╝
-╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝
-      `
-    },
-    {
-      id: '5',
-      name: "Blackwing Sy_ths",
-      state: 'hide',
-      link: "",
-      featureImage: this.img + "blackwing_syths/syths.jpg",
-      asciiName: `
-██████╗ ██╗      █████╗  ██████╗██╗  ██╗██╗    ██╗██╗███╗   ██╗ ██████╗
-██╔══██╗██║     ██╔══██╗██╔════╝██║ ██╔╝██║    ██║██║████╗  ██║██╔════╝
-██████╔╝██║     ███████║██║     █████╔╝ ██║ █╗ ██║██║██╔██╗ ██║██║  ███╗
-██╔══██╗██║     ██╔══██║██║     ██╔═██╗ ██║███╗██║██║██║╚██╗██║██║   ██║
-██████╔╝███████╗██║  ██║╚██████╗██║  ██╗╚███╔███╔╝██║██║ ╚████║╚██████╔╝
-╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝
-███████╗██╗   ██╗  ████████╗██╗  ██╗███████╗
-██╔════╝╚██╗ ██╔╝  ╚══██╔══╝██║  ██║██╔════╝
-███████╗ ╚████╔╝      ██║   ███████║███████╗
-╚════██║  ╚██╔╝       ██║   ██╔══██║╚════██║
-███████║   ██║███████╗██║   ██║  ██║███████║
-╚══════╝   ╚═╝╚══════╝╚═╝   ╚═╝  ╚═╝╚══════╝
-      `
-    },
-    {
-      id: '6',
-      name: "More Projects",
-      state: 'hide',
-      link: "",
-      featureImage: this.img + "ggcmaps/ggcmaps.png",
-      asciiName: `
-███╗   ███╗ ██████╗ ██████╗ ███████╗
-████╗ ████║██╔═══██╗██╔══██╗██╔════╝
-██╔████╔██║██║   ██║██████╔╝█████╗
-██║╚██╔╝██║██║   ██║██╔══██╗██╔══╝
-██║ ╚═╝ ██║╚██████╔╝██║  ██║███████╗
-╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+  constructor (
+    private projectService: ProjectService
+  ) { }
 
-██████╗ ██████╗  ██████╗      ██╗███████╗ ██████╗████████╗███████╗
-██╔══██╗██╔══██╗██╔═══██╗     ██║██╔════╝██╔════╝╚══██╔══╝██╔════╝
-██████╔╝██████╔╝██║   ██║     ██║█████╗  ██║        ██║   ███████╗
-██╔═══╝ ██╔══██╗██║   ██║██   ██║██╔══╝  ██║        ██║   ╚════██║
-██║     ██║  ██║╚██████╔╝╚█████╔╝███████╗╚██████╗   ██║   ███████║
-    ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚════╝ ╚══════╝ ╚═════╝   ╚═╝   ╚══════╝
-      `
-    }
-  ];
+  ngOnInit() {
+    this.getProjectFeatures();
+  }
+
+  getProjectFeatures(): void {
+    this.projectService.getProjectFeatures()
+      .subscribe(projectFeatures => this.projectFeatures = projectFeatures);
+  }
 
   @HostListener('wheel', ['$event'])
     checkScroll3(e) {
-      if (e.deltaY > 0 && this.index < this.projectFeatures.length - 1) {
-        this.projectFeatures[this.index].state = 'hide';
-        this.index += 1;
-        this.projectFeatures[this.index].state = 'show';
+      if (e.deltaY > 0) {
+        this.projectService.changeProject(true);
       }
-      else if (e.deltaY < 0 && this.index > 0){
-        this.projectFeatures[this.index].state = 'hide';
-        this.index -= 1;
-        this.projectFeatures[this.index].state = 'show';
+      else if (e.deltaY < 0) {
+        this.projectService.changeProject(false);
       }
     }
 
