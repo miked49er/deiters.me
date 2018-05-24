@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Project } from 'src/app/interfaces/project';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'deiters-scroll-bar',
@@ -6,19 +8,24 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./scroll-bar.component.scss']
 })
 export class ScrollBarComponent implements OnInit {
-  @Input() projectFeatures;
 
-  constructor() { }
+  projectFeatures: Project[];
+
+  constructor(
+    private projectService: ProjectService
+  ) { }
 
   ngOnInit() {
+    this.getProjectFeatures();
+  }
+
+  getProjectFeatures(): void {
+    this.projectService.getProjectFeatures()
+      .subscribe(projectFeatures => this.projectFeatures = projectFeatures);
   }
 
   hideProjects(e) {
-    for (let projectFeature of this.projectFeatures) {
-      if (projectFeature.id !== e) {
-        projectFeature.state = 'hide';
-      }
-    }
+    this.projectService.changeProjectTo(e);
   }
 
 }
