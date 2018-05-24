@@ -15,6 +15,7 @@ export class ProjectFeatureListComponent {
       id: '1',
       name: "GGC Maps",
       state: 'show',
+      link: "",
       featureImage: this.img + "ggcmaps/ggcmaps.png",
       asciiName: `
  ██████╗  ██████╗  ██████╗    ███╗   ███╗ █████╗ ██████╗ ███████╗
@@ -29,6 +30,7 @@ export class ProjectFeatureListComponent {
       id: '2',
       name: "Chem Reality",
       state: 'hide',
+      link: "",
       featureImage: this.img + "chem_reality/chemreality.png",
       asciiName: `
  ██████╗██╗  ██╗███████╗███╗   ███╗
@@ -49,6 +51,7 @@ export class ProjectFeatureListComponent {
       id: '3',
       name: "Motorris",
       state: 'hide',
+      link: "",
       featureImage: this.img + "motorris/motorris.jpg",
       asciiName: `
 ███╗   ███╗ ██████╗ ████████╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
@@ -63,6 +66,7 @@ export class ProjectFeatureListComponent {
       id: '4',
       name: "Is It Expired",
       state: 'hide',
+      link: "",
       featureImage: this.img + "isitexpired/isitexpired.png",
       asciiName: `
 ██╗███████╗    ██╗████████╗
@@ -83,6 +87,7 @@ export class ProjectFeatureListComponent {
       id: '5',
       name: "Blackwing Sy_ths",
       state: 'hide',
+      link: "",
       featureImage: this.img + "blackwing_syths/syths.jpg",
       asciiName: `
 ██████╗ ██╗      █████╗  ██████╗██╗  ██╗██╗    ██╗██╗███╗   ██╗ ██████╗
@@ -98,18 +103,42 @@ export class ProjectFeatureListComponent {
 ███████║   ██║███████╗██║   ██║  ██║███████║
 ╚══════╝   ╚═╝╚══════╝╚═╝   ╚═╝  ╚═╝╚══════╝
       `
+    },
+    {
+      id: '6',
+      name: "More Projects",
+      state: 'hide',
+      link: "",
+      featureImage: this.img + "ggcmaps/ggcmaps.png",
+      asciiName: `
+███╗   ███╗ ██████╗ ██████╗ ███████╗
+████╗ ████║██╔═══██╗██╔══██╗██╔════╝
+██╔████╔██║██║   ██║██████╔╝█████╗
+██║╚██╔╝██║██║   ██║██╔══██╗██╔══╝
+██║ ╚═╝ ██║╚██████╔╝██║  ██║███████╗
+╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+██████╗ ██████╗  ██████╗      ██╗███████╗ ██████╗████████╗███████╗
+██╔══██╗██╔══██╗██╔═══██╗     ██║██╔════╝██╔════╝╚══██╔══╝██╔════╝
+██████╔╝██████╔╝██║   ██║     ██║█████╗  ██║        ██║   ███████╗
+██╔═══╝ ██╔══██╗██║   ██║██   ██║██╔══╝  ██║        ██║   ╚════██║
+██║     ██║  ██║╚██████╔╝╚█████╔╝███████╗╚██████╗   ██║   ███████║
+    ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚════╝ ╚══════╝ ╚═════╝   ╚═╝   ╚══════╝
+      `
     }
   ];
 
   @HostListener('wheel', ['$event'])
     checkScroll3(e) {
       if (e.deltaY > 0 && this.index < this.projectFeatures.length - 1) {
+        this.projectFeatures[this.index].state = 'hide';
         this.index += 1;
         this.projectFeatures[this.index].state = 'show';
       }
       else if (e.deltaY < 0 && this.index > 0){
         this.projectFeatures[this.index].state = 'hide';
         this.index -= 1;
+        this.projectFeatures[this.index].state = 'show';
       }
     }
 
