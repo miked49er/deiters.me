@@ -1,36 +1,7 @@
 @import "src/sass/variables";
 @import 'src/sass/global';
+@import "src/sass/mixins";
 @import "src/sass/projects";
-
-.project1 {
-  .projectFeatureOverlay {
-    background-color: $proj-1-color;
-  }
-}
-
-.project2 {
-  .projectFeatureOverlay {
-    background-color: $proj-2-color;
-  }
-}
-
-.project3 {
-  .projectFeatureOverlay {
-    background-color: $proj-3-color;
-  }
-}
-
-.project4 {
-  .projectFeatureOverlay {
-    background-color: $proj-4-color;
-  }
-}
-
-.project5 {
-  .projectFeatureOverlay {
-    background-color: $proj-5-color;
-  }
-}
 
 .projectFeatureWrapper {
   z-index: $z-project1;
@@ -62,7 +33,6 @@
 
 .projectFeatureOverlay {
   clip-path: polygon(70% 36%, 100% 52%, 100% 100%, 0 100%, 0 76%);
-  background-color: $primary-color;
   opacity: .9;
 }
 
@@ -74,3 +44,5 @@
     left: 50%;
   }
 }
+
+@include project(true);
