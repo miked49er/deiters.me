@@ -1,6 +1,5 @@
 @import "src/sass/variables";
 @import "src/sass/mixins";
-@import "src/sass/projects";
 
 .logo {
   display: block;
@@ -10,24 +9,33 @@
   z-index: $z-header;
   @include rotate(-90);
   @include transition;
+  user-select: none;
 }
 
-.project1 {
-  color: $proj-1-color;
-}
+@include project();
 
-.project2 {
-  color: $proj-2-color;
-}
+.nav-links {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  z-index: $z-header;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: hidden;
 
-.project3 {
-  color: $proj-3-color;
-}
+  li {
+    float: left;
+  }
 
-.project4 {
-  color: $proj-4-color;
-}
-
-.project5 {
-  color: $proj-5-color;
+  li a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-family: $font-primary;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 14px;
+  }
 }
