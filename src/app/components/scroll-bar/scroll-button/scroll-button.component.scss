@@ -1,0 +1,17 @@
+@import "src/sass/variables";
+@import "src/sass/mixins";
+
+.scrollButton {
+  $scrollButtonWidth: 21px;
+  display: block;
+  width: $scrollButtonWidth;
+  height: $scrollButtonWidth;
+  border-radius: 100%;
+  border-width: medium;
+  border-style: solid;
+  border-color: #fff;
+  background-color: $primary-color;
+  margin: 8px 0;
+  cursor: pointer;
+  overflow: hidden;
+}
