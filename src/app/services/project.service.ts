@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../interfaces/project';
-import { PROJECTS, MORE_PROJECTS } from '../data/projects';
+import { PROJECTS, MORE_PROJECTS, MORE_INFO } from '../data/projects';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -64,5 +64,9 @@ export class ProjectService {
         break;
       }
     }
+  }
+
+  getMoreInfo(): string {
+    return MORE_INFO;
   }
 }
