@@ -38,10 +38,26 @@
 
 .projectFeatureTitle {
   color: #fff;
-  .ascii-wrapper {
-    position: absolute;
-    top: 65%;
-    left: 50%;
+  display: block;
+  position: absolute;
+  width: 400px;
+  top: 65%;
+  left: 50%;
+
+  .projectName {
+    height: 150px;
+  }
+
+  .moreInfo {
+    align-items: center;
+
+    .ascii {
+      font-size: .2rem;
+    }
+
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 }
 
