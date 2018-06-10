@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MORE_INFO } from 'src/app/data/projects';
 
 import {
   trigger,
@@ -49,6 +50,7 @@ import {
 })
 export class ProjectFeatureComponent {
   @Input() projectFeature;
+  moreInfo = MORE_INFO;
 
   constructor() { }
 
