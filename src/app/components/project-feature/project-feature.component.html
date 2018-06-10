@@ -7,10 +7,13 @@
   <div class="projectFeatureOverlay fullscreen project{{ projectFeature.id }}"
     [@scrollOverlay]="projectFeature.state"></div>
 
-  <div class="projectFeatureTitle fullscreen"
+  <div class="projectFeatureTitle"
     [@scrollTitle]="projectFeature.state">
-    <div class="ascii-wrapper">
+    <div class="ascii-wrapper projectName">
       <div class="ascii">{{ projectFeature.asciiName }}</div>
+    </div>
+    <div class="ascii-wrapper moreInfo">
+      <div class="ascii">{{ moreInfo }}</div>
     </div>
   </div>
 </div>
