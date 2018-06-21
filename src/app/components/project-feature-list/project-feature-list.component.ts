@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Project } from 'src/app/interfaces/project';
 import { ProjectService } from 'src/app/services/project.service';
+import { Debounce } from 'src/app/decorators/debounce';
 
 @Component({
   selector: 'deiters-project-feature-list',
@@ -11,6 +12,7 @@ export class ProjectFeatureListComponent implements OnInit {
 
   index = 0;
   projectFeatures: Project[];
+  timer;
 
   constructor (
     private projectService: ProjectService
@@ -26,13 +28,14 @@ export class ProjectFeatureListComponent implements OnInit {
   }
 
   @HostListener('wheel', ['$event'])
-    checkScroll3(e) {
-      if (e.deltaY > 0) {
-        this.projectService.changeProject(true);
-      }
-      else if (e.deltaY < 0) {
-        this.projectService.changeProject(false);
-      }
+  @Debounce(500)
+  checkScroll(e) {
+    if (e.deltaY > 0) {
+      this.projectService.changeProject(true);
     }
+    else if (e.deltaY < 0) {
+      this.projectService.changeProject(false);
+    }
+  }
 
 }
