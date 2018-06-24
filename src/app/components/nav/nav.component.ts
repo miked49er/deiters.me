@@ -15,22 +15,9 @@ export class NavComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getProjectFeatures();
-  }
-
-  getProjectFeatures(): void {
-    this.projectService.getProjectFeatures()
-      .subscribe(projects => {
-        let index: number = 1;
-        for (let i = 0; i < projects.length; i++) {
-          if (projects[i].state === 'show') {
-            index += i;
-          }
-          break;
-        }
+    this.projectService.getProjectIndex()
+      .subscribe(index => {
         this.project = index;
-        console.log(index);
       });
   }
-
 }
