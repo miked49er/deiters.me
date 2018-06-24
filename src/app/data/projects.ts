@@ -7,7 +7,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     name: "GGC Maps",
     state: 'show',
-    link: "",
+    link: "ggc_maps",
     featureImage: IMG + "ggcmaps/ggcmaps.png",
     asciiName: `
    ██████╗  ██████╗  ██████╗    ███╗   ███╗ █████╗ ██████╗ ███████╗
@@ -22,7 +22,7 @@ export const PROJECTS: Project[] = [
     id: 2,
     name: "Chem Reality",
     state: 'hide',
-    link: "",
+    link: "chem_reality",
     featureImage: IMG + "chem_reality/chemreality.png",
     asciiName: `
    ██████╗██╗  ██╗███████╗███╗   ███╗
@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     id: 3,
     name: "Motorris",
     state: 'hide',
-    link: "",
+    link: "motorris",
     featureImage: IMG + "motorris/motorris.jpg",
     asciiName: `
   ███╗   ███╗ ██████╗ ████████╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     id: 4,
     name: "Is It Expired",
     state: 'hide',
-    link: "",
+    link: "is_it_expired",
     featureImage: IMG + "isitexpired/isitexpired.png",
     asciiName: `
   ██╗███████╗    ██╗████████╗
@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     id: 5,
     name: "Blackwing Sy_ths",
     state: 'hide',
-    link: "",
+    link: "blackwing_syths",
     featureImage: IMG + "blackwing_syths/syths.jpg",
     asciiName: `
   ██████╗ ██╗      █████╗  ██████╗██╗  ██╗██╗    ██╗██╗███╗   ██╗ ██████╗
