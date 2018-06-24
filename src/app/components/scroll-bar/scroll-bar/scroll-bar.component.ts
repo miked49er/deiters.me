@@ -10,6 +10,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ScrollBarComponent implements OnInit {
 
   projectFeatures: Project[];
+  project = 0;
 
   constructor(
     private projectService: ProjectService
@@ -17,6 +18,10 @@ export class ScrollBarComponent implements OnInit {
 
   ngOnInit() {
     this.getProjectFeatures();
+    this.projectService.getProjectIndex()
+      .subscribe(index => {
+        this.project = index;
+      });
   }
 
   getProjectFeatures(): void {
