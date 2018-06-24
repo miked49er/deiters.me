@@ -32,6 +32,7 @@ import {
 })
 export class ScrollButtonComponent implements OnInit {
   @Input() projectFeature;
+  @Input() project;
   @Output() projectChange = new EventEmitter<Number>();
 
   constructor() { }
