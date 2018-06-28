@@ -23,6 +23,7 @@ export class ProjectFeatureListComponent implements OnInit {
   }
 
   getProjectFeatures(): void {
+    this.projectService.resetFeatureProjects();
     this.projectService.getProjectFeatures()
       .subscribe(projectFeatures => this.projectFeatures = projectFeatures);
   }
