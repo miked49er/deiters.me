@@ -8,10 +8,15 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 })
 export class ProjectService {
 
+  project: BehaviorSubject<Project>;
+  projects: BehaviorSubject<Project[]>;
   projectFeatures: BehaviorSubject<Project[]>;
 
   constructor() {
+    this.project = new BehaviorSubject<Project>(PROJECTS[0]);
+    this.projects = new BehaviorSubject<Project[]>([]);
     this.projectFeatures = new BehaviorSubject<Project[]>([]);
+    this.projects.next(PROJECTS);
     let newArr: Project[] = PROJECTS.slice(0, 5);
     newArr.push(MORE_PROJECTS);
     this.projectFeatures.next(newArr);
@@ -22,7 +27,12 @@ export class ProjectService {
   }
 
   getProjects(): Observable<Project[]> {
-    return this.projectFeatures.asObservable();
+    return this.projects.asObservable();
+  }
+
+  getProject(link: string): Observable<Project> {
+    this.updateProject(link);
+    return this.project.asObservable();
   }
 
   getProjectIndex(): Observable<number> {
@@ -40,33 +50,51 @@ export class ProjectService {
     return project.asObservable();
   }
 
+  updateProject(link: string) {
+    this.getProjects().subscribe(projects => {
+      for (let i = 0; i < projects.length; i++) {
+        if (projects[i].link === link) {
+          this.project.next(projects[i]);
+          break;
+        }
+      }
+    });
+  }
+
   showNext(index: number): void {
-    this.hideProject(index);
-    this.showProject(index + 1);
+    this.hideFeatureProject(index);
+    this.showFeatureProject(index + 1);
     this.emitProject();
   }
 
   showPrev(index: number): void {
-    this.hideProject(index);
-    this.showProject(index - 1);
+    this.hideFeatureProject(index);
+    this.showFeatureProject(index - 1);
     this.emitProject();
   }
 
-  showProject(index: number): void {
+  showFeatureProject(index: number): void {
     this.projectFeatures.getValue()[index].state = 'show';
   }
 
-  hideProject(index: number): void {
+  hideFeatureProject(index: number): void {
     this.projectFeatures.getValue()[index].state = 'hide';
+  }
+
+  resetFeatureProjects(): void {
+    for (let i = 0; i < this.projectFeatures.getValue().length; i++) {
+      this.hideFeatureProject(i);
+    }
+    this.showFeatureProject(0);
   }
 
   changeProjectTo(id: number): void {
     for (let i = 0; i < this.projectFeatures.getValue().length; i++) {
       if (this.projectFeatures.getValue()[i].id === id) {
-        this.showProject(i);
+        this.showFeatureProject(i);
       }
       else {
-        this.hideProject(i);
+        this.hideFeatureProject(i);
       }
     }
     this.emitProject();
