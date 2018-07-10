@@ -11,9 +11,12 @@ import { ProjectFeatureListComponent } from './components/project/project-featur
 import { NavComponent } from './components/nav/nav.component';
 import { ScrollButtonComponent } from './components/scroll-bar/scroll-button/scroll-button.component';
 import { ScrollBarComponent } from './components/scroll-bar/scroll-bar/scroll-bar.component';
+import { ProjectDetailsComponent } from './components/project/project-details/project-details.component';
 
 const routes: Routes = [
-  { path: '', component: ProjectFeatureListComponent }
+  { path: '', component: ProjectFeatureListComponent },
+  { path: 'projects/', component: ProjectFeatureListComponent },
+  { path: 'projects/:link', component: ProjectDetailsComponent }
 ];
 
 @NgModule({
@@ -23,7 +26,8 @@ const routes: Routes = [
     ProjectFeatureListComponent,
     NavComponent,
     ScrollButtonComponent,
-    ScrollBarComponent
+    ScrollBarComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     BrowserModule,
