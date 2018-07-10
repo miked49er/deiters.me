@@ -3,7 +3,7 @@
 
 .logo {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: $z-header;
@@ -12,10 +12,19 @@
   user-select: none;
 }
 
-@include project();
+@include project(false);
+
+.primary {
+  color: $primary-color;
+}
+
+.accent {
+  color: $accent-color;
+}
 
 .nav-links {
-  position: absolute;
+  @include transition;
+  position: fixed;
   top: 0;
   right: 14px;
   z-index: $z-header;
