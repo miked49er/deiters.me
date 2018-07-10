@@ -1,0 +1,40 @@
+<deiters-nav [primary]="primary" [accent]="!primary"></deiters-nav>
+
+<div class="projectHeaderWrapper">
+  <div class="projectSlide fullscreen"
+    [style.backgroundImage]="'url('+ project.location + project.featureImage +')'"
+    [@scrollBackground]="project.state"></div>
+
+  <div class="projectOverlay fullscreen project{{ project.id }}"
+    [@scrollOverlay]="project.state"></div>
+
+  <div class="projectTitle"
+    [@scrollTitle]="project.state">
+    <div class="ascii-wrapper projectName">
+      <div class="ascii">{{project.asciiName}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="detailsWrapper"
+  [@revealDetails]="hideDetails">
+
+  <div class="ascii-wrapper projectName">
+    <div class="ascii">{{project.asciiName}}</div>
+  </div>
+
+  <div class="detailsText">
+    <p>{{project.details}}</p>
+  </div>
+
+  <div class="projectImages">
+    <div class="projectFeature">
+      <img [src]="project.location + project.featureImage">
+    </div>
+
+    <div class="projectGrid">
+      <img *ngFor="let image of project.images"
+        [src]="project.location + image">
+    </div>
+  </div>
+</div>

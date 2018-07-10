@@ -1,0 +1,86 @@
+@import "src/sass/variables";
+@import "src/sass/global";
+@import "src/sass/mixins";
+@import "src/sass/projects";
+
+$details-width: 80%;
+
+@include project(true);
+
+.detailsWrapper {
+  width: $details-width;
+  margin: auto;
+
+  .ascii-wrapper {
+    display: block;
+    margin: 70px;
+    margin-left: -50px;
+
+    .ascii {
+      color: $primary-color;
+      font-size: .8rem;
+    }
+  }
+
+  .detailsText {
+    margin: 50px 0;
+  }
+
+  .projectImages {
+    margin-bottom: 100px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .projectGrid {
+    margin: 50px 0;
+
+    img {
+      width: 49%;
+      margin-right: 2%;
+      margin-bottom: 2%;
+
+      &:nth-of-type(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.projectHeaderWrapper {
+  z-index: $z-overlay;
+  overflow: hidden;
+
+  .projectSlide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .projectOverlay {
+    position: fixed;
+    clip-path: polygon(30% 54%, 0 38%, 0 0, 100% 0, 100% 14%);
+    opacity: .9;
+  }
+
+  .projectTitle {
+    position: fixed;
+    color: #fff;
+    display: block;
+    width: 550px;
+    top: 15%;
+    left: 10%;
+
+    .projectName {
+
+      .ascii {
+        font-size: .7rem;
+      }
+    }
+  }
+}
