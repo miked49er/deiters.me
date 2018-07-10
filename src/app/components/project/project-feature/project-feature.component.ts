@@ -37,11 +37,13 @@ import {
     trigger('scrollTitle', [
       state('show', style({
         transform: "translateX(0)",
-        opacity: 1
+        opacity: 1,
+        display: "block"
       })),
       state('hide', style({
         transform: "translateX(10%)",
-        opacity: 0
+        opacity: 0,
+        display: "none"
       })),
       transition('hide => show', animate('400ms 800ms ease-in')),
       transition('show => hide', animate('400ms ease-out'))
