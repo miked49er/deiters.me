@@ -1,4 +1,5 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, OnDestroy } from '@angular/core';
+import { ISubscription } from "rxjs/Subscription";
 import { DOCUMENT } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
@@ -63,12 +64,17 @@ import {
     ])
   ]
 })
-export class ProjectDetailsComponent implements OnInit {
+export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   project: Project;
   primary: boolean = false;
   hideDetails: string = 'hide';
   scrollPosition: number = 0;
+  showSlideTimer: any;
+  hideSlideTimer: any;
+  hideDetailsTimer: any;
+  primaryTimer: any;
+  private subscription: ISubscription;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -80,21 +86,29 @@ export class ProjectDetailsComponent implements OnInit {
     this.getProject();
   }
 
+  ngOnDestroy(): void {
+    clearTimeout(this.showSlideTimer);
+    clearTimeout(this.hideSlideTimer);
+    clearTimeout(this.primaryTimer);
+    clearTimeout(this.hideDetailsTimer);
+    this.subscription.unsubscribe();
+  }
+
   getProject(): void {
     const link: string = this.route.snapshot.paramMap.get('link');
-    this.projectService.getProject(link)
+    this.subscription = this.projectService.getProject(link)
       .subscribe(project => {
         this.project = project;
         this.project.state = 'hide';
-        setTimeout(() => this.showSlide(), 100);
+        this.showSlideTimer = setTimeout(() => this.showSlide(), 100);
       });
   }
 
   hideSlide() {
     if (this.project.state === 'show') {
       this.project.state = 'hide';
-      setTimeout(() => this.hideDetails = 'show', 500);
-      setTimeout(() => this.primary = true, 1000);
+      this.hideDetailsTimer = setTimeout(() => this.hideDetails = 'show', 500);
+      this.primaryTimer = setTimeout(() => this.primary = true, 1000);
     }
   }
 
@@ -102,7 +116,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.project.state = 'show';
     this.hideDetails = 'hide';
     this.primary = false;
-    setTimeout(() => this.hideSlide(), 3000);
+    this.hideSlideTimer = setTimeout(() => this.hideSlide(), 3000);
   }
 
   @HostListener('wheel', ['$event'])
