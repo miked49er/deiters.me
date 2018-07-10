@@ -111,8 +111,14 @@ export class ProjectDetailsComponent implements OnInit {
       e.preventDefault();
       this.hideSlide();
     }
-    else if (e.deltaY < 0 && this.scrollPosition <= 0 && this.hideDetails === 'show') {
-      this.showSlide();
+    else if (this.hideDetails === 'show') {
+      let bottom = document.documentElement.scrollTop + document.documentElement.clientHeight == document.documentElement.scrollHeight;
+      if (e.deltaY < 0 && this.scrollPosition <= 0) {
+        this.showSlide();
+      }
+      else if (e.deltaY > 0 && bottom) {
+        // TODO Add project list component
+      }
     }
   }
 
