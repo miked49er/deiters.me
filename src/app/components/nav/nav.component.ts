@@ -8,7 +8,9 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class NavComponent implements OnInit {
   project: number;
-  @Input() ascii: boolean;
+  @Input() ascii: boolean = false;
+  @Input() primary: boolean = false;
+  @Input() accent: boolean = false;
 
   constructor(
     private projectService: ProjectService
