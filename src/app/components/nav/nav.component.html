@@ -1,6 +1,9 @@
-<h1 *ngIf="project" class="logo project{{ project }}">Mike Deiters</h1>
+<h1 *ngIf="project" class="logo project{{ project }}"
+  [ngClass]="{'primary': primary, 'accent': accent}"
+  [routerLink]="['']">Mike Deiters</h1>
 
-<ul class="nav-links project{{ project }}">
+<ul class="nav-links project{{ project }}"
+  [ngClass]="{'primary': primary, 'accent': accent}">
   <li><a>Projects</a></li>
   <li><a>About+Contact</a></li>
 </ul>
