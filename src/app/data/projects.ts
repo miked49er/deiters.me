@@ -8,7 +8,14 @@ export const PROJECTS: Project[] = [
     name: "GGC Maps",
     state: 'show',
     link: "ggc_maps",
-    featureImage: IMG + "ggcmaps/ggcmaps.png",
+    location: IMG + "ggcmaps/",
+    featureImage: "ggcmaps.png",
+    images: [
+      "ggcmaps.png",
+      "ggcmaps.png",
+      "ggcmaps.png",
+      "ggcmaps.png"
+    ],
     asciiName: `
    ██████╗  ██████╗  ██████╗    ███╗   ███╗ █████╗ ██████╗ ███████╗
   ██╔════╝ ██╔════╝ ██╔════╝    ████╗ ████║██╔══██╗██╔══██╗██╔════╝
@@ -16,14 +23,22 @@ export const PROJECTS: Project[] = [
   ██║   ██║██║   ██║██║         ██║╚██╔╝██║██╔══██║██╔═══╝ ╚════██║
   ╚██████╔╝╚██████╔╝╚██████╗    ██║ ╚═╝ ██║██║  ██║██║     ███████║
    ╚═════╝  ╚═════╝  ╚═════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝
-    `
+    `,
+    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
   },
   {
     id: 2,
     name: "Chem Reality",
     state: 'hide',
     link: "chem_reality",
-    featureImage: IMG + "chem_reality/chemreality.png",
+    location: IMG + "chem_reality/",
+    featureImage: "chemreality.png",
+    images: [
+      "chemreality.png",
+      "chemreality.png",
+      "chemreality.png",
+      "chemreality.png"
+    ],
     asciiName: `
    ██████╗██╗  ██╗███████╗███╗   ███╗
   ██╔════╝██║  ██║██╔════╝████╗ ████║
@@ -37,14 +52,22 @@ export const PROJECTS: Project[] = [
   ██╔══██╗██╔══╝  ██╔══██║██║     ██║   ██║     ╚██╔╝
   ██║  ██║███████╗██║  ██║███████╗██║   ██║      ██║
   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝   ╚═╝      ╚═╝
-    `
+    `,
+    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
   },
   {
     id: 3,
     name: "Motorris",
     state: 'hide',
     link: "motorris",
-    featureImage: IMG + "motorris/motorris.jpg",
+    location: IMG + "motorris/",
+    featureImage: "motorris.jpg",
+    images: [
+      "motorris.jpg",
+      "motorris.jpg",
+      "motorris.jpg",
+      "motorris.jpg"
+    ],
     asciiName: `
   ███╗   ███╗ ██████╗ ████████╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
   ████╗ ████║██╔═══██╗╚══██╔══╝██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
@@ -52,14 +75,22 @@ export const PROJECTS: Project[] = [
   ██║╚██╔╝██║██║   ██║   ██║   ██║   ██║██╔══██╗██╔══██╗██║╚════██║
   ██║ ╚═╝ ██║╚██████╔╝   ██║   ╚██████╔╝██║  ██║██║  ██║██║███████║
   ╚═╝     ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
-    `
+    `,
+    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
   },
   {
     id: 4,
     name: "Is It Expired",
     state: 'hide',
     link: "is_it_expired",
-    featureImage: IMG + "isitexpired/isitexpired.png",
+    location: IMG + "isitexpired/",
+    featureImage: "isitexpired.png",
+    images: [
+      "isitexpired.png",
+      "isitexpired.png",
+      "isitexpired.png",
+      "isitexpired.png"
+    ],
     asciiName: `
   ██╗███████╗    ██╗████████╗
   ██║██╔════╝    ██║╚══██╔══╝
@@ -73,14 +104,22 @@ export const PROJECTS: Project[] = [
   ██╔══╝   ██╔██╗ ██╔═══╝ ██║██╔══██╗██╔══╝  ██║  ██║
   ███████╗██╔╝ ██╗██║     ██║██║  ██║███████╗██████╔╝
   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝
-    `
+    `,
+    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
   },
   {
     id: 5,
     name: "Blackwing Sy_ths",
     state: 'hide',
     link: "blackwing_syths",
-    featureImage: IMG + "blackwing_syths/syths.jpg",
+    location: IMG + "blackwing_syths/",
+    featureImage: "syths.jpg",
+    images: [
+      "syths.jpg",
+      "syths.jpg",
+      "syths.jpg",
+      "syths.jpg"
+    ],
     asciiName: `
   ██████╗ ██╗      █████╗  ██████╗██╗  ██╗██╗    ██╗██╗███╗   ██╗ ██████╗
   ██╔══██╗██║     ██╔══██╗██╔════╝██║ ██╔╝██║    ██║██║████╗  ██║██╔════╝
@@ -94,7 +133,8 @@ export const PROJECTS: Project[] = [
   ╚════██║  ╚██╔╝       ██║   ██╔══██║╚════██║
   ███████║   ██║███████╗██║   ██║  ██║███████║
   ╚══════╝   ╚═╝╚══════╝╚═╝   ╚═╝  ╚═╝╚══════╝
-    `
+    `,
+    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
   }
 ];
 
@@ -103,7 +143,9 @@ export const MORE_PROJECTS: Project = {
   name: "More Projects",
   state: 'hide',
   link: "",
-  featureImage: IMG + "ggcmaps/ggcmaps.png",
+  location: IMG + "ggcmaps/",
+  featureImage: "ggcmaps.png",
+  images: [],
   asciiName: `
   ███╗   ███╗ ██████╗ ██████╗ ███████╗
   ████╗ ████║██╔═══██╗██╔══██╗██╔════╝
@@ -117,7 +159,8 @@ export const MORE_PROJECTS: Project = {
   ██╔═══╝ ██╔══██╗██║   ██║██   ██║██╔══╝  ██║        ██║   ╚════██║
   ██║     ██║  ██║╚██████╔╝╚█████╔╝███████╗╚██████╗   ██║   ███████║
   ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚════╝ ╚══════╝ ╚═════╝   ╚═╝   ╚══════╝
-  `
+  `,
+  details: ''
 };
 
 export const MORE_INFO: string = `
