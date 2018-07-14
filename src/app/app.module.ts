@@ -12,10 +12,12 @@ import { NavComponent } from './components/nav/nav.component';
 import { ScrollButtonComponent } from './components/scroll-bar/scroll-button/scroll-button.component';
 import { ScrollBarComponent } from './components/scroll-bar/scroll-bar/scroll-bar.component';
 import { ProjectDetailsComponent } from './components/project/project-details/project-details.component';
+import { ProjectListComponent } from './components/project/project-list/project-list.component';
+import { ProjectLinkComponent } from './components/project/project-link/project-link.component';
 
 const routes: Routes = [
   { path: '', component: ProjectFeatureListComponent },
-  { path: 'projects/', component: ProjectFeatureListComponent },
+  { path: 'projects', component: ProjectListComponent },
   { path: 'projects/:link', component: ProjectDetailsComponent }
 ];
 
@@ -27,7 +29,9 @@ const routes: Routes = [
     NavComponent,
     ScrollButtonComponent,
     ScrollBarComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    ProjectListComponent,
+    ProjectLinkComponent
   ],
   imports: [
     BrowserModule,
