@@ -1,0 +1,26 @@
+@import "src/sass/variables";
+
+.background {
+  width: 100%;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .ascii-wrapper {
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+
+    .ascii {
+      transition-property: all;
+      transition-duration: 400ms;
+      transition-timing-function: ease-in-out;
+      font-size: .4rem;
+      transform: scale(1);
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<div class="background"
+  [style.backgroundImage]="'url('+ project.location + project.featureImage +')'">
+  <div class="ascii-wrapper projectName">
+    <div class="ascii"
+      [routerLink]="['/projects', project.link]">{{ project.asciiName }}</div>
+  </div>
+</div>
