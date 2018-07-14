@@ -1,0 +1,26 @@
+<deiters-nav [primary]="primary" [accent]="!primary"></deiters-nav>
+
+<div class="projectHeaderWrapper">
+  <div class="projectSlide fullscreen"
+    [style.backgroundImage]="'url('+ backgroundImage +')'"></div>
+
+  <div class="projectOverlay"
+    [@scrollListOverlay]="slide"></div>
+
+  <div class="projectTitle"
+    [@scrollListTitle]="slide">
+    <div class="ascii-wrapper projectName">
+      <div class="ascii">{{projectTitle}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="projects"
+  [@scrollProjects]="projectView">
+  <div class="projectList">
+    <div class="listItem"
+      *ngFor="let project of projects">
+      <deiters-project-link [project]="project"></deiters-project-link>
+    </div>
+  </div>
+</div>
