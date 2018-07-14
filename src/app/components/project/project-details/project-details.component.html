@@ -1,11 +1,12 @@
-<deiters-nav [primary]="primary" [accent]="!primary"></deiters-nav>
+<deiters-nav [primary]="!primary" [accent]="primary"></deiters-nav>
 
 <div class="projectHeaderWrapper">
   <div class="projectSlide fullscreen"
     [style.backgroundImage]="'url('+ project.location + project.featureImage +')'"
     [@scrollBackground]="project.state"></div>
 
-  <div class="projectOverlay fullscreen project{{ project.id }}"
+  <div class="projectOverlay fullscreen"
+    [ngClass]="{'primary-bg': primary, 'accent-bg': !primary}"
     [@scrollOverlay]="project.state"></div>
 
   <div class="projectTitle"
