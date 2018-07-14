@@ -10,10 +10,15 @@
   <div class="projectFeatureTitle"
     [@scrollTitle]="projectFeature.state">
     <div class="ascii-wrapper projectName">
-      <div class="ascii">{{ projectFeature.asciiName }}</div>
+      <div *ngIf="projectFeature.name != 'More Projects'"
+        class="ascii">{{ projectFeature.asciiName }}</div>
+      <div *ngIf="projectFeature.name == 'More Projects'"
+        class="ascii link"
+        [routerLink]="['/projects']">{{projectFeature.asciiName}}</div>
     </div>
-    <div class="ascii-wrapper moreInfo">
-      <div class="ascii"
+    <div *ngIf="projectFeature.name != 'More Projects'"
+      class="ascii-wrapper moreInfo">
+      <div class="ascii link"
         [routerLink]="['/projects', projectFeature.link]">{{ moreInfo }}</div>
     </div>
   </div>
