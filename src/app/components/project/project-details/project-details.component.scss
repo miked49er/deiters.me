@@ -3,9 +3,23 @@
 @import "src/sass/mixins";
 @import "src/sass/projects";
 
-$details-width: 80%;
+$details-width: 60%;
 
-@include project(true);
+.primary {
+  color: $primary-color;
+}
+
+.accent {
+  color: $accent-color;
+}
+
+.primary-bg {
+  background-color: $primary-color;
+}
+
+.accent-bg {
+  background-color: $accent-color;
+}
 
 .detailsWrapper {
   width: $details-width;
@@ -13,7 +27,7 @@ $details-width: 80%;
 
   .ascii-wrapper {
     display: block;
-    margin: 70px;
+    margin: 70px 0 30px;
     margin-left: -50px;
 
     .ascii {
