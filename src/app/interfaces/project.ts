@@ -6,6 +6,7 @@ export interface Project {
   location: string;
   featureImage: string;
   images: string[];
+  primary: boolean;
   asciiName: any;
   details: string;
 }
