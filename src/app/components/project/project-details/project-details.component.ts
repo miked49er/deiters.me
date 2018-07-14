@@ -1,5 +1,4 @@
 import { Component, HostListener, Inject, OnInit, OnDestroy } from '@angular/core';
-import { ISubscription } from "rxjs/Subscription";
 import { DOCUMENT } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
@@ -12,6 +11,8 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'deiters-project-details',
@@ -74,7 +75,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   hideSlideTimer: any;
   hideDetailsTimer: any;
   primaryTimer: any;
-  private subscription: ISubscription;
+  destroySubject$: Subject<void> = new Subject();
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -91,12 +92,13 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     clearTimeout(this.hideSlideTimer);
     clearTimeout(this.primaryTimer);
     clearTimeout(this.hideDetailsTimer);
-    this.subscription.unsubscribe();
+    this.destroySubject$.next();
   }
 
   getProject(): void {
     const link: string = this.route.snapshot.paramMap.get('link');
-    this.subscription = this.projectService.getProject(link)
+    this.projectService.getProject(link)
+      .pipe(takeUntil(this.destroySubject$))
       .subscribe(project => {
         this.project = project;
         this.project.state = 'hide';
@@ -108,14 +110,14 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     if (this.project.state === 'show') {
       this.project.state = 'hide';
       this.hideDetailsTimer = setTimeout(() => this.hideDetails = 'show', 500);
-      this.primaryTimer = setTimeout(() => this.primary = true, 1000);
+      this.primaryTimer = setTimeout(() => this.primary = false, 1000);
     }
   }
 
   showSlide() {
     this.project.state = 'show';
     this.hideDetails = 'hide';
-    this.primary = false;
+    this.primary = this.project.primary;
     this.hideSlideTimer = setTimeout(() => this.hideSlide(), 3000);
   }
 
