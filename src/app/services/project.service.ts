@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../interfaces/project';
-import { PROJECTS, MORE_PROJECTS, MORE_INFO, PROJECTS_TITLE, NAME_ASCII, JOB_ASCII } from '../data/projects';
+import { PROJECTS, MORE_INFO, PROJECTS_TITLE, NAME_ASCII, JOB_ASCII } from '../data/projects';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -18,7 +18,6 @@ export class ProjectService {
     this.projectFeatures = new BehaviorSubject<Project[]>([]);
     this.projects.next(PROJECTS);
     let newArr: Project[] = PROJECTS.slice(0, 5);
-    newArr.push(MORE_PROJECTS);
     this.projectFeatures.next(newArr);
   }
 
@@ -63,13 +62,25 @@ export class ProjectService {
 
   showNext(index: number): void {
     this.hideFeatureProject(index);
-    this.showFeatureProject(index + 1);
+
+    if (index + 1 < this.projectFeatures.getValue().length) {
+      this.showFeatureProject(index + 1);
+    }
+    else {
+      this.showFeatureProject(0);
+    }
     this.emitProject();
   }
 
   showPrev(index: number): void {
     this.hideFeatureProject(index);
-    this.showFeatureProject(index - 1);
+
+    if (index - 1 >= 0) {
+      this.showFeatureProject(index - 1);
+    }
+    else {
+      this.showFeatureProject(this.projectFeatures.getValue().length - 1);
+    }
     this.emitProject();
   }
 
@@ -103,10 +114,10 @@ export class ProjectService {
   changeProject(next: boolean): void {
     for (let i = 0; i < this.projectFeatures.getValue().length; i++) {
       if (this.projectFeatures.getValue()[i].state === 'show') {
-        if (next && i < this.projectFeatures.getValue().length - 1) {
+        if (next) {
           this.showNext(i);
         }
-        else if (!next && i > 0){
+        else {
           this.showPrev(i);
         }
         break;
