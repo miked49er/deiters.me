@@ -16,6 +16,8 @@ import { ProjectListComponent } from './components/project/project-list/project-
 import { ProjectLinkComponent } from './components/project/project-link/project-link.component';
 import { AboutComponent } from './components/about/about.component';
 import { SocialLinkComponent } from './components/social-link/social-link.component';
+import { WheelScrollDirective } from './directives/wheel-scroll.directive';
+import { WheelDirective } from './directives/wheel.directive';
 
 const routes: Routes = [
   { path: '', component: ProjectFeatureListComponent },
@@ -36,7 +38,9 @@ const routes: Routes = [
     ProjectListComponent,
     ProjectLinkComponent,
     AboutComponent,
-    SocialLinkComponent
+    SocialLinkComponent,
+    WheelScrollDirective,
+    WheelDirective
   ],
   imports: [
     BrowserModule,
