@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { Project } from 'src/app/interfaces/project';
@@ -76,7 +76,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   destroySubject$: Subject<void> = new Subject();
 
   constructor(
-    @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,
     private projectService: ProjectService
   ) { }

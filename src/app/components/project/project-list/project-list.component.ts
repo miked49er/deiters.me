@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Project } from 'src/app/interfaces/project';
 import { ProjectService } from 'src/app/services/project.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -79,7 +79,6 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   @Input() slide: string = 'hide';
 
   constructor (
-    @Inject(DOCUMENT) private document: Document,
     private projectService: ProjectService
   ) { }
 

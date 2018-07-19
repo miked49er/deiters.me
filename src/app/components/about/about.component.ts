@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { transition, animate, state, style, trigger } from '@angular/animations';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -77,7 +77,6 @@ export class AboutComponent implements OnInit {
   aboutViewTimer: any;
 
   constructor(
-    @Inject(DOCUMENT) private document: Document,
     private projectService: ProjectService
   ) { }
 
