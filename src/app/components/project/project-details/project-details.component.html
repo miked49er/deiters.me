@@ -1,6 +1,9 @@
 <deiters-nav [primary]="!primary" [accent]="primary"></deiters-nav>
 
-<div class="projectHeaderWrapper">
+<div class="projectHeaderWrapper"
+  deitersWheelScroll
+  [active]="hideDetails"
+  (next)="hideSlide()">
   <div class="projectSlide fullscreen"
     [style.backgroundImage]="'url('+ project.location + project.featureImage +')'"
     [@scrollBackground]="project.state"></div>
@@ -18,7 +21,10 @@
 </div>
 
 <div class="detailsWrapper"
-  [@revealDetails]="hideDetails">
+  [@revealDetails]="hideDetails"
+  deitersWheelScroll
+  [active]="hideDetails"
+  (top)="showSlide()">
 
   <div class="ascii-wrapper projectName">
     <div class="ascii">{{project.asciiName}}</div>

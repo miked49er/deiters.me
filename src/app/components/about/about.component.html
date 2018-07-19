@@ -1,6 +1,10 @@
 <deiters-nav [primary]="primary" [accent]="!primary"></deiters-nav>
 
-<div class="aboutHeaderWrapper">
+<div class="aboutHeaderWrapper"
+  deitersWheelScroll
+  [active]="info"
+  (next)="revealAbout()"
+  (top)="hideAbout()">
   <div class="aboutSlide fullscreen"
     [style.backgroundImage]="'url('+ backgroundImage +')'"></div>
 
@@ -16,19 +20,19 @@
       <div class="ascii">{{ job }}</div>
     </div>
   </div>
-</div>
 
-<div class="aboutInfo"
-  [@scrollAbout]="info">
-  <div class="about">
-    <p>I’m an software developer currently based in Atlanta with experience building web apps and desktop software. I’m passionate about the quality of code, efficiency, best practices and software security.</p>
-    <p>I continue to learn new technologies and improve my skills for the next project. I enjoy experimenting with new frameworks and technologies while I work toward delivering a beautiful, functional product to the user or client.</p>
-    <p>Some of my hobbies include board games, card games and low light photography.</p>
-  </div>
+  <div class="aboutInfo"
+    [@scrollAbout]="info">
+    <div class="about">
+      <p>I’m an software developer currently based in Atlanta with experience building web apps and desktop software. I’m passionate about the quality of code, efficiency, best practices and software security.</p>
+      <p>I continue to learn new technologies and improve my skills for the next project. I enjoy experimenting with new frameworks and technologies while I work toward delivering a beautiful, functional product to the user or client.</p>
+      <p>Some of my hobbies include board games, card games and low light photography.</p>
+    </div>
 
-  <div class="social-links">
-    <deiters-social-link [social]="'email'" [primary]="primary"></deiters-social-link>
-    <deiters-social-link [social]="'github'" [primary]="primary"></deiters-social-link>
-    <deiters-social-link [social]="'linkedin'" [primary]="primary"></deiters-social-link>
+    <div class="social-links">
+      <deiters-social-link [social]="'email'" [primary]="primary"></deiters-social-link>
+      <deiters-social-link [social]="'github'" [primary]="primary"></deiters-social-link>
+      <deiters-social-link [social]="'linkedin'" [primary]="primary"></deiters-social-link>
+    </div>
   </div>
 </div>

@@ -1,6 +1,10 @@
 <deiters-nav [primary]="primary" [accent]="!primary"></deiters-nav>
 
-<div class="projectHeaderWrapper">
+<div class="projectHeaderWrapper"
+  deitersWheelScroll
+  [active]="projectView"
+  (next)="revealProjects()"
+  (top)="hideProjects()">
   <div class="projectSlide fullscreen"
     [style.backgroundImage]="'url('+ backgroundImage +')'"></div>
 
@@ -13,14 +17,14 @@
       <div class="ascii">{{projectTitle}}</div>
     </div>
   </div>
-</div>
 
-<div class="projects"
-  [@scrollProjects]="projectView">
-  <div class="projectList">
-    <div class="listItem"
-      *ngFor="let project of projects">
-      <deiters-project-link [project]="project"></deiters-project-link>
+  <div class="projects"
+    [@scrollProjects]="projectView">
+    <div class="projectList">
+      <div class="listItem"
+        *ngFor="let project of projects">
+        <deiters-project-link [project]="project"></deiters-project-link>
+      </div>
     </div>
   </div>
 </div>

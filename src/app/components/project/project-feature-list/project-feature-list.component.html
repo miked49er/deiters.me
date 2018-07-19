@@ -1,7 +1,10 @@
 <div class="wrapper">
   <deiters-nav [dynamic]="true"></deiters-nav>
   <deiters-scroll-bar></deiters-scroll-bar>
-  <div id="wrapper" class="fullscreen carousel">
+  <div id="wrapper"
+    class="fullscreen carousel"
+    deitersWheel
+    (next)="nextProject($event)">
     <deiters-project-feature
       *ngFor="let projectFeature of projectFeatures"
       [projectFeature]="projectFeature"></deiters-project-feature>
