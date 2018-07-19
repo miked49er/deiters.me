@@ -44,9 +44,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         opacity: 0,
         display: "none"
       })),
-      transition('hide => show', animate('400ms ease-in')),
-      transition('show => hide', animate('400ms ease-out')),
+      transition('hide => show', animate('400ms 400ms ease-in')),
+      transition('hide => reveal', animate('400ms ease-in')),
+      transition('show => reveal', animate('400ms ease-in')),
       transition('reveal => show', animate('400ms ease-in')),
+      transition('show => hide', animate('400ms ease-out')),
       transition('reveal => hide', animate('400ms ease-out'))
     ]),
     trigger('scrollProjects', [
