@@ -148,8 +148,8 @@ export const MORE_PROJECTS: Project = {
   name: "More Projects",
   state: 'hide',
   link: "",
-  location: IMG + "ggcmaps/",
-  featureImage: "ggcmaps.png",
+  location: IMG,
+  featureImage: "projects-bg.jpg",
   images: [],
   primary: true,
   asciiName: `
