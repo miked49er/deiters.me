@@ -1,16 +1,11 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
 
 @Component({
   selector: 'deiters-social-link',
   templateUrl: './social-link.component.html',
   styleUrls: ['./social-link.component.scss']
 })
-export class SocialLinkComponent implements OnInit, AfterViewInit {
-
-  @Input() social: string = "";
-  @Input() primary: boolean = false;
-  icon: string;
-  link: string;
+export class SocialLinkComponent implements OnInit, AfterContentInit {
 
   // Icons
   iconDir: string = "assets/icons/social/";
@@ -23,11 +18,16 @@ export class SocialLinkComponent implements OnInit, AfterViewInit {
   githubLink: string = "https://www.github.com/miked49er"
   linkedinLink: string = "https://www.linkedin.com/in/mikedeiters"
 
+  @Input() social: string = "email";
+  @Input() primary: boolean = false;
+  icon: string = this.emailIcon;
+  link: string = this.emailLink;
+
   constructor() { }
 
   ngOnInit() {}
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     if (this.social !== 'null' || this.social !== undefined) {
 
       switch(this.social.toLowerCase()) {
@@ -43,16 +43,7 @@ export class SocialLinkComponent implements OnInit, AfterViewInit {
           this.icon = this.linkedinIcon;
           this.link = this.linkedinLink;
           break;
-        default:
-          this.social = "email";
-          this.icon = this.emailIcon;
-          this.link = this.emailLink;
       }
-    }
-    else {
-      this.social = "email";
-      this.icon = this.emailIcon;
-      this.link = this.emailLink;
     }
   }
 
