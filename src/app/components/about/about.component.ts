@@ -70,7 +70,7 @@ export class AboutComponent implements OnInit {
 
 	scrollPosition: number = 0;
   primary: boolean = false;
-  backgroundImage: string = "assets/img/projects-bg.jpg";
+  backgroundImage: string = "assets/img/about-bg.jpg";
   name: string;
   job: string;
   slide: string = 'hide';
@@ -91,12 +91,16 @@ export class AboutComponent implements OnInit {
 
   revealAbout() {
     this.slide = 'reveal';
-    this.aboutViewTimer = setTimeout(() => this.info = 'show', 500);
+    this.aboutViewTimer = setTimeout(() => {
+      this.info = 'show';
+      this.primary = true;
+    }, 500);
   }
 
   hideAbout() {
     this.slide = 'show';
     this.info = 'hide';
+    this.primary = false;
   }
 
   @HostListener('wheel', ['$event'])
