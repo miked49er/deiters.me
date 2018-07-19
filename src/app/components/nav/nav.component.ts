@@ -8,7 +8,7 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class NavComponent implements OnInit {
   project: number;
-  @Input() ascii: boolean = false;
+  @Input() dynamic: boolean = false;
   @Input() primary: boolean = false;
   @Input() accent: boolean = false;
 
@@ -17,9 +17,11 @@ export class NavComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.projectService.getProjectIndex()
-      .subscribe(index => {
-        this.project = index;
-      });
+    if (this.dynamic) {
+      this.projectService.getProjectIndex()
+        .subscribe(index => {
+          this.project = index;
+        });
+    }
   }
 }
