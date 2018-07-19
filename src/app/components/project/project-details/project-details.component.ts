@@ -1,5 +1,4 @@
-import { Component, HostListener, Inject, OnInit, OnDestroy } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { Project } from 'src/app/interfaces/project';
@@ -70,7 +69,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   project: Project;
   primary: boolean = false;
   hideDetails: string = 'hide';
-  scrollPosition: number = 0;
   showSlideTimer: any;
   hideSlideTimer: any;
   hideDetailsTimer: any;
@@ -107,6 +105,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   }
 
   hideSlide() {
+    clearTimeout(this.hideSlideTimer);
     if (this.project.state === 'show') {
       this.project.state = 'hide';
       this.hideDetailsTimer = setTimeout(() => this.hideDetails = 'show', 500);
@@ -115,31 +114,11 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   }
 
   showSlide() {
+    clearTimeout(this.hideDetailsTimer);
+    clearTimeout(this.primaryTimer);
     this.project.state = 'show';
     this.hideDetails = 'hide';
     this.primary = this.project.primary;
     this.hideSlideTimer = setTimeout(() => this.hideSlide(), 3000);
-  }
-
-  @HostListener('wheel', ['$event'])
-  checkScroll(e) {
-    if (e.deltaY > 0 && this.hideDetails === 'hide') {
-      e.preventDefault();
-      this.hideSlide();
-    }
-    else if (this.hideDetails === 'show') {
-      let bottom = document.documentElement.scrollTop + document.documentElement.clientHeight == document.documentElement.scrollHeight;
-      if (e.deltaY < 0 && this.scrollPosition <= 0) {
-        this.showSlide();
-      }
-      else if (e.deltaY > 0 && bottom) {
-        // TODO Add project list component
-      }
-    }
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
-    this.scrollPosition = e.pageY || this.document.documentElement.scrollTop;
   }
 }

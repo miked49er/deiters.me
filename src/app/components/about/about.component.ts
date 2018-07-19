@@ -1,5 +1,4 @@
-import { Component, OnInit, HostListener, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { Component, OnInit, Inject } from '@angular/core';
 import { transition, animate, state, style, trigger } from '@angular/animations';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -68,7 +67,6 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class AboutComponent implements OnInit {
 
-	scrollPosition: number = 0;
   primary: boolean = false;
   backgroundImage: string = "assets/img/about-bg.jpg";
   name: string;
@@ -98,27 +96,9 @@ export class AboutComponent implements OnInit {
   }
 
   hideAbout() {
+    clearTimeout(this.aboutViewTimer);
     this.slide = 'show';
     this.info = 'hide';
     this.primary = false;
   }
-
-  @HostListener('wheel', ['$event'])
-  checkScroll(e) {
-    if (e.deltaY > 0 && this.info === 'hide') {
-      e.preventDefault();
-      this.revealAbout();
-    }
-    else if (this.info === 'show') {
-      if (e.deltaY < 0 && this.scrollPosition <= 0) {
-        this.hideAbout();
-      }
-    }
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
-    this.scrollPosition = e.pageY || this.document.documentElement.scrollTop;
-  }
-
 }

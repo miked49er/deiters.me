@@ -1,5 +1,4 @@
-import { Component, OnInit, HostListener, Inject, OnDestroy, Input } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { Component, OnInit, Inject, OnDestroy, Input } from '@angular/core';
 import { Project } from 'src/app/interfaces/project';
 import { ProjectService } from 'src/app/services/project.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -69,7 +68,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class ProjectListComponent implements OnInit, OnDestroy {
 
-	scrollPosition: number = 0;
   primary: boolean = false;
   projects: Project[];
   backgroundImage: string = 'assets/img/projects-bg.jpg';
@@ -109,23 +107,4 @@ export class ProjectListComponent implements OnInit, OnDestroy {
     this.slide = 'show';
     this.projectView = 'hide';
   }
-
-  @HostListener('wheel', ['$event'])
-  checkScroll(e) {
-    if (e.deltaY > 0 && this.projectView === 'hide') {
-      e.preventDefault();
-      this.revealProjects();
-    }
-    else if (this.projectView === 'show') {
-      if (e.deltaY < 0 && this.scrollPosition <= 0) {
-        this.hideProjects();
-      }
-    }
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
-    this.scrollPosition = e.pageY || this.document.documentElement.scrollTop;
-  }
-
 }
