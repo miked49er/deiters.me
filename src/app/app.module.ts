@@ -14,11 +14,14 @@ import { ScrollBarComponent } from './components/scroll-bar/scroll-bar/scroll-ba
 import { ProjectDetailsComponent } from './components/project/project-details/project-details.component';
 import { ProjectListComponent } from './components/project/project-list/project-list.component';
 import { ProjectLinkComponent } from './components/project/project-link/project-link.component';
+import { AboutComponent } from './components/about/about.component';
+import { SocialLinkComponent } from './components/social-link/social-link.component';
 
 const routes: Routes = [
   { path: '', component: ProjectFeatureListComponent },
   { path: 'projects', component: ProjectListComponent },
-  { path: 'projects/:link', component: ProjectDetailsComponent }
+  { path: 'projects/:link', component: ProjectDetailsComponent },
+  { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({
@@ -31,7 +34,9 @@ const routes: Routes = [
     ScrollBarComponent,
     ProjectDetailsComponent,
     ProjectListComponent,
-    ProjectLinkComponent
+    ProjectLinkComponent,
+    AboutComponent,
+    SocialLinkComponent
   ],
   imports: [
     BrowserModule,
