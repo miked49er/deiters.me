@@ -16,20 +16,16 @@
 .social-link {
   text-transform: capitalize;
   text-decoration: none;
-}
-
-.primary {
-  fill: $primary-color;
-
-  p {
-    color: $secondary-text-color;
-  }
-}
-
-.accent {
-  fill: $accent-color;
 
   p {
     color: $primary-color-text;
   }
+}
+
+.primary {
+  fill: $primary-color;
+}
+
+.accent {
+  fill: $accent-color;
 }
