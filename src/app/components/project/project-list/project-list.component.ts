@@ -75,9 +75,10 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   backgroundImage: string = 'assets/img/projects-bg.jpg';
   projectTitle: string;
   projectView: string = 'hide';
+  slideViewTimer: any;
   projectViewTimer: any;
 
-  @Input() slide: string = 'show';
+  @Input() slide: string = 'hide';
 
   constructor (
     @Inject(DOCUMENT) private document: Document,
@@ -85,6 +86,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.slideViewTimer = setTimeout(() => this.slide = 'show', 100);
     this.getProjects();
   }
 
