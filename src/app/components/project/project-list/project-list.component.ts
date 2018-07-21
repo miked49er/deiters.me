@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Project } from 'src/app/interfaces/project';
 import { ProjectService } from 'src/app/services/project.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'deiters-project-list',
@@ -75,6 +77,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   projectView: string = 'hide';
   slideViewTimer: any;
   projectViewTimer: any;
+  destroySubject$: Subject<void> = new Subject();
 
   @Input() slide: string = 'hide';
 
@@ -89,10 +92,12 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     clearTimeout(this.projectViewTimer);
+    this.destroySubject$.next();
   }
 
   getProjects(): void {
     this.projectService.getProjects()
+      .pipe(takeUntil(this.destroySubject$))
       .subscribe(projects => this.projects = projects);
     this.projectTitle = this.projectService.getProjectsTitle();
   }
