@@ -1,3 +1,6 @@
+@import "src/sass/variables";
+@import "src/sass/mixins";
+
 .fullscreen {
   width: 100vw;
   height: 100vh;
@@ -14,10 +17,91 @@
   .ascii {
     display: block;
     white-space: pre;
-    font-size: .4rem;
+    font-size: .25rem;
     line-height: normal;
     font-family: monospace;
     font-weight: bold;
     color: #fff;
+
+    @include r($small) {
+      font-size: .35rem;
+    }
+
+    @include r($medium) {
+      font-size: .5rem;
+    }
+
+    @include r($large) {
+      font-size: .6rem;
+    }
   } // ascii
 } // ascii-wrapper
+
+%overlay-shape {
+  opacity: .9;
+  clip-path: polygon(70% 54%, 100% 64%, 100% 100%, 0px 100%, 0px 76%);
+
+  @include r($small) {
+    clip-path: polygon(70% 48%, 100% 60%, 100% 100%, 0px 100%, 0px 76%);
+  }
+
+  @include r($medium) {
+    clip-path: polygon(70% 42%, 100% 56%, 100% 100%, 0 100%, 0 76%);
+  }
+
+  @include r($large) {
+    clip-path: polygon(70% 36%, 100% 52%, 100% 100%, 0 100%, 0 76%);
+  }
+}
+
+%projectName {
+  top: 70%;
+  right: 10%;
+
+  .projectName {
+    height: 100px;
+  }
+
+  @include r($small) {
+    top: 65%;
+
+    .projectName {
+      height: 150px;
+    }
+  }
+
+  @include r($medium) {
+      .projectName {
+        margin-bottom: 10px;
+      }
+  }
+
+  @include r($large) {
+    top: 60%;
+    right: 15%;
+
+    .projectName {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+%content {
+  p {
+    font-size: .8rem;
+  }
+
+  @include r($small) {
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  @include r($medium) {
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}

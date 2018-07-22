@@ -130,3 +130,21 @@ $proj-6-color: contrasting-color($proj-6-background, $accent-color, $primary-col
 @mixin transition($timing: 400ms, $timing-function: ease-in-out) {
   transition: all $timing $timing-function;
 }
+
+@mixin r($point) {
+  @if $point==$small {
+    @media ( min-width: $small ) {
+      @content;
+    }
+  }
+  @if $point==$medium {
+    @media ( min-width: $medium ) {
+      @content;
+    }
+  }
+  @if $point==$large {
+    @media ( min-width: $large ) {
+      @content;
+    }
+  }
+}

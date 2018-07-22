@@ -27,38 +27,94 @@ $details-width: 60%;
 
   .ascii-wrapper {
     display: block;
-    margin: 70px 0 30px;
-    margin-left: -50px;
+    margin-top: 100px;
 
     .ascii {
       color: $primary-color;
-      font-size: .8rem;
+    }
+
+    @include r($small) {
+      margin: 70px 0 30px;
+      margin-left: -30px;
+    }
+
+    @include r($medium) {
+      margin-left: -50px;
+    }
+
+    @include r($large) {
+      margin-left: -50px;
     }
   }
 
   .detailsText {
-    margin: 50px 0;
+    @extend %content;
+    margin: 25px 0;
+
+    @include r($small) {
+      margin: 30px 0;
+    }
+
+    @include r($medium) {
+      margin: 40px 0;
+    }
+
+    @include r($large) {
+      margin: 50px 0;
+    }
   }
 
   .projectImages {
     margin-bottom: 100px;
+    display: grid;
+    grid:
+      "feature"
+      "images";
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
 
     img {
       width: 100%;
     }
+
+    @include r($small) {
+
+    }
+
+    @include r($medium) {
+      grid-column-gap: 50px;
+      grid-row-gap: 50px;
+    }
+
+    @include r($large) {
+
+    }
+  }
+
+  .projectFeature {
+    grid-area: feature;
+    width: 100%;
   }
 
   .projectGrid {
-    margin: 50px 0;
+    @include transition;
+    $gap: 10px;
+    grid-area: images;
+    display: grid;
+    grid: 1fr;
+    grid-column-gap: $gap;
+    grid-row-gap: $gap;
 
-    img {
-      width: 49%;
-      margin-right: 2%;
-      margin-bottom: 2%;
+    @include r($small) {
 
-      &:nth-of-type(2n) {
-        margin-right: 0;
-      }
+    }
+
+    @include r($medium) {
+      grid: 1fr 1fr / auto-flow calc(50% - #{$gap} / 2);
+    }
+
+    @include r($large) {
+
     }
   }
 }
@@ -78,23 +134,42 @@ $details-width: 60%;
 
   .projectOverlay {
     position: fixed;
-    clip-path: polygon(30% 54%, 0 38%, 0 0, 100% 0, 100% 14%);
     opacity: .9;
+    clip-path: polygon(30% 41%, 0 31%, 0 0, 100% 0, 100% 19%);
+
+    @include r($small) {
+      clip-path: polygon(30% 42%, 0 30%, 0 0, 100% 0, 100% 14%);
+    }
+
+    @include r($medium) {
+      clip-path: polygon(30% 48%, 0 34%, 0 0, 100% 0, 100% 14%);
+    }
+
+    @include r($large) {
+      clip-path: polygon(30% 54%, 0 38%, 0 0, 100% 0, 100% 14%);
+    }
   }
 
   .projectTitle {
     position: fixed;
     color: #fff;
     display: block;
-    width: 550px;
-    top: 10%;
-    left: 10%;
+    top: 15%;
+    left: 18%;
 
-    .projectName {
+    @include r($small) {
+      top: 12%;
+      left: 15%;
+    }
 
-      .ascii {
-        font-size: .7rem;
-      }
+    @include r($medium) {
+      top: 10%;
+      left: 13%;
+    }
+
+    @include r($large) {
+      top: 10%;
+      left: 10%;
     }
   }
 }

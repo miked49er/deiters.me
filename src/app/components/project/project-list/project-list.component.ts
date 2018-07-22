@@ -12,8 +12,7 @@ import { takeUntil } from 'rxjs/operators';
   animations: [
     trigger('scrollListOverlay', [
       state('show', style({
-        transform: "translateY(0)",
-        "clip-path": "polygon(70% 36%, 100% 52%, 100% 100%, 0 100%, 0 76%)"
+        transform: "translateY(0)"
       })),
       state('reveal', style({
         "clip-path": "polygon(70% -40%, 100% -24%, 100% 100%, 0 100%, 0 0)"
@@ -54,7 +53,6 @@ import { takeUntil } from 'rxjs/operators';
     ]),
     trigger('scrollProjects', [
       state('show', style({
-        display: 'flex',
         transform: 'translateY(0)',
         opacity: 1
       })),

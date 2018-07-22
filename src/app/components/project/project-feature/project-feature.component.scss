@@ -32,35 +32,36 @@
 }
 
 .projectFeatureOverlay {
-  clip-path: polygon(70% 36%, 100% 52%, 100% 100%, 0 100%, 0 76%);
-  opacity: .9;
+  @extend %overlay-shape;
 }
 
 .projectFeatureTitle {
+  @include transition;
+  @extend %projectName;
   color: #fff;
   display: block;
   position: absolute;
-  width: 400px;
-  top: 65%;
-  left: 50%;
-
-  .projectName {
-    height: 150px;
-  }
 
   .moreInfo {
     align-items: center;
 
     .ascii {
-      font-size: .2rem;
+      font-size: .15rem;
     }
   }
 
   .link {
-    transition: all 400ms ease-in-out;
+    @include transition;
 
     &:hover {
       transform: scale(1.3);
+    }
+  }
+
+  @include r($large) {
+
+    .moreInfo .ascii {
+      font-size: .2rem;
     }
   }
 }
