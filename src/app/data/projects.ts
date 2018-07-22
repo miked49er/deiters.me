@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
   ╚██████╔╝╚██████╔╝╚██████╗    ██║ ╚═╝ ██║██║  ██║██║     ███████║
    ╚═════╝  ╚═════╝  ╚═════╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝
     `,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
+    details: `For students and faculty trying to find a room in some buildings on campus it is a major pain, in particular looking for a room in the A building. Though our application, anyone is able to search for the room he or she is trying to find and immediately see the location of the room highlighted on one of our maps. Before this application, the school had provided pdf's of each of the buildings to the community. Some of these pdf's were poorly designed and difficult to find rooms on. In addition to that a number of them had multiple rooms that were labeled with the same room number. As we created out maps we fixed these issues to help improve the overall quality and experience of searching for rooms.`
   },
   {
     id: 2,
@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
   ██║  ██║███████╗██║  ██║███████╗██║   ██║      ██║
   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝   ╚═╝      ╚═╝
     `,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
+    details: `Augmented reality provides an extra layer of information over the user’s view, typically through the use of a camera lens and a screen. Using augmented reality and image recognition together, I have created an application for smartphones and tablets which allows the user to use the device’s camera and a picture of a molecule to view that molecule in three-dimensional space, which they may interact with and view from any angle as if it actually exists in the real world.`
   },
   {
     id: 3,
@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
   ██║ ╚═╝ ██║╚██████╔╝   ██║   ╚██████╔╝██║  ██║██║  ██║██║███████║
   ╚═╝     ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
     `,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
+    details: `Motorris is like a craigslist for motorcross bikes. I rebuilt the site from the ground up with the MEAN Stack. Redesigned Motorris to give it a better overall layout, and now users have the ability to post bikes to the site themselves, without needing to create an account. The users of Motorris were adimate on the fact that they did not want to have to create an account, but at the same time be able to update and delete their bikes on the site. With this in mind I used a salted hash of the bike to create the bike's editing url. So yes anyone with the link to the bike would be able to edit it, but someone is not going to just stumble apon a bike's personal editing url unless the owner of the url didn't keep it safe.`
   },
   {
     id: 4,
@@ -109,7 +109,7 @@ export const PROJECTS: Project[] = [
   ███████╗██╔╝ ██╗██║     ██║██║  ██║███████╗██████╔╝
   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝
     `,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
+    details: 'Retail establishments that sell tobacco products have a difficult time ensuring that all the product on their shelves are not expired. Tobacco companies use cryptic codes to define when their product expires. I built this website to decrypt the expiration dates so that employees can easily determine which products are expired and which are about to expire.'
   },
   {
     id: 5,
@@ -139,7 +139,7 @@ export const PROJECTS: Project[] = [
   ███████║   ██║███████╗██║   ██║  ██║███████║
   ╚══════╝   ╚═╝╚══════╝╚═╝   ╚═╝  ╚═╝╚══════╝
     `,
-    details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptate totam facere provident reprehenderit odio consequatur quasi. Ad reprehenderit natus numquam, perspiciatis commodi maiores molestias sint quos facere asperiores autem.'
+    details: `Music production is a creative art that many people have a knack for, but getting started is difficult. We decided to build an application that would allow budding musicians interested in creating music with a MIDI board to create music with their own keyboard. For those musicians working off laptops or any keyboard with ghosting, we built in an option for the user to have the functionality of an anti-ghosting keyboard by just tapping the key instead of holding. While what we built would not be used in its current form factor for live shows, it will allow musicians to experiment where ever they are without needed to either bring their MIDI board with them or even needing to own one.`
   }
 ];
 
