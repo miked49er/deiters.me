@@ -30,18 +30,18 @@
     <div class="ascii">{{project.asciiName}}</div>
   </div>
 
+  <a class="live-link" *ngIf="project.site" [href]="project.site">Live</a>
+
   <div class="detailsText">
     <p>{{project.details}}</p>
   </div>
 
-  <div class="projectImages">
-    <div class="projectFeature">
-      <img [src]="project.location + project.featureImage">
-    </div>
+  <div class="projectFeature">
+    <img [src]="project.location + project.featureImage">
+  </div>
 
-    <div class="projectGrid">
-      <img *ngFor="let image of project.images"
-        [src]="project.location + image">
-    </div>
+  <div class="projectGrid">
+    <img *ngFor="let image of project.images"
+      [src]="project.location + image">
   </div>
 </div>
