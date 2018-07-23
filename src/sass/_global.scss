@@ -17,22 +17,14 @@
   .ascii {
     display: block;
     white-space: pre;
-    font-size: .25rem;
     line-height: normal;
     font-family: monospace;
     font-weight: bold;
     color: #fff;
+    font-size: 1.5vw;
 
     @include r($small) {
-      font-size: .35rem;
-    }
-
-    @include r($medium) {
-      font-size: .5rem;
-    }
-
-    @include r($large) {
-      font-size: .6rem;
+      font-size: 1vw;
     }
   } // ascii
 } // ascii-wrapper
