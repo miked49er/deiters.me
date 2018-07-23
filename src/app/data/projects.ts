@@ -8,6 +8,7 @@ export const PROJECTS: Project[] = [
     name: "GGC Maps",
     state: 'show',
     link: "ggc_maps",
+    site: "http://ggcmaps.com",
     location: IMG + "ggcmaps/",
     featureImage: "ggcmaps.png",
     images: [
@@ -32,6 +33,7 @@ export const PROJECTS: Project[] = [
     name: "Chem Reality",
     state: 'hide',
     link: "chem_reality",
+    site: "http://wiki.ggc.edu/wiki/ChemReality",
     location: IMG + "chem_reality/",
     featureImage: "chemreality.png",
     images: [
@@ -62,6 +64,7 @@ export const PROJECTS: Project[] = [
     name: "Motorris",
     state: 'hide',
     link: "motorris",
+    site: "http://motorris.com",
     location: IMG + "motorris/",
     featureImage: "motorris.jpg",
     images: [
@@ -86,6 +89,7 @@ export const PROJECTS: Project[] = [
     name: "Is It Expired",
     state: 'hide',
     link: "is_it_expired",
+    site: "https://isitexpired.p404.xyz",
     location: IMG + "isitexpired/",
     featureImage: "isitexpired.png",
     images: [
@@ -116,6 +120,7 @@ export const PROJECTS: Project[] = [
     name: "Blackwing Sy_ths",
     state: 'hide',
     link: "blackwing_syths",
+    site: "",
     location: IMG + "blackwing_syths/",
     featureImage: "syths.jpg",
     images: [
@@ -148,6 +153,7 @@ export const MORE_PROJECTS: Project = {
   name: "More Projects",
   state: 'hide',
   link: "",
+  site: "",
   location: IMG,
   featureImage: "projects-bg.jpg",
   images: [],
