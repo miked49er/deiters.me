@@ -3,6 +3,7 @@ export interface Project {
   name: string;
   state: string;
   link: string;
+  site: string;
   location: string;
   featureImage: string;
   images: string[];
