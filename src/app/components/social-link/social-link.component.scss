@@ -22,10 +22,12 @@
 
   &:active {
     .icon {
+      transition-duration: 100ms;
       transform: scale(.8);
     }
 
     .linkTitle {
+      transition-duration: 100ms;
       transform: scale(.8);
     }
   }
