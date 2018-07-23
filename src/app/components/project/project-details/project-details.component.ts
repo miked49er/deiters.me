@@ -52,8 +52,7 @@ import { Subject } from 'rxjs';
     ]),
     trigger('revealDetails', [
       state('show', style({
-        opacity: 1,
-        display: 'block'
+        opacity: 1
       })),
       state('hide', style({
         opacity: 0,
