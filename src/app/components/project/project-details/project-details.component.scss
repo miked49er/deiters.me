@@ -23,18 +23,48 @@ $details-width: 60%;
 
 .detailsWrapper {
   width: $details-width;
-  margin: auto;
+  margin: 100px auto;
+  display: grid;
+  grid:
+    "name"
+    "link"
+    "details"
+    "feature"
+    "images";
+  grid-gap: 15px;
+
+  img {
+    width: 100%;
+  }
+
+  @include r($small) {
+
+  }
+
+  @include r($medium) {
+    grid:
+      "name link"
+      "details details"
+      "feature feature"
+      "images images";
+    grid-gap: 25px;
+  }
+
+  @include r($large) {
+
+  }
 
   .ascii-wrapper {
+    grid-area: "name";
     display: block;
-    margin-top: 100px;
+    margin-left: -10px;
 
     .ascii {
       color: $primary-color;
     }
 
     @include r($small) {
-      margin: 70px 0 30px;
+      // margin: 70px 0 30px;
       margin-left: -30px;
     }
 
@@ -47,48 +77,44 @@ $details-width: 60%;
     }
   }
 
-  .detailsText {
-    @extend %content;
-    margin: 25px 0;
+  .live-link {
+    @include transition;
+    grid-area: link;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+    text-decoration: none;
+    color: $accent-color;
+    border: medium solid $accent-color;
+    border-radius: 30px;
+    padding: 0 10px;
 
-    @include r($small) {
-      margin: 30px 0;
+    &:hover {
+      color: $primary-color-text;
+      background-color: $accent-color;
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transition-duration: 100ms;
+      transform: scale(.8);
     }
 
     @include r($medium) {
-      margin: 40px 0;
-    }
-
-    @include r($large) {
-      margin: 50px 0;
+      font-size: 1.4rem;
+      height: 50px;
+      padding: 0 20px;
     }
   }
 
-  .projectImages {
-    margin-bottom: 100px;
-    display: grid;
-    grid:
-      "feature"
-      "images";
-    grid-column-gap: 25px;
-    grid-row-gap: 25px;
-
-    img {
-      width: 100%;
-    }
-
-    @include r($small) {
-
-    }
-
-    @include r($medium) {
-      grid-column-gap: 50px;
-      grid-row-gap: 50px;
-    }
-
-    @include r($large) {
-
-    }
+  .detailsText {
+    @extend %content;
+    grid-area: details;
   }
 
   .projectFeature {
