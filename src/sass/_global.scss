@@ -26,6 +26,10 @@
     @include r($small) {
       font-size: 1vw;
     }
+
+    @include r($large) {
+      font-size: .8vw;
+    }
   } // ascii
 } // ascii-wrapper
 
@@ -49,6 +53,7 @@
 %projectName {
   top: 70%;
   right: 10%;
+  width: 60%;
 
   .projectName {
     height: 100px;
@@ -58,7 +63,7 @@
     top: 65%;
 
     .projectName {
-      height: 150px;
+      height: 130px;
     }
   }
 
@@ -70,7 +75,6 @@
 
   @include r($large) {
     top: 60%;
-    right: 15%;
 
     .projectName {
       height: 200px;
