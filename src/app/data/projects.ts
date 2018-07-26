@@ -86,34 +86,34 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 4,
-    name: "Is It Expired",
+    name: "Oh Counter, My Counter",
     state: 'hide',
-    link: "is_it_expired",
-    site: "https://isitexpired.p404.xyz",
-    location: IMG + "isitexpired/",
-    featureImage: "isitexpired.png",
+    link: "oh_counter",
+    site: "https://ohcounter.com",
+    location: IMG + "ohcounter/",
+    featureImage: "ohcounter.png",
     images: [
-      "isitexpired.png",
-      "isitexpired.png",
-      "isitexpired.png",
-      "isitexpired.png"
+      "ohcounter.png",
+      "ohcounter.png",
+      "ohcounter.png",
+      "ohcounter.png"
     ],
     primary: false,
     asciiName: `
-  ██╗███████╗    ██╗████████╗
-  ██║██╔════╝    ██║╚══██╔══╝
-  ██║███████╗    ██║   ██║
-  ██║╚════██║    ██║   ██║
-  ██║███████║    ██║   ██║
-  ╚═╝╚══════╝    ╚═╝   ╚═╝
-  ███████╗██╗  ██╗██████╗ ██╗██████╗ ███████╗██████╗
-  ██╔════╝╚██╗██╔╝██╔══██╗██║██╔══██╗██╔════╝██╔══██╗
-  █████╗   ╚███╔╝ ██████╔╝██║██████╔╝█████╗  ██║  ██║
-  ██╔══╝   ██╔██╗ ██╔═══╝ ██║██╔══██╗██╔══╝  ██║  ██║
-  ███████╗██╔╝ ██╗██║     ██║██║  ██║███████╗██████╔╝
-  ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝
+     ██████╗ ██╗  ██╗
+    ██╔═══██╗██║  ██║
+    ██║   ██║███████║
+    ██║   ██║██╔══██║
+    ╚██████╔╝██║  ██║
+     ╚═════╝ ╚═╝  ╚═╝                                            
+     ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗███████╗██████╗
+    ██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗
+    ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝
+    ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗
+    ╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ███████╗██║  ██║
+     ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
     `,
-    details: 'Retail establishments that sell tobacco products have a difficult time ensuring that all the product on their shelves are not expired. Tobacco companies use cryptic codes to define when their product expires. I built this website to decrypt the expiration dates so that employees can easily determine which products are expired and which are about to expire.'
+    details: 'Magic the Gathering, other trading card games, and some board games all require one to track some counters. Oh Counter, My Counter was built using a modular design to allow the app to be used for any game. Using JSON I create a game template that the app will build into the counter interface. With multiple players, a common issue to resolve is who goes first. In the menu there is a random player selector option. This feature allow one to select all players or any number of them to be included in the random selection. Knowing that phone storage is at a premium for some users and internet access is not always available, I designed the app to be a progressive web app, PWA which allows one to use it offline. PWA\'s require significately less space than native apps, by being available in the browser and the user has the option to install the PWA for offline use.'
   },
   {
     id: 5,
@@ -145,6 +145,37 @@ export const PROJECTS: Project[] = [
   ╚══════╝   ╚═╝╚══════╝╚═╝   ╚═╝  ╚═╝╚══════╝
     `,
     details: `Music production is a creative art that many people have a knack for, but getting started is difficult. We decided to build an application that would allow budding musicians interested in creating music with a MIDI board to create music with their own keyboard. For those musicians working off laptops or any keyboard with ghosting, we built in an option for the user to have the functionality of an anti-ghosting keyboard by just tapping the key instead of holding. While what we built would not be used in its current form factor for live shows, it will allow musicians to experiment where ever they are without needed to either bring their MIDI board with them or even needing to own one.`
+  },
+  {
+    id: 6,
+    name: "Is It Expired",
+    state: 'hide',
+    link: "is_it_expired",
+    site: "https://isitexpired.p404.xyz",
+    location: IMG + "isitexpired/",
+    featureImage: "isitexpired.png",
+    images: [
+      "isitexpired.png",
+      "isitexpired.png",
+      "isitexpired.png",
+      "isitexpired.png"
+    ],
+    primary: false,
+    asciiName: `
+  ██╗███████╗    ██╗████████╗
+  ██║██╔════╝    ██║╚══██╔══╝
+  ██║███████╗    ██║   ██║
+  ██║╚════██║    ██║   ██║
+  ██║███████║    ██║   ██║
+  ╚═╝╚══════╝    ╚═╝   ╚═╝
+  ███████╗██╗  ██╗██████╗ ██╗██████╗ ███████╗██████╗
+  ██╔════╝╚██╗██╔╝██╔══██╗██║██╔══██╗██╔════╝██╔══██╗
+  █████╗   ╚███╔╝ ██████╔╝██║██████╔╝█████╗  ██║  ██║
+  ██╔══╝   ██╔██╗ ██╔═══╝ ██║██╔══██╗██╔══╝  ██║  ██║
+  ███████╗██╔╝ ██╗██║     ██║██║  ██║███████╗██████╔╝
+  ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝
+    `,
+    details: 'Retail establishments that sell tobacco products have a difficult time ensuring that all the product on their shelves are not expired. Tobacco companies use cryptic codes to define when their product expires. I built this website to decrypt the expiration dates so that employees can easily determine which products are expired and which are about to expire.'
   }
 ];
 
