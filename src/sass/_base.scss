@@ -10,6 +10,11 @@
   // overflow: hidden;
 } // body
 
+html {
+  font-size: 20px;
+  line-height: 20px;
+}
+
 @include headings() {
   font-family: $font-primary;
   color: #fff;
