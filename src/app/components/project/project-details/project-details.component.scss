@@ -136,7 +136,8 @@ $details-width: 60%;
     }
 
     @include r($medium) {
-      grid: 1fr 1fr / auto-flow calc(50% - #{$gap} / 2);
+      // grid: 1fr 1fr / auto-flow calc(50% - #{$gap} / 2);
+      grid: auto-flow 1fr / 1fr calc(50% - #{$gap} / 2);
     }
 
     @include r($large) {
