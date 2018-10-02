@@ -21,14 +21,14 @@
     font-family: monospace;
     font-weight: bold;
     color: #fff;
-    font-size: 1.5vw;
+    font-size: .35rem;
 
     @include r($small) {
-      font-size: 1vw;
+        font-size: .5rem;
     }
 
     @include r($large) {
-      font-size: .8vw;
+        font-size: .7rem;
     }
   } // ascii
 } // ascii-wrapper
