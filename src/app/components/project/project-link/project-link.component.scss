@@ -10,19 +10,23 @@
   background-size: cover;
 
   .ascii-wrapper {
+    @include transition;
+    transition-duration: 600ms;
     height: 100%;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, 0.6);
 
     .ascii {
-      transition-property: all;
-      transition-duration: 400ms;
-      transition-timing-function: ease-in-out;
+      @include transition;
+      transition-duration: 800ms;
       transform: scale(1);
+    }
 
-      &:hover {
+    &:hover {
+      .ascii {
         transform: scale(1.2);
       }
     }
+
   }
 
   @include r($small) {
@@ -30,16 +34,28 @@
   }
 
   @include r($medium) {
-    .ascii {
-      font-size: .28rem;
+    .ascii-wrapper {
+      background-color: rgba(0, 0, 0, .4);
+
+      .ascii {
+        font-size: .28rem;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+      }
     }
   }
 
   @include r($large) {
     height: 400px;
 
-    .ascii {
-      font-size: .35rem;
+    .ascii-wrapper {
+
+      .ascii {
+        transform: scale(0.6);
+        font-size: .65rem;
+      }
     }
   }
 }
