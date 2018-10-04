@@ -20,4 +20,15 @@ export class WheelDirective {
       this.next.emit(false);
     }
   }
+
+  @HostListener('pan', ['$event'])
+  @Debounce(500)
+  checkPan(e) {
+    if (e.additionalEvent === 'panup') {
+      this.next.emit(true);
+    }
+    else if (e.additionalEvent === 'pandown') {
+      this.next.emit(false);
+    }
+  }
 }

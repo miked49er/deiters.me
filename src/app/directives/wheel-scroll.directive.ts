@@ -37,4 +37,20 @@ export class WheelScrollDirective {
   onWindowScroll(e) {
     this.scrollPosition = e.pageY || this.document.documentElement.scrollTop;
   }
+
+  @HostListener('pan', ['$event'])
+  checkPan(e) {
+    if (e.additionalEvent === 'panup' && this.active === this.inactiveState) {
+      this.next.emit();
+    }
+    else if (this.active === this.activeState) {
+      let bottom = document.documentElement.scrollTop + document.documentElement.clientHeight == document.documentElement.scrollHeight;
+      if (e.additionalEvent === 'pandown' && this.scrollPosition <= 0) {
+        this.top.emit();
+      }
+      else if (e.additionalEvent === 'panup' && bottom) {
+        this.bottom.emit();
+      }
+    }
+  }
 }
