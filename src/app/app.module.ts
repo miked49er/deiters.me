@@ -20,10 +20,11 @@ import { SocialLinkComponent } from './components/social-link/social-link.compon
 import { WheelScrollDirective } from './directives/wheel-scroll.directive';
 import { WheelDirective } from './directives/wheel.directive';
 import { OverlayShapeComponent } from './components/overlays/overlay-shape/overlay-shape.component';
+import { ProjectListViewComponent } from './components/project/project-list-view/project-list-view.component';
 
 const routes: Routes = [
   { path: '', component: ProjectFeatureListComponent },
-  { path: 'projects', component: ProjectListComponent },
+  { path: 'projects', component: ProjectListViewComponent },
   { path: 'projects/:link', component: ProjectDetailsComponent },
   { path: 'about', component: AboutComponent }
 ];
@@ -56,7 +57,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     SocialLinkComponent,
     WheelScrollDirective,
     WheelDirective,
-    OverlayShapeComponent
+    OverlayShapeComponent,
+    ProjectListViewComponent
   ],
   imports: [
     BrowserModule,
