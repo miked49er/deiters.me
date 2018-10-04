@@ -52,6 +52,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class OverlayShapeComponent implements OnInit {
 
     @Input() slide: string;
+    @Input() title: string;
 
   constructor() { }
 
