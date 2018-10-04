@@ -27,13 +27,6 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent }
 ];
 
-// export class MyHammerConfig extends HammerGestureConfig {
-//   overrides = <any> {
-//     'pinch': {enable: false},
-//     'rotate': {enable: false}
-//   }
-// }
-
 export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     const mc = new Hammer.Manager(element, {
