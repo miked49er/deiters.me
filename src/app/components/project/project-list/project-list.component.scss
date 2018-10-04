@@ -3,10 +3,6 @@
 @import "src/sass/mixins";
 @import "src/sass/projects";
 
-.projectHeaderWrapper {
-  z-index: $z-overlay;
-  overflow: hidden;
-
   .projectSlide {
     position: fixed;
     top: 0;
@@ -15,23 +11,6 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
-
-  .projectOverlay {
-    @extend %overlay-shape;
-    position: fixed;
-    bottom: 0;
-    background-color: $primary-color;
-    width: 100%;
-    height: 100vh;
-  }
-
-  .projectTitle {
-    @extend %projectName;
-    position: fixed;
-    color: #fff;
-    display: block;
-  }
-}
 
 .projects {
   opacity: 1;
