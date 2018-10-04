@@ -74,6 +74,9 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   primaryTimer: any;
   destroySubject$: Subject<void> = new Subject();
 
+  projectList: string = 'hide';
+  moreProjectsTitle: string;
+
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService
@@ -100,6 +103,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         this.project.state = 'hide';
         this.showSlideTimer = setTimeout(() => this.showSlide(), 100);
       });
+    this.moreProjectsTitle = this.projectService.getMoreProjectsTitle();
   }
 
   hideSlide() {
@@ -118,5 +122,9 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     this.hideDetails = 'hide';
     this.primary = this.project.primary;
     this.hideSlideTimer = setTimeout(() => this.hideSlide(), 3000);
+  }
+
+  openProjectList() {
+    this.projectList = 'show';
   }
 }
