@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import * as Hammer from 'hammerjs';
 
 import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 
@@ -26,6 +27,26 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent }
 ];
 
+// export class MyHammerConfig extends HammerGestureConfig {
+//   overrides = <any> {
+//     'pinch': {enable: false},
+//     'rotate': {enable: false}
+//   }
+// }
+
+export class MyHammerConfig extends HammerGestureConfig {
+  buildHammer(element: HTMLElement) {
+    const mc = new Hammer.Manager(element, {
+      touchAction: 'auto',
+      recognizers: [
+        [Hammer.Pan, { direction: Hammer.DIRECTION_VERTICAL}],
+      ]
+    });
+
+    return mc;
+  }
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +68,12 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
