@@ -33,6 +33,14 @@
   } // ascii
 } // ascii-wrapper
 
+.scrollWrapper {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $z-scroll;
+}
+
 %overlay-shape {
   opacity: .9;
   clip-path: polygon(70% 54%, 100% 64%, 100% 100%, 0px 100%, 0px 76%);
