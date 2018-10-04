@@ -19,6 +19,7 @@ import { AboutComponent } from './components/about/about.component';
 import { SocialLinkComponent } from './components/social-link/social-link.component';
 import { WheelScrollDirective } from './directives/wheel-scroll.directive';
 import { WheelDirective } from './directives/wheel.directive';
+import { OverlayShapeComponent } from './components/overlays/overlay-shape/overlay-shape.component';
 
 const routes: Routes = [
   { path: '', component: ProjectFeatureListComponent },
@@ -54,7 +55,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     AboutComponent,
     SocialLinkComponent,
     WheelScrollDirective,
-    WheelDirective
+    WheelDirective,
+    OverlayShapeComponent
   ],
   imports: [
     BrowserModule,
