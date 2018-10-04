@@ -10,7 +10,7 @@ export const PROJECTS: Project[] = [
     link: "ggc_maps",
     site: "http://ggcmaps.com",
     location: IMG + "ggcmaps/",
-    featureImage: "ggcmaps.png",
+    featureImage: "ggcmaps.jpg",
     images: [
       "ggcmaps1.png",
       "ggcmaps2.png",
