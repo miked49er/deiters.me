@@ -124,7 +124,13 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     this.hideSlideTimer = setTimeout(() => this.hideSlide(), 3000);
   }
 
-  openProjectList() {
-    this.projectList = 'show';
+  toggleProjectList(status: boolean) {
+    console.log(status);
+    if (status) {
+      this.projectList = 'show';
+    }
+    else {
+      this.projectList = 'hide';
+    }
   }
 }
