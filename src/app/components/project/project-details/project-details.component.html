@@ -3,7 +3,8 @@
   deitersWheelScroll
   (next)="hideSlide()"
   (top)="showSlide()"
-  (bottom)="openProjectList()">
+  (bottom)="toggleProjectList(true)"
+  (bottomUp)="toggleProjectList(false)">
 
   <deiters-nav [primary]="!primary" [accent]="primary"></deiters-nav>
 
