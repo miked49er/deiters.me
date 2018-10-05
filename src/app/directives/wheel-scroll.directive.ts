@@ -7,12 +7,14 @@ import { DOCUMENT } from '@angular/platform-browser';
 export class WheelScrollDirective {
 
 	scrollPosition: number = 0;
+  bottomPosition: number = -1;
   @Input() active: string;
   @Input() activeState: string = 'show';
   @Input() inactiveState: string = 'hide';
   @Output() next = new EventEmitter();
   @Output() top = new EventEmitter();
   @Output() bottom = new EventEmitter();
+  @Output() bottomUp = new EventEmitter();
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
@@ -27,7 +29,13 @@ export class WheelScrollDirective {
       if (e.deltaY < 0 && this.scrollPosition <= 0) {
         this.top.emit();
       }
+      else if (e.deltaY < 0 && this.scrollPosition <= this.bottomPosition + 50) {
+        this.bottomUp.emit();
+      }
       else if (e.deltaY > 0 && bottom) {
+        if (this.bottomPosition == -1) {
+          this.bottomPosition = document.documentElement.scrollTop + document.documentElement.clientHeight;
+        }
         this.bottom.emit();
       }
     }
