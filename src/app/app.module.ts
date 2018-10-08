@@ -25,7 +25,7 @@ import { ProjectListViewComponent } from './components/project/project-list-view
 const routes: Routes = [
   { path: '', component: ProjectFeatureListComponent },
   { path: 'projects', component: ProjectListViewComponent },
-  { path: 'projects/:link', component: ProjectDetailsComponent },
+  { path: 'projects/:link', component: ProjectDetailsComponent, pathMatch: 'full' },
   { path: 'about', component: AboutComponent }
 ];
 
