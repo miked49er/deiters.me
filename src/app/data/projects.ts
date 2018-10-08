@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     link: "chem_reality",
     site: "http://wiki.ggc.edu/wiki/ChemReality",
     location: IMG + "chem_reality/",
-    featureImage: "chemreality.png",
+    featureImage: "chemreality.jpg",
     images: [
       "chemreality1.png",
       "chemreality2.png",
@@ -144,7 +144,7 @@ export const PROJECTS: Project[] = [
     link: "is_it_expired",
     site: "https://isitexpired.p404.xyz",
     location: IMG + "isitexpired/",
-    featureImage: "isitexpired.png",
+    featureImage: "isitexpired.jpg",
     images: [
       "isitexpired1.png",
       "isitexpired2.png"
