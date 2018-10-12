@@ -51,12 +51,4 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroySubject$))
       .subscribe(projects => this.projects = projects);
   }
-
-  revealProjects() {
-    this.projectViewTimer = setTimeout(() => this.projectView = 'show', 500);
-  }
-
-  hideProjects() {
-    this.projectView = 'hide';
-  }
 }
