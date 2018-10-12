@@ -3,8 +3,9 @@
   deitersWheelScroll
   (next)="hideSlide()"
   (top)="showSlide()"
-  (bottom)="toggleProjectList(true)"
-  (bottomUp)="toggleProjectList(false)">
+  (bottom)="showProjectTitle()"
+  (bottomUp)="hideProjectList()"
+  (bottomDown)="revealProjectList()">
 
   <deiters-nav [primary]="!primary" [accent]="primary"></deiters-nav>
 
@@ -48,10 +49,13 @@
     </div>
   </div>
 
+  <deiters-overlay-shape
+    [slide]="moreProjects"
+    [title]="moreProjectsTitle"></deiters-overlay-shape>
+
   <div class="moreProjects">
-    <deiters-overlay-shape
-      [slide]="projectList"
-      [title]="moreProjectsTitle"></deiters-overlay-shape>
+    <deiters-project-list
+      [projectView]="projectList"></deiters-project-list>
   </div>
 
 </div>
