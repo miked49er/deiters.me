@@ -147,8 +147,9 @@ $details-width: 60%;
 }
 
 .projectHeaderWrapper {
-  z-index: $z-overlay;
+  z-index: $z-header-overlay;
   overflow: hidden;
+  position: fixed;
 
   .projectSlide {
     position: fixed;
@@ -181,22 +182,29 @@ $details-width: 60%;
     position: fixed;
     color: #fff;
     display: block;
-    top: 15%;
+    top: 13%;
     left: 18%;
 
     @include r($small) {
-      top: 12%;
+      top: 10%;
       left: 15%;
     }
 
     @include r($medium) {
-      top: 10%;
+      top: 8%;
       left: 13%;
     }
 
     @include r($large) {
-      top: 10%;
+      top: 8%;
       left: 10%;
     }
   }
+}
+
+.moreProjects {
+  position: relative;
+  background-color: $primary-color;
+  z-index: $z-base;
+  opacity: .9;
 }
