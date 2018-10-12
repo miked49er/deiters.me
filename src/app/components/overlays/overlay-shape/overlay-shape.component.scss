@@ -3,11 +3,18 @@
 @import "src/sass/mixins";
 @import "src/sass/projects";
 
+.primary {
+  background-color: $primary-color;
+}
+
+.accent {
+  background-color: $accent-color;
+}
+
 .projectOverlay {
   @extend %overlay-shape;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  background-color: $primary-color;
   width: 100%;
   height: 100vh;
 }
