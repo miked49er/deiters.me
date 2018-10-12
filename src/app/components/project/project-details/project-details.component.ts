@@ -8,7 +8,10 @@ import {
   state,
   style,
   animate,
-  transition
+  transition,
+  group,
+  query,
+  animateChild
 } from '@angular/animations';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -58,23 +61,35 @@ import { Subject } from 'rxjs';
         opacity: 0,
         display: 'none'
       })),
+      state('projects', style({
+        transform: "translateY(-100%)"
+      })),
+      state('details', style({
+        transform: "translateY(0)"
+      })),
       transition('hide => show', animate('400ms 300ms ease-in')),
-      transition('show => hide', animate('400ms ease-out'))
+      transition('show => hide', animate('400ms ease-out')),
+      transition('hide => projects', animate('400ms ease-in')),
+      transition('show => projects', animate('400ms ease-out')),
+      transition('projects => details', animate('400ms ease-in')),
+      transition('details => hide', animate('400ms ease-out'))
     ])
   ]
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   project: Project;
-  primary: boolean = false;
-  hideDetails: string = 'hide';
+  primary: boolean;
+  hideDetails: string;
   showSlideTimer: any;
   hideSlideTimer: any;
   hideDetailsTimer: any;
+  moreProjectsTimer: any;
   primaryTimer: any;
   destroySubject$: Subject<void> = new Subject();
 
-  projectList: string = 'hide';
+  moreProjects: string;
+  projectList: string;
   moreProjectsTitle: string;
 
   constructor(
@@ -83,15 +98,24 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.getProject();
+    this.route.paramMap
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe(() => {
+        this.getProject();
+      });
   }
 
   ngOnDestroy(): void {
+    this.cleanUp();
+    this.destroySubject$.next();
+  }
+
+  cleanUp(): void {
     clearTimeout(this.showSlideTimer);
     clearTimeout(this.hideSlideTimer);
     clearTimeout(this.primaryTimer);
     clearTimeout(this.hideDetailsTimer);
-    this.destroySubject$.next();
+    clearTimeout(this.moreProjectsTimer);
   }
 
   getProject(): void {
@@ -99,6 +123,8 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     this.projectService.getProject(link)
       .pipe(takeUntil(this.destroySubject$))
       .subscribe(project => {
+        this.moreProjects = 'hide';
+        this.projectList = 'hide';
         this.project = project;
         this.project.state = 'hide';
         this.showSlideTimer = setTimeout(() => this.showSlide(), 100);
@@ -124,13 +150,21 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     this.hideSlideTimer = setTimeout(() => this.hideSlide(), 3000);
   }
 
-  toggleProjectList(status: boolean) {
-    console.log(status);
-    if (status) {
+  showProjectTitle() {
+    this.moreProjects = 'show';
+  }
+
+  revealProjectList() {
+    this.moreProjectsTimer = setTimeout(() => {
+      this.moreProjects = 'hide';
       this.projectList = 'show';
-    }
-    else {
-      this.projectList = 'hide';
-    }
+    }, 1000);
+    this.primaryTimer = setTimeout(() => this.primary = true, 2000);
+  }
+
+  hideProjectList() {
+    this.moreProjects = 'hide';
+    this.projectList = 'hide';
+    this.primaryTimer = setTimeout(() => this.primary = false, 1000);
   }
 }
