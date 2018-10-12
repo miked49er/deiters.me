@@ -3,14 +3,14 @@
 @import "src/sass/mixins";
 @import "src/sass/projects";
 
-  .projectSlide {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.projectSlide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .projects {
   opacity: 1;
