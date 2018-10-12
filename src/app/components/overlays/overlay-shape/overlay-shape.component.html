@@ -1,5 +1,6 @@
 <div class="projectOverlay"
-  [@scrollListOverlay]="slide"></div>
+  [@scrollListOverlay]="slide"
+  [ngClass]="{'primary': primary, 'accent': !primary}"></div>
 
 <div class="projectTitle"
   [@scrollListTitle]="slide">
