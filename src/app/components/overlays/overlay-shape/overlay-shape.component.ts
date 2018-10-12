@@ -53,6 +53,7 @@ export class OverlayShapeComponent implements OnInit {
 
     @Input() slide: string;
     @Input() title: string;
+    @Input() primary: boolean = true;
 
   constructor() { }
 
