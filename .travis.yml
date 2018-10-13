@@ -17,7 +17,7 @@ install:
 
 script:
   - yarn lint
-  - yarn build --base-href https://deiters.me
+  - yarn build --base-href https://miked49er.github.is/deiters.me
 deploy:
   provider: pages
   skip_cleanup: true
