@@ -8,23 +8,10 @@
   <div class="projectSlide fullscreen"
     [style.backgroundImage]="'url('+ backgroundImage +')'"></div>
 
-  <div class="projectOverlay"
-    [@scrollListOverlay]="slide"></div>
+  <deiters-overlay-shape
+    [slide]="slide"
+    [title]="projectTitle"></deiters-overlay-shape>
 
-  <div class="projectTitle"
-    [@scrollListTitle]="slide">
-    <div class="ascii-wrapper projectName">
-      <div class="ascii">{{projectTitle}}</div>
-    </div>
-  </div>
-
-  <div class="projects"
-    [@scrollProjects]="projectView">
-    <div class="projectList">
-      <div class="listItem"
-        *ngFor="let project of projects">
-        <deiters-project-link [project]="project"></deiters-project-link>
-      </div>
-    </div>
-  </div>
+  <deiters-project-list
+    [projectView]="projectView"></deiters-project-list>
 </div>
