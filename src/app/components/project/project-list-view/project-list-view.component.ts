@@ -8,63 +8,7 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'deiters-project-list-view',
   templateUrl: './project-list-view.component.html',
-  styleUrls: ['./project-list-view.component.scss'],
-  animations: [
-    trigger('scrollListOverlay', [
-      state('show', style({
-        transform: "translateY(0)"
-      })),
-      state('reveal', style({
-        "clip-path": "polygon(70% -40%, 100% -24%, 100% 100%, 0 100%, 0 0)"
-      })),
-      state('hide', style({
-        transform: "translateY(100%)",
-        display: "none"
-      })),
-      transition('hide => show', animate('400ms ease-in')),
-      transition('hide => reveal', animate('400ms ease-in')),
-      transition('show => reveal', animate('400ms ease-in')),
-      transition('reveal => show', animate('400ms ease-in')),
-      transition('show => hide', animate('400ms ease-out')),
-      transition('reveal => hide', animate('400ms ease-out'))
-    ]),
-    trigger('scrollListTitle', [
-      state('show', style({
-        transform: "translateX(0)",
-        opacity: 1,
-        display: "block"
-      })),
-      state('reveal', style({
-        transform: "translateX(10%)",
-        opacity: 0,
-        display: "none"
-      })),
-      state('hide', style({
-        transform: "translateX(10%)",
-        opacity: 0,
-        display: "none"
-      })),
-      transition('hide => show', animate('400ms 400ms ease-in')),
-      transition('hide => reveal', animate('400ms ease-in')),
-      transition('show => reveal', animate('400ms ease-in')),
-      transition('reveal => show', animate('400ms ease-in')),
-      transition('show => hide', animate('400ms ease-out')),
-      transition('reveal => hide', animate('400ms ease-out'))
-    ]),
-    trigger('scrollProjects', [
-      state('show', style({
-        transform: 'translateY(0)',
-        opacity: 1
-      })),
-      state('hide', style({
-        display: 'none',
-        transform: 'translateY(100%)',
-        opacity: 0
-      })),
-      transition('hide => show', animate('400ms ease-in')),
-      transition('show => hide', animate('400ms ease-out'))
-    ])
-  ]
+  styleUrls: ['./project-list-view.component.scss']
 })
 export class ProjectListViewComponent implements OnInit {
 
@@ -75,7 +19,6 @@ export class ProjectListViewComponent implements OnInit {
     projectView: string = 'hide';
     slideViewTimer: any;
     projectViewTimer: any;
-    destroySubject$: Subject<void> = new Subject();
 
     @Input() slide: string = 'hide';
 
@@ -85,19 +28,11 @@ export class ProjectListViewComponent implements OnInit {
 
     ngOnInit() {
       this.slideViewTimer = setTimeout(() => this.slide = 'show', 100);
-      this.getProjects();
+      this.projectTitle = this.projectService.getProjectsTitle();
     }
 
     ngOnDestroy() {
       clearTimeout(this.projectViewTimer);
-      this.destroySubject$.next();
-    }
-
-    getProjects(): void {
-      this.projectService.getProjects()
-        .pipe(takeUntil(this.destroySubject$))
-        .subscribe(projects => this.projects = projects);
-      this.projectTitle = this.projectService.getProjectsTitle();
     }
 
     revealProjects() {
