@@ -6,7 +6,7 @@ sudo: false
 
 branches:
   only:
-    - master
+  - master
 
 cache:
   directories:
@@ -17,8 +17,7 @@ install:
 
 script:
   - yarn lint
-  - yarn build --base-href://deiters.me
-
+  - yarn build --base-href https://deiters.me
 deploy:
   provider: pages
   skip_cleanup: true
