@@ -82,7 +82,7 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-root',
+            selector: 'deiters-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
         }),
@@ -1562,7 +1562,7 @@ var PROJECTS = [
         ],
         primary: true,
         asciiName: "\n   ____  ____  ____   __  __    _    ____  ____\n  / ___|/ ___|/ ___| |  \\/  |  / \\  |  _ \\/ ___|\n | |  _| |  _| |     | |\\/| | / _ \\ | |_) \\___ \\\n | |_| | |_| | |___  | |  | |/ ___ \\|  __/ ___) |\n  \\____|\\____|\\____| |_|  |_/_/   \\_\\_|   |____/\n    ",
-        details: "For students and faculty trying to find a room in some buildings on campus it is a major pain, in particular looking for a room in the A building. Though our application, anyone is able to search for the room he or she is trying to find and immediately see the location of the room highlighted on one of our maps. Before this application, the school had provided pdf's of each of the buildings to the community. Some of these pdf's were poorly designed and difficult to find rooms on. In addition to that a number of them had multiple rooms that were labeled with the same room number. As we created out maps we fixed these issues to help improve the overall quality and experience of searching for rooms."
+        details: "For students and faculty trying to find a room in some buildings on campus it is a major pain, in particular looking for a\n      room in the A building. Though our application, anyone is able to search for the room he or she is trying to find and immediately see\n      the location of the room highlighted on one of our maps. Before this application, the school had provided pdf's of each of the\n      buildings to the community. Some of these pdf's were poorly designed and difficult to find rooms on. In addition to that a number of\n      them had multiple rooms that were labeled with the same room number. As we created out maps we fixed these issues to help improve the\n      overall quality and experience of searching for rooms."
     },
     {
         id: 2,
@@ -1580,7 +1580,7 @@ var PROJECTS = [
         ],
         primary: true,
         asciiName: "\n   ____ _   _ _____ __  __\n  / ___| | | | ____|  \\/  |\n | |   | |_| |  _| | |\\/| |\n | |___|  _  | |___| |  | |\n  \\____|_| |_|_____|_|  |_|\n  ____  _____    _    _     ___ _______   __\n |  _ \\| ____|  / \\  | |   |_ _|_   _\\ \\ / /\n | |_) |  _|   / _ \\ | |    | |  | |  \\ V /\n |  _ <| |___ / ___ \\| |___ | |  | |   | |\n |_| \\_\\_____/_/   \\_\\_____|___| |_|   |_|\n    ",
-        details: "Augmented reality provides an extra layer of information over the user\u2019s view, typically through the use of a camera lens and a screen. Using augmented reality and image recognition together, I have created an application for smartphones and tablets which allows the user to use the device\u2019s camera and a picture of a molecule to view that molecule in three-dimensional space, which they may interact with and view from any angle as if it actually exists in the real world."
+        details: "Augmented reality provides an extra layer of information over the user\u2019s view, typically through the use of a camera lens and\n      a screen. Using augmented reality and image recognition together, I have created an application for smartphones and tablets which\n      allows the user to use the device\u2019s camera and a picture of a molecule to view that molecule in three-dimensional space, which they\n      may interact with and view from any angle as if it actually exists in the real world."
     },
     {
         id: 3,
@@ -1598,7 +1598,7 @@ var PROJECTS = [
         ],
         primary: true,
         asciiName: "\n  __  __  ___ _____ ___  ____  ____  ___ ____\n |  \\/  |/ _ \\_   _/ _ \\|  _ \\|  _ \\|_ _/ ___|\n | |\\/| | | | || || | | | |_) | |_) || |\\___ \\\n | |  | | |_| || || |_| |  _ <|  _ < | | ___) |\n |_|  |_|\\___/ |_| \\___/|_| \\_\\_| \\_\\___|____/\n    ",
-        details: "Motorris is like a craigslist for motorcross bikes. I rebuilt the site from the ground up with the MEAN Stack. Redesigned Motorris to give it a better overall layout, and now users have the ability to post bikes to the site themselves, without needing to create an account. The users of Motorris were adimate on the fact that they did not want to have to create an account, but at the same time be able to update and delete their bikes on the site. With this in mind I used a salted hash of the bike to create the bike's editing url. So yes anyone with the link to the bike would be able to edit it, but someone is not going to just stumble apon a bike's personal editing url unless the owner of the url didn't keep it safe."
+        details: "Motorris is like a craigslist for motorcross bikes. I rebuilt the site from the ground up with the MEAN Stack. Redesigned\n      Motorris to give it a better overall layout, and now users have the ability to post bikes to the site themselves, without needing to\n      create an account. The users of Motorris were adimate on the fact that they did not want to have to create an account, but at the\n      same time be able to update and delete their bikes on the site. With this in mind I used a salted hash of the bike to create the\n      bike's editing url. So yes anyone with the link to the bike would be able to edit it, but someone is not going to just stumble apon a\n      bike's personal editing url unless the owner of the url didn't keep it safe."
     },
     {
         id: 4,
@@ -1616,7 +1616,7 @@ var PROJECTS = [
         ],
         primary: false,
         asciiName: "\n   ___  _   _\n  / _ \\| | | |\n | | | | |_| |\n | |_| |  _  |\n  \\___/|_| |_|\n   ____ ___  _   _ _   _ _____ _____ ____\n  / ___/ _ \\| | | | \\ | |_   _| ____|  _ \\\n | |  | | | | | | |  \\| | | | |  _| | |_) |\n | |__| |_| | |_| | |\\  | | | | |___|  _ <\n  \\____\\___/ \\___/|_| \\_| |_| |_____|_| \\_\\\n    ",
-        details: 'Magic the Gathering, other trading card games, and some board games all require one to track some counters. Oh Counter, My Counter was built using a modular design to allow the app to be used for any game. Using JSON I create a game template that the app will build into the counter interface. With multiple players, a common issue to resolve is who goes first. In the menu there is a random player selector option. This feature allow one to select all players or any number of them to be included in the random selection. Knowing that phone storage is at a premium for some users and internet access is not always available, I designed the app to be a progressive web app, PWA which allows one to use it offline. PWA\'s require significately less space than native apps, by being available in the browser and the user has the option to install the PWA for offline use.'
+        details: "Magic the Gathering, other trading card games, and some board games all require one to track some counters. Oh Counter, My\n      Counter was built using a modular design to allow the app to be used for any game. Using JSON I create a game template that the app\n      will build into the counter interface. With multiple players, a common issue to resolve is who goes first. In the menu there is a\n      random player selector option. This feature allow one to select all players or any number of them to be included in the random\n      selection. Knowing that phone storage is at a premium for some users and internet access is not always available, I designed the app\n      to be a progressive web app, PWA which allows one to use it offline. PWA's require significately less space than native apps, by\n      being available in the browser and the user has the option to install the PWA for offline use."
     },
     {
         id: 5,
@@ -1632,7 +1632,7 @@ var PROJECTS = [
         ],
         primary: false,
         asciiName: "\n  ____  _        _    ____ _  ____        _____ _   _  ____\n | __ )| |      / \\  / ___| |/ /\\ \\      / /_ _| \\ | |/ ___|\n |  _ \\| |     / _ \\| |   | ' /  \\ \\ /\\ / / | ||  \\| | |  _\n | |_) | |___ / ___ \\ |___| . \\   \\ V  V /  | || |\\  | |_| |\n |____/|_____/_/   \\_\\____|_|\\_\\   \\_/\\_/  |___|_| \\_|\\____|\n  ______   _______ _   _ ____\n / ___\\ \\ / /_   _| | | / ___|\n \\___ \\\\ V /  | | | |_| \\___ \\\n  ___) || |   | | |  _  |___) |\n |____/ |_|___|_| |_| |_|____/\n         |_____|\n    ",
-        details: "Music production is a creative art that many people have a knack for, but getting started is difficult. We decided to build an application that would allow budding musicians interested in creating music with a MIDI board to create music with their own keyboard. For those musicians working off laptops or any keyboard with ghosting, we built in an option for the user to have the functionality of an anti-ghosting keyboard by just tapping the key instead of holding. While what we built would not be used in its current form factor for live shows, it will allow musicians to experiment where ever they are without needed to either bring their MIDI board with them or even needing to own one."
+        details: "Music production is a creative art that many people have a knack for, but getting started is difficult. We decided to build\n      an application that would allow budding musicians interested in creating music with a MIDI board to create music with their own\n      keyboard. For those musicians working off laptops or any keyboard with ghosting, we built in an option for the user to have the\n      functionality of an anti-ghosting keyboard by just tapping the key instead of holding. While what we built would not be used in its\n      current form factor for live shows, it will allow musicians to experiment where ever they are without needed to either bring their\n      MIDI board with them or even needing to own one."
     },
     {
         id: 6,
@@ -1648,7 +1648,7 @@ var PROJECTS = [
         ],
         primary: false,
         asciiName: "\n  ___ ____    ___ _____\n |_ _/ ___|  |_ _|_   _|\n  | |\\___ \\   | |  | |\n  | | ___) |  | |  | |\n |___|____/  |___| |_|\n  _______  ______ ___ ____  _____ ____\n | ____\\ \\/ /  _ \\_ _|  _ \\| ____|  _ \\\n |  _|  \\  /| |_) | || |_) |  _| | | | |\n | |___ /  \\|  __/| ||  _ <| |___| |_| |\n |_____/_/\\_\\_|  |___|_| \\_\\_____|____/\n    ",
-        details: 'Retail establishments that sell tobacco products have a difficult time ensuring that all the product on their shelves are not expired. Tobacco companies use cryptic codes to define when their product expires. I built this website to decrypt the expiration dates so that employees can easily determine which products are expired and which are about to expire.'
+        details: "Retail establishments that sell tobacco products have a difficult time ensuring that all the product on their shelves are not\n      expired. Tobacco companies use cryptic codes to define when their product expires. I built this website to decrypt the expiration\n      dates so that employees can easily determine which products are expired and which are about to expire."
     }
 ];
 var MORE_PROJECTS = {
@@ -1714,7 +1714,7 @@ function Debounce(delay) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WheelScrollDirective", function() { return WheelScrollDirective; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1751,18 +1751,19 @@ var WheelScrollDirective = /** @class */ (function () {
             this.next.emit();
         }
         else if (this.active === this.activeState) {
-            var bottom = document.documentElement.scrollTop + document.documentElement.clientHeight == document.documentElement.scrollHeight;
+            var bottom = document.documentElement.scrollTop + document.documentElement.clientHeight === document.documentElement.scrollHeight;
             if (e.deltaY < 0 && this.scrollPosition <= 0) {
                 this.top.emit();
             }
             else if (e.deltaY < 0 && this.scrollPosition <= this.bottomPosition + 100) {
                 this.bottomUp.emit();
             }
-            else if (e.deltaY > 0 && this.scrollPosition >= this.bottomPosition - this.document.documentElement.clientHeight && this.bottomPosition != -1) {
+            else if (e.deltaY > 0 && this.scrollPosition >= this.bottomPosition - this.document.documentElement.clientHeight
+                && this.bottomPosition !== -1) {
                 this.bottomDown.emit();
             }
             else if (e.deltaY > 0 && bottom) {
-                if (this.bottomPosition == -1) {
+                if (this.bottomPosition === -1) {
                     this.bottomPosition = document.documentElement.scrollTop + document.documentElement.clientHeight;
                 }
                 this.bottom.emit();
@@ -1783,14 +1784,15 @@ var WheelScrollDirective = /** @class */ (function () {
             this.next.emit();
         }
         else if (this.active === this.activeState) {
-            var bottom = document.documentElement.scrollTop + document.documentElement.clientHeight == document.documentElement.scrollHeight;
+            var bottom = document.documentElement.scrollTop + document.documentElement.clientHeight === document.documentElement.scrollHeight;
             if (e.additionalEvent === 'pandown' && this.scrollPosition <= 0) {
                 this.top.emit();
             }
             else if (e.additionalEvent === 'pandown' && this.scrollPosition <= this.bottomPosition + 100) {
                 this.bottomUp.emit();
             }
-            else if (e.additionalEvent === 'panup' && this.scrollPosition >= this.bottomPosition - this.document.documentElement.clientHeight && this.bottomPosition != -1) {
+            else if (e.additionalEvent === 'panup' && this.scrollPosition >= this.bottomPosition - this.document.documentElement.clientHeight
+                && this.bottomPosition !== -1) {
                 this.bottomDown.emit();
             }
             else if (e.additionalEvent === 'panup' && bottom) {
@@ -1852,7 +1854,7 @@ var WheelScrollDirective = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
             selector: '[deitersWheelScroll]'
         }),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"])),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"])),
         __metadata("design:paramtypes", [Document])
     ], WheelScrollDirective);
     return WheelScrollDirective;
