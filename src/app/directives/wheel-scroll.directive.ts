@@ -1,5 +1,5 @@
 import { Directive, Input, HostListener, Inject, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 import { Debounce } from 'src/app/decorators/debounce';
 
 @Directive({
@@ -30,18 +30,19 @@ export class WheelScrollDirective {
       this.next.emit();
     }
     else if (this.active === this.activeState) {
-      let bottom = document.documentElement.scrollTop + document.documentElement.clientHeight == document.documentElement.scrollHeight;
+      let bottom = document.documentElement.scrollTop + document.documentElement.clientHeight === document.documentElement.scrollHeight;
       if (e.deltaY < 0 && this.scrollPosition <= 0) {
         this.top.emit();
       }
       else if (e.deltaY < 0 && this.scrollPosition <= this.bottomPosition + 100) {
         this.bottomUp.emit();
       }
-      else if (e.deltaY > 0 && this.scrollPosition >= this.bottomPosition - this.document.documentElement.clientHeight && this.bottomPosition != -1) {
+      else if (e.deltaY > 0 && this.scrollPosition >= this.bottomPosition - this.document.documentElement.clientHeight
+        && this.bottomPosition !== -1) {
         this.bottomDown.emit();
       }
       else if (e.deltaY > 0 && bottom) {
-        if (this.bottomPosition == -1) {
+        if (this.bottomPosition === -1) {
           this.bottomPosition = document.documentElement.scrollTop + document.documentElement.clientHeight;
         }
         this.bottom.emit();
@@ -66,14 +67,15 @@ export class WheelScrollDirective {
       this.next.emit();
     }
     else if (this.active === this.activeState) {
-      let bottom = document.documentElement.scrollTop + document.documentElement.clientHeight == document.documentElement.scrollHeight;
+      let bottom = document.documentElement.scrollTop + document.documentElement.clientHeight === document.documentElement.scrollHeight;
       if (e.additionalEvent === 'pandown' && this.scrollPosition <= 0) {
         this.top.emit();
       }
       else if (e.additionalEvent === 'pandown' && this.scrollPosition <= this.bottomPosition + 100) {
         this.bottomUp.emit();
       }
-      else if (e.additionalEvent === 'panup' && this.scrollPosition >= this.bottomPosition - this.document.documentElement.clientHeight && this.bottomPosition != -1) {
+      else if (e.additionalEvent === 'panup' && this.scrollPosition >= this.bottomPosition - this.document.documentElement.clientHeight
+        && this.bottomPosition !== -1) {
         this.bottomDown.emit();
       }
       else if (e.additionalEvent === 'panup' && bottom) {

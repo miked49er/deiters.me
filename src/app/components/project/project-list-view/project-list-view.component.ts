@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './project-list-view.component.html',
   styleUrls: ['./project-list-view.component.scss']
 })
-export class ProjectListViewComponent implements OnInit {
+export class ProjectListViewComponent implements OnInit, OnDestroy {
 
     primary: boolean = false;
     projects: Project[];
