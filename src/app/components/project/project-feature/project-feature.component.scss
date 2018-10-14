@@ -1,0 +1,69 @@
+@import "src/sass/variables";
+@import 'src/sass/global';
+@import "src/sass/mixins";
+@import "src/sass/projects";
+
+.projectFeatureWrapper {
+  z-index: $z-project1;
+
+  &:nth-of-type(2) {
+    z-index: $z-project2;
+  }
+
+  &:nth-of-type(3) {
+    z-index: $z-project3;
+  }
+
+  &:nth-of-type(4) {
+    z-index: $z-project4;
+  }
+
+  &:nth-of-type(5) {
+    z-index: $z-project5;
+  }
+}
+
+.projectFeatureSlide {
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.projectFeatureOverlay {
+  @extend %overlay-shape;
+}
+
+.projectFeatureTitle {
+  @include transition;
+  @extend %projectName;
+  color: #fff;
+  display: block;
+  position: absolute;
+
+  .moreInfo {
+    align-items: center;
+
+    .ascii {
+      font-size: .15rem;
+    }
+  }
+
+  .link {
+    @include transition;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  @include r($large) {
+
+    .moreInfo .ascii {
+      font-size: .2rem;
+    }
+  }
+}
+
+@include project(true);

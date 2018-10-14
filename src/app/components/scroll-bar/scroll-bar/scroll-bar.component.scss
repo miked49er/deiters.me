@@ -1,0 +1,10 @@
+@import "src/sass/variables";
+@import "src/sass/mixins";
+
+.scrollBar {
+  @include center(false, true);
+  display: block;
+  right: 15px;
+  z-index: $z-scroll;
+  margin: 0;
+}

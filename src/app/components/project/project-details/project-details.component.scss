@@ -1,0 +1,210 @@
+@import "src/sass/variables";
+@import "src/sass/global";
+@import "src/sass/mixins";
+@import "src/sass/projects";
+
+$details-width: 60%;
+
+.primary {
+  color: $primary-color;
+}
+
+.accent {
+  color: $accent-color;
+}
+
+.primary-bg {
+  background-color: $primary-color;
+}
+
+.accent-bg {
+  background-color: $accent-color;
+}
+
+.detailsWrapper {
+  width: $details-width;
+  margin: 100px auto;
+  display: grid;
+  grid:
+    "name"
+    "link"
+    "details"
+    "feature"
+    "images";
+  grid-gap: 15px;
+
+  img {
+    width: 100%;
+  }
+
+  @include r($small) {
+
+  }
+
+  @include r($medium) {
+    grid:
+      "name link"
+      "details details"
+      "feature feature"
+      "images images";
+    grid-gap: 25px;
+  }
+
+  @include r($large) {
+
+  }
+
+  .ascii-wrapper {
+    grid-area: "name";
+    display: block;
+    margin-left: -10px;
+
+    .ascii {
+      color: $primary-color;
+    }
+
+    @include r($small) {
+      // margin: 70px 0 30px;
+      margin-left: -30px;
+    }
+
+    @include r($medium) {
+      margin-left: -50px;
+    }
+
+    @include r($large) {
+      margin-left: -50px;
+    }
+  }
+
+  .live-link {
+    @include transition;
+    grid-area: link;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+    text-decoration: none;
+    color: $accent-color;
+    border: medium solid $accent-color;
+    border-radius: 30px;
+    padding: 0 10px;
+
+    &:hover {
+      color: $primary-color-text;
+      background-color: $accent-color;
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transition-duration: 100ms;
+      transform: scale(.8);
+    }
+
+    @include r($medium) {
+      font-size: 1.4rem;
+      height: 50px;
+      padding: 0 20px;
+    }
+  }
+
+  .detailsText {
+    @extend %content;
+    grid-area: details;
+  }
+
+  .projectFeature {
+    grid-area: feature;
+    width: 100%;
+  }
+
+  .projectGrid {
+    @include transition;
+    $gap: 10px;
+    grid-area: images;
+    display: grid;
+    grid: 1fr;
+    grid-column-gap: $gap;
+    grid-row-gap: $gap;
+
+    @include r($small) {
+
+    }
+
+    @include r($medium) {
+      // grid: 1fr 1fr / auto-flow calc(50% - #{$gap} / 2);
+      grid: auto-flow 1fr / 1fr calc(50% - #{$gap} / 2);
+    }
+
+    @include r($large) {
+
+    }
+  }
+}
+
+.projectHeaderWrapper {
+  z-index: $z-header-overlay;
+  overflow: hidden;
+  position: fixed;
+
+  .projectSlide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .projectOverlay {
+    position: fixed;
+    opacity: .9;
+    clip-path: polygon(30% 41%, 0 31%, 0 0, 100% 0, 100% 19%);
+
+    @include r($small) {
+      clip-path: polygon(30% 42%, 0 30%, 0 0, 100% 0, 100% 14%);
+    }
+
+    @include r($medium) {
+      clip-path: polygon(30% 48%, 0 34%, 0 0, 100% 0, 100% 14%);
+    }
+
+    @include r($large) {
+      clip-path: polygon(30% 54%, 0 38%, 0 0, 100% 0, 100% 14%);
+    }
+  }
+
+  .projectTitle {
+    position: fixed;
+    color: #fff;
+    display: block;
+    top: 13%;
+    left: 18%;
+
+    @include r($small) {
+      top: 10%;
+      left: 15%;
+    }
+
+    @include r($medium) {
+      top: 8%;
+      left: 13%;
+    }
+
+    @include r($large) {
+      top: 8%;
+      left: 10%;
+    }
+  }
+}
+
+.moreProjects {
+  position: relative;
+  background-color: $primary-color;
+  z-index: $z-base;
+  opacity: .9;
+}

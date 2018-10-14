@@ -1,0 +1,61 @@
+@import "src/sass/variables";
+@import "src/sass/mixins";
+
+.logo {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-header;
+  @include rotate(-90);
+  @include transition;
+  user-select: none;
+}
+
+@include project(false);
+
+.primary {
+  color: $primary-color;
+}
+
+.accent {
+  color: $accent-color;
+}
+
+.nav-links {
+  @include transition;
+  position: fixed;
+  top: 0;
+  right: 14px;
+  z-index: $z-header;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: hidden;
+
+  li a {
+    @include transition;
+    display: block;
+    color:inherit;
+    text-decoration: none;
+    text-align: right;
+    font-family: $font-primary;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 6px 0;
+    margin-top: 5px;
+  }
+
+  @include r($small) {
+    li {
+      float: left;
+    }
+
+    li a {
+      margin-top: 0;
+      text-align: center;
+      padding: 10px 14px;
+    }
+  }
+}

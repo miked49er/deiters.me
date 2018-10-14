@@ -1,0 +1,17 @@
+<deiters-nav [primary]="primary" [accent]="!primary"></deiters-nav>
+
+<div class="projectHeaderWrapper"
+  deitersWheelScroll
+  [active]="projectView"
+  (next)="revealProjects()"
+  (top)="hideProjects()">
+  <div class="projectSlide fullscreen"
+    [style.backgroundImage]="'url('+ backgroundImage +')'"></div>
+
+  <deiters-overlay-shape
+    [slide]="slide"
+    [title]="projectTitle"></deiters-overlay-shape>
+
+  <deiters-project-list
+    [projectView]="projectView"></deiters-project-list>
+</div>

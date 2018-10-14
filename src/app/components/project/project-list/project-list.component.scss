@@ -1,0 +1,28 @@
+@import "src/sass/variables";
+@import "src/sass/global";
+@import "src/sass/mixins";
+@import "src/sass/projects";
+
+.projects {
+  opacity: 1;
+  width: 100%;
+  min-height: 100vh;
+  z-index: $z-projects-overlay;
+  padding: 100px 10%;
+  padding-left: 15%;
+
+  .projectList {
+    display: grid;
+    grid: 1fr;
+    grid-gap: 10px;
+    width: 100%;
+
+    @include r($medium) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include r($large) {
+      grid-gap: 25px;
+    }
+  }
+}

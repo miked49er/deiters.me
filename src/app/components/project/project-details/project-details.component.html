@@ -1,0 +1,61 @@
+<div class="scrollWrapper"
+  [active]="hideDetails"
+  deitersWheelScroll
+  (next)="hideSlide()"
+  (top)="showSlide()"
+  (bottom)="showProjectTitle()"
+  (bottomUp)="hideProjectList()"
+  (bottomDown)="revealProjectList()">
+
+  <deiters-nav [primary]="!primary" [accent]="primary"></deiters-nav>
+
+  <div class="projectHeaderWrapper">
+    <div class="projectSlide fullscreen"
+      [style.backgroundImage]="'url('+ project.location + project.featureImage +')'"
+      [@scrollBackground]="project.state"></div>
+
+    <div class="projectOverlay fullscreen"
+      [ngClass]="{'primary-bg': primary, 'accent-bg': !primary}"
+      [@scrollOverlay]="project.state"></div>
+
+    <div class="projectTitle"
+      [@scrollTitle]="project.state">
+      <div class="ascii-wrapper projectName">
+        <div class="ascii">{{project.asciiName}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detailsWrapper"
+    [@revealDetails]="hideDetails">
+
+    <div class="ascii-wrapper projectName">
+      <div class="ascii">{{project.asciiName}}</div>
+    </div>
+
+    <a class="live-link" *ngIf="project.site" [href]="project.site">Live</a>
+
+    <div class="detailsText">
+      <p>{{project.details}}</p>
+    </div>
+
+    <div class="projectFeature">
+      <img [src]="project.location + project.featureImage">
+    </div>
+
+    <div class="projectGrid">
+      <img *ngFor="let image of project.images"
+        [src]="project.location + image">
+    </div>
+  </div>
+
+  <deiters-overlay-shape
+    [slide]="moreProjects"
+    [title]="moreProjectsTitle"></deiters-overlay-shape>
+
+  <div class="moreProjects">
+    <deiters-project-list
+      [projectView]="projectList"></deiters-project-list>
+  </div>
+
+</div>

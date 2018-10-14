@@ -1,0 +1,10 @@
+<div class="projectOverlay"
+  [@scrollListOverlay]="slide"
+  [ngClass]="{'primary': primary, 'accent': !primary}"></div>
+
+<div class="projectTitle"
+  [@scrollListTitle]="slide">
+  <div class="ascii-wrapper projectName">
+    <div class="ascii">{{title}}</div>
+  </div>
+</div>

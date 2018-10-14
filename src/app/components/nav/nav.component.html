@@ -1,0 +1,9 @@
+<h1 class="logo project{{ project }}"
+  [ngClass]="{'primary': primary, 'accent': accent}"
+  [routerLink]="['']">Mike Deiters</h1>
+
+<ul class="nav-links project{{ project }}"
+  [ngClass]="{'primary': primary, 'accent': accent}">
+  <li><a [routerLink]="['/projects']">Projects</a></li>
+  <li><a [routerLink]="['/about']">About+Contact</a></li>
+</ul>
