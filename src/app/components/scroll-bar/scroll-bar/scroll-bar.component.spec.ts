@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ScrollBarComponent } from './scroll-bar.component';
 
@@ -6,7 +6,7 @@ describe('ScrollBarComponent', () => {
   let component: ScrollBarComponent;
   let fixture: ComponentFixture<ScrollBarComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ScrollBarComponent ]
     })

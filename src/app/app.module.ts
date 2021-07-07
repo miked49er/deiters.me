@@ -1,5 +1,5 @@
 import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import * as Hammer from 'hammerjs';
 
 import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent }
 ];
 
+@Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     const mc = new Hammer.Manager(element, {
@@ -62,7 +63,7 @@ export class MyHammerConfig extends HammerGestureConfig {
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule
   ],
   providers: [
