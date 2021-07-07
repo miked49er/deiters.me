@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     name: "Chem Reality",
     state: 'hide',
     link: "chem_reality",
-    site: "http://wiki.ggc.edu/wiki/ChemReality",
+    site: "",
     location: IMG + "chem_reality/",
     featureImage: "chemreality.jpg",
     images: [
@@ -69,7 +69,7 @@ export const PROJECTS: Project[] = [
     name: "Motorris",
     state: 'hide',
     link: "motorris",
-    site: "http://motorris.com",
+    site: "",
     location: IMG + "motorris/",
     featureImage: "motorris.jpg",
     images: [
