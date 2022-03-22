@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
     name: "Oh Counter, My Counter",
     state: 'hide',
     link: "oh_counter",
-    site: "http://ohcounter.com",
+    site: "https://miked49er.github.io/ohcounter-mycounter/",
     location: IMG + "ohcounter/",
     featureImage: "ohcounter.jpg",
     images: [
