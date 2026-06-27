@@ -5,6 +5,35 @@ export const IMG: string = "assets/img/";
 export const PROJECTS: Project[] = [
   {
     id: 1,
+    name: "Rooms To Go",
+    state: 'show',
+    link: "rtg",
+    site: "https://link.roomstogo.app/webInstall",
+    location: IMG + "rtg/",
+    featureImage: "rtg.avif",
+    images: [
+      "rtg1.png",
+      "rtg2.png",
+      "rtg3.png",
+      "rtg4.png",
+    ],
+    primary: true,
+    asciiName: `
+  ____   ___   ___  __  __ ____    _____ ___     ____  ___
+ |  _ \\ / _ \\ / _ \\|  \\/  / ___|  |_   _/ _ \\   / ___|/ _ \\
+ | |_) | | | | | | | |\\/| \\___ \\    | || | | | | |  _| | | |
+ |  _ <| |_| | |_| | |  | |___) |   | || |_| | | |_| | |_| |
+ |_| \\_\\\\___/ \\___/|_|  |_|____/    |_| \\___/   \\____|\\___/
+    `,
+    details: `Rooms To Go’s mobile app is built to make browsing and buying furniture easier from a phone, with a focus on helping users
+      discover products and move through the shopping experience more naturally. I contributed to features that improved how product data
+      was stored and content were delivered in the app, including GraphQL APIs that centralized backend data for client consumption and
+      Strapi CMS extensions that gave the team more flexibility in managing application content. I also built the UI for an image-based
+      search feature that allows users to upload a photo and find visually similar furniture in the catalog, expanding discovery beyond
+      traditional text-based browsing.`
+  },
+  {
+    id: 2,
     name: "GGC Maps",
     state: 'show',
     link: "ggc_maps",
@@ -25,15 +54,13 @@ export const PROJECTS: Project[] = [
  | |_| | |_| | |___  | |  | |/ ___ \\|  __/ ___) |
   \\____|\\____|\\____| |_|  |_/_/   \\_\\_|   |____/
     `,
-    details: `For students and faculty trying to find a room in some buildings on campus it is a major pain, in particular looking for a
-      room in the A building. Though our application, anyone is able to search for the room he or she is trying to find and immediately see
-      the location of the room highlighted on one of our maps. Before this application, the school had provided pdf's of each of the
-      buildings to the community. Some of these pdf's were poorly designed and difficult to find rooms on. In addition to that a number of
-      them had multiple rooms that were labeled with the same room number. As we created out maps we fixed these issues to help improve the
-      overall quality and experience of searching for rooms.`
+    details: `For students and faculty at GGC, finding a specific room in some campus buildings—especially the A building—was unnecessarily
+      difficult. GGC Maps lets anyone search for a room and immediately see its location highlighted on a cleaned‑up floor map, instead of
+      having to digging through static PDFs. While building the maps, we fixed issues in the school‑provided layouts such as poor design,
+      unclear labeling, and duplicate room numbers, improving the overall quality and usability of the maps for everyday use.`
   },
   {
-    id: 2,
+    id: 3,
     name: "Chem Reality",
     state: 'hide',
     link: "chem_reality",
@@ -59,13 +86,13 @@ export const PROJECTS: Project[] = [
  |  _ <| |___ / ___ \\| |___ | |  | |   | |
  |_| \\_\\_____/_/   \\_\\_____|___| |_|   |_|
     `,
-    details: `Augmented reality provides an extra layer of information over the user’s view, typically through the use of a camera lens and
-      a screen. Using augmented reality and image recognition together, I have created an application for smartphones and tablets which
-      allows the user to use the device’s camera and a picture of a molecule to view that molecule in three-dimensional space, which they
-      may interact with and view from any angle as if it actually exists in the real world.`
+    details: `Chem Reality is an augmented reality app that overlays interactive 3D molecules onto printed images using a phone or tablet
+      camera. By combining AR and image recognition, the app lets students view a molecule in three‑dimensional space, rotate it, and 
+      inspect it from any angle as if it were physically present. The goal is to make abstract chemistry concepts more tangible and 
+      engaging for learners using devices they already carry.`
   },
   {
-    id: 3,
+    id: 4,
     name: "Motorris",
     state: 'hide',
     link: "motorris",
@@ -86,15 +113,13 @@ export const PROJECTS: Project[] = [
  | |  | | |_| || || |_| |  _ <|  _ < | | ___) |
  |_|  |_|\\___/ |_| \\___/|_| \\_\\_| \\_\\___|____/
     `,
-    details: `Motorris is like a craigslist for motorcross bikes. I rebuilt the site from the ground up with the MEAN Stack. Redesigned
-      Motorris to give it a better overall layout, and now users have the ability to post bikes to the site themselves, without needing to
-      create an account. The users of Motorris were adimate on the fact that they did not want to have to create an account, but at the
-      same time be able to update and delete their bikes on the site. With this in mind I used a salted hash of the bike to create the
-      bike's editing url. So yes anyone with the link to the bike would be able to edit it, but someone is not going to just stumble apon a
-      bike's personal editing url unless the owner of the url didn't keep it safe.`
+    details: `Motorris is a marketplace for motocross bikes, originally run as a simple listing site. I rebuilt the site from the ground up
+      with the MEAN stack and redesigned the layout so it is easier to browse and post bikes. A key requirement from users was to post,
+      update, and delete bikes without creating an account, so I used a salted hash of each listing to generate a private editing URL. This
+      kept the workflow lightweight for users while still giving them a way to manage their own listings.`
   },
   {
-    id: 4,
+    id: 5,
     name: "Oh Counter, My Counter",
     state: 'hide',
     link: "oh_counter",
@@ -120,16 +145,14 @@ export const PROJECTS: Project[] = [
  | |__| |_| | |_| | |\\  | | | | |___|  _ <
   \\____\\___/ \\___/|_| \\_| |_| |_____|_| \\_\\
     `,
-    details: `Magic the Gathering, other trading card games, and some board games all require one to track some counters. Oh Counter, My
-      Counter was built using a modular design to allow the app to be used for any game. Using JSON I create a game template that the app
-      will build into the counter interface. With multiple players, a common issue to resolve is who goes first. In the menu there is a
-      random player selector option. This feature allow one to select all players or any number of them to be included in the random
-      selection. Knowing that phone storage is at a premium for some users and internet access is not always available, I designed the app
-      to be a progressive web app, PWA which allows one to use it offline. PWA\'s require significately less space than native apps, by
-      being available in the browser and the user has the option to install the PWA for offline use.`
+    details: `Many trading card games and board games require players to track multiple counters, but most counter apps are either tied to
+      a specific game or too rigid. Oh Counter, My Counter is a modular counter app designed to work with any game by driving the interface
+      from a JSON game template. It includes a random player selector that can choose from all or a subset of players to help decide who
+      goes first. To respect limited storage and offline play, I built it as a progressive web app (PWA) so it can run in the browser, be
+      installed for offline use, and consume significantly less space than a native app.`
   },
   {
-    id: 5,
+    id: 6,
     name: "Blackwing Sy_ths",
     state: 'hide',
     link: "blackwing_syths",
@@ -154,15 +177,13 @@ export const PROJECTS: Project[] = [
  |____/ |_|___|_| |_| |_|____/
          |_____|
     `,
-    details: `Music production is a creative art that many people have a knack for, but getting started is difficult. We decided to build
-      an application that would allow budding musicians interested in creating music with a MIDI board to create music with their own
-      keyboard. For those musicians working off laptops or any keyboard with ghosting, we built in an option for the user to have the
-      functionality of an anti-ghosting keyboard by just tapping the key instead of holding. While what we built would not be used in its
-      current form factor for live shows, it will allow musicians to experiment where ever they are without needed to either bring their
-      MIDI board with them or even needing to own one.`
+    details: `Blackwing Sy_ths is a browser‑based tool for creating music without needing a dedicated MIDI controller. We built the app so
+      aspiring producers can experiment using their laptop keyboard as a makeshift MIDI board, with an optional anti‑ghosting mode for
+      keyboards that struggle with multiple simultaneous key presses. While this version is not meant for live performance, it gives
+      musicians an easy way to explore ideas anywhere without carrying extra hardware.`
   },
   {
-    id: 6,
+    id: 7,
     name: "Is It Expired",
     state: 'hide',
     link: "is_it_expired",
@@ -186,9 +207,10 @@ export const PROJECTS: Project[] = [
  | |___ /  \\|  __/| ||  _ <| |___| |_| |
  |_____/_/\\_\\_|  |___|_| \\_\\_____|____/
     `,
-    details: `Retail establishments that sell tobacco products have a difficult time ensuring that all the product on their shelves are not
-      expired. Tobacco companies use cryptic codes to define when their product expires. I built this website to decrypt the expiration
-      dates so that employees can easily determine which products are expired and which are about to expire.`
+    details: `Retailers that sell tobacco products often struggle to keep expired items off their shelves because manufacturers use cryptic
+      batch codes instead of human‑readable dates. Is It Expired is a small web app that decodes those codes into clear expiration dates so
+      employees can quickly see which products are expired or about to expire. This helps stores reduce compliance risk and makes routine
+      shelf checks significantly faster and less error‑prone.`
   }
 ];
 
