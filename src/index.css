@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "Nova Mono", monospace;
+  --font-sans: "Open Sans", sans-serif;
+
+  --color-primary: #3b0764;
+  --color-primary-light: #5b21b6;
+  --color-secondary: #ffffff;
+  --color-accent: #d4af37;
+}
+
+/*
+Original Angular z-index scale (src/sass/_variables.scss), kept here for reference
+until the layered components (feature carousel, overlays, header) are rebuilt:
+  scroll: 1, base: 2, project1-5: 10-14, overlay: 20, projects-overlay: 21,
+  about-overlay: 22, header-overlay: 23, header: 30
+*/

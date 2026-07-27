@@ -1,0 +1,100 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Rooms To Go",
+      "link": "rtg",
+      "site": "https://link.roomstogo.app/webInstall",
+      "location": "/assets/img/rtg/",
+      "featureImage": "rtg.avif",
+      "images": ["rtg1.png", "rtg2.png", "rtg3.png", "rtg4.png"],
+      "primary": true,
+      "asciiFile": "/assets/img/rtg/ascii.txt",
+      "details": "Rooms To Go’s mobile app is built to make browsing and buying furniture easier from a phone, with a focus on helping users discover products and move through the shopping experience more naturally. I contributed to features that improved how product data was stored and content were delivered in the app, including GraphQL APIs that centralized backend data for client consumption and Strapi CMS extensions that gave the team more flexibility in managing application content. I also built the UI for an image-based search feature that allows users to upload a photo and find visually similar furniture in the catalog, expanding discovery beyond traditional text-based browsing."
+    },
+    {
+      "id": 2,
+      "name": "GGC Maps",
+      "link": "ggc_maps",
+      "site": "http://ggcmaps.com",
+      "location": "/assets/img/ggcmaps/",
+      "featureImage": "ggcmaps.jpg",
+      "images": ["ggcmaps1.png", "ggcmaps2.png", "ggcmaps3.png", "ggcmaps4.png"],
+      "primary": true,
+      "asciiFile": "/assets/img/ggcmaps/ascii.txt",
+      "details": "For students and faculty at GGC, finding a specific room in some campus buildings—especially the A building—was unnecessarily difficult. GGC Maps lets anyone search for a room and immediately see its location highlighted on a cleaned‑up floor map, instead of having to digging through static PDFs. While building the maps, we fixed issues in the school‑provided layouts such as poor design, unclear labeling, and duplicate room numbers, improving the overall quality and usability of the maps for everyday use."
+    },
+    {
+      "id": 3,
+      "name": "Chem Reality",
+      "link": "chem_reality",
+      "site": "",
+      "location": "/assets/img/chem_reality/",
+      "featureImage": "chemreality.jpg",
+      "images": ["chemreality1.png", "chemreality2.png", "chemreality3.png", "chemreality4.png"],
+      "primary": true,
+      "asciiFile": "/assets/img/chem_reality/ascii.txt",
+      "details": "Chem Reality is an augmented reality app that overlays interactive 3D molecules onto printed images using a phone or tablet camera. By combining AR and image recognition, the app lets students view a molecule in three‑dimensional space, rotate it, and inspect it from any angle as if it were physically present. The goal is to make abstract chemistry concepts more tangible and engaging for learners using devices they already carry."
+    },
+    {
+      "id": 4,
+      "name": "Motorris",
+      "link": "motorris",
+      "site": "",
+      "location": "/assets/img/motorris/",
+      "featureImage": "motorris.jpg",
+      "images": ["motorris1.png", "motorris2.png", "motorris3.png", "motorris4.png"],
+      "primary": true,
+      "asciiFile": "/assets/img/motorris/ascii.txt",
+      "details": "Motorris is a marketplace for motocross bikes, originally run as a simple listing site. I rebuilt the site from the ground up with the MEAN stack and redesigned the layout so it is easier to browse and post bikes. A key requirement from users was to post, update, and delete bikes without creating an account, so I used a salted hash of each listing to generate a private editing URL. This kept the workflow lightweight for users while still giving them a way to manage their own listings."
+    },
+    {
+      "id": 5,
+      "name": "Oh Counter, My Counter",
+      "link": "oh_counter",
+      "site": "https://miked49er.github.io/ohcounter-mycounter/",
+      "location": "/assets/img/ohcounter/",
+      "featureImage": "ohcounter.jpg",
+      "images": ["ohcounter1.png", "ohcounter2.png", "ohcounter3.png", "ohcounter4.jpg"],
+      "primary": false,
+      "asciiFile": "/assets/img/ohcounter/ascii.txt",
+      "details": "Many trading card games and board games require players to track multiple counters, but most counter apps are either tied to a specific game or too rigid. Oh Counter, My Counter is a modular counter app designed to work with any game by driving the interface from a JSON game template. It includes a random player selector that can choose from all or a subset of players to help decide who goes first. To respect limited storage and offline play, I built it as a progressive web app (PWA) so it can run in the browser, be installed for offline use, and consume significantly less space than a native app."
+    },
+    {
+      "id": 6,
+      "name": "Blackwing Sy_ths",
+      "link": "blackwing_syths",
+      "site": "",
+      "location": "/assets/img/blackwing_syths/",
+      "featureImage": "syths.jpg",
+      "images": ["syths1.png", "syths2.png"],
+      "primary": false,
+      "asciiFile": "/assets/img/blackwing_syths/ascii.txt",
+      "details": "Blackwing Sy_ths is a browser‑based tool for creating music without needing a dedicated MIDI controller. We built the app so aspiring producers can experiment using their laptop keyboard as a makeshift MIDI board, with an optional anti‑ghosting mode for keyboards that struggle with multiple simultaneous key presses. While this version is not meant for live performance, it gives musicians an easy way to explore ideas anywhere without carrying extra hardware."
+    },
+    {
+      "id": 7,
+      "name": "Is It Expired",
+      "link": "is_it_expired",
+      "site": "https://isitexpired.p404.xyz",
+      "location": "/assets/img/isitexpired/",
+      "featureImage": "isitexpired.jpg",
+      "images": ["isitexpired1.png", "isitexpired2.png"],
+      "primary": false,
+      "asciiFile": "/assets/img/isitexpired/ascii.txt",
+      "details": "Retailers that sell tobacco products often struggle to keep expired items off their shelves because manufacturers use cryptic batch codes instead of human‑readable dates. Is It Expired is a small web app that decodes those codes into clear expiration dates so employees can quickly see which products are expired or about to expire. This helps stores reduce compliance risk and makes routine shelf checks significantly faster and less error‑prone."
+    }
+  ],
+  "moreProjects": {
+    "id": 0,
+    "name": "More Projects",
+    "link": "",
+    "site": "",
+    "location": "/assets/img/",
+    "featureImage": "projects-bg.jpg",
+    "images": [],
+    "primary": true,
+    "asciiFile": "/assets/img/more-projects/ascii.txt",
+    "details": ""
+  }
+}
