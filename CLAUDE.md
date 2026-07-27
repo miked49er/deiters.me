@@ -35,3 +35,17 @@ Run a single test file: `npx vitest run src/App.test.tsx`. Drop `run` (`npx vite
 ## Status
 
 This is a scaffold, not a finished rewrite: `Projects`, `ProjectDetails`, and `About` are placeholders, and the original feature carousel, wheel/scroll directives, Hammer.js touch gestures, and overlays have not been rebuilt yet. `Home` is the only route doing real work (fetching and rendering `projects.json`) and exists mainly to prove the data flow end-to-end.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues (`miked49er/deiters.me`), using the `gh` CLI. See `agent-docs/issue-tracker.md`.
+
+### Triage labels
+
+Default vocabulary (needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix). See `agent-docs/triage-labels.md`.
+
+### Domain docs
+
+Single-context — `CONTEXT.md` + `agent-docs/` at the repo root. See `agent-docs/domain.md`.
