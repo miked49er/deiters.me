@@ -7,7 +7,16 @@
   --color-primary: #3b0764;
   --color-primary-light: #5b21b6;
   --color-secondary: #ffffff;
-  --color-accent: #d4af37;
+  --color-accent: #9333ea;
+}
+
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s steps(1) infinite;
 }
 
 /*

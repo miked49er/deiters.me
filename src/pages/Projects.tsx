@@ -1,3 +1,10 @@
+import Header from '../components/Header'
+
 export default function Projects() {
-  return <main className="p-6 text-primary">Projects list view — placeholder.</main>
+  return (
+    <main className="min-h-screen bg-primary p-6 text-secondary">
+      <Header links={[{ href: '/', label: 'Home' }]} />
+      <p className="mt-6">Projects list view — placeholder.</p>
+    </main>
+  )
 }

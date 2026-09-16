@@ -7,7 +7,7 @@ describe('App', () => {
     vi.unstubAllGlobals()
   })
 
-  it('renders the nav and loads project data from /data/projects.json', async () => {
+  it('renders the header and loads featured project data from /data/projects.json', async () => {
     const fetchMock = vi.fn((input: RequestInfo | URL) => {
       const url = String(input)
       if (url.endsWith('/data/projects.json')) {
@@ -23,7 +23,7 @@ describe('App', () => {
                   location: '/assets/img/rtg/',
                   featureImage: 'rtg.avif',
                   images: [],
-                  primary: true,
+                  featured: true,
                   asciiFile: '/assets/img/rtg/ascii.txt',
                   details: '',
                 },
@@ -36,7 +36,7 @@ describe('App', () => {
                 location: '/assets/img/',
                 featureImage: 'projects-bg.jpg',
                 images: [],
-                primary: true,
+                featured: true,
                 asciiFile: '/assets/img/more-projects/ascii.txt',
                 details: '',
               },
@@ -50,12 +50,13 @@ describe('App', () => {
 
     render(<App />)
 
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Projects')).toBeInTheDocument()
-    expect(screen.getByText('About')).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText('About')).toBeInTheDocument()
+      expect(screen.getByText('Projects')).toBeInTheDocument()
+    })
 
     await waitFor(() => {
-      expect(screen.getByText('Rooms To Go')).toBeInTheDocument()
+      expect(screen.getByText('rtg.tsx')).toBeInTheDocument()
     })
   })
 })
