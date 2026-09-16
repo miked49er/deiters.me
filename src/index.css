@@ -1,11 +1,15 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --font-mono: "Nova Mono", monospace;
   --font-sans: "Open Sans", sans-serif;
 
-  --color-primary: #3b0764;
-  --color-primary-light: #5b21b6;
+  --color-primary: #18181b;
+  --color-primary-light: #27272a;
   --color-secondary: #ffffff;
   --color-accent: #9333ea;
 }

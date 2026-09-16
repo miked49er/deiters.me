@@ -1,4 +1,5 @@
 import { MustacheIcon } from './icons'
+import { handleInPageNavClick } from '../hooks/useInViewNavClick'
 
 interface HeaderLink {
   href: string
@@ -19,7 +20,12 @@ export default function Header({ links }: HeaderProps) {
         </a>
         <nav className="flex gap-6 text-sm">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="text-secondary/80 hover:text-accent">
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(e) => handleInPageNavClick(e, link.href)}
+              className="text-secondary/80 hover:text-accent"
+            >
               {link.label}
             </a>
           ))}

@@ -26,7 +26,7 @@ export default function Home() {
       </div>
 
       <footer className="border-t border-secondary/10 px-4 py-8 text-center font-mono text-xs text-secondary/40 sm:px-8">
-        $ echo "thanks for stopping by" <span className="cursor-blink">▊</span>
+        $ echo "Session terminated. Thanks for stopping by." <span className="cursor-blink">▊</span>
       </footer>
     </main>
   )

@@ -3,16 +3,15 @@ import { Link } from 'react-router-dom'
 import type { Project } from '../types/project'
 import { PROJECTS_TITLE, SLASH_ASCII } from '../data/ascii'
 import { useAsciiBanner } from '../hooks/useAsciiBanner'
+import { useLightbox } from '../hooks/useLightbox'
+import { projectImageSrc } from '../lib/projectImageSrc'
 import { MustacheIcon } from './icons'
 import Lightbox from './Lightbox'
+import { VIEW_ALL_CLASSES } from './buttonStyles'
 
 interface FeaturedProjectsProps {
   featured: Project[]
   totalCount: number
-}
-
-function projectImageSrc(project: Project, file: string): string {
-  return `${project.location}${file}`
 }
 
 function Row({
@@ -26,7 +25,7 @@ function Row({
   reverse: boolean
   expanded: boolean
   onToggle: () => void
-  onImageClick: (src: string) => void
+  onImageClick: (index: number) => void
 }) {
   const banner = useAsciiBanner(project.asciiFile)
 
@@ -67,13 +66,13 @@ function Row({
 
       {expanded && project.images.length > 0 && (
         <div className="flex gap-2 overflow-x-auto border-t border-secondary/10 p-4">
-          {project.images.map((img) => (
+          {project.images.map((img, i) => (
             <img
               key={img}
               src={projectImageSrc(project, img)}
               alt=""
               className="h-16 w-16 flex-shrink-0 cursor-pointer rounded-lg border border-secondary/10 object-cover"
-              onClick={() => onImageClick(projectImageSrc(project, img))}
+              onClick={() => onImageClick(i)}
             />
           ))}
         </div>
@@ -84,7 +83,7 @@ function Row({
 
 export default function FeaturedProjects({ featured, totalCount }: FeaturedProjectsProps) {
   const [expandedId, setExpandedId] = useState<string | number | null>(null)
-  const [lightbox, setLightbox] = useState<string | null>(null)
+  const lightbox = useLightbox()
 
   return (
     <section id="projects" className="scroll-mt-24">
@@ -100,8 +99,8 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
           </div>
           <h2 className="sr-only">Featured work</h2>
         </div>
-        <Link to="/projects" className="hidden text-sm text-secondary/70 hover:text-accent sm:block">
-          View all ({totalCount}) →
+        <Link to="/projects" className={`hidden sm:inline-flex ${VIEW_ALL_CLASSES}`}>
+          [ view all ({totalCount}) → ]
         </Link>
       </div>
 
@@ -113,16 +112,21 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
             reverse={i % 2 === 1}
             expanded={expandedId === project.id}
             onToggle={() => setExpandedId((cur) => (cur === project.id ? null : project.id))}
-            onImageClick={setLightbox}
+            onImageClick={(index) => lightbox.open(project.images.map((img) => projectImageSrc(project, img)), index)}
           />
         ))}
       </div>
 
-      <Link to="/projects" className="mt-6 block text-sm text-secondary/70 hover:text-accent sm:hidden">
-        View all ({totalCount}) →
+      <Link to="/projects" className={`mt-6 sm:hidden ${VIEW_ALL_CLASSES}`}>
+        [ view all ({totalCount}) → ]
       </Link>
 
-      <Lightbox src={lightbox} onClose={() => setLightbox(null)} />
+      <Lightbox
+        images={lightbox.images}
+        index={lightbox.index}
+        onIndexChange={lightbox.setIndex}
+        onClose={lightbox.close}
+      />
     </section>
   )
 }

@@ -2,16 +2,12 @@ import { NAME_ASCII, SLASH_ASCII } from '../data/ascii'
 import { GithubIcon, LinkedinIcon, MailIcon } from './icons'
 import TerminalWindow from './TerminalWindow'
 
-// TODO: replace with real bio copy before shipping.
-const ABOUT_BIO = `Hi, I'm Mike — a software engineer who likes building things that
-work well and look like they belong on a CRT monitor. I spend most of my
-time in React, Node, and whatever backend a project actually needs, with
-a soft spot for small self-contained tools that solve one problem well.
+const ABOUT_BIO = `I'm a Senior Software Engineer based in Atlanta, specializing in React Native and full-stack development. I build mobile and web applications with a focus on clean code, smooth UX, and scalable architecture.
 
-Outside of shipping code I'm usually tinkering with synths, board games,
-or whatever half-finished side project is currently living on my desk.`
+Over the past 7+ years, I've led engineering teams, built GraphQL APIs, and shipped features across mobile platforms. I care about writing maintainable code, improving developer workflows, and mentoring other engineers.
 
-// TODO: confirm this is the real LinkedIn URL before shipping.
+Outside of work, I'm passionate about long-exposure photography and gaming. I'm also an Eagle Scout.`
+
 const CONTACT_LINKS = [
   { label: 'Email', href: 'mailto:mike@deiters.me', Icon: MailIcon },
   { label: 'GitHub', href: 'https://github.com/miked49er', Icon: GithubIcon },
