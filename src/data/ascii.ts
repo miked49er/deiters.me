@@ -35,3 +35,11 @@ export const PROJECTS_TITLE: string = `
  |  __/|  _ <| |_| | |_| | |__| |___  | |  ___) |
  |_|   |_| \\_\\\\___/ \\___/|_____\\____| |_| |____/
 `;
+
+export const SLASH_ASCII: string = `
+     ____
+    / / /
+   / / /
+  / / /
+ /_/_/
+`;
