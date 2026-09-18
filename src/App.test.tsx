@@ -56,4 +56,16 @@ describe('App', () => {
     expect(screen.getByText('[ projects ]')).toBeInTheDocument()
     expect(screen.getByText('rtg.tsx')).toBeInTheDocument()
   })
+
+  it('redirects an unmatched path to the Landing Page', async () => {
+    const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [], moreProjects: null }))))
+    vi.stubGlobal('fetch', fetchMock)
+    window.history.pushState({}, '', '/this-route-does-not-exist')
+
+    await loadProjectsStore()
+    render(<App />)
+
+    expect(screen.getByText('[ about ]')).toBeInTheDocument()
+    expect(window.location.pathname).toBe('/')
+  })
 })
