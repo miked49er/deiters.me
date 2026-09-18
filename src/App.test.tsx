@@ -1,13 +1,14 @@
 import { describe, expect, it, vi, afterEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import App from './App'
+import { loadProjectsStore } from './lib/projectsStore'
 
 describe('App', () => {
   afterEach(() => {
     vi.unstubAllGlobals()
   })
 
-  it('renders the header and loads featured project data from /data/projects.json', async () => {
+  it('renders the header and featured project data loaded from /data/projects.json', async () => {
     const fetchMock = vi.fn((input: RequestInfo | URL) => {
       const url = String(input)
       if (url.endsWith('/data/projects.json')) {
@@ -48,15 +49,11 @@ describe('App', () => {
     })
     vi.stubGlobal('fetch', fetchMock)
 
+    await loadProjectsStore()
     render(<App />)
 
-    await waitFor(() => {
-      expect(screen.getByText('About')).toBeInTheDocument()
-      expect(screen.getByText('Projects')).toBeInTheDocument()
-    })
-
-    await waitFor(() => {
-      expect(screen.getByText('rtg.tsx')).toBeInTheDocument()
-    })
+    expect(screen.getByText('[ about ]')).toBeInTheDocument()
+    expect(screen.getByText('[ projects ]')).toBeInTheDocument()
+    expect(screen.getByText('rtg.tsx')).toBeInTheDocument()
   })
 })

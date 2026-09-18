@@ -3,7 +3,7 @@ import type { Project } from '../types/project'
 import { useAsciiBanner } from '../hooks/useAsciiBanner'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import { MustacheIcon } from './icons'
-import { VIEW_ALL_CLASSES } from './buttonStyles'
+import BracketLink from './BracketLink'
 
 const TITLE_FONT_SIZE = 9
 
@@ -48,9 +48,9 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
         <div className="flex items-center gap-2 border-b border-secondary/10 bg-secondary/[0.04] px-4 py-2.5">
           <MustacheIcon className="h-3.5 w-7 text-accent" />
           <span className="ml-2 truncate font-mono text-xs text-secondary/40">{project.link}.tsx</span>
-          <button className="ml-auto font-mono text-xl text-secondary" onClick={onClose} aria-label="Close">
-            [x]
-          </button>
+          <BracketLink className="ml-auto" onClick={onClose} aria-label="Close">
+            [ x ]
+          </BracketLink>
         </div>
         <img
           src={projectImageSrc(project, project.featureImage)}
@@ -73,14 +73,9 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
           <p className="mt-4 leading-relaxed text-secondary/70">{project.details}</p>
 
           {project.site && (
-            <a
-              href={project.site}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`mt-4 ${VIEW_ALL_CLASSES}`}
-            >
+            <BracketLink href={project.site} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block">
               [ visit site → ]
-            </a>
+            </BracketLink>
           )}
 
           {images.length > 0 && (

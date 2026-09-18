@@ -8,6 +8,7 @@ import Header from '../components/Header'
 import { MustacheIcon } from '../components/icons'
 import ProjectDetailModal from '../components/ProjectDetailModal'
 import Lightbox from '../components/Lightbox'
+import { PROJECTS_TITLE, SLASH_ASCII } from '../data/ascii'
 import type { Project } from '../types/project'
 
 // Sized to fit the widest ascii banner in public/data/projects.json without clipping.
@@ -59,34 +60,40 @@ export default function Projects() {
   const lightbox = useLightbox()
   const columnCount = useColumnCount()
 
-  if (error) {
-    return <p className="p-6 text-red-600">Failed to load projects.</p>
-  }
-
-  if (!data) {
-    return <p className="p-6 text-secondary">Loading…</p>
-  }
-
-  const openProject = data.projects.find((p) => p.id === openId) ?? null
+  const openProject = data?.projects.find((p) => p.id === openId) ?? null
 
   const columns: Project[][] = Array.from({ length: columnCount }, () => [])
-  data.projects.forEach((project, i) => columns[i % columnCount].push(project))
+  data?.projects.forEach((project, i) => columns[i % columnCount].push(project))
 
   return (
     <main className="min-h-screen bg-primary font-sans text-secondary">
       <Header links={[{ href: '/', label: 'Home' }]} />
 
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-8">
-        <div className="flex gap-6">
-          {columns.map((column, i) => (
-            <div key={i} className="flex flex-1 flex-col">
-              {column.map((project) => (
-                <Card key={project.id} project={project} onOpen={() => setOpenId(project.id)} />
-              ))}
-            </div>
-          ))}
+      {Boolean(error) && <p className="p-6 text-red-600">Failed to load projects.</p>}
+
+      {data && (
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-8">
+          <div className="mb-6 flex gap-2 overflow-x-auto">
+            <pre aria-hidden className="text-[8px] leading-tight text-accent/40 sm:text-[10px]">
+              {SLASH_ASCII.replace(/^\n/, '')}
+            </pre>
+            <pre aria-hidden className="text-[8px] leading-tight text-accent/70 sm:text-[10px]">
+              {PROJECTS_TITLE.replace(/^\n/, '')}
+            </pre>
+          </div>
+          <h1 className="sr-only">Projects</h1>
+
+          <div className="flex gap-6">
+            {columns.map((column, i) => (
+              <div key={i} className="flex flex-1 flex-col">
+                {column.map((project) => (
+                  <Card key={project.id} project={project} onOpen={() => setOpenId(project.id)} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {openProject && (
         <ProjectDetailModal

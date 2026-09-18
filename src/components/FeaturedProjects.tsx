@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import type { Project } from '../types/project'
 import { PROJECTS_TITLE, SLASH_ASCII } from '../data/ascii'
 import { useAsciiBanner } from '../hooks/useAsciiBanner'
@@ -7,7 +6,7 @@ import { useLightbox } from '../hooks/useLightbox'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import { MustacheIcon } from './icons'
 import Lightbox from './Lightbox'
-import { VIEW_ALL_CLASSES } from './buttonStyles'
+import BracketLink from './BracketLink'
 
 interface FeaturedProjectsProps {
   featured: Project[]
@@ -99,9 +98,9 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
           </div>
           <h2 className="sr-only">Featured work</h2>
         </div>
-        <Link to="/projects" className={`hidden sm:inline-flex ${VIEW_ALL_CLASSES}`}>
+        <BracketLink to="/projects" className="hidden sm:inline-flex">
           [ view all ({totalCount}) → ]
-        </Link>
+        </BracketLink>
       </div>
 
       <div className="space-y-6">
@@ -117,9 +116,9 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
         ))}
       </div>
 
-      <Link to="/projects" className={`mt-6 sm:hidden ${VIEW_ALL_CLASSES}`}>
+      <BracketLink to="/projects" className="mt-6 inline-flex sm:hidden">
         [ view all ({totalCount}) → ]
-      </Link>
+      </BracketLink>
 
       <Lightbox
         images={lightbox.images}

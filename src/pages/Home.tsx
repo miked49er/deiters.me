@@ -7,11 +7,20 @@ export default function Home() {
   const { data, error } = useProjects()
 
   if (error) {
-    return <p className="p-6 text-red-600">Failed to load projects.</p>
+    return (
+      <main className="min-h-screen bg-primary font-sans text-secondary">
+        <Header links={[{ href: '#about', label: 'About' }, { href: '#projects', label: 'Projects' }]} />
+        <p className="p-6 text-red-600">Failed to load projects.</p>
+      </main>
+    )
   }
 
   if (!data) {
-    return <p className="p-6 text-secondary">Loading…</p>
+    return (
+      <main className="min-h-screen bg-primary font-sans text-secondary">
+        <Header links={[{ href: '#about', label: 'About' }, { href: '#projects', label: 'Projects' }]} />
+      </main>
+    )
   }
 
   const featured = data.projects.filter((project) => project.featured)

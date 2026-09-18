@@ -1,5 +1,5 @@
 import { MustacheIcon } from './icons'
-import { handleInPageNavClick } from '../hooks/useInViewNavClick'
+import BracketLink from './BracketLink'
 
 interface HeaderLink {
   href: string
@@ -18,16 +18,11 @@ export default function Header({ links }: HeaderProps) {
           <MustacheIcon className="h-3 w-6 text-accent" />
           <span className="ml-2 font-mono text-sm text-secondary">deiters.me</span>
         </a>
-        <nav className="flex gap-6 text-sm">
+        <nav className="flex gap-6">
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleInPageNavClick(e, link.href)}
-              className="text-secondary/80 hover:text-accent"
-            >
-              {link.label}
-            </a>
+            <BracketLink key={link.href} href={link.href}>
+              [ {link.label.toLowerCase()} ]
+            </BracketLink>
           ))}
         </nav>
       </div>

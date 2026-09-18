@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import BracketLink from './BracketLink'
 
 interface LightboxProps {
   images: string[]
@@ -70,9 +71,9 @@ export default function Lightbox({ images, index, onIndexChange, onClose }: Ligh
         </span>
       )}
 
-      <button className="absolute right-6 top-6 font-mono text-2xl text-secondary" onClick={onClose} aria-label="Close">
-        [x]
-      </button>
+      <BracketLink className="absolute right-6 top-6" onClick={onClose} aria-label="Close">
+        [ x ]
+      </BracketLink>
     </div>
   )
 }
