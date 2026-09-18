@@ -67,7 +67,7 @@ export default function Projects() {
 
   return (
     <main className="min-h-screen bg-primary font-sans text-secondary">
-      <Header links={[{ href: '/', label: 'Home' }]} />
+      <Header links={[{ to: '/', label: 'Home' }]} />
 
       {Boolean(error) && <p className="p-6 text-red-600">Failed to load projects.</p>}
 
