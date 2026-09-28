@@ -5,7 +5,7 @@ import { useAsciiBanner } from '../hooks/useAsciiBanner'
 import { useLightbox } from '../hooks/useLightbox'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import Header from '../components/Header'
-import { MustacheIcon } from '../components/icons'
+import HandlebarIcon from '../assets/icons/handlebar.svg?react'
 import ProjectDetailModal from '../components/ProjectDetailModal'
 import Lightbox from '../components/Lightbox'
 import { PROJECTS_TITLE, SLASH_ASCII } from '../data/ascii'
@@ -23,7 +23,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
       className="group mb-6 flex w-full flex-col overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] text-left shadow-xl shadow-black/30 transition-colors hover:border-accent/40"
     >
       <div className="flex items-center gap-2 border-b border-secondary/10 bg-secondary/[0.04] px-4 py-2.5">
-        <MustacheIcon className="h-3.5 w-7 text-accent" />
+        <HandlebarIcon className="h-4 w-8 text-accent" />
         <span className="ml-2 truncate font-mono text-xs text-secondary/40">{project.link}.tsx</span>
       </div>
       <div className="h-40 w-full overflow-hidden">

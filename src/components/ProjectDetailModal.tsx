@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import type { Project } from '../types/project'
 import { useAsciiBanner } from '../hooks/useAsciiBanner'
 import { projectImageSrc } from '../lib/projectImageSrc'
-import { MustacheIcon } from './icons'
+import HandlebarIcon from '../assets/icons/handlebar.svg?react'
 import BracketLink from './BracketLink'
 
 const TITLE_FONT_SIZE = 9
@@ -46,7 +46,7 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-2 border-b border-secondary/10 bg-secondary/[0.04] px-4 py-2.5">
-          <MustacheIcon className="h-3.5 w-7 text-accent" />
+          <HandlebarIcon className="h-4 w-8 text-accent" />
           <span className="ml-2 truncate font-mono text-xs text-secondary/40">{project.link}.tsx</span>
           <BracketLink className="ml-auto" onClick={onClose} aria-label="Close">
             [ x ]

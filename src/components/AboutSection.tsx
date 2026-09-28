@@ -1,5 +1,7 @@
 import { NAME_ASCII, SLASH_ASCII } from '../data/ascii'
-import { GithubIcon, LinkedinIcon, MailIcon } from './icons'
+import EmailIcon from '../assets/icons/email.svg?react'
+import GithubIcon from '../assets/icons/github.svg?react'
+import LinkedinIcon from '../assets/icons/linkedin.svg?react'
 import TerminalWindow from './TerminalWindow'
 
 const ABOUT_BIO = `I'm a Senior Software Engineer based in Atlanta, specializing in React Native and full-stack development. I build mobile and web applications with a focus on clean code, smooth UX, and scalable architecture.
@@ -9,7 +11,7 @@ Over the past 7+ years, I've led engineering teams, built GraphQL APIs, and ship
 Outside of work, I'm passionate about long-exposure photography and gaming. I'm also an Eagle Scout.`
 
 const CONTACT_LINKS = [
-  { label: 'Email', href: 'mailto:mike@deiters.me', Icon: MailIcon },
+  { label: 'Email', href: 'mailto:mike@deiters.me', Icon: EmailIcon },
   { label: 'GitHub', href: 'https://github.com/miked49er', Icon: GithubIcon },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/mikedeiters', Icon: LinkedinIcon },
 ]
@@ -29,15 +31,15 @@ export default function AboutSection() {
         <h1 className="sr-only">Mike Deiters</h1>
         <p className="mt-4 max-w-prose leading-relaxed whitespace-pre-line text-secondary/90">{ABOUT_BIO}</p>
 
-        <ul className="mt-6 flex flex-wrap gap-3">
+        <ul className="mt-6 flex flex-wrap gap-1">
           {CONTACT_LINKS.map(({ label, href, Icon }) => (
             <li key={label}>
               <a
                 href={href}
-                className="inline-flex items-center gap-2 rounded-full border border-secondary/10 bg-secondary/[0.03] px-4 py-2 text-sm text-secondary/90 transition-colors hover:border-accent/50 hover:text-accent"
+                aria-label={label}
+                className="inline-flex items-center justify-center p-1.5 text-secondary/90 transition-colors hover:text-accent"
               >
-                <Icon className="h-4 w-4" />
-                {label}
+                <Icon className="h-8 w-8" />
               </a>
             </li>
           ))}
