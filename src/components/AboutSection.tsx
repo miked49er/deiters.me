@@ -18,7 +18,7 @@ const CONTACT_LINKS = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="grid scroll-mt-24 gap-8 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-12">
+    <section id="about" className="grid scroll-mt-16 gap-8 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-12">
       <div>
         <div className="mb-3 flex gap-2 overflow-x-auto">
           <pre aria-hidden className="text-[8px] leading-tight text-accent/40 sm:text-[10px]">

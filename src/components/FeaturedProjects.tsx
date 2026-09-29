@@ -85,7 +85,7 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
   const lightbox = useLightbox()
 
   return (
-    <section id="projects" className="scroll-mt-24">
+    <section id="projects" className="scroll-mt-16">
       <div className="mb-6 flex items-end justify-between">
         <div>
           <div className="flex gap-2 overflow-x-auto">
