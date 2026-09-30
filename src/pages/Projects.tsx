@@ -72,7 +72,7 @@ export default function Projects() {
       {Boolean(error) && <p className="p-6 text-red-600">Failed to load projects.</p>}
 
       {data && (
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-8">
+        <div className="mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-16">
           <div className="mb-6 flex gap-2 overflow-x-auto">
             <pre aria-hidden className="text-[8px] leading-tight text-accent/40 sm:text-[10px]">
               {SLASH_ASCII.replace(/^\n/, '')}
