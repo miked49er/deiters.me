@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import FeaturedProjects from './FeaturedProjects'
 import type { Project } from '../types/project'
@@ -25,17 +25,29 @@ const renderRow = (p: Project) =>
     </MemoryRouter>,
   )
 
+const LINK = '[ visit site → ]'
+
 describe('FeaturedProjects', () => {
-  it('links to the live site when project.site is set', () => {
+  it('hides the live-site link until the row is expanded', () => {
     renderRow(project())
-    const link = screen.getByRole('link', { name: '[ visit site → ]' })
+    expect(screen.queryByText(LINK)).not.toBeInTheDocument()
+  })
+
+  it('shows the live-site link above "Show less" when expanded', () => {
+    renderRow(project())
+    fireEvent.click(screen.getByText('Read more'))
+
+    const link = screen.getByRole('link', { name: LINK })
     expect(link).toHaveAttribute('href', 'https://example.com')
     expect(link).toHaveAttribute('target', '_blank')
     expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+    const showLess = screen.getByText('Show less')
+    expect(link.compareDocumentPosition(showLess) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
   })
 
   it('omits the live-site link when project.site is empty', () => {
     renderRow(project({ site: '' }))
-    expect(screen.queryByText('[ visit site → ]')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByText('Read more'))
+    expect(screen.queryByText(LINK)).not.toBeInTheDocument()
   })
 })

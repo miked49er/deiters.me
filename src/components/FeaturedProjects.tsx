@@ -60,13 +60,15 @@ function Row({
             <p className="mt-3 leading-relaxed text-secondary/70">
               {expanded ? project.details : `${project.details.slice(0, 140)}…`}
             </p>
-            <p className="mt-3 text-sm text-accent hover:underline">{expanded ? 'Show less' : 'Read more'}</p>
           </button>
-          {project.site && (
+          {expanded && project.site && (
             <BracketLink href={project.site} target="_blank" rel="noopener noreferrer" className="mt-3 self-start">
               [ visit site → ]
             </BracketLink>
           )}
+          <button onClick={onToggle} className="mt-3 self-start text-left text-sm text-accent hover:underline">
+            {expanded ? 'Show less' : 'Read more'}
+          </button>
         </div>
       </div>
 
