@@ -47,20 +47,27 @@ function Row({
           />
         </button>
 
-        <button onClick={onToggle} className="flex flex-1 flex-col justify-center p-5 text-left sm:p-8">
-          {banner ? (
-            <pre aria-hidden className="overflow-x-auto text-[8px] leading-tight text-accent/70 sm:text-[9px]">
-              {banner}
-            </pre>
-          ) : (
-            <p className="text-xl font-semibold text-secondary">{project.name}</p>
+        <div className="flex flex-1 flex-col justify-center p-5 sm:p-8">
+          <button onClick={onToggle} className="block text-left">
+            {banner ? (
+              <pre aria-hidden className="overflow-x-auto text-[8px] leading-tight text-accent/70 sm:text-[9px]">
+                {banner}
+              </pre>
+            ) : (
+              <p className="text-xl font-semibold text-secondary">{project.name}</p>
+            )}
+            <h3 className="sr-only">{project.name}</h3>
+            <p className="mt-3 leading-relaxed text-secondary/70">
+              {expanded ? project.details : `${project.details.slice(0, 140)}…`}
+            </p>
+            <p className="mt-3 text-sm text-accent hover:underline">{expanded ? 'Show less' : 'Read more'}</p>
+          </button>
+          {project.site && (
+            <BracketLink href={project.site} target="_blank" rel="noopener noreferrer" className="mt-3 self-start">
+              [ visit site → ]
+            </BracketLink>
           )}
-          <h3 className="sr-only">{project.name}</h3>
-          <p className="mt-3 leading-relaxed text-secondary/70">
-            {expanded ? project.details : `${project.details.slice(0, 140)}…`}
-          </p>
-          <p className="mt-3 text-sm text-accent hover:underline">{expanded ? 'Show less' : 'Read more'}</p>
-        </button>
+        </div>
       </div>
 
       {expanded && project.images.length > 0 && (
