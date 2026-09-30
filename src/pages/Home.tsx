@@ -29,7 +29,7 @@ export default function Home() {
     <main className="min-h-screen bg-primary font-sans text-secondary">
       <Header links={[{ href: '#about', label: 'About' }, { href: '#projects', label: 'Projects' }]} />
 
-      <div className="mx-auto max-w-5xl space-y-20 px-4 py-16 sm:px-8">
+      <div className="mx-auto max-w-5xl space-y-10 px-4 py-8 sm:space-y-20 sm:px-8 sm:py-16">
         <AboutSection />
         <FeaturedProjects featured={featured} totalCount={data.projects.length} />
       </div>
