@@ -7,6 +7,7 @@ import { projectImageSrc } from '../lib/projectImageSrc'
 import HandlebarIcon from '../assets/icons/handlebar.svg?react'
 import Lightbox from './Lightbox'
 import BracketLink from './BracketLink'
+import ImageWithSkeleton from './ImageWithSkeleton'
 
 interface FeaturedProjectsProps {
   featured: Project[]
@@ -40,9 +41,10 @@ function Row({
           onClick={onToggle}
           className="relative block h-56 w-full flex-shrink-0 overflow-hidden sm:h-auto sm:w-1/2"
         >
-          <img
+          <ImageWithSkeleton
             src={projectImageSrc(project, project.featureImage)}
             alt={project.name}
+            wrapperClassName="h-full w-full"
             className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
           />
         </button>
@@ -75,11 +77,12 @@ function Row({
       {expanded && project.images.length > 0 && (
         <div className="flex gap-2 overflow-x-auto border-t border-secondary/10 p-4">
           {project.images.map((img, i) => (
-            <img
+            <ImageWithSkeleton
               key={img}
               src={projectImageSrc(project, img)}
               alt=""
-              className="h-16 w-16 flex-shrink-0 cursor-pointer rounded-lg border border-secondary/10 object-cover"
+              wrapperClassName="h-16 w-16 flex-shrink-0 rounded-lg border border-secondary/10"
+              className="h-full w-full cursor-pointer object-cover"
               onClick={() => onImageClick(i)}
             />
           ))}

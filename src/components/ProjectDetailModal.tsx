@@ -4,6 +4,7 @@ import { useAsciiBanner } from '../hooks/useAsciiBanner'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import HandlebarIcon from '../assets/icons/handlebar.svg?react'
 import BracketLink from './BracketLink'
+import ImageWithSkeleton from './ImageWithSkeleton'
 
 const TITLE_FONT_SIZE = 9
 
@@ -52,10 +53,11 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
             [ x ]
           </BracketLink>
         </div>
-        <img
+        <ImageWithSkeleton
           src={projectImageSrc(project, project.featureImage)}
           alt={project.name}
-          className="h-64 w-full object-cover"
+          wrapperClassName="h-64 w-full"
+          className="h-full w-full object-cover"
         />
         <div className="p-6">
           {banner ? (
@@ -81,11 +83,12 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
           {images.length > 0 && (
             <div className="mt-6 flex gap-2 overflow-x-auto border-t border-secondary/10 pt-4">
               {images.map((src, i) => (
-                <img
+                <ImageWithSkeleton
                   key={src}
                   src={src}
                   alt=""
-                  className="h-20 w-20 flex-shrink-0 cursor-pointer rounded-lg border border-secondary/10 object-cover"
+                  wrapperClassName="h-20 w-20 flex-shrink-0 rounded-lg border border-secondary/10"
+                  className="h-full w-full cursor-pointer object-cover"
                   onClick={() => onThumbClick(i)}
                 />
               ))}
