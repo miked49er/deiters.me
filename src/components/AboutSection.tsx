@@ -24,7 +24,7 @@ export default function AboutSection() {
           <pre aria-hidden className="text-[8px] leading-tight text-accent/40 sm:text-[10px]">
             {SLASH_ASCII.replace(/^\n/, '')}
           </pre>
-          <pre aria-hidden className="text-[8px] leading-tight text-accent/70 sm:text-[10px]">
+          <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
             {NAME_ASCII.replace(/^\n/, '')}
           </pre>
         </div>

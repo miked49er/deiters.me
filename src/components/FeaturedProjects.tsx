@@ -52,7 +52,7 @@ function Row({
         <div className="flex flex-1 flex-col justify-center p-5 sm:p-8">
           <button onClick={onToggle} className="block text-left">
             {banner ? (
-              <pre aria-hidden className="overflow-x-auto text-[8px] leading-tight text-accent/70 sm:text-[9px]">
+              <pre aria-hidden className="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]">
                 {banner}
               </pre>
             ) : (
@@ -104,7 +104,7 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
             <pre aria-hidden className="text-[8px] leading-tight text-accent/40 sm:text-[10px]">
               {SLASH_ASCII.replace(/^\n/, '')}
             </pre>
-            <pre aria-hidden className="text-[8px] leading-tight text-accent/70 sm:text-[10px]">
+            <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
               {PROJECTS_TITLE.replace(/^\n/, '')}
             </pre>
           </div>

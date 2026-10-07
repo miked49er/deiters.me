@@ -38,7 +38,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
           {banner ? (
             <pre
               aria-hidden
-              className="leading-[1.15] whitespace-pre text-accent/70"
+              className="leading-[1.15] whitespace-pre text-banner"
               style={{ fontSize: `${TITLE_FONT_SIZE}px` }}
             >
               {banner}
@@ -77,7 +77,7 @@ export default function Projects() {
             <pre aria-hidden className="text-[8px] leading-tight text-accent/40 sm:text-[10px]">
               {SLASH_ASCII.replace(/^\n/, '')}
             </pre>
-            <pre aria-hidden className="text-[8px] leading-tight text-accent/70 sm:text-[10px]">
+            <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
               {PROJECTS_TITLE.replace(/^\n/, '')}
             </pre>
           </div>
