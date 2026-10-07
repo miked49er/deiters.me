@@ -68,4 +68,17 @@ describe('App', () => {
     expect(screen.getByText('[ about ]')).toBeInTheDocument()
     expect(window.location.pathname).toBe('/')
   })
+
+  it('scrolls to the top when the route changes', async () => {
+    const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [], moreProjects: null }))))
+    vi.stubGlobal('fetch', fetchMock)
+    const scrollTo = vi.fn()
+    vi.stubGlobal('scrollTo', scrollTo)
+    window.history.pushState({}, '', '/this-route-does-not-exist')
+
+    await loadProjectsStore()
+    render(<App />)
+
+    expect(scrollTo).toHaveBeenCalledWith(0, 0)
+  })
 })
