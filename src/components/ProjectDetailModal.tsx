@@ -61,7 +61,7 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
           {banner ? (
             <pre
               aria-hidden
-              className="overflow-x-auto leading-none text-accent/70"
+              className="overflow-x-auto pb-2 leading-[1.15] text-accent/70"
               style={{ fontSize: `${TITLE_FONT_SIZE}px` }}
             >
               {banner}

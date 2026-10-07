@@ -34,11 +34,11 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <div className="overflow-hidden">
+        <div className="pb-1">
           {banner ? (
             <pre
               aria-hidden
-              className="overflow-hidden leading-none text-accent/70"
+              className="leading-[1.15] whitespace-pre text-accent/70"
               style={{ fontSize: `${TITLE_FONT_SIZE}px` }}
             >
               {banner}
