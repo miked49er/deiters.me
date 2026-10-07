@@ -74,7 +74,7 @@ export default function Projects() {
       {data && (
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-16">
           <div className="mb-6 flex gap-2 overflow-x-auto">
-            <pre aria-hidden className="text-[8px] leading-tight text-accent/40 sm:text-[10px]">
+            <pre aria-hidden className="text-[8px] leading-tight text-banner/70 sm:text-[10px]">
               {SLASH_ASCII.replace(/^\n/, '')}
             </pre>
             <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
