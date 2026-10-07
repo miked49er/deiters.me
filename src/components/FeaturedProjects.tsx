@@ -101,7 +101,7 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
       <div className="mb-6 flex items-end justify-between">
         <div>
           <div className="flex gap-2 overflow-x-auto">
-            <pre aria-hidden className="text-[8px] leading-tight text-banner/70 sm:text-[10px]">
+            <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
               {SLASH_ASCII.replace(/^\n/, '')}
             </pre>
             <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
