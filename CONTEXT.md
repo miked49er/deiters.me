@@ -8,6 +8,9 @@ Personal portfolio site (React + Vite + Tailwind), single context.
 A project flagged to appear as a highlight on the Landing Page. Backed by a `featured: boolean` field on the project record.
 _Avoid_: Primary (legacy field of the same shape — previously meant "render this project's card with the primary theme color," unrelated to landing-page selection, and is being removed).
 
+**Feature Image**:
+The one primary image of a project, shown on its card and at the top of Project Detail. Distinct from the gallery images, which appear as thumbnails in Project Detail. Backed by the `featureImage` field on the project record.
+
 **Landing Page**:
 The single scrolling page at `/`. Contains the hero, About section, and Featured Project highlights in the order they appear in `projects.json`.
 
