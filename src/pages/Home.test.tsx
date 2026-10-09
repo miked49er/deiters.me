@@ -9,7 +9,7 @@ describe('Home', () => {
   afterEach(() => vi.unstubAllGlobals())
 
   it('gives every nav hash link a matching element id', async () => {
-    vi.stubGlobal('fetch', vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [], moreProjects: null })))))
+    vi.stubGlobal('fetch', vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [] })))))
     await loadProjectsStore()
     const { container } = render(
       <MemoryRouter>

@@ -6,6 +6,7 @@ import { distributeIntoColumns } from '../lib/projectSelection'
 import Header from '../components/Header'
 import ProjectDetailModal from '../components/ProjectDetailModal'
 import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
+import { getAsciiBanner } from '../lib/projectsStore'
 import Lightbox from '../components/Lightbox'
 import SectionBanner from '../components/SectionBanner'
 import { PROJECTS_TITLE } from '../data/ascii'
@@ -32,6 +33,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         <div className="pb-1">
           <ProjectBanner
             project={project}
+            banner={getAsciiBanner(project.asciiFile)}
             bannerClassName="leading-[1.15] whitespace-pre text-banner"
             bannerFontSize={TITLE_FONT_SIZE}
             nameClassName="font-semibold text-secondary"

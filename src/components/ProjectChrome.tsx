@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 import type { Project } from '../types/project'
-import { getAsciiBanner } from '../lib/projectsStore'
 import WindowHeader from './WindowHeader'
 
 export function ProjectWindowHeader({ project, children }: { project: Project; children?: ReactNode }) {
@@ -9,6 +8,7 @@ export function ProjectWindowHeader({ project, children }: { project: Project; c
 
 interface ProjectBannerProps {
   project: Project
+  banner: string | null
   // Callers size the banner differently; both stay caller-owned so output is unchanged.
   bannerClassName: string
   bannerFontSize?: number
@@ -16,9 +16,7 @@ interface ProjectBannerProps {
 }
 
 // Ascii banner, falling back to the plain project name when none is loaded.
-export function ProjectBanner({ project, bannerClassName, bannerFontSize, nameClassName }: ProjectBannerProps) {
-  const banner = getAsciiBanner(project.asciiFile)
-
+export function ProjectBanner({ project, banner, bannerClassName, bannerFontSize, nameClassName }: ProjectBannerProps) {
   return banner ? (
     <pre
       aria-hidden

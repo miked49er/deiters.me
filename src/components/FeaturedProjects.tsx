@@ -9,6 +9,7 @@ import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
 import SectionBanner from './SectionBanner'
 import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
+import { getAsciiBanner } from '../lib/projectsStore'
 import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
 
 interface FeaturedProjectsProps {
@@ -49,6 +50,7 @@ function Row({
           <button onClick={onToggle} className="block text-left">
             <ProjectBanner
               project={project}
+              banner={getAsciiBanner(project.asciiFile)}
               bannerClassName="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]"
               nameClassName="text-xl font-semibold text-secondary"
             />
