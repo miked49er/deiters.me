@@ -4,6 +4,7 @@ import { REDUCED_MOTION_QUERY, useMediaQuery } from '../hooks/useMediaQuery'
 
 const TYPING_DURATION_MS = 2000
 const ART_WIDTH = HERO_ART_ROWS[0].length
+const CURSOR_WIDTH = 2
 
 // Column the cursor rests at after each keystroke: the end of a letter, plus any blank glyphs right after it
 // (those are passed over instantly rather than typed).
@@ -50,7 +51,7 @@ export default function HeroBanner({ className }: { className?: string }) {
 
   const column = done ? ART_WIDTH : lettersTyped === 0 ? 0 : REST_COLUMNS[lettersTyped - 1]
 
-  // Each row is typed text, a one-column block cursor, then the not-yet-typed rest kept invisible so layout never shifts.
+  // Each row is typed text, a block cursor, then the not-yet-typed rest kept invisible so layout never shifts.
   // The font size follows the column width (cqw) so the whole art always fits without a horizontal scrollbar.
   return (
     <div className={[className, '@container'].filter(Boolean).join(' ')}>
@@ -62,9 +63,9 @@ export default function HeroBanner({ className }: { className?: string }) {
               data-testid="cursor"
               className={`inline-block h-[1.2em] bg-banner align-top text-transparent${done ? ' cursor-blink' : ''}`}
             >
-              {row.charAt(column) || ' '}
+              {row.slice(column, column + CURSOR_WIDTH).padEnd(CURSOR_WIDTH, ' ')}
             </span>
-            <span className="invisible">{row.slice(column + 1)}</span>
+            <span className="invisible">{row.slice(column + CURSOR_WIDTH)}</span>
           </span>
         ))}
       </pre>
