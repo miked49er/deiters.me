@@ -1,13 +1,12 @@
 import { useEffect, useMemo, useRef } from 'react'
-import { useMediaQuery } from '../hooks/useMediaQuery'
+import { REDUCED_MOTION_QUERY, useMediaQuery } from '../hooks/useMediaQuery'
 import { angleAt } from '../lib/bannerMotion'
-import { createBannerRenderer, type Rasterize } from '../lib/bannerRenderer'
+import { createBannerRenderer, type Grid, type Rasterize } from '../lib/bannerRenderer'
 import { canvasRasterize } from '../lib/canvasRasterizer'
 
-const DESKTOP_GRID = { cols: 60, rows: 6 }
-const NARROW_GRID = { cols: 36, rows: 4 }
+const DESKTOP_GRID: Grid = { cols: 60, rows: 6 }
+const NARROW_GRID: Grid = { cols: 36, rows: 4 }
 const NARROW_QUERY = '(max-width: 639px)'
-const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
 
 const MIN_FRAME_MS = 1000 / 60 - 1 // cap at 60 fps on high-refresh displays, with slack for timer jitter
 const MAX_STEP_MS = 100 // a long stall (slow frame, busy tab) advances the animation by no more than this
@@ -16,8 +15,11 @@ export default function Banner3D({ rasterize = canvasRasterize }: { rasterize?: 
   const narrow = useMediaQuery(NARROW_QUERY)
   const reducedMotion = useMediaQuery(REDUCED_MOTION_QUERY)
   const grid = narrow ? NARROW_GRID : DESKTOP_GRID
-  const renderFrame = useMemo(() => createBannerRenderer({ ...grid, rasterize }), [grid, rasterize])
-  const frontFrame = useMemo(() => renderFrame(0).join('\n'), [renderFrame])
+  const renderFrame = useMemo(() => {
+    const render = createBannerRenderer({ ...grid, rasterize })
+    return (angle: number) => render(angle).join('\n')
+  }, [grid, rasterize])
+  const frontFrame = useMemo(() => renderFrame(0), [renderFrame])
   const preRef = useRef<HTMLPreElement>(null)
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function Banner3D({ rasterize = canvasRasterize }: { rasterize?: 
       if (sinceLast < MIN_FRAME_MS) return
       lastFrameAt = now
       elapsed += Math.min(sinceLast, MAX_STEP_MS)
-      pre.textContent = renderFrame(angleAt(elapsed)).join('\n')
+      pre.textContent = renderFrame(angleAt(elapsed))
     }
 
     const sync = () => {

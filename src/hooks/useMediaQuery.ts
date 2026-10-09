@@ -1,5 +1,7 @@
 import { useSyncExternalStore } from 'react'
 
+export const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
+
 // Tracks a CSS media query; false where matchMedia is unavailable (e.g. jsdom).
 export function useMediaQuery(query: string): boolean {
   return useSyncExternalStore(

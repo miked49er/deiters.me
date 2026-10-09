@@ -40,9 +40,9 @@ describe('HeroBanner typing variant', () => {
     vi.restoreAllMocks()
   })
 
-  it('starts empty with a solid cursor', () => {
+  it('starts with nothing typed and a solid cursor', () => {
     const { container } = render(<HeroBanner />)
-    expect(typedText(container)).toBe('')
+    expect(typedText(container).trim()).toBe('')
     expect(cursor(container)).toBeInTheDocument()
     expect(cursor(container)).not.toHaveClass('cursor-blink')
   })
@@ -61,6 +61,39 @@ describe('HeroBanner typing variant', () => {
     advance(3000)
     expect(typedText(container)).toBe(art)
     expect(squash(artText(container))).toBe(squash(art))
+  })
+
+  it('keeps the cursor on a glyph to type, skipping spaces and newlines instantly', () => {
+    const { container } = render(<HeroBanner />)
+    while (!cursor(container)!.classList.contains('cursor-blink')) {
+      expect(cursor(container)!.textContent).toMatch(/\S/)
+      advance(10)
+    }
+  })
+
+  it('takes about 2 seconds in total', () => {
+    const { container } = render(<HeroBanner />)
+    advance(1900)
+    expect(cursor(container)).not.toHaveClass('cursor-blink')
+    advance(200)
+    expect(cursor(container)).toHaveClass('cursor-blink')
+  })
+
+  it('shows the full art right away when reduced motion is turned on while typing', () => {
+    let listener: () => void = () => {}
+    let reduced = false
+    vi.stubGlobal('matchMedia', () => ({
+      get matches() {
+        return reduced
+      },
+      addEventListener: (_: string, fn: () => void) => (listener = fn),
+      removeEventListener: vi.fn(),
+    }))
+    const { container } = render(<HeroBanner />)
+    advance(500)
+    reduced = true
+    act(() => listener())
+    expect(typedText(container)).toBe(art)
   })
 
   it('blinks the cursor once done and does not loop', () => {
