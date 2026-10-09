@@ -18,8 +18,12 @@ export async function loadProjectsStore(): Promise<void> {
     const asciiFiles = [...new Set(json.projects.map((p) => p.asciiFile))]
     await Promise.all(
       asciiFiles.map(async (file) => {
-        const bannerRes = await fetch(file)
-        store.banners[file] = await bannerRes.text()
+        try {
+          const bannerRes = await fetch(file)
+          if (bannerRes.ok) store.banners[file] = await bannerRes.text()
+        } catch {
+          // A missing banner falls back to the project name; it must not fail the site.
+        }
       }),
     )
   } catch (err) {
