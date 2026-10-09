@@ -1,26 +1,35 @@
-import { useEffect, useState, type ReactNode } from 'react'
-import { NAME_ASCII } from '../data/ascii'
+import { useEffect, useState } from 'react'
+import { HERO_ART_ROWS, HERO_GLYPH_COLUMNS, heroGlyphRows } from '../data/heroArt'
 import { REDUCED_MOTION_QUERY, useMediaQuery } from '../hooks/useMediaQuery'
-import Banner3D from './Banner3D'
 
-const ART = NAME_ASCII.replace(/^\n/, '').trimEnd()
 const TYPING_DURATION_MS = 2000
-// Positions of the characters that get typed; spaces and newlines are never typed, just passed over.
-const GLYPH_INDEXES = [...ART].flatMap((char, index) => (char.trim() ? [index] : []))
+const ART_WIDTH = HERO_ART_ROWS[0].length
 
-// Time at which each glyph appears: jittered (0.5x to 1.5x) so the typing feels human, scaled to end exactly on time.
+// Column the cursor rests at after each keystroke: the end of a letter, plus any blank glyphs right after it
+// (those are passed over instantly rather than typed).
+const REST_COLUMNS: number[] = (() => {
+  const blank = heroGlyphRows().map((glyph) => glyph.every((line) => line.trim() === ''))
+  const rests: number[] = []
+  HERO_GLYPH_COLUMNS.forEach(([, end], i) => {
+    if (blank[i]) rests[rests.length - 1] = end
+    else rests.push(end)
+  })
+  return rests
+})()
+
+// Time at which each letter appears: jittered (0.5x to 1.5x) so the typing feels human, scaled to end exactly on time.
 function typingSchedule(): number[] {
-  const gaps = GLYPH_INDEXES.map(() => 0.5 + Math.random())
+  const gaps = REST_COLUMNS.map(() => 0.5 + Math.random())
   const scale = TYPING_DURATION_MS / gaps.reduce((sum, gap) => sum + gap, 0)
   let at = 0
   return gaps.map((gap) => (at += gap * scale))
 }
 
-function TypingBanner() {
+export default function HeroBanner({ className }: { className?: string }) {
   const reducedMotion = useMediaQuery(REDUCED_MOTION_QUERY)
   const [schedule] = useState(typingSchedule)
-  const [glyphsTyped, setGlyphsTyped] = useState(0)
-  const done = reducedMotion || glyphsTyped >= GLYPH_INDEXES.length
+  const [lettersTyped, setLettersTyped] = useState(0)
+  const done = reducedMotion || lettersTyped >= REST_COLUMNS.length
 
   useEffect(() => {
     if (done) return
@@ -32,42 +41,33 @@ function TypingBanner() {
       const elapsed = now - startedAt
       let count = 0
       while (count < schedule.length && schedule[count] <= elapsed) count++
-      setGlyphsTyped(count)
+      setLettersTyped(count)
       if (count < schedule.length) frameId = requestAnimationFrame(tick)
     }
     frameId = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(frameId)
   }, [schedule, done])
 
-  // The cursor sits on the next glyph to type (everything before it, whitespace included, is already shown).
-  const typedLength = done ? ART.length : GLYPH_INDEXES[glyphsTyped]
-  // The cursor wraps the next character and the rest stays invisible, so the layout never shifts while typing.
+  const column = done ? ART_WIDTH : lettersTyped === 0 ? 0 : REST_COLUMNS[lettersTyped - 1]
+
+  // Each row is typed text, a one-column block cursor, then the not-yet-typed rest kept invisible so layout never shifts.
+  // The font size follows the column width (cqw) so the whole art always fits without a horizontal scrollbar.
   return (
-    <pre aria-hidden="true" className="text-[8px] leading-tight text-banner sm:text-[10px]">
-      <span data-testid="typed">{ART.slice(0, typedLength)}</span>
-      <span data-testid="cursor" className={`bg-banner text-transparent${done ? ' cursor-blink' : ''}`}>
-        {ART.charAt(typedLength) || ' '}
-      </span>
-      <span className="invisible">{ART.slice(typedLength + 1)}</span>
-    </pre>
+    <div className={[className, '@container'].filter(Boolean).join(' ')}>
+      <pre aria-hidden="true" className="text-[min(10px,calc(100cqw/40))] leading-[1.2] text-banner">
+        {HERO_ART_ROWS.map((row, i) => (
+          <span key={i} className="block">
+            <span data-testid="typed">{row.slice(0, column)}</span>
+            <span
+              data-testid="cursor"
+              className={`inline-block h-[1.2em] bg-banner align-top text-transparent${done ? ' cursor-blink' : ''}`}
+            >
+              {row.charAt(column) || ' '}
+            </span>
+            <span className="invisible">{row.slice(column + 1)}</span>
+          </span>
+        ))}
+      </pre>
+    </div>
   )
-}
-
-// Temporary `?banner=` switch for comparing variants; the 3D variant (#49) is the other case.
-export default function HeroBanner({ className }: { className?: string }) {
-  const variant = new URLSearchParams(window.location.search).get('banner') ?? 'typing'
-
-  let banner: ReactNode
-  switch (variant) {
-    case 'typing':
-      banner = <TypingBanner />
-      break
-    case '3d':
-      banner = <Banner3D />
-      break
-    default:
-      return null
-  }
-
-  return <div className={[className, 'overflow-x-auto'].filter(Boolean).join(' ')}>{banner}</div>
 }
