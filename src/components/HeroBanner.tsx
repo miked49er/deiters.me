@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NAME_ASCII } from '../data/ascii'
+import Banner3D from './Banner3D'
 
 const ART = NAME_ASCII.replace(/^\n/, '').trimEnd()
 const TYPING_DURATION_MS = 2000
@@ -40,7 +41,7 @@ function TypingBanner() {
   )
 }
 
-// Temporary `?banner=` switch for comparing variants; the 3D variant (#49) slots in as another case.
+// Temporary `?banner=` switch for comparing variants; the 3D variant (#49) is the other case.
 export default function HeroBanner({ className }: { className?: string }) {
   const variant = new URLSearchParams(window.location.search).get('banner') ?? 'typing'
 
@@ -49,6 +50,12 @@ export default function HeroBanner({ className }: { className?: string }) {
       return (
         <div className={[className, 'overflow-x-auto'].filter(Boolean).join(' ')}>
           <TypingBanner />
+        </div>
+      )
+    case '3d':
+      return (
+        <div className={[className, 'overflow-x-auto'].filter(Boolean).join(' ')}>
+          <Banner3D />
         </div>
       )
     default:
