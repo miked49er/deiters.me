@@ -96,4 +96,12 @@ describe('createBannerRenderer', () => {
     const width = (line: string) => line.replaceAll(' ', '').length
     expect(width(render(bar, 0.9)[3])).toBeGreaterThan(width(render(bar, 0)[3]))
   })
+
+  it('shades a front-facing shape so its edges read as extruded: lit from the upper left', () => {
+    const [leftEdge, interior, rightEdge] = [10, 20, 29].map((col) => RAMP.indexOf(render(rect(0.25, 0.75))[3][col]))
+    expect(interior).toBe(RAMP.length - 1)
+    expect(leftEdge).toBeGreaterThan(0)
+    expect(rightEdge).toBeGreaterThan(0)
+    expect(rightEdge).toBeLessThan(interior)
+  })
 })
