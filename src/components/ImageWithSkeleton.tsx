@@ -3,10 +3,13 @@ import type { ImgHTMLAttributes } from 'react'
 
 interface ImageWithSkeletonProps extends ImgHTMLAttributes<HTMLImageElement> {
   wrapperClassName?: string
+  /** Wrapper classes applied only until the image loads or fails (e.g. a reserved minimum size). */
+  loadingClassName?: string
 }
 
 export default function ImageWithSkeleton({
   wrapperClassName = '',
+  loadingClassName = '',
   className = '',
   onLoad,
   onError,
@@ -15,7 +18,7 @@ export default function ImageWithSkeleton({
   const [loaded, setLoaded] = useState(false)
 
   return (
-    <span className={`relative block overflow-hidden ${wrapperClassName}`}>
+    <span className={`relative block overflow-hidden ${wrapperClassName} ${loaded ? '' : loadingClassName}`}>
       {!loaded && (
         <span data-testid="image-skeleton" aria-hidden className="absolute inset-0 animate-pulse bg-secondary/10" />
       )}
