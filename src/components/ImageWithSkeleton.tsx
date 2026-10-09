@@ -27,7 +27,7 @@ export default function ImageWithSkeleton({
         ref={(el) => {
           if (el?.complete && el.naturalWidth > 0) setLoaded(true)
         }}
-        className={className}
+        className={`${className} ${loaded ? '' : 'opacity-0'}`}
         onLoad={(e) => {
           setLoaded(true)
           onLoad?.(e)
