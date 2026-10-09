@@ -3,7 +3,7 @@
 import { writeFileSync } from 'node:fs'
 import figlet from 'figlet'
 
-const MESSAGES = ['Mike Deiters', 'Sr. Engineer', 'React Native', 'Full-Stack', 'Atlanta, GA']
+const MESSAGES = ['Mike Deiters', 'Sr. Engineer', 'Full-Stack', 'Atlanta, GA']
 
 // The two slashes of "//", drawn once and shared by every message (same art as the old section banner).
 const SLASH_ROWS = ['     ____', '    / / /', '   / / /', '  / / /', ' /_/_/']

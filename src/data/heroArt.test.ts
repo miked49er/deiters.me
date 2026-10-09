@@ -12,7 +12,6 @@ describe('hero art', () => {
     expect(HERO_MESSAGES.map((m) => m.text)).toEqual([
       '// Mike Deiters',
       '// Sr. Engineer',
-      '// React Native',
       '// Full-Stack',
       '// Atlanta, GA',
     ])
