@@ -32,6 +32,8 @@ export function ThumbnailStrip({ project, onSelect, className, thumbClassName }:
             key={src}
             src={src}
             alt=""
+            loading="lazy"
+            decoding="async"
             wrapperClassName={thumbClassName}
             className="h-full w-full cursor-pointer object-cover"
             onClick={() => onSelect(i)}
