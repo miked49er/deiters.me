@@ -1,10 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, render } from '@testing-library/react'
 import HeroBanner from './HeroBanner'
-import { NAME_ASCII } from '../data/ascii'
-
-const art = NAME_ASCII.replace(/^\n/, '').trimEnd()
-const squash = (s: string) => s.replace(/\s+/g, '')
+import { HERO_ART_ROWS, HERO_GLYPH_COLUMNS } from '../data/heroArt'
 
 function stubReducedMotion(reduced: boolean) {
   vi.stubGlobal('matchMedia', (query: string) => ({
@@ -14,72 +11,86 @@ function stubReducedMotion(reduced: boolean) {
   }))
 }
 
-function setBanner(value?: string) {
-  window.history.replaceState({}, '', value ? `/?banner=${value}` : '/')
-}
+const typedRows = (container: HTMLElement) =>
+  [...container.querySelectorAll('[data-testid="typed"]')].map((el) => el.textContent ?? '')
+const cursors = (container: HTMLElement) => [...container.querySelectorAll('[data-testid="cursor"]')]
+// How many columns of the art are revealed (every row is revealed to the same column).
+const revealedColumns = (container: HTMLElement) => typedRows(container)[0].length
 
-const artText = (container: HTMLElement) => container.querySelector('pre')!.textContent ?? ''
-const typedText = (container: HTMLElement) => container.querySelector('[data-testid="typed"]')!.textContent ?? ''
-const cursor = (container: HTMLElement) => container.querySelector('[data-testid="cursor"]')
-
-// Step in small increments so React re-renders (and schedules the next keystroke) between timers.
+// Step in small increments so React re-renders (and schedules the next frame) between timers.
 const advance = (ms: number) => {
   for (let elapsed = 0; elapsed < ms; elapsed += 10) act(() => void vi.advanceTimersByTime(10))
 }
 
-describe('HeroBanner typing variant', () => {
+// Column where each glyph ends, i.e. the only places the cursor may rest.
+const glyphEnds = HERO_GLYPH_COLUMNS.map(([, end]) => end)
+
+describe('HeroBanner', () => {
   beforeEach(() => {
     vi.useFakeTimers()
     stubReducedMotion(false)
-    setBanner()
   })
 
   afterEach(() => {
     vi.useRealTimers()
     vi.unstubAllGlobals()
-    vi.restoreAllMocks()
   })
 
-  it('starts with nothing typed and a solid cursor', () => {
+  it('starts with nothing typed and a solid cursor as tall as the art', () => {
     const { container } = render(<HeroBanner />)
-    expect(typedText(container).trim()).toBe('')
-    expect(cursor(container)).toBeInTheDocument()
-    expect(cursor(container)).not.toHaveClass('cursor-blink')
+    expect(revealedColumns(container)).toBe(0)
+    expect(cursors(container)).toHaveLength(HERO_ART_ROWS.length)
+    cursors(container).forEach((cursor) => expect(cursor).not.toHaveClass('cursor-blink'))
   })
 
-  it('types partway, leaving characters behind', () => {
+  it('reveals whole letters: every row is cut at the same glyph boundary, one rest position per letter', () => {
+    const { container } = render(<HeroBanner />)
+    // the space is skipped instantly, so the cursor never rests at the end of the letter before it
+    const restPositions = glyphEnds.filter((_, i) => i !== 5)
+    const seen = new Set<number>()
+    for (let t = 0; t < 2200; t += 10) {
+      advance(10)
+      const rows = typedRows(container)
+      const columns = rows[0].length
+      expect(rows.every((row) => row.length === columns)).toBe(true)
+      rows.forEach((row, i) => expect(HERO_ART_ROWS[i].startsWith(row)).toBe(true))
+      if (columns > 0) expect(restPositions).toContain(columns)
+      seen.add(columns)
+    }
+    expect(seen.has(0) ? seen.size - 1 : seen.size).toBe(13)
+  })
+
+  it('puts the cursor right after the typed text on every row', () => {
     const { container } = render(<HeroBanner />)
     advance(1000)
-    const typed = typedText(container)
-    expect(typed.length).toBeGreaterThan(0)
-    expect(typed.length).toBeLessThan(art.length)
-    expect(art.startsWith(typed)).toBe(true)
+    expect(revealedColumns(container)).toBeGreaterThan(0)
+    expect(revealedColumns(container)).toBeLessThan(HERO_ART_ROWS[0].length)
+    cursors(container).forEach((cursor) => {
+      expect(cursor.previousElementSibling).toHaveAttribute('data-testid', 'typed')
+    })
   })
 
-  it('finishes the full art in about 2 seconds without changing layout width', () => {
-    const { container } = render(<HeroBanner />)
-    advance(3000)
-    expect(typedText(container)).toBe(art)
-    expect(squash(artText(container))).toBe(squash(art))
-  })
-
-  it('keeps the cursor on a glyph to type, skipping spaces and newlines instantly', () => {
-    const { container } = render(<HeroBanner />)
-    while (!cursor(container)!.classList.contains('cursor-blink')) {
-      expect(cursor(container)!.textContent).toMatch(/\S/)
-      advance(10)
-    }
-  })
-
-  it('takes about 2 seconds in total', () => {
+  it('finishes the full art in about 2 seconds, then blinks the cursor and stops', () => {
     const { container } = render(<HeroBanner />)
     advance(1900)
-    expect(cursor(container)).not.toHaveClass('cursor-blink')
+    expect(typedRows(container).join('\n')).not.toBe(HERO_ART_ROWS.join('\n'))
+    cursors(container).forEach((cursor) => expect(cursor).not.toHaveClass('cursor-blink'))
     advance(200)
-    expect(cursor(container)).toHaveClass('cursor-blink')
+    expect(typedRows(container).join('\n')).toBe(HERO_ART_ROWS.join('\n'))
+    cursors(container).forEach((cursor) => expect(cursor).toHaveClass('cursor-blink'))
+    advance(10000)
+    expect(vi.getTimerCount()).toBe(0)
   })
 
-  it('shows the full art right away when reduced motion is turned on while typing', () => {
+  it('shows the full art and blinking cursor immediately under reduced motion', () => {
+    stubReducedMotion(true)
+    const { container } = render(<HeroBanner />)
+    expect(typedRows(container).join('\n')).toBe(HERO_ART_ROWS.join('\n'))
+    cursors(container).forEach((cursor) => expect(cursor).toHaveClass('cursor-blink'))
+    expect(vi.getTimerCount()).toBe(0)
+  })
+
+  it('shows the full art when reduced motion is turned on while typing', () => {
     let listener: () => void = () => {}
     let reduced = false
     vi.stubGlobal('matchMedia', () => ({
@@ -93,48 +104,13 @@ describe('HeroBanner typing variant', () => {
     advance(500)
     reduced = true
     act(() => listener())
-    expect(typedText(container)).toBe(art)
+    expect(typedRows(container).join('\n')).toBe(HERO_ART_ROWS.join('\n'))
   })
 
-  it('blinks the cursor once done and does not loop', () => {
-    const { container } = render(<HeroBanner />)
-    advance(3000)
-    expect(cursor(container)).toHaveClass('cursor-blink')
-    advance(10000)
-    expect(typedText(container)).toBe(art)
-    expect(vi.getTimerCount()).toBe(0)
-  })
-
-  it('hides the art from assistive tech', () => {
-    const { container } = render(<HeroBanner />)
+  it('hides the art from assistive tech and does not scroll horizontally', () => {
+    const { container } = render(<HeroBanner className="mb-3" />)
     expect(container.querySelector('pre')).toHaveAttribute('aria-hidden', 'true')
-  })
-
-  it('shows the full art and blinking cursor immediately under reduced motion', () => {
-    stubReducedMotion(true)
-    const { container } = render(<HeroBanner />)
-    expect(typedText(container)).toBe(art)
-    expect(cursor(container)).toHaveClass('cursor-blink')
-    expect(vi.getTimerCount()).toBe(0)
-  })
-
-  it('treats ?banner=typing like the default', () => {
-    setBanner('typing')
-    const { container } = render(<HeroBanner />)
-    expect(container.querySelector('pre')).toBeInTheDocument()
-  })
-
-  it('shows the 3D banner for ?banner=3d, hidden from assistive tech', () => {
-    vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null)
-    setBanner('3d')
-    const { container } = render(<HeroBanner />)
-    expect(container.querySelector('pre')).toHaveAttribute('aria-hidden', 'true')
-    expect(container.querySelector('[data-testid="typed"]')).not.toBeInTheDocument()
-  })
-
-  it('renders nothing for an unknown ?banner= value', () => {
-    setBanner('nope')
-    const { container } = render(<HeroBanner />)
-    expect(container).toBeEmptyDOMElement()
+    expect(container.firstElementChild).toHaveClass('mb-3')
+    expect(container.innerHTML).not.toContain('overflow-x-auto')
   })
 })

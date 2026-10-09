@@ -15,8 +15,8 @@ The one primary image of a project, shown on its card and at the top of Project 
 The single scrolling page at `/`. Contains the hero, About section, and Featured Project highlights in the order they appear in `projects.json`.
 
 **Hero Banner**:
-The animated ASCII rendering of the owner's name in the Landing Page's hero, shown as extruded 3D letters that hold facing front, sway, and occasionally turn fully around. Replaces the old static ASCII name banner. Holds a still front-facing frame when the visitor prefers reduced motion.
-_Avoid_: Section Banner (the static predecessor being removed).
+The ASCII rendering of the owner's name (the `//` plus "Mike Deiters") in the Landing Page's hero, typed out one whole letter at a time by a block cursor as tall as the art, over about 2 seconds, once; the cursor then blinks. Shows the full art with a blinking cursor, untyped, when the visitor prefers reduced motion. Replaces the static banner on the Landing Page only; Section Banner is still used elsewhere (Projects, Featured Projects).
+_Avoid_: Section Banner (the static one still used on other pages).
 
 **Projects Page**:
 The `/projects` route. Lists every project, not just Featured ones.
