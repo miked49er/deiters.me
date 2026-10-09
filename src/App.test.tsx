@@ -29,18 +29,6 @@ describe('App', () => {
                   details: '',
                 },
               ],
-              moreProjects: {
-                id: 0,
-                name: 'More Projects',
-                link: '',
-                site: '',
-                location: '/assets/img/',
-                featureImage: 'projects-bg.jpg',
-                images: [],
-                featured: true,
-                asciiFile: '/assets/img/more-projects/ascii.txt',
-                details: '',
-              },
             }),
           ),
         )
@@ -58,7 +46,7 @@ describe('App', () => {
   })
 
   it('redirects an unmatched path to the Landing Page', async () => {
-    const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [], moreProjects: null }))))
+    const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [] }))))
     vi.stubGlobal('fetch', fetchMock)
     window.history.pushState({}, '', '/this-route-does-not-exist')
 
@@ -70,7 +58,7 @@ describe('App', () => {
   })
 
   it('scrolls to the top when the route changes', async () => {
-    const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [], moreProjects: null }))))
+    const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [] }))))
     vi.stubGlobal('fetch', fetchMock)
     const scrollTo = vi.fn()
     vi.stubGlobal('scrollTo', scrollTo)
@@ -79,6 +67,6 @@ describe('App', () => {
     await loadProjectsStore()
     render(<App />)
 
-    expect(scrollTo).toHaveBeenCalledWith(0, 0)
+    expect(scrollTo).toHaveBeenCalledWith({ top: 0, left: 0, behavior: 'instant' })
   })
 })
