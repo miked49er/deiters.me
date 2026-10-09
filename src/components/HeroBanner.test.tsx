@@ -37,6 +37,7 @@ describe('HeroBanner typing variant', () => {
   afterEach(() => {
     vi.useRealTimers()
     vi.unstubAllGlobals()
+    vi.restoreAllMocks()
   })
 
   it('starts empty with a solid cursor', () => {
@@ -90,8 +91,16 @@ describe('HeroBanner typing variant', () => {
     expect(container.querySelector('pre')).toBeInTheDocument()
   })
 
-  it('renders nothing, without errors, for the not-yet-available ?banner=3d', () => {
+  it('shows the 3D banner for ?banner=3d, hidden from assistive tech', () => {
+    vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null)
     setBanner('3d')
+    const { container } = render(<HeroBanner />)
+    expect(container.querySelector('pre')).toHaveAttribute('aria-hidden', 'true')
+    expect(container.querySelector('[data-testid="typed"]')).not.toBeInTheDocument()
+  })
+
+  it('renders nothing for an unknown ?banner= value', () => {
+    setBanner('nope')
     const { container } = render(<HeroBanner />)
     expect(container).toBeEmptyDOMElement()
   })
