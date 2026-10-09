@@ -3,6 +3,7 @@ import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
 import EmailIcon from '../assets/icons/email.svg?react'
 import GithubIcon from '../assets/icons/github.svg?react'
 import LinkedinIcon from '../assets/icons/linkedin.svg?react'
+import ImageWithSkeleton from './ImageWithSkeleton'
 import TerminalWindow from './TerminalWindow'
 import SectionBanner from './SectionBanner'
 
@@ -45,10 +46,11 @@ export default function AboutSection() {
       </div>
 
       <TerminalWindow label="profile.jpg" className="w-full sm:w-72">
-        <img
+        <ImageWithSkeleton
           src="/assets/img/profile.jpg"
           alt="Mike Deiters"
-          className="aspect-[3/4] w-full rounded-md object-cover"
+          wrapperClassName="rounded-md"
+          className="aspect-[3/4] w-full object-cover"
         />
       </TerminalWindow>
     </section>

@@ -8,7 +8,6 @@ const projectsJson = {
     { id: 1, asciiFile: '/a.txt' },
     { id: 2, asciiFile: '/a.txt' },
   ],
-  moreProjects: null,
 }
 
 describe('projectsStore', () => {

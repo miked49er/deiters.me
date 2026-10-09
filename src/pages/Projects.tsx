@@ -3,9 +3,11 @@ import { useProjects } from '../hooks/useProjects'
 import { useColumnCount } from '../hooks/useColumnCount'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import { distributeIntoColumns } from '../lib/projectSelection'
+import ImageWithSkeleton from '../components/ImageWithSkeleton'
 import Header from '../components/Header'
 import ProjectDetailModal from '../components/ProjectDetailModal'
 import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
+import { getAsciiBanner } from '../lib/projectsStore'
 import Lightbox from '../components/Lightbox'
 import SectionBanner from '../components/SectionBanner'
 import { PROJECTS_TITLE } from '../data/ascii'
@@ -22,9 +24,12 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
     >
       <ProjectWindowHeader project={project} />
       <div className="h-40 w-full overflow-hidden">
-        <img
+        <ImageWithSkeleton
           src={projectImageSrc(project, project.featureImage)}
           alt={project.name}
+          loading="lazy"
+          decoding="async"
+          wrapperClassName="h-full w-full"
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
@@ -32,6 +37,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         <div className="pb-1">
           <ProjectBanner
             project={project}
+            banner={getAsciiBanner(project.asciiFile)}
             bannerClassName="leading-[1.15] whitespace-pre text-banner"
             bannerFontSize={TITLE_FONT_SIZE}
             nameClassName="font-semibold text-secondary"

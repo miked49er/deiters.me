@@ -4,6 +4,7 @@ import { projectImageSrc } from '../lib/projectImageSrc'
 import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
 import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
+import { getAsciiBanner } from '../lib/projectsStore'
 import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
 
 const TITLE_FONT_SIZE = 9
@@ -57,6 +58,7 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
         <div className="p-6">
           <ProjectBanner
             project={project}
+            banner={getAsciiBanner(project.asciiFile)}
             bannerClassName="overflow-x-auto pb-2 leading-[1.15] text-banner"
             bannerFontSize={TITLE_FONT_SIZE}
             nameClassName="text-2xl font-semibold text-secondary"

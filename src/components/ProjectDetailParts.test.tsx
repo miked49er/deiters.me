@@ -39,6 +39,15 @@ describe('ThumbnailStrip', () => {
     fireEvent.click(container.querySelectorAll('img')[1])
     expect(onSelect).toHaveBeenCalledWith(1)
   })
+
+  it('loads thumbnails lazily and decodes them asynchronously', () => {
+    const { container } = render(
+      <ThumbnailStrip project={makeProject({ images: ['a.png'] })} onSelect={vi.fn()} className="" thumbClassName="" />,
+    )
+    const img = container.querySelector('img')!
+    expect(img).toHaveAttribute('loading', 'lazy')
+    expect(img).toHaveAttribute('decoding', 'async')
+  })
 })
 
 describe('useProjectDetail', () => {

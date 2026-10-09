@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import BracketLink from './BracketLink'
+import ImageWithSkeleton from './ImageWithSkeleton'
 
 interface LightboxProps {
   images: string[]
@@ -45,9 +46,13 @@ export default function Lightbox({ images, index, onIndexChange, onClose }: Ligh
         </button>
       )}
 
-      <img
+      <ImageWithSkeleton
+        // key remounts per image so the skeleton resets when navigating.
+        key={images[index]}
         src={images[index]}
         alt=""
+        // Reserve a minimum box so the skeleton is visible; dropped after load so small images aren't padded.
+        loadingClassName="min-h-48 min-w-48"
         className="max-h-[85vh] max-w-[90vw] border-2 border-accent object-contain"
         onClick={(e) => e.stopPropagation()}
       />

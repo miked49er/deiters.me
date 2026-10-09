@@ -60,4 +60,30 @@ describe('Lightbox', () => {
     fireEvent.click(screen.getByLabelText('Close'))
     expect(onClose).toHaveBeenCalled()
   })
+
+  it('shows a skeleton until the image loads and removes it on load or error', () => {
+    const { container, rerender } = render(
+      <Lightbox images={images} index={0} onIndexChange={vi.fn()} onClose={vi.fn()} />,
+    )
+    expect(screen.getByTestId('image-skeleton')).toBeInTheDocument()
+
+    fireEvent.load(container.querySelector('img')!)
+    expect(screen.queryByTestId('image-skeleton')).not.toBeInTheDocument()
+
+    rerender(<Lightbox images={images} index={null} onIndexChange={vi.fn()} onClose={vi.fn()} />)
+    rerender(<Lightbox images={images} index={0} onIndexChange={vi.fn()} onClose={vi.fn()} />)
+    fireEvent.error(container.querySelector('img')!)
+    expect(screen.queryByTestId('image-skeleton')).not.toBeInTheDocument()
+  })
+
+  it('shows the skeleton again when switching to another image', () => {
+    const { container, rerender } = render(
+      <Lightbox images={images} index={0} onIndexChange={vi.fn()} onClose={vi.fn()} />,
+    )
+    fireEvent.load(container.querySelector('img')!)
+    expect(screen.queryByTestId('image-skeleton')).not.toBeInTheDocument()
+
+    rerender(<Lightbox images={images} index={1} onIndexChange={vi.fn()} onClose={vi.fn()} />)
+    expect(screen.getByTestId('image-skeleton')).toBeInTheDocument()
+  })
 })

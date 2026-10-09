@@ -1,7 +1,7 @@
 import { describe, expect, it, vi, afterEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
-import { loadProjectsStore } from '../lib/projectsStore'
+import { getAsciiBanner, loadProjectsStore } from '../lib/projectsStore'
 import { makeProject } from '../testProject'
 
 describe('ProjectWindowHeader', () => {
@@ -15,7 +15,7 @@ describe('ProjectBanner', () => {
   afterEach(() => vi.unstubAllGlobals())
 
   it('falls back to the project name when no banner is loaded', () => {
-    render(<ProjectBanner project={makeProject()} bannerClassName="b" nameClassName="n" />)
+    render(<ProjectBanner project={makeProject()} banner={null} bannerClassName="b" nameClassName="n" />)
     expect(screen.getByText('Rooms To Go')).toHaveClass('n')
   })
 
@@ -27,7 +27,7 @@ describe('ProjectBanner', () => {
         Promise.resolve(
           new Response(
             String(input).endsWith('/data/projects.json')
-              ? JSON.stringify({ projects: [project], moreProjects: null })
+              ? JSON.stringify({ projects: [project] })
               : 'ascii art',
           ),
         ),
@@ -35,7 +35,7 @@ describe('ProjectBanner', () => {
     )
     await loadProjectsStore()
 
-    render(<ProjectBanner project={project} bannerClassName="b" bannerFontSize={7} nameClassName="n" />)
+    render(<ProjectBanner project={project} banner={getAsciiBanner(project.asciiFile)} bannerClassName="b" bannerFontSize={7} nameClassName="n" />)
     const pre = screen.getByText('ascii art')
     expect(pre).toHaveClass('b')
     expect(pre).toHaveStyle({ fontSize: '7px' })
