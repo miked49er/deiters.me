@@ -1,10 +1,5 @@
-import type { Project } from '../types/project'
+import type { ProjectsData } from '../types/project'
 import { getProjectsData, getProjectsError } from '../lib/projectsStore'
-
-interface ProjectsData {
-  projects: Project[]
-  moreProjects: Project
-}
 
 interface UseProjectsResult {
   data: ProjectsData | null

@@ -10,3 +10,8 @@ export interface Project {
   asciiFile: string;
   details: string;
 }
+
+export interface ProjectsData {
+  projects: Project[];
+  moreProjects: Project;
+}

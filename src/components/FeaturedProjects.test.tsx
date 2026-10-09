@@ -21,7 +21,7 @@ const project = (over: Partial<Project> = {}): Project => ({
 const renderRow = (p: Project) =>
   render(
     <MemoryRouter>
-      <FeaturedProjects featured={[p]} totalCount={1} />
+      <FeaturedProjects projects={[p]} />
     </MemoryRouter>,
   )
 

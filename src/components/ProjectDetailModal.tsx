@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import type { Project } from '../types/project'
-import { useAsciiBanner } from '../hooks/useAsciiBanner'
 import { projectImageSrc } from '../lib/projectImageSrc'
-import HandlebarIcon from '../assets/icons/handlebar.svg?react'
 import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
+import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
+import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
 
 const TITLE_FONT_SIZE = 9
 
@@ -15,7 +15,6 @@ interface ProjectDetailModalProps {
 }
 
 export default function ProjectDetailModal({ project, onClose, onThumbClick }: ProjectDetailModalProps) {
-  const banner = useAsciiBanner(project.asciiFile)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -31,8 +30,6 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
     return () => cancelAnimationFrame(frame)
   }, [])
 
-  const images = project.images.map((img) => projectImageSrc(project, img))
-
   return (
     <div
       className={`fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/80 p-6 transition-opacity duration-200 ${
@@ -46,13 +43,11 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-2 border-b border-secondary/10 bg-secondary/[0.04] px-4 py-2.5">
-          <HandlebarIcon className="h-4 w-8 text-accent" />
-          <span className="ml-2 truncate font-mono text-xs text-secondary/40">{project.link}.tsx</span>
+        <ProjectWindowHeader project={project}>
           <BracketLink className="ml-auto" onClick={onClose} aria-label="Close">
             [ x ]
           </BracketLink>
-        </div>
+        </ProjectWindowHeader>
         <ImageWithSkeleton
           src={projectImageSrc(project, project.featureImage)}
           alt={project.name}
@@ -60,40 +55,23 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
           className="h-full w-full object-cover"
         />
         <div className="p-6">
-          {banner ? (
-            <pre
-              aria-hidden
-              className="overflow-x-auto pb-2 leading-[1.15] text-banner"
-              style={{ fontSize: `${TITLE_FONT_SIZE}px` }}
-            >
-              {banner}
-            </pre>
-          ) : (
-            <p className="text-2xl font-semibold text-secondary">{project.name}</p>
-          )}
+          <ProjectBanner
+            project={project}
+            bannerClassName="overflow-x-auto pb-2 leading-[1.15] text-banner"
+            bannerFontSize={TITLE_FONT_SIZE}
+            nameClassName="text-2xl font-semibold text-secondary"
+          />
           <h2 className="sr-only">{project.name}</h2>
           <p className="mt-4 leading-relaxed text-secondary/70">{project.details}</p>
 
-          {project.site && (
-            <BracketLink href={project.site} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block">
-              [ visit site → ]
-            </BracketLink>
-          )}
+          <SiteLink project={project} className="mt-4 inline-block" />
 
-          {images.length > 0 && (
-            <div className="mt-6 flex gap-2 overflow-x-auto border-t border-secondary/10 pt-4">
-              {images.map((src, i) => (
-                <ImageWithSkeleton
-                  key={src}
-                  src={src}
-                  alt=""
-                  wrapperClassName="h-20 w-20 flex-shrink-0 rounded-lg border border-secondary/10"
-                  className="h-full w-full cursor-pointer object-cover"
-                  onClick={() => onThumbClick(i)}
-                />
-              ))}
-            </div>
-          )}
+          <ThumbnailStrip
+            project={project}
+            onSelect={onThumbClick}
+            className="mt-6 flex gap-2 overflow-x-auto border-t border-secondary/10 pt-4"
+            thumbClassName="h-20 w-20 flex-shrink-0 rounded-lg border border-secondary/10"
+          />
         </div>
       </div>
     </div>

@@ -1,31 +1,26 @@
-import { useState } from 'react'
+import { useProjectDetail } from '../hooks/useProjectDetail'
 import { useProjects } from '../hooks/useProjects'
 import { useColumnCount } from '../hooks/useColumnCount'
-import { useAsciiBanner } from '../hooks/useAsciiBanner'
-import { useLightbox } from '../hooks/useLightbox'
 import { projectImageSrc } from '../lib/projectImageSrc'
+import { distributeIntoColumns } from '../lib/projectSelection'
 import Header from '../components/Header'
-import HandlebarIcon from '../assets/icons/handlebar.svg?react'
 import ProjectDetailModal from '../components/ProjectDetailModal'
+import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
 import Lightbox from '../components/Lightbox'
-import { PROJECTS_TITLE, SLASH_ASCII } from '../data/ascii'
+import SectionBanner from '../components/SectionBanner'
+import { PROJECTS_TITLE } from '../data/ascii'
 import type { Project } from '../types/project'
 
 // Sized to fit the widest ascii banner in public/data/projects.json without clipping.
 const TITLE_FONT_SIZE = 7
 
 function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
-  const banner = useAsciiBanner(project.asciiFile)
-
   return (
     <button
       onClick={onOpen}
       className="group mb-6 flex w-full flex-col overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] text-left shadow-xl shadow-black/30 transition-colors hover:border-accent/40"
     >
-      <div className="flex items-center gap-2 border-b border-secondary/10 bg-secondary/[0.04] px-4 py-2.5">
-        <HandlebarIcon className="h-4 w-8 text-accent" />
-        <span className="ml-2 truncate font-mono text-xs text-secondary/40">{project.link}.tsx</span>
-      </div>
+      <ProjectWindowHeader project={project} />
       <div className="h-40 w-full overflow-hidden">
         <img
           src={projectImageSrc(project, project.featureImage)}
@@ -35,17 +30,12 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
       </div>
       <div className="flex flex-1 flex-col p-4">
         <div className="pb-1">
-          {banner ? (
-            <pre
-              aria-hidden
-              className="leading-[1.15] whitespace-pre text-banner"
-              style={{ fontSize: `${TITLE_FONT_SIZE}px` }}
-            >
-              {banner}
-            </pre>
-          ) : (
-            <p className="font-semibold text-secondary">{project.name}</p>
-          )}
+          <ProjectBanner
+            project={project}
+            bannerClassName="leading-[1.15] whitespace-pre text-banner"
+            bannerFontSize={TITLE_FONT_SIZE}
+            nameClassName="font-semibold text-secondary"
+          />
         </div>
         <h3 className="sr-only">{project.name}</h3>
         <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-secondary/70">{project.details}</p>
@@ -56,14 +46,12 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
 
 export default function Projects() {
   const { data, error } = useProjects()
-  const [openId, setOpenId] = useState<number | null>(null)
-  const lightbox = useLightbox()
+  const detail = useProjectDetail()
   const columnCount = useColumnCount()
 
-  const openProject = data?.projects.find((p) => p.id === openId) ?? null
+  const openProject = data?.projects.find((p) => p.id === detail.openId) ?? null
 
-  const columns: Project[][] = Array.from({ length: columnCount }, () => [])
-  data?.projects.forEach((project, i) => columns[i % columnCount].push(project))
+  const columns = distributeIntoColumns(data?.projects ?? [], columnCount)
 
   return (
     <main className="min-h-screen bg-primary font-sans text-secondary">
@@ -73,21 +61,14 @@ export default function Projects() {
 
       {data && (
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-16">
-          <div className="mb-6 flex gap-2 overflow-x-auto">
-            <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
-              {SLASH_ASCII.replace(/^\n/, '')}
-            </pre>
-            <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
-              {PROJECTS_TITLE.replace(/^\n/, '')}
-            </pre>
-          </div>
+          <SectionBanner title={PROJECTS_TITLE} className="mb-6" />
           <h1 className="sr-only">Projects</h1>
 
           <div className="flex gap-6">
             {columns.map((column, i) => (
               <div key={i} className="flex flex-1 flex-col">
                 {column.map((project) => (
-                  <Card key={project.id} project={project} onOpen={() => setOpenId(project.id)} />
+                  <Card key={project.id} project={project} onOpen={() => detail.open(project.id)} />
                 ))}
               </div>
             ))}
@@ -98,14 +79,17 @@ export default function Projects() {
       {openProject && (
         <ProjectDetailModal
           project={openProject}
-          onClose={() => setOpenId(null)}
-          onThumbClick={(index) =>
-            lightbox.open(openProject.images.map((img) => projectImageSrc(openProject, img)), index)
-          }
+          onClose={detail.close}
+          onThumbClick={(index) => detail.openImage(openProject, index)}
         />
       )}
 
-      <Lightbox images={lightbox.images} index={lightbox.index} onIndexChange={lightbox.setIndex} onClose={lightbox.close} />
+      <Lightbox
+        images={detail.lightbox.images}
+        index={detail.lightbox.index}
+        onIndexChange={detail.lightbox.setIndex}
+        onClose={detail.lightbox.close}
+      />
     </main>
   )
 }

@@ -15,4 +15,4 @@ The single scrolling page at `/`. Contains the hero, About section, and Featured
 The `/projects` route. Lists every project, not just Featured ones.
 
 **Project Detail**:
-The full content for a project (description, images) shown via inline expand at the point of click, on whichever page (Landing or Projects) the project card lives. Not a separate route.
+The full content for a project (description, visit link, images). Presented as an inline expand on the Landing Page and as a modal on the Projects Page (intentional: the Projects Page is a card grid). Same content and open/closed behaviour either way. Not a separate route.

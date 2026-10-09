@@ -1,9 +1,4 @@
-import type { Project } from '../types/project'
-
-interface ProjectsData {
-  projects: Project[]
-  moreProjects: Project
-}
+import type { ProjectsData } from '../types/project'
 
 const store: {
   data: ProjectsData | null

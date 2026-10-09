@@ -1,8 +1,10 @@
-import { NAME_ASCII, SLASH_ASCII } from '../data/ascii'
+import { NAME_ASCII } from '../data/ascii'
+import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
 import EmailIcon from '../assets/icons/email.svg?react'
 import GithubIcon from '../assets/icons/github.svg?react'
 import LinkedinIcon from '../assets/icons/linkedin.svg?react'
 import TerminalWindow from './TerminalWindow'
+import SectionBanner from './SectionBanner'
 
 const ABOUT_BIO = `I'm a Senior Software Engineer based in Atlanta, specializing in React Native and full-stack development. I build mobile and web applications with a focus on clean code, smooth UX, and scalable architecture.
 
@@ -18,16 +20,12 @@ const CONTACT_LINKS = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="grid scroll-mt-16 gap-8 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-12">
+    <section
+      id={SECTION_IDS.about}
+      className={`grid ${SECTION_SCROLL_OFFSET} gap-8 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-12`}
+    >
       <div>
-        <div className="mb-3 flex gap-2 overflow-x-auto">
-          <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
-            {SLASH_ASCII.replace(/^\n/, '')}
-          </pre>
-          <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
-            {NAME_ASCII.replace(/^\n/, '')}
-          </pre>
-        </div>
+        <SectionBanner title={NAME_ASCII} className="mb-3" />
         <h1 className="sr-only">Mike Deiters</h1>
         <p className="mt-4 max-w-prose leading-relaxed whitespace-pre-line text-secondary/90">{ABOUT_BIO}</p>
 

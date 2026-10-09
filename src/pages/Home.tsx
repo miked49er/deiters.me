@@ -1,4 +1,5 @@
 import { useProjects } from '../hooks/useProjects'
+import { SECTION_LINKS } from '../lib/sections'
 import Header from '../components/Header'
 import AboutSection from '../components/AboutSection'
 import FeaturedProjects from '../components/FeaturedProjects'
@@ -6,37 +7,26 @@ import FeaturedProjects from '../components/FeaturedProjects'
 export default function Home() {
   const { data, error } = useProjects()
 
-  if (error) {
-    return (
-      <main className="min-h-screen bg-primary font-sans text-secondary">
-        <Header links={[{ href: '#about', label: 'About' }, { href: '#projects', label: 'Projects' }]} />
-        <p className="p-6 text-red-600">Failed to load projects.</p>
-      </main>
-    )
-  }
-
-  if (!data) {
-    return (
-      <main className="min-h-screen bg-primary font-sans text-secondary">
-        <Header links={[{ href: '#about', label: 'About' }, { href: '#projects', label: 'Projects' }]} />
-      </main>
-    )
-  }
-
-  const featured = data.projects.filter((project) => project.featured)
-
   return (
     <main className="min-h-screen bg-primary font-sans text-secondary">
-      <Header links={[{ href: '#about', label: 'About' }, { href: '#projects', label: 'Projects' }]} />
+      <Header links={SECTION_LINKS} />
 
-      <div className="mx-auto max-w-5xl space-y-10 px-4 py-8 sm:space-y-20 sm:px-8 sm:py-16">
-        <AboutSection />
-        <FeaturedProjects featured={featured} totalCount={data.projects.length} />
-      </div>
+      {error ? (
+        <p className="p-6 text-red-600">Failed to load projects.</p>
+      ) : (
+        data && (
+          <>
+            <div className="mx-auto max-w-5xl space-y-10 px-4 py-8 sm:space-y-20 sm:px-8 sm:py-16">
+              <AboutSection />
+              <FeaturedProjects projects={data.projects} />
+            </div>
 
-      <footer className="border-t border-secondary/10 px-4 py-8 text-center font-mono text-xs text-secondary/40 sm:px-8">
-        $ echo "Session terminated. Thanks for stopping by." <span className="cursor-blink">▊</span>
-      </footer>
+            <footer className="border-t border-secondary/10 px-4 py-8 text-center font-mono text-xs text-secondary/40 sm:px-8">
+              $ echo "Session terminated. Thanks for stopping by." <span className="cursor-blink">▊</span>
+            </footer>
+          </>
+        )
+      )}
     </main>
   )
 }

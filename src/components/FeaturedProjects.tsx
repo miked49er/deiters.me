@@ -1,17 +1,18 @@
-import { useState } from 'react'
 import type { Project } from '../types/project'
-import { PROJECTS_TITLE, SLASH_ASCII } from '../data/ascii'
-import { useAsciiBanner } from '../hooks/useAsciiBanner'
-import { useLightbox } from '../hooks/useLightbox'
+import { PROJECTS_TITLE } from '../data/ascii'
+import { useProjectDetail } from '../hooks/useProjectDetail'
 import { projectImageSrc } from '../lib/projectImageSrc'
-import HandlebarIcon from '../assets/icons/handlebar.svg?react'
+import { selectFeatured } from '../lib/projectSelection'
+import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
 import Lightbox from './Lightbox'
 import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
+import SectionBanner from './SectionBanner'
+import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
+import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
 
 interface FeaturedProjectsProps {
-  featured: Project[]
-  totalCount: number
+  projects: Project[]
 }
 
 function Row({
@@ -27,14 +28,9 @@ function Row({
   onToggle: () => void
   onImageClick: (index: number) => void
 }) {
-  const banner = useAsciiBanner(project.asciiFile)
-
   return (
     <div className="overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] shadow-xl shadow-black/30 transition-colors hover:border-accent/40">
-      <div className="flex items-center gap-2 border-b border-secondary/10 bg-secondary/[0.04] px-4 py-2.5">
-        <HandlebarIcon className="h-4 w-8 text-accent" />
-        <span className="ml-2 truncate font-mono text-xs text-secondary/40">{project.link}.tsx</span>
-      </div>
+      <ProjectWindowHeader project={project} />
 
       <div className={`flex flex-col ${reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}>
         <button
@@ -51,63 +47,45 @@ function Row({
 
         <div className="flex flex-1 flex-col justify-center p-5 sm:p-8">
           <button onClick={onToggle} className="block text-left">
-            {banner ? (
-              <pre aria-hidden className="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]">
-                {banner}
-              </pre>
-            ) : (
-              <p className="text-xl font-semibold text-secondary">{project.name}</p>
-            )}
+            <ProjectBanner
+              project={project}
+              bannerClassName="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]"
+              nameClassName="text-xl font-semibold text-secondary"
+            />
             <h3 className="sr-only">{project.name}</h3>
             <p className="mt-3 leading-relaxed text-secondary/70">
               {expanded ? project.details : `${project.details.slice(0, 140)}…`}
             </p>
           </button>
-          {expanded && project.site && (
-            <BracketLink href={project.site} target="_blank" rel="noopener noreferrer" className="mt-3 self-start">
-              [ visit site → ]
-            </BracketLink>
-          )}
+          {expanded && <SiteLink project={project} className="mt-3 self-start" />}
           <button onClick={onToggle} className="mt-3 self-start text-left text-sm text-accent hover:underline">
             {expanded ? 'Show less' : 'Read more'}
           </button>
         </div>
       </div>
 
-      {expanded && project.images.length > 0 && (
-        <div className="flex gap-2 overflow-x-auto border-t border-secondary/10 p-4">
-          {project.images.map((img, i) => (
-            <ImageWithSkeleton
-              key={img}
-              src={projectImageSrc(project, img)}
-              alt=""
-              wrapperClassName="h-16 w-16 flex-shrink-0 rounded-lg border border-secondary/10"
-              className="h-full w-full cursor-pointer object-cover"
-              onClick={() => onImageClick(i)}
-            />
-          ))}
-        </div>
+      {expanded && (
+        <ThumbnailStrip
+          project={project}
+          onSelect={onImageClick}
+          className="flex gap-2 overflow-x-auto border-t border-secondary/10 p-4"
+          thumbClassName="h-16 w-16 flex-shrink-0 rounded-lg border border-secondary/10"
+        />
       )}
     </div>
   )
 }
 
-export default function FeaturedProjects({ featured, totalCount }: FeaturedProjectsProps) {
-  const [expandedId, setExpandedId] = useState<string | number | null>(null)
-  const lightbox = useLightbox()
+export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
+  const detail = useProjectDetail()
+  const featured = selectFeatured(projects)
+  const totalCount = projects.length
 
   return (
-    <section id="projects" className="scroll-mt-16">
+    <section id={SECTION_IDS.projects} className={SECTION_SCROLL_OFFSET}>
       <div className="mb-6 flex items-end justify-between">
         <div>
-          <div className="flex gap-2 overflow-x-auto">
-            <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
-              {SLASH_ASCII.replace(/^\n/, '')}
-            </pre>
-            <pre aria-hidden className="text-[8px] leading-tight text-banner sm:text-[10px]">
-              {PROJECTS_TITLE.replace(/^\n/, '')}
-            </pre>
-          </div>
+          <SectionBanner title={PROJECTS_TITLE} />
           <h2 className="sr-only">Featured work</h2>
         </div>
         <BracketLink to="/projects" className="hidden sm:inline-flex">
@@ -121,9 +99,9 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
             key={project.id}
             project={project}
             reverse={i % 2 === 1}
-            expanded={expandedId === project.id}
-            onToggle={() => setExpandedId((cur) => (cur === project.id ? null : project.id))}
-            onImageClick={(index) => lightbox.open(project.images.map((img) => projectImageSrc(project, img)), index)}
+            expanded={detail.isOpen(project.id)}
+            onToggle={() => detail.toggle(project.id)}
+            onImageClick={(index) => detail.openImage(project, index)}
           />
         ))}
       </div>
@@ -133,10 +111,10 @@ export default function FeaturedProjects({ featured, totalCount }: FeaturedProje
       </BracketLink>
 
       <Lightbox
-        images={lightbox.images}
-        index={lightbox.index}
-        onIndexChange={lightbox.setIndex}
-        onClose={lightbox.close}
+        images={detail.lightbox.images}
+        index={detail.lightbox.index}
+        onIndexChange={detail.lightbox.setIndex}
+        onClose={detail.lightbox.close}
       />
     </section>
   )
