@@ -3,7 +3,6 @@ import { PROJECTS_TITLE } from '../data/ascii'
 import { ProjectDetailProvider } from '../projectDetail/ProjectDetail'
 import { useProjectDetail } from '../projectDetail/useProjectDetail'
 import { projectImageSrc } from '../lib/projectImageSrc'
-import { selectFeatured } from '../lib/projectSelection'
 import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
 import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
@@ -81,7 +80,7 @@ function Row({
 
 function FeaturedProjectsSection({ projects }: FeaturedProjectsProps) {
   const detail = useProjectDetail()
-  const featured = selectFeatured(projects)
+  const featured = projects.filter((project) => project.featured)
   const totalCount = projects.length
 
   return (

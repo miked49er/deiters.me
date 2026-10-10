@@ -54,4 +54,20 @@ describe('FeaturedProjects', () => {
     fireEvent.click(screen.getByText('Read more'))
     expect(screen.queryByText(LINK)).not.toBeInTheDocument()
   })
+
+  it('lists only featured projects', () => {
+    const projects = [
+      project({ id: 1, name: 'Shown', featured: true }),
+      project({ id: 2, name: 'Hidden', featured: false }),
+    ]
+    render(
+      <ProjectsProvider value={createInMemoryProjects({ projects })}>
+        <MemoryRouter>
+          <FeaturedProjects projects={projects} />
+        </MemoryRouter>
+      </ProjectsProvider>,
+    )
+    expect(screen.getAllByText('Shown').length).toBeGreaterThan(0)
+    expect(screen.queryByText('Hidden')).not.toBeInTheDocument()
+  })
 })
