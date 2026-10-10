@@ -13,7 +13,7 @@ describe('hero art', () => {
       '// Mike Deiters',
       '// Sr. Engineer',
       '// Full-Stack',
-      '// Atlanta, GA',
+      '// Eagle Scout',
     ])
   })
 
