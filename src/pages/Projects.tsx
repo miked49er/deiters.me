@@ -1,5 +1,5 @@
 import { useProjectDetail } from '../hooks/useProjectDetail'
-import { useProjects } from '../hooks/useProjects'
+import { useProjects } from '../projects/useProjects'
 import { useColumnCount } from '../hooks/useColumnCount'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import { distributeIntoColumns } from '../lib/projectSelection'
@@ -7,7 +7,6 @@ import ImageWithSkeleton from '../components/ImageWithSkeleton'
 import Header from '../components/Header'
 import ProjectDetailModal from '../components/ProjectDetailModal'
 import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
-import { getAsciiBanner } from '../lib/projectsStore'
 import Lightbox from '../components/Lightbox'
 import SectionBanner from '../components/SectionBanner'
 import { PROJECTS_TITLE } from '../data/ascii'
@@ -17,6 +16,7 @@ import type { Project } from '../types/project'
 const TITLE_FONT_SIZE = 7
 
 function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
+  const { getBanner } = useProjects()
   return (
     <button
       onClick={onOpen}
@@ -37,7 +37,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         <div className="pb-1">
           <ProjectBanner
             project={project}
-            banner={getAsciiBanner(project.asciiFile)}
+            banner={getBanner(project.asciiFile)}
             bannerClassName="leading-[1.15] whitespace-pre text-banner"
             bannerFontSize={TITLE_FONT_SIZE}
             nameClassName="font-semibold text-secondary"

@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import FeaturedProjects from './FeaturedProjects'
+import { ProjectsProvider } from '../projects/ProjectsContext'
+import { createInMemoryProjects } from '../projects/inMemoryProjects'
 import type { Project } from '../types/project'
 
 const project = (over: Partial<Project> = {}): Project => ({
@@ -20,9 +22,11 @@ const project = (over: Partial<Project> = {}): Project => ({
 
 const renderRow = (p: Project) =>
   render(
-    <MemoryRouter>
-      <FeaturedProjects projects={[p]} />
-    </MemoryRouter>,
+    <ProjectsProvider value={createInMemoryProjects({ projects: [p] })}>
+      <MemoryRouter>
+        <FeaturedProjects projects={[p]} />
+      </MemoryRouter>
+    </ProjectsProvider>,
   )
 
 const LINK = '[ visit site → ]'
