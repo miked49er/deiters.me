@@ -1,7 +1,7 @@
-import { describe, expect, it, vi, afterEach } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
-import { getAsciiBanner, loadProjectsStore } from '../lib/projectsStore'
+import { createInMemoryProjects } from '../projects/inMemoryProjects'
 import { makeProject } from '../testProject'
 
 describe('ProjectWindowHeader', () => {
@@ -12,30 +12,16 @@ describe('ProjectWindowHeader', () => {
 })
 
 describe('ProjectBanner', () => {
-  afterEach(() => vi.unstubAllGlobals())
-
   it('falls back to the project name when no banner is loaded', () => {
     render(<ProjectBanner project={makeProject()} banner={null} bannerClassName="b" nameClassName="n" />)
     expect(screen.getByText('Rooms To Go')).toHaveClass('n')
   })
 
-  it('renders the loaded ascii banner at the requested font size', async () => {
+  it('renders the loaded ascii banner at the requested font size', () => {
     const project = makeProject({ asciiFile: '/ascii.txt' })
-    vi.stubGlobal(
-      'fetch',
-      vi.fn((input: RequestInfo | URL) =>
-        Promise.resolve(
-          new Response(
-            String(input).endsWith('/data/projects.json')
-              ? JSON.stringify({ projects: [project] })
-              : 'ascii art',
-          ),
-        ),
-      ),
-    )
-    await loadProjectsStore()
+    const seam = createInMemoryProjects({ projects: [project], banners: { '/ascii.txt': 'ascii art' } })
 
-    render(<ProjectBanner project={project} banner={getAsciiBanner(project.asciiFile)} bannerClassName="b" bannerFontSize={7} nameClassName="n" />)
+    render(<ProjectBanner project={project} banner={seam.getBanner(project.asciiFile)} bannerClassName="b" bannerFontSize={7} nameClassName="n" />)
     const pre = screen.getByText('ascii art')
     expect(pre).toHaveClass('b')
     expect(pre).toHaveStyle({ fontSize: '7px' })

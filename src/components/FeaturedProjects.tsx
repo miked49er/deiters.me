@@ -9,7 +9,7 @@ import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
 import SectionBanner from './SectionBanner'
 import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
-import { getAsciiBanner } from '../lib/projectsStore'
+import { useProjects } from '../projects/useProjects'
 import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
 
 interface FeaturedProjectsProps {
@@ -29,6 +29,7 @@ function Row({
   onToggle: () => void
   onImageClick: (index: number) => void
 }) {
+  const { getBanner } = useProjects()
   return (
     <div className="overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] shadow-xl shadow-black/30 transition-colors hover:border-accent/40">
       <ProjectWindowHeader project={project} />
@@ -50,7 +51,7 @@ function Row({
           <button onClick={onToggle} className="block text-left">
             <ProjectBanner
               project={project}
-              banner={getAsciiBanner(project.asciiFile)}
+              banner={getBanner(project.asciiFile)}
               bannerClassName="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]"
               nameClassName="text-xl font-semibold text-secondary"
             />
