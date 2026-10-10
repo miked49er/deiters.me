@@ -1,4 +1,4 @@
-import { useProjects } from '../hooks/useProjects'
+import { useProjects } from '../projects/useProjects'
 import { SECTION_LINKS } from '../lib/sections'
 import Header from '../components/Header'
 import AboutSection from '../components/AboutSection'

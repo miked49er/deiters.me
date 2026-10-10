@@ -1,71 +1,41 @@
-import { describe, expect, it, vi, afterEach } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import App from './App'
-import { loadProjectsStore } from './lib/projectsStore'
+import { ProjectsProvider } from './projects/ProjectsContext'
+import { createInMemoryProjects } from './projects/inMemoryProjects'
+import { makeProject } from './testProject'
+
+const renderApp = (projects = [] as ReturnType<typeof makeProject>[]) =>
+  render(
+    <ProjectsProvider value={createInMemoryProjects({ projects })}>
+      <App />
+    </ProjectsProvider>,
+  )
 
 describe('App', () => {
-  afterEach(() => {
-    vi.unstubAllGlobals()
-  })
-
-  it('renders the header and featured project data loaded from /data/projects.json', async () => {
-    const fetchMock = vi.fn((input: RequestInfo | URL) => {
-      const url = String(input)
-      if (url.endsWith('/data/projects.json')) {
-        return Promise.resolve(
-          new Response(
-            JSON.stringify({
-              projects: [
-                {
-                  id: 1,
-                  name: 'Rooms To Go',
-                  link: 'rtg',
-                  site: '',
-                  location: '/assets/img/rtg/',
-                  featureImage: 'rtg.avif',
-                  images: [],
-                  featured: true,
-                  asciiFile: '/assets/img/rtg/ascii.txt',
-                  details: '',
-                },
-              ],
-            }),
-          ),
-        )
-      }
-      return Promise.resolve(new Response('ascii art'))
-    })
-    vi.stubGlobal('fetch', fetchMock)
-
-    await loadProjectsStore()
-    render(<App />)
+  it('renders the header and featured project data from the projects seam', () => {
+    renderApp([makeProject({ asciiFile: '/assets/img/rtg/ascii.txt' })])
 
     expect(screen.getByText('[ about ]')).toBeInTheDocument()
     expect(screen.getByText('[ projects ]')).toBeInTheDocument()
     expect(screen.getByText('rtg.tsx')).toBeInTheDocument()
   })
 
-  it('redirects an unmatched path to the Landing Page', async () => {
-    const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [] }))))
-    vi.stubGlobal('fetch', fetchMock)
+  it('redirects an unmatched path to the Landing Page', () => {
     window.history.pushState({}, '', '/this-route-does-not-exist')
 
-    await loadProjectsStore()
-    render(<App />)
+    renderApp()
 
     expect(screen.getByText('[ about ]')).toBeInTheDocument()
     expect(window.location.pathname).toBe('/')
   })
 
-  it('scrolls to the top when the route changes', async () => {
-    const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify({ projects: [] }))))
-    vi.stubGlobal('fetch', fetchMock)
+  it('scrolls to the top when the route changes', () => {
     const scrollTo = vi.fn()
     vi.stubGlobal('scrollTo', scrollTo)
     window.history.pushState({}, '', '/this-route-does-not-exist')
 
-    await loadProjectsStore()
-    render(<App />)
+    renderApp()
 
     expect(scrollTo).toHaveBeenCalledWith({ top: 0, left: 0, behavior: 'instant' })
   })

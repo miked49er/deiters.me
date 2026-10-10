@@ -1,16 +1,15 @@
 import type { Project } from '../types/project'
 import { PROJECTS_TITLE } from '../data/ascii'
-import { useProjectDetail } from '../hooks/useProjectDetail'
+import { ProjectDetailProvider } from '../projectDetail/ProjectDetail'
+import { useProjectDetail } from '../projectDetail/useProjectDetail'
 import { projectImageSrc } from '../lib/projectImageSrc'
-import { selectFeatured } from '../lib/projectSelection'
 import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
-import Lightbox from './Lightbox'
 import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
 import SectionBanner from './SectionBanner'
 import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
-import { getAsciiBanner } from '../lib/projectsStore'
-import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
+import { useProjects } from '../projects/useProjects'
+import { SiteLink, ThumbnailStrip } from '../projectDetail/ProjectDetailParts'
 
 interface FeaturedProjectsProps {
   projects: Project[]
@@ -29,6 +28,7 @@ function Row({
   onToggle: () => void
   onImageClick: (index: number) => void
 }) {
+  const { getBanner } = useProjects()
   return (
     <div className="overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] shadow-xl shadow-black/30 transition-colors hover:border-accent/40">
       <ProjectWindowHeader project={project} />
@@ -50,7 +50,7 @@ function Row({
           <button onClick={onToggle} className="block text-left">
             <ProjectBanner
               project={project}
-              banner={getAsciiBanner(project.asciiFile)}
+              banner={getBanner(project.asciiFile)}
               bannerClassName="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]"
               nameClassName="text-xl font-semibold text-secondary"
             />
@@ -78,9 +78,9 @@ function Row({
   )
 }
 
-export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
+function FeaturedProjectsSection({ projects }: FeaturedProjectsProps) {
   const detail = useProjectDetail()
-  const featured = selectFeatured(projects)
+  const featured = projects.filter((project) => project.featured)
   const totalCount = projects.length
 
   return (
@@ -111,13 +111,14 @@ export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
       <BracketLink to="/projects" className="mt-6 inline-flex sm:hidden">
         [ view all ({totalCount}) → ]
       </BracketLink>
-
-      <Lightbox
-        images={detail.lightbox.images}
-        index={detail.lightbox.index}
-        onIndexChange={detail.lightbox.setIndex}
-        onClose={detail.lightbox.close}
-      />
     </section>
+  )
+}
+
+export default function FeaturedProjects(props: FeaturedProjectsProps) {
+  return (
+    <ProjectDetailProvider>
+      <FeaturedProjectsSection {...props} />
+    </ProjectDetailProvider>
   )
 }
