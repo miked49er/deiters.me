@@ -66,10 +66,12 @@ export function createTimeline(letterCounts: number[], random: () => number = Ma
     advance(ms) {
       const before = state
       elapsed += ms
-      // A phase always lasts its full duration: a slow frame never skips ahead into the next phase.
+      // A phase always lasts its full duration: a slow frame never skips a whole phase.
       if (elapsed >= PHASE_DURATION[state.phase]) {
-        elapsed = 0
+        // Frame overshoot carries into the next phase so typing and holding end on time; a new message starts fresh.
+        const overshoot = elapsed - PHASE_DURATION[state.phase]
         state = nextPhase()
+        elapsed = state.phase === 'typing' ? 0 : overshoot
       }
       const lettersShown = lettersAt()
       if (lettersShown !== state.lettersShown) state = { ...state, lettersShown }

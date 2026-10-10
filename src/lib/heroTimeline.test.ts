@@ -59,6 +59,12 @@ describe('heroTimeline', () => {
     expect(timeline.advance(100000)).toEqual({ messageIndex: 0, phase: 'holding', lettersShown: 2 })
   })
 
+  it('carries frame overshoot into the next phase so the hold ends on time', () => {
+    const timeline = createTimeline([2], even)
+    timeline.advance(TYPING_DURATION_MS + 15)
+    expect(timeline.advance(HOLD_DURATION_MS - 15).phase).toBe('erasing')
+  })
+
   it('does nothing while not advanced, and resumes where it left off', () => {
     const timeline = createTimeline([4], even)
     timeline.advance(1000)

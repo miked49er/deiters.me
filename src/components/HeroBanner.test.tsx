@@ -108,6 +108,7 @@ describe('HeroBanner', () => {
   })
 
   it('then backspaces one whole letter at a time, right to left, in about 1.5 seconds', () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.5) // even typing, so the next message's first letter can't land right after the erase
     const { container } = render(<HeroBanner />)
     advance(TYPE_MS + HOLD_MS + 50)
     const restPositions = glyphEnds(0).filter((_, i) => i !== 5)
