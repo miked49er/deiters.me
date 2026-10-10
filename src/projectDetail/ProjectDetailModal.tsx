@@ -7,10 +7,9 @@ import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
 import { useOverlay } from '../overlays/useOverlay'
 import { useProjectDetail } from './useProjectDetail'
 import { useProjects } from '../projects/useProjects'
-import { bannerFitFontSize } from '../lib/bannerFontSize'
 import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
 
-const TITLE_FONT_SIZE = 9
+const TITLE_MAX_FONT_SIZE = 9
 
 interface ProjectDetailModalProps {
   project: Project
@@ -31,7 +30,7 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/80 transition-opacity sm:p-6 duration-200 ${
+      className={`fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/80 transition-opacity duration-200 sm:p-6 ${
         visible ? 'opacity-100' : 'opacity-0'
       }`}
       onClick={onClose}
@@ -62,7 +61,7 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
               project={project}
               banner={banner}
               bannerClassName="pb-2 leading-[1.15] text-banner"
-              bannerFontSize={banner ? bannerFitFontSize(banner, TITLE_FONT_SIZE) : undefined}
+              fitMaxPx={TITLE_MAX_FONT_SIZE}
               nameClassName="text-2xl font-semibold text-secondary"
             />
           </div>
