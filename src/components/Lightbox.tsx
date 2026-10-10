@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useOverlay } from '../overlays/useOverlay'
 import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
 
@@ -12,6 +13,8 @@ interface LightboxProps {
 export default function Lightbox({ images, index, onIndexChange, onClose }: LightboxProps) {
   const total = images.length
 
+  useOverlay(index !== null && total > 0, onClose)
+
   useEffect(() => {
     if (index === null) return
     const current = index
@@ -23,7 +26,6 @@ export default function Lightbox({ images, index, onIndexChange, onClose }: Ligh
       }
       if (e.key === 'ArrowLeft') onIndexChange((current - 1 + total) % total)
       if (e.key === 'ArrowRight') onIndexChange((current + 1) % total)
-      if (e.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)

@@ -1,13 +1,13 @@
-import { useProjectDetail } from '../hooks/useProjectDetail'
+import { ProjectDetailProvider } from '../projectDetail/ProjectDetail'
+import { useProjectDetail } from '../projectDetail/useProjectDetail'
 import { useProjects } from '../projects/useProjects'
 import { useColumnCount } from '../hooks/useColumnCount'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import { distributeIntoColumns } from '../lib/projectSelection'
 import ImageWithSkeleton from '../components/ImageWithSkeleton'
 import Header from '../components/Header'
-import ProjectDetailModal from '../components/ProjectDetailModal'
+import ProjectDetailModal from '../projectDetail/ProjectDetailModal'
 import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
-import Lightbox from '../components/Lightbox'
 import SectionBanner from '../components/SectionBanner'
 import { PROJECTS_TITLE } from '../data/ascii'
 import type { Project } from '../types/project'
@@ -50,7 +50,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
   )
 }
 
-export default function Projects() {
+function ProjectsPage() {
   const { data, error } = useProjects()
   const detail = useProjectDetail()
   const columnCount = useColumnCount()
@@ -82,20 +82,15 @@ export default function Projects() {
         </div>
       )}
 
-      {openProject && (
-        <ProjectDetailModal
-          project={openProject}
-          onClose={detail.close}
-          onThumbClick={(index) => detail.openImage(openProject, index)}
-        />
-      )}
-
-      <Lightbox
-        images={detail.lightbox.images}
-        index={detail.lightbox.index}
-        onIndexChange={detail.lightbox.setIndex}
-        onClose={detail.lightbox.close}
-      />
+      {openProject && <ProjectDetailModal project={openProject} />}
     </main>
+  )
+}
+
+export default function Projects() {
+  return (
+    <ProjectDetailProvider>
+      <ProjectsPage />
+    </ProjectDetailProvider>
   )
 }

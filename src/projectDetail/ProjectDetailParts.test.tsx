@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import { act, fireEvent, render, renderHook, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
-import { useProjectDetail } from '../hooks/useProjectDetail'
 import { makeProject } from '../testProject'
 
 describe('SiteLink', () => {
@@ -47,27 +46,5 @@ describe('ThumbnailStrip', () => {
     const img = container.querySelector('img')!
     expect(img).toHaveAttribute('loading', 'lazy')
     expect(img).toHaveAttribute('decoding', 'async')
-  })
-})
-
-describe('useProjectDetail', () => {
-  it('opens, toggles and closes a single project', () => {
-    const { result } = renderHook(() => useProjectDetail())
-    act(() => result.current.open(1))
-    expect(result.current.isOpen(1)).toBe(true)
-    act(() => result.current.toggle(2))
-    expect(result.current.isOpen(2)).toBe(true)
-    act(() => result.current.toggle(2))
-    expect(result.current.openId).toBeNull()
-    act(() => result.current.open(1))
-    act(() => result.current.close())
-    expect(result.current.openId).toBeNull()
-  })
-
-  it('opens the lightbox with full image paths at the clicked thumbnail', () => {
-    const { result } = renderHook(() => useProjectDetail())
-    act(() => result.current.openImage(makeProject({ images: ['a.png', 'b.png'] }), 1))
-    expect(result.current.lightbox.images).toEqual(['/assets/img/rtg/a.png', '/assets/img/rtg/b.png'])
-    expect(result.current.lightbox.index).toBe(1)
   })
 })

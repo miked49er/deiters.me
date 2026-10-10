@@ -1,7 +1,7 @@
 import type { Project } from '../types/project'
 import { projectImageSrc } from '../lib/projectImageSrc'
-import BracketLink from './BracketLink'
-import ImageWithSkeleton from './ImageWithSkeleton'
+import BracketLink from '../components/BracketLink'
+import ImageWithSkeleton from '../components/ImageWithSkeleton'
 
 export function SiteLink({ project, className }: { project: Project; className?: string }) {
   if (!project.site) return null
