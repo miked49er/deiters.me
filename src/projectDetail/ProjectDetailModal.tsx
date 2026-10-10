@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import type { Project } from '../types/project'
 import { projectImageSrc } from '../lib/projectImageSrc'
-import BracketLink from './BracketLink'
-import ImageWithSkeleton from './ImageWithSkeleton'
-import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
+import BracketLink from '../components/BracketLink'
+import ImageWithSkeleton from '../components/ImageWithSkeleton'
+import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
+import { useOverlay } from '../overlays/useOverlay'
+import { useProjectDetail } from './useProjectDetail'
 import { useProjects } from '../projects/useProjects'
 import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
 
@@ -11,21 +13,14 @@ const TITLE_FONT_SIZE = 9
 
 interface ProjectDetailModalProps {
   project: Project
-  onClose: () => void
-  onThumbClick: (index: number) => void
 }
 
-export default function ProjectDetailModal({ project, onClose, onThumbClick }: ProjectDetailModalProps) {
+export default function ProjectDetailModal({ project }: ProjectDetailModalProps) {
   const { getBanner } = useProjects()
+  const { close: onClose, openImage } = useProjectDetail()
   const [visible, setVisible] = useState(false)
 
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [onClose])
+  useOverlay(true, onClose)
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setVisible(true))
@@ -71,7 +66,7 @@ export default function ProjectDetailModal({ project, onClose, onThumbClick }: P
 
           <ThumbnailStrip
             project={project}
-            onSelect={onThumbClick}
+            onSelect={(index) => openImage(project, index)}
             className="mt-6 flex gap-2 overflow-x-auto border-t border-secondary/10 pt-4"
             thumbClassName="h-20 w-20 flex-shrink-0 rounded-lg border border-secondary/10"
           />
