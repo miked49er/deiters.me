@@ -11,7 +11,8 @@ interface ProjectBannerProps {
   banner: string | null
   // Callers size the banner differently; both stay caller-owned so output is unchanged.
   bannerClassName: string
-  bannerFontSize?: number
+  // A number is px; a string is a full CSS font-size (e.g. a container-query expression).
+  bannerFontSize?: number | string
   nameClassName: string
 }
 
@@ -21,7 +22,7 @@ export function ProjectBanner({ project, banner, bannerClassName, bannerFontSize
     <pre
       aria-hidden
       className={bannerClassName}
-      style={bannerFontSize ? { fontSize: `${bannerFontSize}px` } : undefined}
+      style={bannerFontSize ? { fontSize: typeof bannerFontSize === 'number' ? `${bannerFontSize}px` : bannerFontSize } : undefined}
     >
       {banner}
     </pre>

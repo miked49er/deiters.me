@@ -43,6 +43,23 @@ describe('Project Detail modal (Projects Page)', () => {
     expect(screen.getAllByText('Full details text').length).toBeGreaterThan(0)
   })
 
+  it('scales the ASCII title to the modal width instead of scrolling horizontally', () => {
+    const withBanner = makeProject({ asciiFile: '/ascii.txt' })
+    const seam = createInMemoryProjects({ projects: [withBanner], banners: { '/ascii.txt': 'ab\nabcdefghij' } })
+    render(
+      <ProjectsProvider value={seam}>
+        <MemoryRouter>
+          <Projects />
+        </MemoryRouter>
+      </ProjectsProvider>,
+    )
+    openModal()
+    const banner = screen.getByLabelText('Close').closest('.fixed')!.querySelector('pre')!
+    expect(banner).not.toHaveClass('overflow-x-auto')
+    // jsdom drops cqw font sizes, so the expression itself is covered in bannerFontSize.test.ts.
+    expect(banner.parentElement).toHaveClass('@container')
+  })
+
   it('closes with the close button', () => {
     renderProjectsPage()
     openModal()
