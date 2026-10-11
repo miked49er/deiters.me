@@ -8,12 +8,14 @@ interface LightboxProps {
   index: number | null
   onIndexChange: (index: number) => void
   onClose: () => void
+  /** Names the images for assistive tech, e.g. the project name. */
+  imageLabel?: string
 }
 
-export default function Lightbox({ images, index, onIndexChange, onClose }: LightboxProps) {
+export default function Lightbox({ images, index, onIndexChange, onClose, imageLabel = 'Image' }: LightboxProps) {
   const total = images.length
 
-  useOverlay(index !== null && total > 0, onClose)
+  const dialogRef = useOverlay(index !== null && total > 0, onClose)
 
   useEffect(() => {
     if (index === null) return
@@ -29,12 +31,22 @@ export default function Lightbox({ images, index, onIndexChange, onClose }: Ligh
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [index, total, onIndexChange, onClose])
+  }, [index, total, onIndexChange])
 
   if (index === null || total === 0) return null
 
+  const description = `${imageLabel}, image ${index + 1} of ${total}`
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6" onClick={onClose}>
+    <div
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label={description}
+      tabIndex={-1}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6 outline-none"
+      onClick={onClose}
+    >
       {total > 1 && (
         <button
           className="absolute left-4 top-1/2 -translate-y-1/2 px-3 font-mono text-3xl text-secondary hover:text-accent sm:left-8"
@@ -52,7 +64,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose }: Ligh
         // key remounts per image so the skeleton resets when navigating.
         key={images[index]}
         src={images[index]}
-        alt=""
+        alt={description}
         // Reserve a minimum box so the skeleton is visible; dropped after load so small images aren't padded.
         loadingClassName="min-h-48 min-w-48"
         className="max-h-[85vh] max-w-[90vw] border-2 border-accent object-contain"

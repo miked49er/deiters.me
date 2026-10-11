@@ -60,6 +60,14 @@ describe('Project Detail modal (Projects Page)', () => {
     expect(banner.parentElement).toHaveClass('@container')
   })
 
+  it('is a labelled modal dialog that takes focus', () => {
+    renderProjectsPage()
+    openModal()
+    const dialog = screen.getByRole('dialog', { name: 'Rooms To Go' })
+    expect(dialog).toHaveAttribute('aria-modal', 'true')
+    expect(dialog).toHaveFocus()
+  })
+
   it('closes with the close button', () => {
     renderProjectsPage()
     openModal()

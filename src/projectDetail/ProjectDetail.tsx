@@ -8,6 +8,7 @@ import type { ProjectDetailApi } from './ProjectDetailContext'
 interface LightboxState {
   images: string[]
   index: number
+  label: string
 }
 
 /**
@@ -26,7 +27,7 @@ export function ProjectDetailProvider({ children }: { children: ReactNode }) {
       close: () => setOpenId(null),
       toggle: (id) => setOpenId((cur) => (cur === id ? null : id)),
       openImage: (project, index) =>
-        setLightbox({ images: project.images.map((img) => projectImageSrc(project, img)), index }),
+        setLightbox({ images: project.images.map((img) => projectImageSrc(project, img)), index, label: project.name }),
     }),
     [openId],
   )
@@ -40,6 +41,7 @@ export function ProjectDetailProvider({ children }: { children: ReactNode }) {
       <Lightbox
         images={lightbox?.images ?? []}
         index={lightbox?.index ?? null}
+        imageLabel={lightbox?.label}
         onIndexChange={setIndex}
         onClose={closeLightbox}
       />

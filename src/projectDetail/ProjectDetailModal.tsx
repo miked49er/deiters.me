@@ -21,7 +21,7 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
   const { close: onClose, openImage } = useProjectDetail()
   const [visible, setVisible] = useState(false)
 
-  useOverlay(true, onClose)
+  const dialogRef = useOverlay(true, onClose)
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setVisible(true))
@@ -30,7 +30,12 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/80 transition-opacity duration-200 sm:p-6 ${
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label={project.name}
+      tabIndex={-1}
+      className={`fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/80 outline-none transition-opacity duration-200 sm:p-6 ${
         visible ? 'opacity-100' : 'opacity-0'
       }`}
       onClick={onClose}

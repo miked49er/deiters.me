@@ -18,6 +18,14 @@ describe('Lightbox', () => {
     expect(screen.getByText('2 / 3')).toBeInTheDocument()
   })
 
+  it('is a labelled modal dialog with a described image and focus inside', () => {
+    render(<Lightbox images={images} index={1} onIndexChange={vi.fn()} onClose={vi.fn()} imageLabel="Rooms To Go" />)
+    const dialog = screen.getByRole('dialog', { name: 'Rooms To Go, image 2 of 3' })
+    expect(dialog).toHaveAttribute('aria-modal', 'true')
+    expect(dialog).toHaveFocus()
+    expect(screen.getByAltText('Rooms To Go, image 2 of 3')).toBeInTheDocument()
+  })
+
   it('hides nav controls and counter for a single image', () => {
     render(<Lightbox images={['/only.png']} index={0} onIndexChange={vi.fn()} onClose={vi.fn()} />)
     expect(screen.queryByLabelText('Next image')).not.toBeInTheDocument()

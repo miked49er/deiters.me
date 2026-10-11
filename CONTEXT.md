@@ -26,4 +26,12 @@ _Avoid_: Hero Banner, Section Banner (different, static or Landing-Page-only ban
 The `/projects` route. Lists every project, not just Featured ones.
 
 **Project Detail**:
-The full content for a project (description, visit link, images). Presented as an inline expand on the Landing Page and as a modal on the Projects Page (intentional: the Projects Page is a card grid). Same content and open/closed behaviour either way. Not a separate route.
+The full content for a project (description, visit link, images). Presented as an inline expand on the Landing Page and as a modal on the Projects Page (intentional: the Projects Page is a card grid). Same content and open/closed behaviour either way. Not a separate route. The visit link is shown only while Project Detail is open; a collapsed Featured Row or a Project Card never shows it (intentional).
+
+**Featured Row**:
+A Featured Project's entry on the Landing Page. Shows the Project Banner and Feature Image; expands inline to reveal Project Detail.
+_Avoid_: Card (reserved for the Projects Page tile).
+
+**Project Card**:
+A project's tile in the Projects Page grid. Shows the Project Banner and Feature Image; opens Project Detail as a modal.
+_Avoid_: Featured Row (the Landing Page entry).
