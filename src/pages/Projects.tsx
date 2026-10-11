@@ -2,12 +2,10 @@ import { ProjectDetailProvider } from '../projectDetail/ProjectDetail'
 import { useProjectDetail } from '../projectDetail/useProjectDetail'
 import { useProjects } from '../projects/useProjects'
 import { useColumnCount } from '../hooks/useColumnCount'
-import { projectImageSrc } from '../lib/projectImageSrc'
 import { distributeIntoColumns } from '../lib/projectSelection'
-import ImageWithSkeleton from '../components/ImageWithSkeleton'
 import Header from '../components/Header'
 import ProjectDetailModal from '../projectDetail/ProjectDetailModal'
-import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
+import { PROJECT_CARD_CLASS, ProjectBanner, ProjectFeatureImage, ProjectWindowHeader } from '../components/ProjectChrome'
 import SectionBanner from '../components/SectionBanner'
 import { PROJECTS_TITLE } from '../data/ascii'
 import type { Project } from '../types/project'
@@ -20,18 +18,11 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
-      className="group mb-6 flex w-full flex-col overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] text-left shadow-xl shadow-black/30 transition-colors hover:border-accent/40"
+      className={`group mb-6 flex w-full flex-col text-left ${PROJECT_CARD_CLASS}`}
     >
       <ProjectWindowHeader project={project} />
       <div className="h-40 w-full overflow-hidden">
-        <ImageWithSkeleton
-          src={projectImageSrc(project, project.featureImage)}
-          alt={project.name}
-          loading="lazy"
-          decoding="async"
-          wrapperClassName="h-full w-full"
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+        <ProjectFeatureImage project={project} zoomClassName="group-hover:scale-105" loading="lazy" decoding="async" />
       </div>
       <div className="flex flex-1 flex-col p-4">
         <div className="pb-1">
