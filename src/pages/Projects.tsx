@@ -5,7 +5,8 @@ import { useColumnCount } from '../hooks/useColumnCount'
 import { distributeIntoColumns } from '../lib/columnLayout'
 import Header from '../components/Header'
 import ProjectDetailModal from '../projectDetail/ProjectDetailModal'
-import { PROJECT_CARD_CLASS, ProjectBanner, ProjectFeatureImage, ProjectWindowHeader } from '../components/ProjectChrome'
+import { PROJECT_CARD_CLASS, ProjectBanner, ProjectFeatureImage } from '../components/ProjectChrome'
+import WindowHeader from '../components/WindowHeader'
 import SectionBanner from '../components/SectionBanner'
 import { PROJECTS_TITLE } from '../data/ascii'
 import type { Project } from '../types/project'
@@ -20,7 +21,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
       onClick={onOpen}
       className={`group mb-6 flex w-full flex-col text-left ${PROJECT_CARD_CLASS}`}
     >
-      <ProjectWindowHeader project={project} />
+      <WindowHeader label={`${project.link}.tsx`} />
       <div className="h-40 w-full overflow-hidden">
         <ProjectFeatureImage project={project} zoomClassName="group-hover:scale-105" loading="lazy" decoding="async" />
       </div>
@@ -29,8 +30,8 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
           <ProjectBanner
             project={project}
             banner={getBanner(project.asciiFile)}
-            bannerClassName="leading-[1.15] whitespace-pre text-banner"
-            bannerFontSize={TITLE_FONT_SIZE}
+            className="leading-[1.15] whitespace-pre text-banner"
+            size={{ fixedPx: TITLE_FONT_SIZE }}
             nameClassName="font-semibold text-secondary"
           />
         </div>

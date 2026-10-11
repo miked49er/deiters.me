@@ -1,9 +1,7 @@
-import type { ReactNode } from 'react'
 import type { Project } from '../types/project'
 import { bannerFitFontSize } from '../lib/bannerFontSize'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import ImageWithSkeleton from './ImageWithSkeleton'
-import WindowHeader from './WindowHeader'
 
 // Card chrome shared by TerminalWindow, Featured Row and Project Card.
 export const CARD_CHROME_CLASS = 'overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03]'
@@ -31,29 +29,29 @@ export function ProjectFeatureImage({ project, zoomClassName, loading, decoding 
   )
 }
 
-export function ProjectWindowHeader({ project, children }: { project: Project; children?: ReactNode }) {
-  return <WindowHeader label={`${project.link}.tsx`}>{children}</WindowHeader>
-}
+// Fixed px, or scaled to the nearest `@container` up to a max px.
+type BannerSize = { fixedPx: number } | { fitMaxPx: number }
 
 interface ProjectBannerProps {
   project: Project
   banner: string | null
-  // Callers size the banner differently; both stay caller-owned so output is unchanged.
-  bannerClassName: string
-  bannerFontSize?: number
-  // Scale the banner to the nearest `@container`, up to this many px. Takes precedence over bannerFontSize.
-  fitMaxPx?: number
+  size?: BannerSize
+  className: string
   nameClassName: string
 }
 
+function bannerFontSize(banner: string, size?: BannerSize): string | undefined {
+  if (!size) return undefined
+  return 'fitMaxPx' in size ? bannerFitFontSize(banner, size.fitMaxPx) : `${size.fixedPx}px`
+}
+
 // Ascii banner, falling back to the plain project name when none is loaded.
-export function ProjectBanner({ project, banner, bannerClassName, bannerFontSize, fitMaxPx, nameClassName }: ProjectBannerProps) {
-  const fontSize = banner && fitMaxPx ? bannerFitFontSize(banner, fitMaxPx) : bannerFontSize ? `${bannerFontSize}px` : undefined
-  return banner ? (
-    <pre aria-hidden className={bannerClassName} style={fontSize ? { fontSize } : undefined}>
+export function ProjectBanner({ project, banner, size, className, nameClassName }: ProjectBannerProps) {
+  if (!banner) return <p className={nameClassName}>{project.name}</p>
+  const fontSize = bannerFontSize(banner, size)
+  return (
+    <pre aria-hidden className={className} style={fontSize ? { fontSize } : undefined}>
       {banner}
     </pre>
-  ) : (
-    <p className={nameClassName}>{project.name}</p>
   )
 }
