@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { bannerFitFontSize } from './bannerFontSize'
+import { bannerFitFontSize, fitFontSizeForColumns } from './bannerFontSize'
 
 describe('bannerFitFontSize', () => {
   it('sizes to the widest line, capped at the given max', () => {
@@ -8,5 +8,11 @@ describe('bannerFitFontSize', () => {
 
   it('caps at the max without dividing by zero for empty art', () => {
     expect(bannerFitFontSize('', 9)).toBe('9px')
+  })
+})
+
+describe('fitFontSizeForColumns', () => {
+  it('sizes to a known column count, capped at the given max', () => {
+    expect(fitFontSizeForColumns(100, 10)).toBe('min(10px, calc(100cqw / 65))')
   })
 })

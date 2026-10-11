@@ -3,7 +3,8 @@ import type { Project } from '../types/project'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import BracketLink from '../components/BracketLink'
 import ImageWithSkeleton from '../components/ImageWithSkeleton'
-import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
+import { ProjectBanner } from '../components/ProjectChrome'
+import WindowHeader from '../components/WindowHeader'
 import { useOverlay } from '../overlays/useOverlay'
 import { useProjectDetail } from './useProjectDetail'
 import { useProjects } from '../projects/useProjects'
@@ -48,11 +49,11 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 z-10 bg-primary sm:static">
-          <ProjectWindowHeader project={project}>
+          <WindowHeader label={`${project.link}.tsx`}>
             <BracketLink className="ml-auto" onClick={onClose} aria-label="Close">
               [ x ]
             </BracketLink>
-          </ProjectWindowHeader>
+          </WindowHeader>
         </div>
         <ImageWithSkeleton
           src={projectImageSrc(project, project.featureImage)}
@@ -65,8 +66,8 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
             <ProjectBanner
               project={project}
               banner={banner}
-              bannerClassName="pb-2 leading-[1.15] text-banner"
-              fitMaxPx={TITLE_MAX_FONT_SIZE}
+              className="pb-2 leading-[1.15] text-banner"
+              size={{ fitMaxPx: TITLE_MAX_FONT_SIZE }}
               nameClassName="text-2xl font-semibold text-secondary"
             />
           </div>

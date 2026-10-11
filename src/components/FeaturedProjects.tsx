@@ -7,7 +7,8 @@ import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
 import BracketLink from './BracketLink'
 import ImageWithSkeleton from './ImageWithSkeleton'
 import SectionBanner from './SectionBanner'
-import { ProjectBanner, ProjectWindowHeader } from './ProjectChrome'
+import { ProjectBanner } from './ProjectChrome'
+import WindowHeader from './WindowHeader'
 import { useProjects } from '../projects/useProjects'
 import { SiteLink, ThumbnailStrip } from '../projectDetail/ProjectDetailParts'
 
@@ -31,7 +32,7 @@ function Row({
   const { getBanner } = useProjects()
   return (
     <div className="overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] shadow-xl shadow-black/30 transition-colors hover:border-accent/40">
-      <ProjectWindowHeader project={project} />
+      <WindowHeader label={`${project.link}.tsx`} />
 
       <div className={`flex flex-col ${reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}>
         <button
@@ -51,7 +52,7 @@ function Row({
             <ProjectBanner
               project={project}
               banner={getBanner(project.asciiFile)}
-              bannerClassName="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]"
+              className="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]"
               nameClassName="text-xl font-semibold text-secondary"
             />
             <h3 className="sr-only">{project.name}</h3>

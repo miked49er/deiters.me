@@ -1,5 +1,6 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import { HERO_MAX_HEIGHT, HERO_MAX_WIDTH, HERO_MESSAGES, heroGlyphRows, type HeroMessage } from '../data/heroArt'
+import { fitFontSizeForColumns } from '../lib/bannerFontSize'
 import { createTimeline, type Timeline } from '../lib/heroTimeline'
 import { REDUCED_MOTION_QUERY, useMediaQuery } from '../hooks/useMediaQuery'
 
@@ -65,7 +66,7 @@ export default function HeroBanner({ className }: { className?: string }) {
   // Each row is typed text, a block cursor, then the not-yet-typed rest kept invisible so layout never shifts.
   // The font size follows the column width (cqw) so the widest message always fits without a horizontal scrollbar.
   const rows = PADDED_ROWS[messageIndex] ?? Array(HERO_MAX_HEIGHT).fill(BLANK_ROW)
-  const fontSize = `min(10px, calc(100cqw / ${Math.round(HERO_MAX_WIDTH * 0.65)}))`
+  const fontSize = fitFontSizeForColumns(HERO_MAX_WIDTH, 10)
   return (
     <div className={[className, '@container'].filter(Boolean).join(' ')}>
       <pre aria-hidden="true" className="leading-[1.2] text-banner" style={{ fontSize }}>

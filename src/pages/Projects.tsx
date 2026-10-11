@@ -7,7 +7,8 @@ import { distributeIntoColumns } from '../lib/projectSelection'
 import ImageWithSkeleton from '../components/ImageWithSkeleton'
 import Header from '../components/Header'
 import ProjectDetailModal from '../projectDetail/ProjectDetailModal'
-import { ProjectBanner, ProjectWindowHeader } from '../components/ProjectChrome'
+import { ProjectBanner } from '../components/ProjectChrome'
+import WindowHeader from '../components/WindowHeader'
 import SectionBanner from '../components/SectionBanner'
 import { PROJECTS_TITLE } from '../data/ascii'
 import type { Project } from '../types/project'
@@ -22,7 +23,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
       onClick={onOpen}
       className="group mb-6 flex w-full flex-col overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] text-left shadow-xl shadow-black/30 transition-colors hover:border-accent/40"
     >
-      <ProjectWindowHeader project={project} />
+      <WindowHeader label={`${project.link}.tsx`} />
       <div className="h-40 w-full overflow-hidden">
         <ImageWithSkeleton
           src={projectImageSrc(project, project.featureImage)}
@@ -38,8 +39,8 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
           <ProjectBanner
             project={project}
             banner={getBanner(project.asciiFile)}
-            bannerClassName="leading-[1.15] whitespace-pre text-banner"
-            bannerFontSize={TITLE_FONT_SIZE}
+            className="leading-[1.15] whitespace-pre text-banner"
+            size={{ fixedPx: TITLE_FONT_SIZE }}
             nameClassName="font-semibold text-secondary"
           />
         </div>
