@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { ProjectBanner } from './ProjectChrome'
+import { ProjectBanner, ProjectFeatureImage, PROJECT_CARD_CLASS } from './ProjectChrome'
 import { createInMemoryProjects } from '../projects/inMemoryProjects'
 import { makeProject } from '../testProject'
 
@@ -25,5 +25,22 @@ describe('ProjectBanner', () => {
     const project = makeProject()
     render(<ProjectBanner project={project} banner={'a'.repeat(100)} className="b" size={{ fitMaxPx: 10 }} nameClassName="n" />)
     expect(screen.getByText('a'.repeat(100))).toHaveStyle({ fontSize: 'min(10px, calc(100cqw / 65))' })
+  })
+})
+
+describe('ProjectFeatureImage', () => {
+  it('shows the Feature Image named after the project, with caller-owned zoom and loading attrs', () => {
+    render(<ProjectFeatureImage project={makeProject()} zoomClassName="z" loading="lazy" />)
+    const img = screen.getByAltText('Rooms To Go')
+    expect(img).toHaveAttribute('src', '/assets/img/rtg/rtg.avif')
+    expect(img).toHaveAttribute('loading', 'lazy')
+    expect(img).toHaveClass('object-cover', 'z')
+  })
+})
+
+describe('PROJECT_CARD_CLASS', () => {
+  it('carries the shared card chrome', () => {
+    expect(PROJECT_CARD_CLASS).toContain('rounded-xl')
+    expect(PROJECT_CARD_CLASS).toContain('hover:border-accent/40')
   })
 })

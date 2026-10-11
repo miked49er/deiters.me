@@ -2,12 +2,10 @@ import type { Project } from '../types/project'
 import { PROJECTS_TITLE } from '../data/ascii'
 import { ProjectDetailProvider } from '../projectDetail/ProjectDetail'
 import { useProjectDetail } from '../projectDetail/useProjectDetail'
-import { projectImageSrc } from '../lib/projectImageSrc'
 import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
 import BracketLink from './BracketLink'
-import ImageWithSkeleton from './ImageWithSkeleton'
 import SectionBanner from './SectionBanner'
-import { ProjectBanner } from './ProjectChrome'
+import { PROJECT_CARD_CLASS, ProjectBanner, ProjectFeatureImage } from './ProjectChrome'
 import WindowHeader from './WindowHeader'
 import { useProjects } from '../projects/useProjects'
 import { SiteLink, ThumbnailStrip } from '../projectDetail/ProjectDetailParts'
@@ -31,7 +29,7 @@ function Row({
 }) {
   const { getBanner } = useProjects()
   return (
-    <div className="overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03] shadow-xl shadow-black/30 transition-colors hover:border-accent/40">
+    <div className={PROJECT_CARD_CLASS}>
       <WindowHeader label={`${project.link}.tsx`} />
 
       <div className={`flex flex-col ${reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}>
@@ -39,12 +37,7 @@ function Row({
           onClick={onToggle}
           className="relative block h-56 w-full flex-shrink-0 overflow-hidden sm:h-auto sm:w-1/2"
         >
-          <ImageWithSkeleton
-            src={projectImageSrc(project, project.featureImage)}
-            alt={project.name}
-            wrapperClassName="h-full w-full"
-            className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-          />
+          <ProjectFeatureImage project={project} zoomClassName="hover:scale-105" />
         </button>
 
         <div className="flex flex-1 flex-col justify-center p-5 sm:p-8">
