@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { CARD_CHROME_CLASS } from './ProjectChrome'
+import { CARD_CHROME_CLASS } from './cardChrome'
 import WindowHeader from './WindowHeader'
 
 interface TerminalWindowProps {

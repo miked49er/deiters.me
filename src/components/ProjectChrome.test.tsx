@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { ProjectBanner, ProjectFeatureImage, PROJECT_CARD_CLASS } from './ProjectChrome'
+import { ProjectBanner, ProjectFeatureImage, PROJECT_TILE_CLASS } from './ProjectChrome'
 import { createInMemoryProjects } from '../projects/inMemoryProjects'
 import { makeProject } from '../testProject'
 
@@ -38,9 +38,9 @@ describe('ProjectFeatureImage', () => {
   })
 })
 
-describe('PROJECT_CARD_CLASS', () => {
-  it('carries the shared card chrome', () => {
-    expect(PROJECT_CARD_CLASS).toContain('rounded-xl')
-    expect(PROJECT_CARD_CLASS).toContain('hover:border-accent/40')
+describe('PROJECT_TILE_CLASS', () => {
+  it('carries the shared chrome', () => {
+    expect(PROJECT_TILE_CLASS).toContain('rounded-xl')
+    expect(PROJECT_TILE_CLASS).toContain('hover:border-accent/40')
   })
 })

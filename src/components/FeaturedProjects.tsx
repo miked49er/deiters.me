@@ -5,8 +5,9 @@ import { useProjectDetail } from '../projectDetail/useProjectDetail'
 import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
 import BracketLink from './BracketLink'
 import SectionBanner from './SectionBanner'
-import { PROJECT_CARD_CLASS, ProjectBanner, ProjectFeatureImage } from './ProjectChrome'
+import { PROJECT_TILE_CLASS, ProjectBanner, ProjectFeatureImage } from './ProjectChrome'
 import WindowHeader from './WindowHeader'
+import { projectWindowLabel } from '../lib/projectWindowLabel'
 import { useProjects } from '../projects/useProjects'
 import { SiteLink, ThumbnailStrip } from '../projectDetail/ProjectDetailParts'
 
@@ -29,8 +30,8 @@ function Row({
 }) {
   const { getBanner } = useProjects()
   return (
-    <div className={PROJECT_CARD_CLASS}>
-      <WindowHeader label={`${project.link}.tsx`} />
+    <div className={PROJECT_TILE_CLASS}>
+      <WindowHeader label={projectWindowLabel(project)} />
 
       <div className={`flex flex-col ${reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}>
         <button

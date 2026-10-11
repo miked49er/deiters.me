@@ -1,12 +1,11 @@
 import type { Project } from '../types/project'
-import { bannerFitFontSize } from '../lib/bannerFontSize'
+import { fitBannerFontSize } from '../lib/bannerFontSize'
 import { projectImageSrc } from '../lib/projectImageSrc'
 import ImageWithSkeleton from './ImageWithSkeleton'
+import { CARD_CHROME_CLASS } from './cardChrome'
 
-// Card chrome shared by TerminalWindow, Featured Row and Project Card.
-export const CARD_CHROME_CLASS = 'overflow-hidden rounded-xl border border-secondary/10 bg-secondary/[0.03]'
-// Featured Row / Project Card: chrome plus elevation and hover highlight.
-export const PROJECT_CARD_CLASS = `${CARD_CHROME_CLASS} shadow-xl shadow-black/30 transition-colors hover:border-accent/40`
+// Featured Row / Project Card tile: chrome plus elevation and hover highlight.
+export const PROJECT_TILE_CLASS = `${CARD_CHROME_CLASS} shadow-xl shadow-black/30 transition-colors hover:border-accent/40`
 
 interface ProjectFeatureImageProps {
   project: Project
@@ -42,7 +41,7 @@ interface ProjectBannerProps {
 
 function bannerFontSize(banner: string, size?: BannerSize): string | undefined {
   if (!size) return undefined
-  return 'fitMaxPx' in size ? bannerFitFontSize(banner, size.fitMaxPx) : `${size.fixedPx}px`
+  return 'fitMaxPx' in size ? fitBannerFontSize(banner, size.fitMaxPx) : `${size.fixedPx}px`
 }
 
 // Ascii banner, falling back to the plain project name when none is loaded.

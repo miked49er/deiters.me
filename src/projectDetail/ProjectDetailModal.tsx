@@ -5,6 +5,7 @@ import BracketLink from '../components/BracketLink'
 import ImageWithSkeleton from '../components/ImageWithSkeleton'
 import { ProjectBanner } from '../components/ProjectChrome'
 import WindowHeader from '../components/WindowHeader'
+import { projectWindowLabel } from '../lib/projectWindowLabel'
 import { useOverlay } from '../overlays/useOverlay'
 import { useProjectDetail } from './useProjectDetail'
 import { useProjects } from '../projects/useProjects'
@@ -49,12 +50,13 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 z-10 bg-primary sm:static">
-          <WindowHeader label={`${project.link}.tsx`}>
+          <WindowHeader label={projectWindowLabel(project)}>
             <BracketLink className="ml-auto" onClick={onClose} aria-label="Close">
               [ x ]
             </BracketLink>
           </WindowHeader>
         </div>
+        {/* Not ProjectFeatureImage: fixed h-64 wrapper and no hover zoom, unlike the tile image. */}
         <ImageWithSkeleton
           src={projectImageSrc(project, project.featureImage)}
           alt={project.name}

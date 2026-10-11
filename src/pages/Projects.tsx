@@ -5,8 +5,9 @@ import { useColumnCount } from '../hooks/useColumnCount'
 import { distributeIntoColumns } from '../lib/columnLayout'
 import Header from '../components/Header'
 import ProjectDetailModal from '../projectDetail/ProjectDetailModal'
-import { PROJECT_CARD_CLASS, ProjectBanner, ProjectFeatureImage } from '../components/ProjectChrome'
+import { PROJECT_TILE_CLASS, ProjectBanner, ProjectFeatureImage } from '../components/ProjectChrome'
 import WindowHeader from '../components/WindowHeader'
+import { projectWindowLabel } from '../lib/projectWindowLabel'
 import SectionBanner from '../components/SectionBanner'
 import { PROJECTS_TITLE } from '../data/ascii'
 import type { Project } from '../types/project'
@@ -19,9 +20,9 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
-      className={`group mb-6 flex w-full flex-col text-left ${PROJECT_CARD_CLASS}`}
+      className={`group mb-6 flex w-full flex-col text-left ${PROJECT_TILE_CLASS}`}
     >
-      <WindowHeader label={`${project.link}.tsx`} />
+      <WindowHeader label={projectWindowLabel(project)} />
       <div className="h-40 w-full overflow-hidden">
         <ProjectFeatureImage project={project} zoomClassName="group-hover:scale-105" loading="lazy" decoding="async" />
       </div>
