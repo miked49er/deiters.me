@@ -36,7 +36,7 @@ function Row({
       <div className={`flex flex-col ${reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}>
         <button
           onClick={onToggle}
-          className="relative block aspect-[16/10] w-full flex-shrink-0 overflow-hidden sm:aspect-[4/3] sm:w-1/2"
+          className="relative block h-56 w-full flex-shrink-0 overflow-hidden sm:h-auto sm:w-1/2"
         >
           <ImageWithSkeleton
             src={projectImageSrc(project, project.featureImage)}
