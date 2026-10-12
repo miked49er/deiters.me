@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { distributeIntoColumns } from './projectSelection'
+import { distributeIntoColumns } from './columnLayout'
 
 describe('distributeIntoColumns', () => {
   it('deals items round-robin across columns', () => {
