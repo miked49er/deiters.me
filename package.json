@@ -1,13 +1,13 @@
 {
   "name": "deiters.me",
-  "private": true,
-  "version": "0.1.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "oxlint",
+    "lint": "oxlint && oxfmt --check src",
+    "format": "oxfmt src",
     "test": "vitest run",
     "sync-data": "node -e \"require('fs').copyFileSync('public/data/projects.json', 'docs/data/projects.json')\"",
     "generate:hero-art": "node scripts/generate-hero-art.mjs"
@@ -27,6 +27,7 @@
     "@vitejs/plugin-react": "^6.0.3",
     "figlet": "^1.12.0",
     "jsdom": "^29.1.1",
+    "oxfmt": "^0.73.0",
     "oxlint": "^1.71.0",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",

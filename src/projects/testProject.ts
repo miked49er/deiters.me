@@ -1,4 +1,4 @@
-import type { Project } from './types/project'
+import type { Project } from './project';
 
 export const makeProject = (over: Partial<Project> = {}): Project => ({
   id: 1,
@@ -12,4 +12,4 @@ export const makeProject = (over: Partial<Project> = {}): Project => ({
   asciiFile: '',
   details: 'details',
   ...over,
-})
+});

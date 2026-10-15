@@ -1,28 +1,26 @@
-import { ProjectDetailProvider } from '../projectDetail/ProjectDetail'
-import { useProjectDetail } from '../projectDetail/useProjectDetail'
-import { useProjects } from '../projects/useProjects'
-import { useColumnCount } from '../hooks/useColumnCount'
-import { distributeIntoColumns } from '../lib/columnLayout'
-import Header from '../components/Header'
-import ProjectDetailModal from '../projectDetail/ProjectDetailModal'
-import { PROJECT_TILE_CLASS, ProjectBanner, ProjectFeatureImage } from '../components/ProjectChrome'
-import WindowHeader from '../components/WindowHeader'
-import { projectWindowLabel } from '../lib/projectWindowLabel'
-import SectionBanner from '../components/SectionBanner'
-import { PROJECTS_TITLE } from '../data/ascii'
-import type { Project } from '../types/project'
+import { ProjectDetailProvider } from '../projectDetail/ProjectDetail';
+import { useProjectDetail } from '../projectDetail/useProjectDetail';
+import { useProjects } from '../projects/useProjects';
+import { useColumnCount } from '../hooks/useColumnCount';
+import { distributeIntoColumns } from '../lib/columnLayout';
+import Header from '../components/Header';
+import ProjectDetailModal from '../projectDetail/ProjectDetailModal';
+import { PROJECT_TILE_CLASS, ProjectBanner, ProjectFeatureImage } from '../components/ProjectChrome';
+import WindowHeader from '../components/WindowHeader';
+import { windowLabel } from '../projects/projectFields';
+import ProjectsError from '../components/ProjectsError';
+import SectionBanner from '../components/SectionBanner';
+import { PROJECTS_TITLE } from '../data/ascii';
+import type { Project } from '../projects/project';
 
 // Sized to fit the widest ascii banner in public/data/projects.json without clipping.
-const TITLE_FONT_SIZE = 7
+const TITLE_FONT_SIZE = 7;
 
 function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
-  const { getBanner } = useProjects()
+  const { getBanner } = useProjects();
   return (
-    <button
-      onClick={onOpen}
-      className={`group mb-6 flex w-full flex-col text-left ${PROJECT_TILE_CLASS}`}
-    >
-      <WindowHeader label={projectWindowLabel(project)} />
+    <button onClick={onOpen} className={`group mb-6 flex w-full flex-col text-left ${PROJECT_TILE_CLASS}`}>
+      <WindowHeader label={windowLabel(project)} />
       <div className="h-40 w-full overflow-hidden">
         <ProjectFeatureImage project={project} zoomClassName="group-hover:scale-105" loading="lazy" decoding="async" />
       </div>
@@ -30,7 +28,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         <div className="pb-1">
           <ProjectBanner
             project={project}
-            banner={getBanner(project.asciiFile)}
+            banner={getBanner(project)}
             className="leading-[1.15] whitespace-pre text-banner"
             size={{ fixedPx: TITLE_FONT_SIZE }}
             nameClassName="font-semibold text-secondary"
@@ -40,23 +38,23 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-secondary/70">{project.details}</p>
       </div>
     </button>
-  )
+  );
 }
 
 function ProjectsPage() {
-  const { data, error } = useProjects()
-  const detail = useProjectDetail()
-  const columnCount = useColumnCount()
+  const { data, error } = useProjects();
+  const detail = useProjectDetail();
+  const columnCount = useColumnCount();
 
-  const openProject = data?.projects.find((p) => p.id === detail.openId) ?? null
+  const openProject = data?.projects.find((p) => p.id === detail.openId) ?? null;
 
-  const columns = distributeIntoColumns(data?.projects ?? [], columnCount)
+  const columns = distributeIntoColumns(data?.projects ?? [], columnCount);
 
   return (
     <main className="min-h-screen bg-primary font-sans text-secondary">
       <Header links={[{ to: '/', label: 'Home' }]} />
 
-      {Boolean(error) && <p className="p-6 text-red-600">Failed to load projects.</p>}
+      {Boolean(error) && <ProjectsError />}
 
       {data && (
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-16">
@@ -77,7 +75,7 @@ function ProjectsPage() {
 
       {openProject && <ProjectDetailModal project={openProject} />}
     </main>
-  )
+  );
 }
 
 export default function Projects() {
@@ -85,5 +83,5 @@ export default function Projects() {
     <ProjectDetailProvider>
       <ProjectsPage />
     </ProjectDetailProvider>
-  )
+  );
 }

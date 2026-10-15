@@ -1,34 +1,34 @@
-import { useEffect, useState } from 'react'
-import type { Project } from '../types/project'
-import { projectImageSrc } from '../lib/projectImageSrc'
-import BracketLink from '../components/BracketLink'
-import ImageWithSkeleton from '../components/ImageWithSkeleton'
-import { ProjectBanner } from '../components/ProjectChrome'
-import WindowHeader from '../components/WindowHeader'
-import { projectWindowLabel } from '../lib/projectWindowLabel'
-import { useOverlay } from '../overlays/useOverlay'
-import { useProjectDetail } from './useProjectDetail'
-import { useProjects } from '../projects/useProjects'
-import { SiteLink, ThumbnailStrip } from './ProjectDetailParts'
+import { useEffect, useState } from 'react';
+import type { Project } from '../projects/project';
+import { imageSrc } from '../projects/projectFields';
+import BracketLink from '../components/BracketLink';
+import ImageWithSkeleton from '../components/ImageWithSkeleton';
+import { ProjectBanner } from '../components/ProjectChrome';
+import WindowHeader from '../components/WindowHeader';
+import { windowLabel } from '../projects/projectFields';
+import { useOverlay } from '../overlays/useOverlay';
+import { useProjectDetail } from './useProjectDetail';
+import { useProjects } from '../projects/useProjects';
+import { SiteLink, ThumbnailStrip } from './ProjectDetailParts';
 
-const TITLE_MAX_FONT_SIZE = 9
+const TITLE_MAX_FONT_SIZE = 9;
 
 interface ProjectDetailModalProps {
-  project: Project
+  project: Project;
 }
 
 export default function ProjectDetailModal({ project }: ProjectDetailModalProps) {
-  const { getBanner } = useProjects()
-  const banner = getBanner(project.asciiFile)
-  const { close: onClose, openImage } = useProjectDetail()
-  const [visible, setVisible] = useState(false)
+  const { getBanner } = useProjects();
+  const banner = getBanner(project);
+  const { close: onClose, openImage } = useProjectDetail();
+  const [visible, setVisible] = useState(false);
 
-  const dialogRef = useOverlay(true, onClose)
+  const dialogRef = useOverlay(true, onClose);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setVisible(true))
-    return () => cancelAnimationFrame(frame)
-  }, [])
+    const frame = requestAnimationFrame(() => setVisible(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   return (
     <div
@@ -50,7 +50,7 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 z-10 bg-primary sm:static">
-          <WindowHeader label={projectWindowLabel(project)}>
+          <WindowHeader label={windowLabel(project)}>
             <BracketLink className="ml-auto" onClick={onClose} aria-label="Close">
               [ x ]
             </BracketLink>
@@ -58,7 +58,7 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
         </div>
         {/* Not ProjectFeatureImage: fixed h-64 wrapper and no hover zoom, unlike the tile image. */}
         <ImageWithSkeleton
-          src={projectImageSrc(project, project.featureImage)}
+          src={imageSrc(project, project.featureImage)}
           alt={project.name}
           wrapperClassName="h-64 w-full"
           className="h-full w-full object-cover"
@@ -87,5 +87,5 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
         </div>
       </div>
     </div>
-  )
+  );
 }

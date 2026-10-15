@@ -1,18 +1,19 @@
-import { useProjects } from '../projects/useProjects'
-import { SECTION_LINKS } from '../lib/sections'
-import Header from '../components/Header'
-import AboutSection from '../components/AboutSection'
-import FeaturedProjects from '../components/FeaturedProjects'
+import { useProjects } from '../projects/useProjects';
+import { SECTION_LINKS } from '../lib/sections';
+import Header from '../components/Header';
+import AboutSection from '../components/AboutSection';
+import FeaturedProjects from '../components/FeaturedProjects';
+import ProjectsError from '../components/ProjectsError';
 
 export default function Home() {
-  const { data, error } = useProjects()
+  const { data, error } = useProjects();
 
   return (
     <main className="min-h-screen bg-primary font-sans text-secondary">
       <Header links={SECTION_LINKS} />
 
       {error ? (
-        <p className="p-6 text-red-600">Failed to load projects.</p>
+        <ProjectsError />
       ) : (
         data && (
           <>
@@ -28,5 +29,5 @@ export default function Home() {
         )
       )}
     </main>
-  )
+  );
 }

@@ -1,41 +1,41 @@
-import { useEffect } from 'react'
-import { useOverlay } from '../overlays/useOverlay'
-import BracketLink from './BracketLink'
-import ImageWithSkeleton from './ImageWithSkeleton'
+import { useEffect } from 'react';
+import { useOverlay } from '../overlays/useOverlay';
+import BracketLink from './BracketLink';
+import ImageWithSkeleton from './ImageWithSkeleton';
 
 interface LightboxProps {
-  images: string[]
-  index: number | null
-  onIndexChange: (index: number) => void
-  onClose: () => void
+  images: string[];
+  index: number | null;
+  onIndexChange: (index: number) => void;
+  onClose: () => void;
   /** Names the images for assistive tech, e.g. the project name. */
-  imageLabel?: string
+  imageLabel?: string;
 }
 
 export default function Lightbox({ images, index, onIndexChange, onClose, imageLabel = 'Image' }: LightboxProps) {
-  const total = images.length
+  const total = images.length;
 
-  const dialogRef = useOverlay(index !== null && total > 0, onClose)
+  const dialogRef = useOverlay(index !== null && total > 0, onClose);
 
   useEffect(() => {
-    if (index === null) return
-    const current = index
+    if (index === null) return;
+    const current = index;
 
     function onKey(e: KeyboardEvent) {
-      const target = e.target as HTMLElement | null
+      const target = e.target as HTMLElement | null;
       if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
-        return
+        return;
       }
-      if (e.key === 'ArrowLeft') onIndexChange((current - 1 + total) % total)
-      if (e.key === 'ArrowRight') onIndexChange((current + 1) % total)
+      if (e.key === 'ArrowLeft') onIndexChange((current - 1 + total) % total);
+      if (e.key === 'ArrowRight') onIndexChange((current + 1) % total);
     }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [index, total, onIndexChange])
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [index, total, onIndexChange]);
 
-  if (index === null || total === 0) return null
+  if (index === null || total === 0) return null;
 
-  const description = `${imageLabel}, image ${index + 1} of ${total}`
+  const description = `${imageLabel}, image ${index + 1} of ${total}`;
 
   return (
     <div
@@ -51,8 +51,8 @@ export default function Lightbox({ images, index, onIndexChange, onClose, imageL
         <button
           className="absolute left-4 top-1/2 -translate-y-1/2 px-3 font-mono text-3xl text-secondary hover:text-accent sm:left-8"
           onClick={(e) => {
-            e.stopPropagation()
-            onIndexChange((index - 1 + total) % total)
+            e.stopPropagation();
+            onIndexChange((index - 1 + total) % total);
           }}
           aria-label="Previous image"
         >
@@ -75,8 +75,8 @@ export default function Lightbox({ images, index, onIndexChange, onClose, imageL
         <button
           className="absolute right-4 top-1/2 -translate-y-1/2 px-3 font-mono text-3xl text-secondary hover:text-accent sm:right-8"
           onClick={(e) => {
-            e.stopPropagation()
-            onIndexChange((index + 1) % total)
+            e.stopPropagation();
+            onIndexChange((index + 1) % total);
           }}
           aria-label="Next image"
         >
@@ -94,5 +94,5 @@ export default function Lightbox({ images, index, onIndexChange, onClose, imageL
         [ x ]
       </BracketLink>
     </div>
-  )
+  );
 }

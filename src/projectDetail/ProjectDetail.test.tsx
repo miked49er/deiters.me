@@ -1,149 +1,149 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { act, fireEvent, render, renderHook, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
-import Projects from '../pages/Projects'
-import FeaturedProjects from '../components/FeaturedProjects'
-import { ProjectsProvider } from '../projects/ProjectsContext'
-import { createInMemoryProjects } from '../projects/inMemoryProjects'
-import { ProjectDetailProvider } from './ProjectDetail'
-import { useProjectDetail } from './useProjectDetail'
-import { makeProject } from '../testProject'
-import type { ReactNode } from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import Projects from '../pages/Projects';
+import FeaturedProjects from '../components/FeaturedProjects';
+import { ProjectsContext } from '../projects/ProjectsContext';
+import { createInMemoryProjects } from '../projects/inMemoryProjects';
+import { ProjectDetailProvider } from './ProjectDetail';
+import { useProjectDetail } from './useProjectDetail';
+import { makeProject } from '../projects/testProject';
+import type { ReactNode } from 'react';
 
 const project = makeProject({
   name: 'Rooms To Go',
   details: 'Full details text',
   images: ['a.png', 'b.png'],
-})
+});
 
 function renderProjectsPage() {
   render(
-    <ProjectsProvider value={createInMemoryProjects({ projects: [project] })}>
+    <ProjectsContext.Provider value={createInMemoryProjects({ projects: [project] })}>
       <MemoryRouter>
         <Projects />
       </MemoryRouter>
-    </ProjectsProvider>,
-  )
+    </ProjectsContext.Provider>,
+  );
 }
 
-const openModal = () => fireEvent.click(screen.getByRole('button', { name: /rtg\.tsx/ }))
-const thumbs = () => document.querySelectorAll('img[loading="lazy"][alt=""]')
+const openModal = () => fireEvent.click(screen.getByRole('button', { name: /rtg\.tsx/ }));
+const thumbs = () => document.querySelectorAll('img[loading="lazy"][alt=""]');
 
 describe('Project Detail modal (Projects Page)', () => {
   beforeEach(() => {
-    vi.stubGlobal('matchMedia', () => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }))
-  })
-  afterEach(() => vi.unstubAllGlobals())
+    vi.stubGlobal('matchMedia', () => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }));
+  });
+  afterEach(() => vi.unstubAllGlobals());
 
   it('opens from a card and shows the full details', () => {
-    renderProjectsPage()
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-    openModal()
-    expect(screen.getByLabelText('Close')).toBeInTheDocument()
-    expect(screen.getAllByText('Full details text').length).toBeGreaterThan(0)
-  })
+    renderProjectsPage();
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument();
+    openModal();
+    expect(screen.getByLabelText('Close')).toBeInTheDocument();
+    expect(screen.getAllByText('Full details text').length).toBeGreaterThan(0);
+  });
 
   it('scales the ASCII title to the modal width instead of scrolling horizontally', () => {
-    const withBanner = makeProject({ asciiFile: '/ascii.txt' })
-    const seam = createInMemoryProjects({ projects: [withBanner], banners: { '/ascii.txt': 'ab\nabcdefghij' } })
+    const withBanner = makeProject({ asciiFile: '/ascii.txt' });
+    const seam = createInMemoryProjects({ projects: [withBanner], banners: { '/ascii.txt': 'ab\nabcdefghij' } });
     render(
-      <ProjectsProvider value={seam}>
+      <ProjectsContext.Provider value={seam}>
         <MemoryRouter>
           <Projects />
         </MemoryRouter>
-      </ProjectsProvider>,
-    )
-    openModal()
-    const banner = screen.getByLabelText('Close').closest('.fixed')!.querySelector('pre')!
-    expect(banner).not.toHaveClass('overflow-x-auto')
+      </ProjectsContext.Provider>,
+    );
+    openModal();
+    const banner = screen.getByLabelText('Close').closest('.fixed')!.querySelector('pre')!;
+    expect(banner).not.toHaveClass('overflow-x-auto');
     // jsdom drops cqw font sizes, so the expression itself is covered in bannerFontSize.test.ts.
-    expect(banner.parentElement).toHaveClass('@container')
-  })
+    expect(banner.parentElement).toHaveClass('@container');
+  });
 
   it('is a labelled modal dialog that takes focus', () => {
-    renderProjectsPage()
-    openModal()
-    const dialog = screen.getByRole('dialog', { name: 'Rooms To Go' })
-    expect(dialog).toHaveAttribute('aria-modal', 'true')
-    expect(dialog).toHaveFocus()
-  })
+    renderProjectsPage();
+    openModal();
+    const dialog = screen.getByRole('dialog', { name: 'Rooms To Go' });
+    expect(dialog).toHaveAttribute('aria-modal', 'true');
+    expect(dialog).toHaveFocus();
+  });
 
   it('closes with the close button', () => {
-    renderProjectsPage()
-    openModal()
-    fireEvent.click(screen.getByLabelText('Close'))
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
+    renderProjectsPage();
+    openModal();
+    fireEvent.click(screen.getByLabelText('Close'));
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument();
+  });
 
   it('closes on backdrop click but not on clicks inside the window', () => {
-    renderProjectsPage()
-    openModal()
-    fireEvent.click(screen.getByRole('heading', { name: 'Rooms To Go', level: 2 }))
-    expect(screen.getByLabelText('Close')).toBeInTheDocument()
-    fireEvent.click(screen.getByLabelText('Close').closest('.fixed')!)
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
+    renderProjectsPage();
+    openModal();
+    fireEvent.click(screen.getByRole('heading', { name: 'Rooms To Go', level: 2 }));
+    expect(screen.getByLabelText('Close')).toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText('Close').closest('.fixed')!);
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument();
+  });
 
   it('closes on Escape', () => {
-    renderProjectsPage()
-    openModal()
-    fireEvent.keyDown(window, { key: 'Escape' })
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
+    renderProjectsPage();
+    openModal();
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument();
+  });
 
   it('closes the Lightbox first on Escape, then the modal on a second Escape', () => {
-    renderProjectsPage()
-    openModal()
-    fireEvent.click(thumbs()[1])
-    expect(screen.getByText('2 / 2')).toBeInTheDocument()
+    renderProjectsPage();
+    openModal();
+    fireEvent.click(thumbs()[1]);
+    expect(screen.getByText('2 / 2')).toBeInTheDocument();
 
-    fireEvent.keyDown(window, { key: 'Escape' })
-    expect(screen.queryByText('2 / 2')).not.toBeInTheDocument()
-    expect(screen.getByLabelText('Close')).toBeInTheDocument()
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByText('2 / 2')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Close')).toBeInTheDocument();
 
-    fireEvent.keyDown(window, { key: 'Escape' })
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
-})
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument();
+  });
+});
 
 describe('Project Detail expand (Landing Page)', () => {
   it('opens the Lightbox from an expanded row and Escape closes only it', () => {
     render(
-      <ProjectsProvider value={createInMemoryProjects({ projects: [project] })}>
+      <ProjectsContext.Provider value={createInMemoryProjects({ projects: [project] })}>
         <MemoryRouter>
           <FeaturedProjects projects={[project]} />
         </MemoryRouter>
-      </ProjectsProvider>,
-    )
-    fireEvent.click(screen.getByText('Read more'))
-    fireEvent.click(thumbs()[0])
-    expect(screen.getByText('1 / 2')).toBeInTheDocument()
-    fireEvent.keyDown(window, { key: 'Escape' })
-    expect(screen.queryByText('1 / 2')).not.toBeInTheDocument()
-    expect(screen.getByText('Show less')).toBeInTheDocument()
-  })
-})
+      </ProjectsContext.Provider>,
+    );
+    fireEvent.click(screen.getByText('Read more'));
+    fireEvent.click(thumbs()[0]);
+    expect(screen.getByText('1 / 2')).toBeInTheDocument();
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByText('1 / 2')).not.toBeInTheDocument();
+    expect(screen.getByText('Show less')).toBeInTheDocument();
+  });
+});
 
 describe('useProjectDetail', () => {
-  const wrapper = ({ children }: { children: ReactNode }) => <ProjectDetailProvider>{children}</ProjectDetailProvider>
+  const wrapper = ({ children }: { children: ReactNode }) => <ProjectDetailProvider>{children}</ProjectDetailProvider>;
 
   it('opens, toggles and closes a single project', () => {
-    const { result } = renderHook(() => useProjectDetail(), { wrapper })
-    act(() => result.current.open(1))
-    expect(result.current.isOpen(1)).toBe(true)
-    act(() => result.current.toggle(2))
-    expect(result.current.isOpen(2)).toBe(true)
-    act(() => result.current.toggle(2))
-    expect(result.current.openId).toBeNull()
-    act(() => result.current.open(1))
-    act(() => result.current.close())
-    expect(result.current.openId).toBeNull()
-  })
+    const { result } = renderHook(() => useProjectDetail(), { wrapper });
+    act(() => result.current.open(1));
+    expect(result.current.isOpen(1)).toBe(true);
+    act(() => result.current.toggle(2));
+    expect(result.current.isOpen(2)).toBe(true);
+    act(() => result.current.toggle(2));
+    expect(result.current.openId).toBeNull();
+    act(() => result.current.open(1));
+    act(() => result.current.close());
+    expect(result.current.openId).toBeNull();
+  });
 
   it('opens an image at the clicked index through the Lightbox', () => {
-    const { result } = renderHook(() => useProjectDetail(), { wrapper })
-    act(() => result.current.openImage(project, 1))
-    expect(screen.getByText('2 / 2')).toBeInTheDocument()
-    expect(document.querySelector('img')).toHaveAttribute('src', '/assets/img/rtg/b.png')
-  })
-})
+    const { result } = renderHook(() => useProjectDetail(), { wrapper });
+    act(() => result.current.openImage(project, 1));
+    expect(screen.getByText('2 / 2')).toBeInTheDocument();
+    expect(document.querySelector('img')).toHaveAttribute('src', '/assets/img/rtg/b.png');
+  });
+});

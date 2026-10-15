@@ -1,22 +1,16 @@
-import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
-import EmailIcon from '../assets/icons/email.svg?react'
-import GithubIcon from '../assets/icons/github.svg?react'
-import LinkedinIcon from '../assets/icons/linkedin.svg?react'
-import ImageWithSkeleton from './ImageWithSkeleton'
-import TerminalWindow from './TerminalWindow'
-import HeroBanner from './HeroBanner'
-
-const ABOUT_BIO = `I'm a Senior Software Engineer based in Atlanta, specializing in React Native and full-stack development. I build mobile and web applications with a focus on clean code, smooth UX, and scalable architecture.
-
-Over the past 7+ years, I've led engineering teams, built GraphQL APIs, and shipped features across mobile platforms. I care about writing maintainable code, improving developer workflows, and mentoring other engineers.
-
-Outside of work, I'm passionate about long-exposure photography and gaming. I'm also an Eagle Scout.`
+import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections';
+import EmailIcon from '../assets/icons/email.svg?react';
+import GithubIcon from '../assets/icons/github.svg?react';
+import LinkedinIcon from '../assets/icons/linkedin.svg?react';
+import ImageWithSkeleton from './ImageWithSkeleton';
+import TerminalWindow from './TerminalWindow';
+import HeroBanner from './HeroBanner';
 
 const CONTACT_LINKS = [
   { label: 'Email', href: 'mailto:mike@deiters.me', Icon: EmailIcon },
   { label: 'GitHub', href: 'https://github.com/miked49er', Icon: GithubIcon },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/mikedeiters', Icon: LinkedinIcon },
-]
+];
 
 export default function AboutSection() {
   return (
@@ -27,7 +21,22 @@ export default function AboutSection() {
       <div>
         <HeroBanner className="mb-3" />
         <h1 className="sr-only">Mike Deiters</h1>
-        <p className="mt-4 max-w-prose leading-relaxed whitespace-pre-line text-secondary/90">{ABOUT_BIO}</p>
+        <div className="mt-4 max-w-prose space-y-4 leading-relaxed text-secondary/90">
+          <p>
+            I&apos;m a Senior Software Engineer based in Atlanta, specializing in React Native and full-stack
+            development. I build mobile and web applications with a focus on clean code, smooth UX, and scalable
+            architecture.
+          </p>
+          <p>
+            Over the past 7+ years, I&apos;ve led engineering teams, built GraphQL APIs, and shipped features across
+            mobile platforms. I care about writing maintainable code, improving developer workflows, and mentoring other
+            engineers.
+          </p>
+          <p>
+            Outside of work, I&apos;m passionate about long-exposure photography and gaming. I&apos;m also an Eagle
+            Scout.
+          </p>
+        </div>
 
         <ul className="mt-6 flex flex-wrap gap-1">
           {CONTACT_LINKS.map(({ label, href, Icon }) => (
@@ -53,5 +62,5 @@ export default function AboutSection() {
         />
       </TerminalWindow>
     </section>
-  )
+  );
 }

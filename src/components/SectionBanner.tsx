@@ -1,8 +1,8 @@
-import { SLASH_ASCII } from '../data/ascii'
+import { SLASH_ASCII } from '../data/ascii';
 
 interface SectionBannerProps {
-  title: string
-  className?: string
+  title: string;
+  className?: string;
 }
 
 export default function SectionBanner({ title, className }: SectionBannerProps) {
@@ -15,5 +15,5 @@ export default function SectionBanner({ title, className }: SectionBannerProps) 
         {title.replace(/^\n/, '')}
       </pre>
     </div>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
-import HandlebarIcon from '../assets/icons/handlebar.svg?react'
-import BracketLink from './BracketLink'
+import { Link } from 'react-router-dom';
+import HandlebarIcon from '../assets/icons/handlebar.svg?react';
+import BracketLink from './BracketLink';
 
-type HeaderLink = { label: string } & ({ to: string } | { href: string })
+type HeaderLink = { label: string } & ({ to: string } | { href: string });
 
 interface HeaderProps {
-  links: HeaderLink[]
+  links: HeaderLink[];
 }
 
 export default function Header({ links }: HeaderProps) {
@@ -18,12 +18,16 @@ export default function Header({ links }: HeaderProps) {
         </Link>
         <nav className="flex gap-6">
           {links.map((link) => (
-            <BracketLink key={'to' in link ? link.to : link.href} to={'to' in link ? link.to : undefined} href={'href' in link ? link.href : undefined}>
+            <BracketLink
+              key={'to' in link ? link.to : link.href}
+              to={'to' in link ? link.to : undefined}
+              href={'href' in link ? link.href : undefined}
+            >
               [ {link.label.toLowerCase()} ]
             </BracketLink>
           ))}
         </nav>
       </div>
     </header>
-  )
+  );
 }

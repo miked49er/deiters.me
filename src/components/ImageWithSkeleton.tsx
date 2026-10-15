@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import type { ImgHTMLAttributes } from 'react'
+import { useState } from 'react';
+import type { ImgHTMLAttributes } from 'react';
 
 interface ImageWithSkeletonProps extends ImgHTMLAttributes<HTMLImageElement> {
-  wrapperClassName?: string
+  wrapperClassName?: string;
   /** Wrapper classes applied only until the image loads or fails (e.g. a reserved minimum size). */
-  loadingClassName?: string
+  loadingClassName?: string;
 }
 
 export default function ImageWithSkeleton({
@@ -15,7 +15,7 @@ export default function ImageWithSkeleton({
   onError,
   ...rest
 }: ImageWithSkeletonProps) {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <span className={`relative block overflow-hidden ${wrapperClassName} ${loaded ? '' : loadingClassName}`}>
@@ -25,18 +25,18 @@ export default function ImageWithSkeleton({
       <img
         {...rest}
         ref={(el) => {
-          if (el?.complete && el.naturalWidth > 0) setLoaded(true)
+          if (el?.complete && el.naturalWidth > 0) setLoaded(true);
         }}
         className={`${className} ${loaded ? '' : 'opacity-0'}`}
         onLoad={(e) => {
-          setLoaded(true)
-          onLoad?.(e)
+          setLoaded(true);
+          onLoad?.(e);
         }}
         onError={(e) => {
-          setLoaded(true)
-          onError?.(e)
+          setLoaded(true);
+          onError?.(e);
         }}
       />
     </span>
-  )
+  );
 }

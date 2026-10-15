@@ -1,18 +1,18 @@
-import type { Project } from '../types/project'
-import { PROJECTS_TITLE } from '../data/ascii'
-import { ProjectDetailProvider } from '../projectDetail/ProjectDetail'
-import { useProjectDetail } from '../projectDetail/useProjectDetail'
-import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections'
-import BracketLink from './BracketLink'
-import SectionBanner from './SectionBanner'
-import { PROJECT_TILE_CLASS, ProjectBanner, ProjectFeatureImage } from './ProjectChrome'
-import WindowHeader from './WindowHeader'
-import { projectWindowLabel } from '../lib/projectWindowLabel'
-import { useProjects } from '../projects/useProjects'
-import { SiteLink, ThumbnailStrip } from '../projectDetail/ProjectDetailParts'
+import type { Project } from '../projects/project';
+import { PROJECTS_TITLE } from '../data/ascii';
+import { ProjectDetailProvider } from '../projectDetail/ProjectDetail';
+import { useProjectDetail } from '../projectDetail/useProjectDetail';
+import { SECTION_IDS, SECTION_SCROLL_OFFSET } from '../lib/sections';
+import BracketLink from './BracketLink';
+import SectionBanner from './SectionBanner';
+import { PROJECT_TILE_CLASS, ProjectBanner, ProjectFeatureImage } from './ProjectChrome';
+import WindowHeader from './WindowHeader';
+import { windowLabel } from '../projects/projectFields';
+import { useProjects } from '../projects/useProjects';
+import { SiteLink, ThumbnailStrip } from '../projectDetail/ProjectDetailParts';
 
 interface FeaturedProjectsProps {
-  projects: Project[]
+  projects: Project[];
 }
 
 function Row({
@@ -22,16 +22,16 @@ function Row({
   onToggle,
   onImageClick,
 }: {
-  project: Project
-  reverse: boolean
-  expanded: boolean
-  onToggle: () => void
-  onImageClick: (index: number) => void
+  project: Project;
+  reverse: boolean;
+  expanded: boolean;
+  onToggle: () => void;
+  onImageClick: (index: number) => void;
 }) {
-  const { getBanner } = useProjects()
+  const { getBanner } = useProjects();
   return (
     <div className={PROJECT_TILE_CLASS}>
-      <WindowHeader label={projectWindowLabel(project)} />
+      <WindowHeader label={windowLabel(project)} />
 
       <div className={`flex flex-col ${reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}>
         <button
@@ -45,7 +45,7 @@ function Row({
           <button onClick={onToggle} className="block text-left">
             <ProjectBanner
               project={project}
-              banner={getBanner(project.asciiFile)}
+              banner={getBanner(project)}
               className="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]"
               nameClassName="text-xl font-semibold text-secondary"
             />
@@ -70,13 +70,13 @@ function Row({
         />
       )}
     </div>
-  )
+  );
 }
 
 function FeaturedProjectsSection({ projects }: FeaturedProjectsProps) {
-  const detail = useProjectDetail()
-  const featured = projects.filter((project) => project.featured)
-  const totalCount = projects.length
+  const detail = useProjectDetail();
+  const featured = projects.filter((project) => project.featured);
+  const totalCount = projects.length;
 
   return (
     <section id={SECTION_IDS.projects} className={SECTION_SCROLL_OFFSET}>
@@ -107,7 +107,7 @@ function FeaturedProjectsSection({ projects }: FeaturedProjectsProps) {
         [ view all ({totalCount}) → ]
       </BracketLink>
     </section>
-  )
+  );
 }
 
 export default function FeaturedProjects(props: FeaturedProjectsProps) {
@@ -115,5 +115,5 @@ export default function FeaturedProjects(props: FeaturedProjectsProps) {
     <ProjectDetailProvider>
       <FeaturedProjectsSection {...props} />
     </ProjectDetailProvider>
-  )
+  );
 }

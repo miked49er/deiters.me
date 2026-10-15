@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react'
-import HandlebarIcon from '../assets/icons/handlebar.svg?react'
+import type { ReactNode } from 'react';
+import HandlebarIcon from '../assets/icons/handlebar.svg?react';
 
 interface WindowHeaderProps {
-  label?: string
-  children?: ReactNode
+  label?: string;
+  children?: ReactNode;
 }
 
 export default function WindowHeader({ label, children }: WindowHeaderProps) {
@@ -13,5 +13,5 @@ export default function WindowHeader({ label, children }: WindowHeaderProps) {
       {label && <span className="ml-2 truncate font-mono text-xs text-secondary/40">{label}</span>}
       {children}
     </div>
-  )
+  );
 }
