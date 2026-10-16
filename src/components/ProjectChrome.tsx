@@ -1,6 +1,6 @@
 import type { Project } from '../projects/project';
 import { fitBannerFontSize } from '../lib/bannerFontSize';
-import { imageSrc } from '../projects/projectFields';
+import { featureImageSrc } from '../projects/projectFields';
 import { useProjects } from '../projects/useProjects';
 import ImageWithSkeleton from './ImageWithSkeleton';
 import { CARD_CHROME_CLASS } from './cardChrome';
@@ -19,7 +19,7 @@ interface ProjectFeatureImageProps {
 export function ProjectFeatureImage({ project, zoomClassName, loading, decoding }: ProjectFeatureImageProps) {
   return (
     <ImageWithSkeleton
-      src={imageSrc(project, project.featureImage)}
+      src={featureImageSrc(project)}
       alt={project.name}
       loading={loading}
       decoding={decoding}

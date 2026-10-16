@@ -12,6 +12,11 @@ interface LightboxProps {
   imageLabel?: string;
 }
 
+/** Index one step from `index`, wrapping around both ends. */
+function wrapIndex(index: number, delta: 1 | -1, total: number): number {
+  return (index + delta + total) % total;
+}
+
 export default function Lightbox({ images, index, onIndexChange, onClose, imageLabel = 'Image' }: LightboxProps) {
   const total = images.length;
 
@@ -26,8 +31,8 @@ export default function Lightbox({ images, index, onIndexChange, onClose, imageL
       if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
         return;
       }
-      if (e.key === 'ArrowLeft') onIndexChange((current - 1 + total) % total);
-      if (e.key === 'ArrowRight') onIndexChange((current + 1) % total);
+      if (e.key === 'ArrowLeft') onIndexChange(wrapIndex(current, -1, total));
+      if (e.key === 'ArrowRight') onIndexChange(wrapIndex(current, 1, total));
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -52,7 +57,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose, imageL
           className="absolute left-4 top-1/2 -translate-y-1/2 px-3 font-mono text-3xl text-secondary hover:text-accent sm:left-8"
           onClick={(e) => {
             e.stopPropagation();
-            onIndexChange((index - 1 + total) % total);
+            onIndexChange(wrapIndex(index, -1, total));
           }}
           aria-label="Previous image"
         >
@@ -76,7 +81,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose, imageL
           className="absolute right-4 top-1/2 -translate-y-1/2 px-3 font-mono text-3xl text-secondary hover:text-accent sm:right-8"
           onClick={(e) => {
             e.stopPropagation();
-            onIndexChange((index + 1) % total);
+            onIndexChange(wrapIndex(index, 1, total));
           }}
           aria-label="Next image"
         >

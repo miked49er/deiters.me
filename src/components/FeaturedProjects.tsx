@@ -70,6 +70,14 @@ function Row({
   );
 }
 
+function ViewAllLink({ totalCount, className }: { totalCount: number; className: string }) {
+  return (
+    <BracketLink to="/projects" className={className}>
+      [ view all ({totalCount}) → ]
+    </BracketLink>
+  );
+}
+
 function FeaturedProjectsSection({ projects }: FeaturedProjectsProps) {
   const detail = useProjectDetail();
   const featured = projects.filter((project) => project.featured);
@@ -82,9 +90,7 @@ function FeaturedProjectsSection({ projects }: FeaturedProjectsProps) {
           <SectionBanner title={PROJECTS_TITLE} />
           <h2 className="sr-only">Featured work</h2>
         </div>
-        <BracketLink to="/projects" className="hidden sm:inline-flex">
-          [ view all ({totalCount}) → ]
-        </BracketLink>
+        <ViewAllLink totalCount={totalCount} className="hidden sm:inline-flex" />
       </div>
 
       <div className="space-y-6">
@@ -100,9 +106,7 @@ function FeaturedProjectsSection({ projects }: FeaturedProjectsProps) {
         ))}
       </div>
 
-      <BracketLink to="/projects" className="mt-6 inline-flex sm:hidden">
-        [ view all ({totalCount}) → ]
-      </BracketLink>
+      <ViewAllLink totalCount={totalCount} className="mt-6 inline-flex sm:hidden" />
     </section>
   );
 }

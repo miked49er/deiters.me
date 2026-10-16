@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import type { Project } from '../projects/project';
-import { imageSrc } from '../projects/projectFields';
+import { featureImageSrc, windowLabel } from '../projects/projectFields';
 import BracketLink from '../components/BracketLink';
 import ImageWithSkeleton from '../components/ImageWithSkeleton';
 import { ProjectBanner } from '../components/ProjectChrome';
 import WindowHeader from '../components/WindowHeader';
-import { windowLabel } from '../projects/projectFields';
 import { useOverlay } from '../overlays/useOverlay';
 import { useProjectDetail } from './useProjectDetail';
 import { SiteLink, ThumbnailStrip } from './ProjectDetailParts';
@@ -55,7 +54,7 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
         </div>
         {/* Not ProjectFeatureImage: fixed h-64 wrapper and no hover zoom, unlike the tile image. */}
         <ImageWithSkeleton
-          src={imageSrc(project, project.featureImage)}
+          src={featureImageSrc(project)}
           alt={project.name}
           wrapperClassName="h-64 w-full"
           className="h-full w-full object-cover"
