@@ -25,7 +25,7 @@ _Avoid_: Hero Banner, Section Banner (different, static or Landing-Page-only ban
 The `/projects` route. Lists every project, not just Featured ones.
 
 **Project Detail**:
-The full content for a project (description, visit link, images). Presented as an inline expand on the Landing Page and as a modal on the Projects Page (intentional: the Projects Page is a card grid). Same content and open/closed behaviour either way. Not a separate route. The visit link is shown only while Project Detail is open; a collapsed Featured Row or a Project Card never shows it (intentional).
+The full content for a project (`details` text, visit link, images). Presented as an inline expand on the Landing Page and as a modal on the Projects Page (intentional: the Projects Page is a card grid). Same content and open/closed behaviour either way. Not a separate route. The visit link is shown only while Project Detail is open; a collapsed Featured Row or a Project Card never shows it (intentional).
 
 **Window Label**:
 The filename-style title (`<link>.tsx`) shown in the window header of a Featured Row, Project Card, or Project Detail modal. Derived from the project's `link`.

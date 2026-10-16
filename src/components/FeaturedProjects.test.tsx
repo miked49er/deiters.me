@@ -20,7 +20,7 @@ const project = (over: Partial<Project> = {}): Project => ({
   ...over,
 });
 
-const renderRow = (p: Project) =>
+const renderFeaturedRow = (p: Project) =>
   render(
     <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [p] })}>
       <MemoryRouter>
@@ -33,12 +33,12 @@ const LINK = '[ visit site → ]';
 
 describe('FeaturedProjects', () => {
   it('hides the live-site link until the row is expanded', () => {
-    renderRow(project());
+    renderFeaturedRow(project());
     expect(screen.queryByText(LINK)).not.toBeInTheDocument();
   });
 
   it('shows the live-site link above "Show less" when expanded', () => {
-    renderRow(project());
+    renderFeaturedRow(project());
     fireEvent.click(screen.getByText('Read more'));
 
     const link = screen.getByRole('link', { name: LINK });
@@ -50,7 +50,7 @@ describe('FeaturedProjects', () => {
   });
 
   it('omits the live-site link when project.site is empty', () => {
-    renderRow(project({ site: '' }));
+    renderFeaturedRow(project({ site: '' }));
     fireEvent.click(screen.getByText('Read more'));
     expect(screen.queryByText(LINK)).not.toBeInTheDocument();
   });

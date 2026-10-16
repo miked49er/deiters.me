@@ -16,7 +16,7 @@ import type { Project } from '../projects/project';
 // Sized to fit the widest ascii banner in public/data/projects.json without clipping.
 const TITLE_FONT_SIZE = 7;
 
-function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
+function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void }) {
   return (
     <button onClick={onOpen} className={`group mb-6 flex w-full flex-col text-left ${PROJECT_TILE_CLASS}`}>
       <WindowHeader label={windowLabel(project)} />
@@ -64,7 +64,7 @@ function ProjectsPage() {
             {columns.map((column, i) => (
               <div key={i} className="flex flex-1 flex-col">
                 {column.map((project) => (
-                  <Card key={project.id} project={project} onOpen={() => detail.open(project.id)} />
+                  <ProjectCard key={project.id} project={project} onOpen={() => detail.open(project.id)} />
                 ))}
               </div>
             ))}

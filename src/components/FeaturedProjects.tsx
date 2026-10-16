@@ -14,7 +14,7 @@ interface FeaturedProjectsProps {
   projects: Project[];
 }
 
-function Row({
+function FeaturedRow({
   project,
   reverse,
   expanded,
@@ -95,7 +95,7 @@ function FeaturedProjectsSection({ projects }: FeaturedProjectsProps) {
 
       <div className="space-y-6">
         {featured.map((project, i) => (
-          <Row
+          <FeaturedRow
             key={project.id}
             project={project}
             reverse={i % 2 === 1}
