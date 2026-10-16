@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+/* Agent worktrees under .claude/ are full repo copies; scanning them makes the build depend on local state. */
+@source not '../.claude';
 
 html {
   scroll-behavior: smooth;

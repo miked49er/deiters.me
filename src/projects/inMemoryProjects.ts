@@ -9,7 +9,7 @@ interface InMemoryProjectsOptions {
 }
 
 /** Projects store backed by fixtures; the production loader also builds on it. */
-export function createInMemoryProjects({
+export function createInMemoryProjectsStore({
   projects = [],
   banners = {},
   error,

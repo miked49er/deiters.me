@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ProjectsStoreContext } from './ProjectsStoreContext';
 import { useProjects } from './useProjects';
-import { createInMemoryProjects } from './inMemoryProjects';
+import { createInMemoryProjectsStore } from './inMemoryProjects';
 import { makeProject } from './testProject';
 
 function Probe() {
@@ -13,7 +13,7 @@ function Probe() {
 
 describe('ProjectsStoreContext.Provider', () => {
   it('supplies the store to descendants', () => {
-    const store = createInMemoryProjects({
+    const store = createInMemoryProjectsStore({
       projects: [makeProject({ asciiFile: '/a.txt' })],
       banners: { '/a.txt': 'art' },
     });
