@@ -1,13 +1,48 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <title>Deitersme</title>
-  <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-<style>@import url(https://fonts.googleapis.com/css?family=Nova+Mono|Open+Sans);*{box-sizing:border-box;font-family:Open Sans,sans-serif;font-size:1.2rem;font-weight:400;line-height:110%;}html{font-size:20px;line-height:20px;}</style><link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.css"></noscript></head>
-<body style="margin:0">
-  <deiters-root></deiters-root>
-<script src="runtime.js" defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills.js" defer></script><script src="main.js" defer></script>
-
-</body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" as="fetch" href="/data/projects.json" crossorigin />
+    <title>Mike Deiters</title>
+    <meta
+      name="description"
+      content="Mike Deiters is a Senior Software Engineer based in Atlanta, specializing in React Native and full-stack development."
+    />
+    <link rel="canonical" href="https://deiters.me/" />
+    <meta name="theme-color" content="#18181b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mike Deiters" />
+    <meta
+      property="og:description"
+      content="Senior Software Engineer in Atlanta specializing in React Native and full-stack development."
+    />
+    <meta property="og:url" content="https://deiters.me/" />
+    <meta property="og:image" content="https://deiters.me/assets/img/profile.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
+    <script type="module" crossorigin src="/assets/index-BSSyIsAU.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-oBgnqghS.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

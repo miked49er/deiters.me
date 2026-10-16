@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+/* Agent worktrees under .claude/ are full repo copies; scanning them makes the build depend on local state. */
+@source not '../.claude';
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-primary);
+}
+
+@theme {
+  --font-mono: 'Nova Mono', monospace;
+  --font-sans: 'Open Sans', sans-serif;
+
+  --color-primary: #18181b;
+  --color-primary-light: #27272a;
+  --color-secondary: #ffffff;
+  --color-accent: #9333ea;
+  --color-banner: #c084fc;
+}
+
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s steps(1) infinite;
+}
+
+/*
+Original Angular z-index scale (src/sass/_variables.scss), kept here for reference
+until the layered components (feature carousel, overlays, header) are rebuilt:
+  scroll: 1, base: 2, project1-5: 10-14, overlay: 20, projects-overlay: 21,
+  about-overlay: 22, header-overlay: 23, header: 30
+*/
