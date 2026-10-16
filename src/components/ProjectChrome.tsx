@@ -1,6 +1,7 @@
 import type { Project } from '../projects/project';
 import { fitBannerFontSize } from '../lib/bannerFontSize';
 import { imageSrc } from '../projects/projectFields';
+import { useProjects } from '../projects/useProjects';
 import ImageWithSkeleton from './ImageWithSkeleton';
 import { CARD_CHROME_CLASS } from './cardChrome';
 
@@ -33,7 +34,6 @@ type BannerSize = { fixedPx: number } | { fitMaxPx: number };
 
 interface ProjectBannerProps {
   project: Project;
-  banner: string | null;
   size?: BannerSize;
   className: string;
   nameClassName: string;
@@ -44,8 +44,9 @@ function bannerFontSize(banner: string, size?: BannerSize): string | undefined {
   return 'fitMaxPx' in size ? fitBannerFontSize(banner, size.fitMaxPx) : `${size.fixedPx}px`;
 }
 
-// Ascii banner, falling back to the plain project name when none is loaded.
-export function ProjectBanner({ project, banner, size, className, nameClassName }: ProjectBannerProps) {
+// The project's ascii banner from the projects store, falling back to the plain project name when none is loaded.
+export function ProjectBanner({ project, size, className, nameClassName }: ProjectBannerProps) {
+  const banner = useProjects().getBanner(project);
   if (!banner) return <p className={nameClassName}>{project.name}</p>;
   const fontSize = bannerFontSize(banner, size);
   return (

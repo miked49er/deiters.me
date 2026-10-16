@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Projects from './Projects';
-import { ProjectsContext } from '../projects/ProjectsContext';
+import { ProjectsStoreContext } from '../projects/ProjectsStoreContext';
 import { createInMemoryProjects } from '../projects/inMemoryProjects';
 import { makeProject } from '../projects/testProject';
 import { stubViewport } from '../testViewport';
@@ -11,11 +11,11 @@ function renderProjects() {
   const project = makeProject({ name: 'Card Project', featureImage: 'feature.png' });
   vi.stubGlobal('matchMedia', () => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }));
   render(
-    <ProjectsContext.Provider value={createInMemoryProjects({ projects: [project] })}>
+    <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [project] })}>
       <MemoryRouter>
         <Projects />
       </MemoryRouter>
-    </ProjectsContext.Provider>,
+    </ProjectsStoreContext.Provider>,
   );
   return screen.getByAltText('Card Project');
 }
@@ -43,6 +43,24 @@ describe('Projects card Feature Image', () => {
   });
 });
 
+describe('Projects load error', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('shows the projects error and no project content when the store failed to load', () => {
+    vi.stubGlobal('matchMedia', () => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }));
+    render(
+      <ProjectsStoreContext.Provider value={createInMemoryProjects({ error: new Error('boom') })}>
+        <MemoryRouter>
+          <Projects />
+        </MemoryRouter>
+      </ProjectsStoreContext.Provider>,
+    );
+
+    expect(screen.getByText('Failed to load projects.')).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Projects', hidden: true })).not.toBeInTheDocument();
+  });
+});
+
 describe('Projects grid layout', () => {
   afterEach(() => vi.unstubAllGlobals());
 
@@ -53,11 +71,11 @@ describe('Projects grid layout', () => {
       makeProject({ id: i, name: `P${i}`, featureImage: `${i}.png` }),
     );
     render(
-      <ProjectsContext.Provider value={createInMemoryProjects({ projects })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects })}>
         <MemoryRouter>
           <Projects />
         </MemoryRouter>
-      </ProjectsContext.Provider>,
+      </ProjectsStoreContext.Provider>,
     );
     return viewport;
   }

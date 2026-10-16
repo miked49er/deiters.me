@@ -8,7 +8,6 @@ import WindowHeader from '../components/WindowHeader';
 import { windowLabel } from '../projects/projectFields';
 import { useOverlay } from '../overlays/useOverlay';
 import { useProjectDetail } from './useProjectDetail';
-import { useProjects } from '../projects/useProjects';
 import { SiteLink, ThumbnailStrip } from './ProjectDetailParts';
 
 const TITLE_MAX_FONT_SIZE = 9;
@@ -18,8 +17,6 @@ interface ProjectDetailModalProps {
 }
 
 export default function ProjectDetailModal({ project }: ProjectDetailModalProps) {
-  const { getBanner } = useProjects();
-  const banner = getBanner(project);
   const { close: onClose, openImage } = useProjectDetail();
   const [visible, setVisible] = useState(false);
 
@@ -67,7 +64,6 @@ export default function ProjectDetailModal({ project }: ProjectDetailModalProps)
           <div className="@container">
             <ProjectBanner
               project={project}
-              banner={banner}
               className="pb-2 leading-[1.15] text-banner"
               size={{ fitMaxPx: TITLE_MAX_FONT_SIZE }}
               nameClassName="text-2xl font-semibold text-secondary"

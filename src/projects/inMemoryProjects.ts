@@ -1,23 +1,19 @@
 import type { Project } from './project';
-import type { ProjectsSeam } from './projectsSeam';
+import type { ProjectsStore } from './projectsStore';
 
 interface InMemoryProjectsOptions {
   projects?: Project[];
   banners?: Record<string, string>;
+  /** When given, the store is in the error state and `projects` is ignored. */
   error?: unknown;
 }
 
-/** Seam adapter backed by fixtures; the production adapter also builds on it. */
+/** Projects store backed by fixtures; the production loader also builds on it. */
 export function createInMemoryProjects({
-  projects,
+  projects = [],
   banners = {},
-  error = null,
-}: InMemoryProjectsOptions = {}): ProjectsSeam {
-  return {
-    data: projects ? { projects } : null,
-    error,
-    getBanner(project) {
-      return banners[project.asciiFile] ?? null;
-    },
-  };
+  error,
+}: InMemoryProjectsOptions = {}): ProjectsStore {
+  const getBanner = (project: Project) => banners[project.asciiFile] ?? null;
+  return error === undefined ? { status: 'ready', projects, getBanner } : { status: 'error', error, getBanner };
 }
