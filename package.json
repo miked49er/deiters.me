@@ -6,8 +6,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "oxlint && oxfmt --check \"**/*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}\"",
-    "format": "oxfmt \"**/*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}\"",
+    "lint": "oxlint && oxfmt --check \"**/*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}\" \"!.claude/worktrees/**\"",
+    "format": "oxfmt \"**/*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}\" \"!.claude/worktrees/**\"",
     "test": "vitest run",
     "sync-data": "node -e \"require('fs').copyFileSync('public/data/projects.json', 'docs/data/projects.json')\"",
     "generate:hero-art": "node scripts/generate-hero-art.mjs"
