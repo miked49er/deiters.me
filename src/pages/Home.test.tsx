@@ -3,13 +3,13 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Home from './Home';
 import { ProjectsStoreContext } from '../projects/ProjectsStoreContext';
-import { createInMemoryProjects } from '../projects/inMemoryProjects';
+import { createInMemoryProjectsStore } from '../projects/inMemoryProjects';
 import { SECTION_LINKS } from '../lib/sections';
 
 describe('Home', () => {
   it('gives every nav hash link a matching element id', () => {
     const { container } = render(
-      <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [] })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ projects: [] })}>
         <MemoryRouter>
           <Home />
         </MemoryRouter>
@@ -24,7 +24,7 @@ describe('Home', () => {
 
   it('shows the projects error and no project content when the store failed to load', () => {
     render(
-      <ProjectsStoreContext.Provider value={createInMemoryProjects({ error: new Error('boom') })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ error: new Error('boom') })}>
         <MemoryRouter>
           <Home />
         </MemoryRouter>

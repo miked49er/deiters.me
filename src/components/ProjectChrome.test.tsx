@@ -2,13 +2,15 @@ import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import type { ReactElement } from 'react';
 import { ProjectBanner, ProjectFeatureImage, PROJECT_TILE_CLASS } from './ProjectChrome';
-import { createInMemoryProjects } from '../projects/inMemoryProjects';
+import { createInMemoryProjectsStore } from '../projects/inMemoryProjects';
 import { ProjectsStoreContext } from '../projects/ProjectsStoreContext';
 import { makeProject } from '../projects/testProject';
 
 function renderWithBanners(ui: ReactElement, banners: Record<string, string> = {}) {
   return render(
-    <ProjectsStoreContext.Provider value={createInMemoryProjects({ banners })}>{ui}</ProjectsStoreContext.Provider>,
+    <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ banners })}>
+      {ui}
+    </ProjectsStoreContext.Provider>,
   );
 }
 

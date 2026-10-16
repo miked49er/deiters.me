@@ -1,6 +1,6 @@
 import type { Project } from './project';
 import type { ProjectsStore } from './projectsStore';
-import { createInMemoryProjects } from './inMemoryProjects';
+import { createInMemoryProjectsStore } from './inMemoryProjects';
 
 /** Loads projects.json and each distinct banner file once, before first render. */
 export async function loadProductionProjectsStore(): Promise<ProjectsStore> {
@@ -23,8 +23,8 @@ export async function loadProductionProjectsStore(): Promise<ProjectsStore> {
         }
       }),
     );
-    return createInMemoryProjects({ projects, banners });
+    return createInMemoryProjectsStore({ projects, banners });
   } catch (error) {
-    return createInMemoryProjects({ error });
+    return createInMemoryProjectsStore({ error });
   }
 }

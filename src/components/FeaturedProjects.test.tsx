@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import FeaturedProjects from './FeaturedProjects';
 import { ProjectsStoreContext } from '../projects/ProjectsStoreContext';
-import { createInMemoryProjects } from '../projects/inMemoryProjects';
+import { createInMemoryProjectsStore } from '../projects/inMemoryProjects';
 import type { Project } from '../projects/project';
 
 const project = (over: Partial<Project> = {}): Project => ({
@@ -22,7 +22,7 @@ const project = (over: Partial<Project> = {}): Project => ({
 
 const renderFeaturedRow = (p: Project) =>
   render(
-    <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [p] })}>
+    <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ projects: [p] })}>
       <MemoryRouter>
         <FeaturedProjects projects={[p]} />
       </MemoryRouter>
@@ -61,7 +61,7 @@ describe('FeaturedProjects', () => {
       project({ id: 2, name: 'Hidden', featured: false }),
     ];
     render(
-      <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ projects })}>
         <MemoryRouter>
           <FeaturedProjects projects={projects} />
         </MemoryRouter>

@@ -2,12 +2,12 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import { ProjectsStoreContext } from './projects/ProjectsStoreContext';
-import { createInMemoryProjects } from './projects/inMemoryProjects';
+import { createInMemoryProjectsStore } from './projects/inMemoryProjects';
 import { makeProject } from './projects/testProject';
 
 const renderApp = (projects = [] as ReturnType<typeof makeProject>[]) =>
   render(
-    <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects })}>
+    <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ projects })}>
       <App />
     </ProjectsStoreContext.Provider>,
   );

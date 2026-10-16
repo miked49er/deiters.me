@@ -3,7 +3,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Projects from './Projects';
 import { ProjectsStoreContext } from '../projects/ProjectsStoreContext';
-import { createInMemoryProjects } from '../projects/inMemoryProjects';
+import { createInMemoryProjectsStore } from '../projects/inMemoryProjects';
 import { makeProject } from '../projects/testProject';
 import { stubViewport } from '../testViewport';
 
@@ -11,7 +11,7 @@ function renderProjects() {
   const project = makeProject({ name: 'Card Project', featureImage: 'feature.png' });
   vi.stubGlobal('matchMedia', () => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }));
   render(
-    <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [project] })}>
+    <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ projects: [project] })}>
       <MemoryRouter>
         <Projects />
       </MemoryRouter>
@@ -49,7 +49,7 @@ describe('Projects load error', () => {
   it('shows the projects error and no project content when the store failed to load', () => {
     vi.stubGlobal('matchMedia', () => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }));
     render(
-      <ProjectsStoreContext.Provider value={createInMemoryProjects({ error: new Error('boom') })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ error: new Error('boom') })}>
         <MemoryRouter>
           <Projects />
         </MemoryRouter>
@@ -71,7 +71,7 @@ describe('Projects grid layout', () => {
       makeProject({ id: i, name: `P${i}`, featureImage: `${i}.png` }),
     );
     render(
-      <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ projects })}>
         <MemoryRouter>
           <Projects />
         </MemoryRouter>

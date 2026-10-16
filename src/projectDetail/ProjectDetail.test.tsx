@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Projects from '../pages/Projects';
 import FeaturedProjects from '../components/FeaturedProjects';
 import { ProjectsStoreContext } from '../projects/ProjectsStoreContext';
-import { createInMemoryProjects } from '../projects/inMemoryProjects';
+import { createInMemoryProjectsStore } from '../projects/inMemoryProjects';
 import { ProjectDetailProvider } from './ProjectDetail';
 import { useProjectDetail } from './useProjectDetail';
 import { makeProject } from '../projects/testProject';
@@ -18,7 +18,7 @@ const project = makeProject({
 
 function renderProjectsPage() {
   render(
-    <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [project] })}>
+    <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ projects: [project] })}>
       <MemoryRouter>
         <Projects />
       </MemoryRouter>
@@ -45,7 +45,7 @@ describe('Project Detail modal (Projects Page)', () => {
 
   it('scales the ASCII title to the modal width instead of scrolling horizontally', () => {
     const withBanner = makeProject({ asciiFile: '/ascii.txt' });
-    const store = createInMemoryProjects({ projects: [withBanner], banners: { '/ascii.txt': 'ab\nabcdefghij' } });
+    const store = createInMemoryProjectsStore({ projects: [withBanner], banners: { '/ascii.txt': 'ab\nabcdefghij' } });
     render(
       <ProjectsStoreContext.Provider value={store}>
         <MemoryRouter>
@@ -109,7 +109,7 @@ describe('Project Detail modal (Projects Page)', () => {
 describe('Project Detail expand (Landing Page)', () => {
   it('opens the Lightbox from an expanded row and Escape closes only it', () => {
     render(
-      <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [project] })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjectsStore({ projects: [project] })}>
         <MemoryRouter>
           <FeaturedProjects projects={[project]} />
         </MemoryRouter>
