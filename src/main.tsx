@@ -2,15 +2,15 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.tsx';
-import { ProjectsContext } from './projects/ProjectsContext';
-import { loadProductionProjects } from './projects/productionProjects';
+import { ProjectsStoreContext } from './projects/ProjectsStoreContext';
+import { loadProductionProjectsStore } from './projects/productionProjects';
 
-const projects = await loadProductionProjects();
+const projectsStore = await loadProductionProjectsStore();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ProjectsContext.Provider value={projects}>
+    <ProjectsStoreContext.Provider value={projectsStore}>
       <App />
-    </ProjectsContext.Provider>
+    </ProjectsStoreContext.Provider>
   </StrictMode>,
 );

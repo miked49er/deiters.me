@@ -3,7 +3,7 @@ import { act, fireEvent, render, renderHook, screen } from '@testing-library/rea
 import { MemoryRouter } from 'react-router-dom';
 import Projects from '../pages/Projects';
 import FeaturedProjects from '../components/FeaturedProjects';
-import { ProjectsContext } from '../projects/ProjectsContext';
+import { ProjectsStoreContext } from '../projects/ProjectsStoreContext';
 import { createInMemoryProjects } from '../projects/inMemoryProjects';
 import { ProjectDetailProvider } from './ProjectDetail';
 import { useProjectDetail } from './useProjectDetail';
@@ -18,11 +18,11 @@ const project = makeProject({
 
 function renderProjectsPage() {
   render(
-    <ProjectsContext.Provider value={createInMemoryProjects({ projects: [project] })}>
+    <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [project] })}>
       <MemoryRouter>
         <Projects />
       </MemoryRouter>
-    </ProjectsContext.Provider>,
+    </ProjectsStoreContext.Provider>,
   );
 }
 
@@ -45,13 +45,13 @@ describe('Project Detail modal (Projects Page)', () => {
 
   it('scales the ASCII title to the modal width instead of scrolling horizontally', () => {
     const withBanner = makeProject({ asciiFile: '/ascii.txt' });
-    const seam = createInMemoryProjects({ projects: [withBanner], banners: { '/ascii.txt': 'ab\nabcdefghij' } });
+    const store = createInMemoryProjects({ projects: [withBanner], banners: { '/ascii.txt': 'ab\nabcdefghij' } });
     render(
-      <ProjectsContext.Provider value={seam}>
+      <ProjectsStoreContext.Provider value={store}>
         <MemoryRouter>
           <Projects />
         </MemoryRouter>
-      </ProjectsContext.Provider>,
+      </ProjectsStoreContext.Provider>,
     );
     openModal();
     const banner = screen.getByLabelText('Close').closest('.fixed')!.querySelector('pre')!;
@@ -109,11 +109,11 @@ describe('Project Detail modal (Projects Page)', () => {
 describe('Project Detail expand (Landing Page)', () => {
   it('opens the Lightbox from an expanded row and Escape closes only it', () => {
     render(
-      <ProjectsContext.Provider value={createInMemoryProjects({ projects: [project] })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [project] })}>
         <MemoryRouter>
           <FeaturedProjects projects={[project]} />
         </MemoryRouter>
-      </ProjectsContext.Provider>,
+      </ProjectsStoreContext.Provider>,
     );
     fireEvent.click(screen.getByText('Read more'));
     fireEvent.click(thumbs()[0]);

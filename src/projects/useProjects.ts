@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { ProjectsContext } from './ProjectsContext';
-import type { ProjectsSeam } from './projectsSeam';
+import { ProjectsStoreContext } from './ProjectsStoreContext';
+import type { ProjectsStore } from './projectsStore';
 
-export function useProjects(): ProjectsSeam {
-  const seam = useContext(ProjectsContext);
-  if (!seam) throw new Error('useProjects must be used within a ProjectsContext.Provider');
-  return seam;
+export function useProjects(): ProjectsStore {
+  const store = useContext(ProjectsStoreContext);
+  if (!store) throw new Error('useProjects must be used within a ProjectsStoreContext.Provider');
+  return store;
 }

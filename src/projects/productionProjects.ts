@@ -1,18 +1,18 @@
-import type { ProjectsData } from './project';
-import type { ProjectsSeam } from './projectsSeam';
+import type { Project } from './project';
+import type { ProjectsStore } from './projectsStore';
 import { createInMemoryProjects } from './inMemoryProjects';
 
 /** Loads projects.json and each distinct banner file once, before first render. */
-export async function loadProductionProjects(): Promise<ProjectsSeam> {
+export async function loadProductionProjectsStore(): Promise<ProjectsStore> {
   try {
     const res = await fetch(`${import.meta.env.BASE_URL}data/projects.json`);
     if (!res.ok) {
       throw new Error(`Failed to load projects.json: ${res.status}`);
     }
-    const json = (await res.json()) as ProjectsData;
+    const { projects } = (await res.json()) as { projects: Project[] };
 
     const banners: Record<string, string> = {};
-    const asciiFiles = [...new Set(json.projects.map((p) => p.asciiFile))];
+    const asciiFiles = [...new Set(projects.map((p) => p.asciiFile))];
     await Promise.all(
       asciiFiles.map(async (file) => {
         try {
@@ -23,7 +23,7 @@ export async function loadProductionProjects(): Promise<ProjectsSeam> {
         }
       }),
     );
-    return createInMemoryProjects({ projects: json.projects, banners });
+    return createInMemoryProjects({ projects, banners });
   } catch (error) {
     return createInMemoryProjects({ error });
   }

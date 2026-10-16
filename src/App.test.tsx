@@ -1,19 +1,19 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import { ProjectsContext } from './projects/ProjectsContext';
+import { ProjectsStoreContext } from './projects/ProjectsStoreContext';
 import { createInMemoryProjects } from './projects/inMemoryProjects';
 import { makeProject } from './projects/testProject';
 
 const renderApp = (projects = [] as ReturnType<typeof makeProject>[]) =>
   render(
-    <ProjectsContext.Provider value={createInMemoryProjects({ projects })}>
+    <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects })}>
       <App />
-    </ProjectsContext.Provider>,
+    </ProjectsStoreContext.Provider>,
   );
 
 describe('App', () => {
-  it('renders the header and featured project data from the projects seam', () => {
+  it('renders the header and featured project data from the projects store', () => {
     renderApp([makeProject({ asciiFile: '/assets/img/rtg/ascii.txt' })]);
 
     expect(screen.getByText('[ about ]')).toBeInTheDocument();

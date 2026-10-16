@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import FeaturedProjects from './FeaturedProjects';
-import { ProjectsContext } from '../projects/ProjectsContext';
+import { ProjectsStoreContext } from '../projects/ProjectsStoreContext';
 import { createInMemoryProjects } from '../projects/inMemoryProjects';
 import type { Project } from '../projects/project';
 
@@ -22,11 +22,11 @@ const project = (over: Partial<Project> = {}): Project => ({
 
 const renderRow = (p: Project) =>
   render(
-    <ProjectsContext.Provider value={createInMemoryProjects({ projects: [p] })}>
+    <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects: [p] })}>
       <MemoryRouter>
         <FeaturedProjects projects={[p]} />
       </MemoryRouter>
-    </ProjectsContext.Provider>,
+    </ProjectsStoreContext.Provider>,
   );
 
 const LINK = '[ visit site → ]';
@@ -61,11 +61,11 @@ describe('FeaturedProjects', () => {
       project({ id: 2, name: 'Hidden', featured: false }),
     ];
     render(
-      <ProjectsContext.Provider value={createInMemoryProjects({ projects })}>
+      <ProjectsStoreContext.Provider value={createInMemoryProjects({ projects })}>
         <MemoryRouter>
           <FeaturedProjects projects={projects} />
         </MemoryRouter>
-      </ProjectsContext.Provider>,
+      </ProjectsStoreContext.Provider>,
     );
     expect(screen.getAllByText('Shown').length).toBeGreaterThan(0);
     expect(screen.queryByText('Hidden')).not.toBeInTheDocument();

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { loadProductionProjects } from './productionProjects';
+import { loadProductionProjectsStore } from './productionProjects';
 import { makeProject } from './testProject';
 
 const projectsJson = {
@@ -20,11 +20,10 @@ describe('production projects adapter', () => {
     );
     vi.stubGlobal('fetch', fetchMock);
 
-    const seam = await loadProductionProjects();
+    const store = await loadProductionProjectsStore();
 
-    expect(seam.data?.projects).toHaveLength(2);
-    expect(seam.getBanner(makeProject({ asciiFile: '/a.txt' }))).toBe('banner');
-    expect(seam.error).toBeNull();
+    expect(store).toMatchObject({ status: 'ready', projects: [{ id: 1 }, { id: 2 }] });
+    expect(store.getBanner(makeProject({ asciiFile: '/a.txt' }))).toBe('banner');
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
@@ -40,10 +39,10 @@ describe('production projects adapter', () => {
       ),
     );
 
-    const seam = await loadProductionProjects();
+    const store = await loadProductionProjectsStore();
 
-    expect(seam.getBanner(makeProject({ asciiFile: '/a.txt' }))).toBeNull();
-    expect(seam.error).toBeNull();
+    expect(store.getBanner(makeProject({ asciiFile: '/a.txt' }))).toBeNull();
+    expect(store.status).toBe('ready');
   });
 
   it('has no banner when a banner fetch rejects', async () => {
@@ -56,11 +55,10 @@ describe('production projects adapter', () => {
       ),
     );
 
-    const seam = await loadProductionProjects();
+    const store = await loadProductionProjectsStore();
 
-    expect(seam.data?.projects).toHaveLength(2);
-    expect(seam.getBanner(makeProject({ asciiFile: '/a.txt' }))).toBeNull();
-    expect(seam.error).toBeNull();
+    expect(store).toMatchObject({ status: 'ready', projects: [{ id: 1 }, { id: 2 }] });
+    expect(store.getBanner(makeProject({ asciiFile: '/a.txt' }))).toBeNull();
   });
 
   it('surfaces an error when projects.json fails to load', async () => {
@@ -69,9 +67,9 @@ describe('production projects adapter', () => {
       vi.fn(() => Promise.resolve(new Response('nope', { status: 500 }))),
     );
 
-    const seam = await loadProductionProjects();
+    const store = await loadProductionProjectsStore();
 
-    expect(seam.data).toBeNull();
-    expect(seam.error).toBeInstanceOf(Error);
+    expect(store.status).toBe('error');
+    expect(store).toMatchObject({ error: expect.any(Error) });
   });
 });

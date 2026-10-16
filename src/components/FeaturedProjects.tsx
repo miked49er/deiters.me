@@ -8,7 +8,6 @@ import SectionBanner from './SectionBanner';
 import { PROJECT_TILE_CLASS, ProjectBanner, ProjectFeatureImage } from './ProjectChrome';
 import WindowHeader from './WindowHeader';
 import { windowLabel } from '../projects/projectFields';
-import { useProjects } from '../projects/useProjects';
 import { SiteLink, ThumbnailStrip } from '../projectDetail/ProjectDetailParts';
 
 interface FeaturedProjectsProps {
@@ -28,7 +27,6 @@ function Row({
   onToggle: () => void;
   onImageClick: (index: number) => void;
 }) {
-  const { getBanner } = useProjects();
   return (
     <div className={PROJECT_TILE_CLASS}>
       <WindowHeader label={windowLabel(project)} />
@@ -45,7 +43,6 @@ function Row({
           <button onClick={onToggle} className="block text-left">
             <ProjectBanner
               project={project}
-              banner={getBanner(project)}
               className="overflow-x-auto text-[8px] leading-tight text-banner sm:text-[9px]"
               nameClassName="text-xl font-semibold text-secondary"
             />

@@ -17,7 +17,6 @@ import type { Project } from '../projects/project';
 const TITLE_FONT_SIZE = 7;
 
 function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
-  const { getBanner } = useProjects();
   return (
     <button onClick={onOpen} className={`group mb-6 flex w-full flex-col text-left ${PROJECT_TILE_CLASS}`}>
       <WindowHeader label={windowLabel(project)} />
@@ -28,7 +27,6 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         <div className="pb-1">
           <ProjectBanner
             project={project}
-            banner={getBanner(project)}
             className="leading-[1.15] whitespace-pre text-banner"
             size={{ fixedPx: TITLE_FONT_SIZE }}
             nameClassName="font-semibold text-secondary"
@@ -42,21 +40,22 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
 }
 
 function ProjectsPage() {
-  const { data, error } = useProjects();
+  const store = useProjects();
   const detail = useProjectDetail();
   const columnCount = useColumnCount();
 
-  const openProject = data?.projects.find((p) => p.id === detail.openId) ?? null;
+  const projects = store.status === 'ready' ? store.projects : [];
+  const openProject = projects.find((p) => p.id === detail.openId) ?? null;
 
-  const columns = distributeIntoColumns(data?.projects ?? [], columnCount);
+  const columns = distributeIntoColumns(projects, columnCount);
 
   return (
     <main className="min-h-screen bg-primary font-sans text-secondary">
       <Header links={[{ to: '/', label: 'Home' }]} />
 
-      {Boolean(error) && <ProjectsError />}
-
-      {data && (
+      {store.status === 'error' ? (
+        <ProjectsError />
+      ) : (
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-16">
           <SectionBanner title={PROJECTS_TITLE} className="mb-6" />
           <h1 className="sr-only">Projects</h1>
