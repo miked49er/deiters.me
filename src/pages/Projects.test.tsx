@@ -20,7 +20,7 @@ function renderProjects() {
   return screen.getByAltText('Card Project');
 }
 
-describe('Projects card Feature Image', () => {
+describe('Project Card Feature Image', () => {
   afterEach(() => vi.unstubAllGlobals());
 
   it('shows the skeleton until the image loads', () => {
